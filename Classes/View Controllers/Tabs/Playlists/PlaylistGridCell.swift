@@ -152,13 +152,22 @@ import UIKit
     // MARK: - Configuration
 
     /// Configure with a playlist name. Cover art IDs are optional; pass up to 4.
+    /// When no cover art IDs are provided the cell shows a single music-note icon instead.
     @objc func configure(name: String, coverArtIds: [String], songCount: Int) {
         nameLabel.text = name
 
-        for (i, view) in artViews.enumerated() {
-            if i < coverArtIds.count {
-                view.coverArtId = coverArtIds[i]
-            } else {
+        let hasCoverArt = !coverArtIds.isEmpty
+        fallbackImageView.isHidden = hasCoverArt
+        for view in artViews {
+            view.isHidden = !hasCoverArt
+        }
+
+        if hasCoverArt {
+            for (i, view) in artViews.enumerated() {
+                view.coverArtId = i < coverArtIds.count ? coverArtIds[i] : nil
+            }
+        } else {
+            for view in artViews {
                 view.coverArtId = nil
             }
         }
@@ -183,7 +192,9 @@ import UIKit
         nameLabel.text = nil
         songCountBadge.isHidden = true
         songCountBadge.text = nil
+        fallbackImageView.isHidden = true
         for view in artViews {
+            view.isHidden = false
             view.coverArtId = nil
         }
     }
