@@ -2747,7 +2747,7 @@
 				PRODUCT_NAME = iSub;
 				SWIFT_OBJC_BRIDGING_HEADER = "Other/iSub-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 5.9;
 			};
 			name = Debug;
 		};
@@ -2792,7 +2792,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.einsteinx2.isub;
 				PRODUCT_NAME = iSub;
 				SWIFT_OBJC_BRIDGING_HEADER = "Other/iSub-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 5.9;
 			};
 			name = Release;
 		};
@@ -2908,7 +2908,7 @@
 				PRODUCT_NAME = iSub;
 				SWIFT_OBJC_BRIDGING_HEADER = "Other/iSub-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 5.9;
 			};
 			name = AdHoc;
 		};
@@ -2960,7 +2960,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG BETA";
 				SWIFT_OBJC_BRIDGING_HEADER = "Other/iSub_Beta-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 5.9;
 			};
 			name = Debug;
 		};
@@ -3012,7 +3012,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG ADHOC BETA";
 				SWIFT_OBJC_BRIDGING_HEADER = "Other/iSub_Beta-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 5.9;
 			};
 			name = AdHoc;
 		};
@@ -3061,7 +3061,7 @@
 				PRODUCT_NAME = "iSub Beta";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "RELEASE BETA";
 				SWIFT_OBJC_BRIDGING_HEADER = "Other/iSub_Beta-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 5.9;
 			};
 			name = Release;
 		};
