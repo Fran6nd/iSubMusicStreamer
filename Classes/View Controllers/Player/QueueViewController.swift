@@ -192,7 +192,7 @@ extension QueueViewController: UITableViewDataSource {
 
         let song = PlayQueue.shared().song(for: UInt(indexPath.row))
         if let song = song {
-            cell.update(with: song)
+            cell.update(model: song)
         }
         cell.number = indexPath.row + 1
 
