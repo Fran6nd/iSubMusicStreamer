@@ -250,6 +250,7 @@ import CocoaLumberjackSwift
         playPauseButton.setImage(UIImage(systemName: "play.fill", withConfiguration: playButtonConfig), for: .normal)
         playPauseButton.tintColor = iconDefaultColor
         playPauseButton.addClosure(for: .touchUpInside) { [unowned self] in
+            HapticEngine.shared.playbackAction()
             if Settings.shared().isJukeboxEnabled {
                 if Jukebox.shared().isPlaying {
                     Jukebox.shared().stop()
@@ -271,6 +272,7 @@ import CocoaLumberjackSwift
         previousButton.setImage(UIImage(systemName: "backward.end.fill", withConfiguration: previousButtonConfig), for: .normal)
         previousButton.tintColor = iconDefaultColor
         previousButton.addClosure(for: .touchUpInside) {
+            HapticEngine.shared.playbackAction()
             if let player = AudioEngine.shared().player, player.progress > 10.0 {
                 // If we're more than 10 seconds into the song, restart it
                 Music.shared().playSong(atPosition: PlayQueue.shared().currentIndex)
@@ -284,6 +286,7 @@ import CocoaLumberjackSwift
         nextButton.setImage(UIImage(systemName: "forward.end.fill", withConfiguration: nextButtonConfig), for: .normal)
         nextButton.tintColor = iconDefaultColor
         nextButton.addClosure(for: .touchUpInside) {
+            HapticEngine.shared.playbackAction()
             Music.shared().nextSong()
         }
 
@@ -293,6 +296,7 @@ import CocoaLumberjackSwift
         quickSkipBackButton.setTitleColor(iconDefaultColor, for: .normal)
         quickSkipBackButton.titleLabel?.font = .systemFont(ofSize: 10)
         quickSkipBackButton.addClosure(for: .touchUpInside) { [unowned self] in
+            HapticEngine.shared.secondaryAction()
             let value = self.progressSlider.value - Float(Settings.shared().quickSkipNumberOfSeconds);
             self.progressSlider.value = value > 0.0 ? value : 0.0;
             seekedAction()
@@ -305,6 +309,7 @@ import CocoaLumberjackSwift
         quickSkipForwardButton.setTitleColor(iconDefaultColor, for: .normal)
         quickSkipForwardButton.titleLabel?.font = .systemFont(ofSize: 10)
         quickSkipForwardButton.addClosure(for: .touchUpInside) { [unowned self] in
+            HapticEngine.shared.secondaryAction()
             let value = self.progressSlider.value + Float(Settings.shared().quickSkipNumberOfSeconds)
             if value >= self.progressSlider.maximumValue {
                 Music.shared().nextSong()
@@ -331,6 +336,7 @@ import CocoaLumberjackSwift
         }
         
         repeatButton.addClosure(for: .touchUpInside) { [unowned self] in
+            HapticEngine.shared.modeToggle()
             switch PlayQueue.shared().repeatMode {
             case ISMSRepeatMode_Normal: PlayQueue.shared().repeatMode = ISMSRepeatMode_RepeatOne
             case ISMSRepeatMode_RepeatOne: PlayQueue.shared().repeatMode = ISMSRepeatMode_RepeatAll
@@ -342,6 +348,7 @@ import CocoaLumberjackSwift
         updateRepeatButtonIcon()
         
         bookmarksButton.addClosure(for: .touchUpInside) { [unowned self] in
+            HapticEngine.shared.secondaryAction()
             let position = UInt(self.progressSlider.value);
             let bytePosition = UInt(AudioEngine.shared().player?.currentByteOffset ?? 0);
             let song = self.currentSong
@@ -351,13 +358,15 @@ import CocoaLumberjackSwift
             }
             alert.addAction(UIAlertAction(title: "Save", style: .default) { action in
                 guard let song = song, let name = alert.textFields?.first?.text else {
+                    HapticEngine.shared.error()
                     let errorAlert = UIAlertController(title: "Error", message: "Failed to create the bookmark, please try again.", preferredStyle: .alert)
                     errorAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                     self.present(errorAlert, animated: true, completion: nil)
                     return
                 }
-                
+
                 ISMSBookmarkDAO.createBookmark(for: song, name: name, bookmarkPosition: position, bytePosition: bytePosition)
+                HapticEngine.shared.success()
                 self.updateBookmarkButton()
             })
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -368,6 +377,7 @@ import CocoaLumberjackSwift
         let equalizerButtonConfig = UIImage.SymbolConfiguration(pointSize: 24, weight: .regular, scale: .large)
         equalizerButton.setImage(UIImage(systemName: Defines.equalizerSliderImageSystemName, withConfiguration: equalizerButtonConfig), for: .normal)
         equalizerButton.addClosure(for: .touchUpInside) { [unowned self] in
+            HapticEngine.shared.secondaryAction()
             let controller = EqualizerViewController(nibName: "EqualizerViewController", bundle: nil)
             if UIDevice.isPad() {
                 self.present(controller, animated: true, completion: nil)
@@ -380,6 +390,7 @@ import CocoaLumberjackSwift
         let shuffleButtonConfig = UIImage.SymbolConfiguration(pointSize: 24, weight: .ultraLight, scale: .large)
         shuffleButton.setImage(UIImage(systemName: "shuffle", withConfiguration: shuffleButtonConfig), for: .normal)
         shuffleButton.addClosure(for: .touchUpInside) { [unowned self] in
+            HapticEngine.shared.modeToggle()
             let message = PlayQueue.shared().isShuffle ? "Unshuffling" : "Shuffling"
             ViewObjects.shared().showLoadingScreenOnMainWindow(withMessage: message)
             EX2Dispatch.runInBackgroundAsync {
@@ -430,7 +441,8 @@ import CocoaLumberjackSwift
         updateJukeboxControls()
         updateEqualizerButton()
         registerForNotifications()
-        
+        HapticEngine.shared.prepare()
+
         if Settings.shared().isJukeboxEnabled {
             Jukebox.shared().getInfo()
         }
