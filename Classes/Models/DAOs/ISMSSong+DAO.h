@@ -43,6 +43,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)addToCurrentPlaylistDbQueue;
 - (BOOL)addToShufflePlaylistDbQueue;
 
+/// Inserts this song immediately after the currently playing song (Play Next).
+/// Falls back to addToCurrentPlaylistDbQueue when jukebox mode is active.
+- (BOOL)insertAsNextInCurrentPlaylistDbQueue;
+
+/// Adds this song to the local playlist with the given md5 identifier.
+- (BOOL)addToLocalPlaylistWithMd5:(NSString *)md5;
+
 - (BOOL)removeFromCachedSongsTableDbQueue;
 + (BOOL)removeSongFromCacheDbQueueByMD5:(NSString *)md5;
 

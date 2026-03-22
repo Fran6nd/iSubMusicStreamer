@@ -259,6 +259,8 @@
 		53CB016825864D5200E2DF10 /* NSFileManager+ZKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE38671EA961C80058B925 /* NSFileManager+ZKAdditions.m */; };
 		53CF64F725843ADA00BD47DC /* SlidingNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CF64F625843ADA00BD47DC /* SlidingNotification.swift */; };
 		53CF64F825843ADA00BD47DC /* SlidingNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CF64F625843ADA00BD47DC /* SlidingNotification.swift */; };
+		7C73DA9BF9DE425C8D9B41FF /* AddToPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896F4CEF5C20482984BC9115 /* AddToPlaylistViewController.swift */; };
+		5399CA68CC3B4C78B51DFB7E /* AddToPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896F4CEF5C20482984BC9115 /* AddToPlaylistViewController.swift */; };
 		0C122895D3F84ED0B7EB5D81 /* MiniPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8661B57FB51400BB3AB525A /* MiniPlayerView.swift */; };
 		1A8A0E893B2C41F0A6FB2C66 /* MiniPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8661B57FB51400BB3AB525A /* MiniPlayerView.swift */; };
 		53D44F8515AA621B00CDD3B8 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D44F8415AA621A00CDD3B8 /* Accelerate.framework */; };
@@ -778,6 +780,7 @@
 		53C7FD9C150F0E94008DA51C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		53CF64F625843ADA00BD47DC /* SlidingNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingNotification.swift; sourceTree = "<group>"; };
 		C8661B57FB51400BB3AB525A /* MiniPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerView.swift; sourceTree = "<group>"; };
+		896F4CEF5C20482984BC9115 /* AddToPlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPlaylistViewController.swift; sourceTree = "<group>"; };
 		53D44F8415AA621A00CDD3B8 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		53D973FD255BFCF500AABF7F /* UniversalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalTableViewCell.swift; sourceTree = "<group>"; };
 		53D97416255BFE9D00AABF7F /* iSub-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "iSub-Bridging-Header.h"; path = "Other/iSub-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -1389,6 +1392,7 @@
 				53ABE54511665B8500197877 /* PlaylistSongsViewController.h */,
 				536AB80F1353DCF700DABD83 /* PlaylistSongsViewController.m */,
 				536AB8101353DCF700DABD83 /* PlaylistSongsViewController.xib */,
+				896F4CEF5C20482984BC9115 /* AddToPlaylistViewController.swift */,
 			);
 			path = Playlists;
 			sourceTree = "<group>";
@@ -2440,6 +2444,7 @@
 				53CF64F725843ADA00BD47DC /* SlidingNotification.swift in Sources */,
 				53C3AB6D257DB7D200B35B99 /* AsyncImageView.swift in Sources */,
 				0C122895D3F84ED0B7EB5D81 /* MiniPlayerView.swift in Sources */,
+				7C73DA9BF9DE425C8D9B41FF /* AddToPlaylistViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2534,6 +2539,7 @@
 				533295FB255EEFE50027C51A /* FMResultSet.m in Sources */,
 				53CF64F825843ADA00BD47DC /* SlidingNotification.swift in Sources */,
 				1A8A0E893B2C41F0A6FB2C66 /* MiniPlayerView.swift in Sources */,
+				5399CA68CC3B4C78B51DFB7E /* AddToPlaylistViewController.swift in Sources */,
 				53FE34C71EA961540058B925 /* NSArray+Safe.m in Sources */,
 				53BC27D7139AF0DD00A825F1 /* CacheAlbumViewController.m in Sources */,
 				53EA2DE3257D7B4D0003F38D /* UIView+ViewController.swift in Sources */,

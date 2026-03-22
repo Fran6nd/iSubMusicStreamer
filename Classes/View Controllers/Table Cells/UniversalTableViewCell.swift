@@ -161,6 +161,12 @@ import SnapKit
         cachedIndicator.isHidden = true;
     }
     
+    /// Full song context menu: Play Next, Add to Queue, Download, Add to Playlist.
+    /// `presenter` is the view controller used to present the playlist picker sheet.
+    @objc func configureSongContextMenu(song: Song, presenter: UIViewController) {
+        contextMenuProvider = { _ in SwipeAction.songContextMenu(song: song, presenter: presenter) }
+    }
+
     /// Convenience for Objective-C callers: configures the standard Download + Queue context menu.
     @objc func configureContextMenu(model: TableCellModel) {
         contextMenuProvider = { _ in SwipeAction.contextMenu(model: model) }

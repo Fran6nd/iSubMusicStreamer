@@ -429,10 +429,65 @@ LOG_LEVEL_ISUB_DEFAULT
 	return success;
 }
 
+- (BOOL)insertAsNextInCurrentPlaylistDbQueue
+{
+	// Jukebox doesn't support arbitrary insertion position; append instead.
+	if (settingsS.isJukeboxEnabled) {
+		return [self addToCurrentPlaylistDbQueue];
+	}
+
+	__block BOOL success = YES;
+	NSInteger insertAt = playlistS.currentIndex + 1; // 0-based position to insert at
+
+	[databaseS.currentPlaylistDbQueue inDatabase:^(FMDatabase *db) {
+		// Build a scratch table with the same schema
+		[db executeUpdate:[NSString stringWithFormat:
+			@"CREATE TEMPORARY TABLE IF NOT EXISTS _playNextScratch (%@)",
+			[ISMSSong standardSongColumnSchema]]];
+		[db executeUpdate:@"DELETE FROM _playNextScratch"];
+
+		// Copy rows that should appear before the new song
+		[db executeUpdate:[NSString stringWithFormat:
+			@"INSERT INTO _playNextScratch SELECT %@ FROM currentPlaylist ORDER BY ROWID LIMIT %ld",
+			[ISMSSong standardSongColumnNames], (long)insertAt]];
+
+		// Insert the new song
+		[self insertIntoTable:@"_playNextScratch" inDatabase:db];
+
+		// Copy rows that should appear after the new song
+		[db executeUpdate:[NSString stringWithFormat:
+			@"INSERT INTO _playNextScratch SELECT %@ FROM currentPlaylist ORDER BY ROWID LIMIT -1 OFFSET %ld",
+			[ISMSSong standardSongColumnNames], (long)insertAt]];
+
+		// Replace the queue with the reordered scratch table
+		[db executeUpdate:@"DELETE FROM currentPlaylist"];
+		[db executeUpdate:[NSString stringWithFormat:
+			@"INSERT INTO currentPlaylist SELECT * FROM _playNextScratch"]];
+		[db executeUpdate:@"DROP TABLE _playNextScratch"];
+
+		if ([db hadError]) {
+			success = NO;
+		}
+	}];
+
+	if (success) {
+		[streamManagerS fillStreamQueue:audioEngineS.player.isStarted];
+		[NSNotificationCenter postNotificationToMainThreadWithName:ISMSNotification_CurrentPlaylistSongsQueued];
+	}
+
+	return success;
+}
+
+- (BOOL)addToLocalPlaylistWithMd5:(NSString *)md5
+{
+	return [self insertIntoTable:[NSString stringWithFormat:@"playlist%@", md5]
+	             inDatabaseQueue:databaseS.localPlaylistsDbQueue];
+}
+
 - (BOOL)addToShufflePlaylistDbQueue
 {
 	BOOL success = YES;
-	
+
 	if (settingsS.isJukeboxEnabled)
 	{
 		if (![self insertIntoTable:@"jukeboxShufflePlaylist" inDatabaseQueue:databaseS.currentPlaylistDbQueue])

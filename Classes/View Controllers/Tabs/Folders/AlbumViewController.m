@@ -221,7 +221,7 @@
         ISMSSong *song = [self.dataModel songForTableViewRow:indexPath.row];
         [cell updateWithModel:song];
         if (!song.isVideo) {
-            [cell configureContextMenuWithModel:song];
+            [cell configureSongContextMenuWithSong:song presenter:self];
         }
         if (song.track == nil || song.track.intValue == 0) {
             cell.hideNumberLabel = YES;

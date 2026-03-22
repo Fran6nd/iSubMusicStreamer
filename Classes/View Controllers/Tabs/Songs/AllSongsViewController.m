@@ -480,7 +480,7 @@
     ISMSSong *song = [self songAtIndexPath:indexPath];
     [cell updateWithModel:song];
     if (!song.isVideo) {
-        [cell configureContextMenuWithModel:song];
+        [cell configureSongContextMenuWithSong:song presenter:self];
     }
     return cell;
 }

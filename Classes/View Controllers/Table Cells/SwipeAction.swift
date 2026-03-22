@@ -86,7 +86,61 @@ import UIKit
 
     // MARK: - Context Menu helpers
 
-    /// Standard Download + Queue context menu built from a TableCellModel.
+    // MARK: - Context Menu helpers
+
+    /// Full song context menu: Play Next, Add to Queue, Download, Add to Playlist.
+    /// `presenter` is used to present the AddToPlaylistViewController sheet.
+    static func songContextMenu(song: Song, presenter: UIViewController) -> UIMenu {
+        let playNext = UIAction(
+            title: "Play Next",
+            image: UIImage(systemName: "text.line.first.and.arrowtriangle.forward")
+        ) { _ in
+            song.insertAsNextInCurrentPlaylistDbQueue()
+            SlidingNotification.showOnMainWindow(message: "Playing next", duration: 1.0)
+            HapticEngine.shared.success()
+        }
+
+        let addToQueue = UIAction(
+            title: "Add to Queue",
+            image: UIImage(systemName: "text.badge.plus")
+        ) { _ in
+            song.addToCurrentPlaylistDbQueue()
+            SlidingNotification.showOnMainWindow(message: "Added to queue", duration: 1.0)
+            HapticEngine.shared.success()
+        }
+
+        let addToPlaylist = UIAction(
+            title: "Add to Playlist",
+            image: UIImage(systemName: "music.note.list")
+        ) { [weak presenter] _ in
+            guard let presenter = presenter else { return }
+            HapticEngine.shared.secondaryAction()
+            let vc = AddToPlaylistViewController(song: song)
+            let nav = UINavigationController(rootViewController: vc)
+            if let sheet = nav.sheetPresentationController {
+                sheet.detents = [.medium(), .large()]
+                sheet.prefersGrabberVisible = true
+            }
+            presenter.present(nav, animated: true)
+        }
+
+        var children: [UIMenuElement] = [playNext, addToQueue, addToPlaylist]
+
+        if !song.isCached {
+            children.append(UIAction(
+                title: "Download",
+                image: UIImage(systemName: "arrow.down.circle")
+            ) { _ in
+                song.download()
+                SlidingNotification.showOnMainWindow(message: "Added to download queue", duration: 1.0)
+                HapticEngine.shared.success()
+            })
+        }
+
+        return UIMenu(title: song.title ?? "", children: children)
+    }
+
+    /// Standard Download + Queue context menu built from a TableCellModel (non-song fallback).
     static func contextMenu(model: TableCellModel) -> UIMenu {
         var actions: [UIAction] = []
 
