@@ -152,6 +152,30 @@
 	[NSUserDefaults.standardUserDefaults synchronize];
 }
 
+- (void)applyTabBarSFSymbolsToController:(UITabBarController *)tabBarController {
+    NSDictionary<NSNumber *, NSString *> *tagToSymbol = @{
+        @(0): @"folder",
+        @(1): @"square.stack",
+        @(2): @"music.note",
+        @(3): @"music.note.list",
+        @(4): @"bookmark",
+        @(5): @"play.circle",
+        @(6): @"guitars",
+        @(7): @"arrow.down.circle",
+        @(8): @"message",
+        @(9): @"house",
+    };
+    UIImageSymbolConfiguration *config = [UIImageSymbolConfiguration configurationWithPointSize:20 weight:UIImageSymbolWeightRegular];
+    for (UIViewController *vc in tabBarController.viewControllers) {
+        NSString *symbolName = tagToSymbol[@(vc.tabBarItem.tag)];
+        if (symbolName) {
+            UIImage *image = [UIImage systemImageNamed:symbolName withConfiguration:config];
+            vc.tabBarItem.image = image;
+            vc.tabBarItem.selectedImage = image;
+        }
+    }
+}
+
 - (void)orderMainTabBarController {
 //	appDelegateS.currentTabBarController = appDelegateS.mainTabBarController;
 	appDelegateS.mainTabBarController.delegate = self;
@@ -202,7 +226,7 @@
 	}
     
     appDelegateS.mainTabBarController.moreNavigationController.delegate = self;
-    
+
     if ([NSUserDefaults.standardUserDefaults integerForKey:@"mainTabBarControllerSelectedIndex"]) {
         if ([NSUserDefaults.standardUserDefaults integerForKey:@"mainTabBarControllerSelectedIndex"] == 2147483647) {
             appDelegateS.mainTabBarController.selectedViewController = appDelegateS.mainTabBarController.moreNavigationController;
@@ -210,6 +234,8 @@
             appDelegateS.mainTabBarController.selectedIndex = [[NSUserDefaults standardUserDefaults] integerForKey:@"mainTabBarControllerSelectedIndex"];
         }
     }
+
+    [self applyTabBarSFSymbolsToController:appDelegateS.mainTabBarController];
 }
 
 - (void)setup {
