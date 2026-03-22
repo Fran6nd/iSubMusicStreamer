@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -2927,6 +2927,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/libBASS",
 					"$(PROJECT_DIR)/Frameworks/Flurry",
+				);
+				"LIBRARY_SEARCH_PATHS[sdk=iphonesimulator*]" = (
+					"$(BUILD_PRODUCTS_DIR)/PackageFrameworks",
+					"$(PROJECT_DIR)/Frameworks/libBASS-sim",
+					"$(PROJECT_DIR)/Frameworks/Flurry-sim",
 				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
