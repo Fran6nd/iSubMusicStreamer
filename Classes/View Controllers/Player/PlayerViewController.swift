@@ -321,7 +321,8 @@ import CocoaLumberjackSwift
         }
         
         updateQuickSkipButtons()
-        
+        configureAccessibility()
+
         //
         // More Controls
         //
@@ -474,16 +475,19 @@ import CocoaLumberjackSwift
             let playButtonConfig = UIImage.SymbolConfiguration(pointSize: 24, weight: .ultraLight, scale: .large)
             self.playPauseButton.setImage(UIImage(systemName: "play.fill", withConfiguration: playButtonConfig), for: .normal)
             self.playPauseButton.tintColor = self.iconDefaultColor
+            self.updatePlayPauseAccessibility()
         })
         notificationObservers.append(NotificationCenter.addObserverOnMainThreadForName(ISMSNotification_SongPlaybackPaused, object: nil) { [unowned self] _ in
             let playButtonConfig = UIImage.SymbolConfiguration(pointSize: 24, weight: .ultraLight, scale: .large)
             self.playPauseButton.setImage(UIImage(systemName: "play.fill", withConfiguration: playButtonConfig), for: .normal)
             self.playPauseButton.tintColor = self.iconDefaultColor
+            self.updatePlayPauseAccessibility()
         })
         notificationObservers.append(NotificationCenter.addObserverOnMainThreadForName(ISMSNotification_SongPlaybackStarted, object: nil) { [unowned self] _ in
             let playButtonConfig = UIImage.SymbolConfiguration(pointSize: 24, weight: .ultraLight, scale: .large)
             self.playPauseButton.setImage(UIImage(systemName: "pause.fill", withConfiguration: playButtonConfig), for: .normal)
             self.playPauseButton.tintColor = self.iconDefaultColor
+            self.updatePlayPauseAccessibility()
         })
         
         notificationObservers.append(NotificationCenter.addObserverOnMainThreadForName(ISMSNotification_CurrentPlaylistShuffleToggled) { [unowned self] _ in
@@ -709,14 +713,15 @@ import CocoaLumberjackSwift
         case ISMSRepeatMode_RepeatAll: imageName = "repeat"
         default: imageName = "repeat"
         }
-        
         let config = UIImage.SymbolConfiguration(pointSize: 24, weight: .ultraLight, scale: .large)
         repeatButton.setImage(UIImage(systemName: imageName, withConfiguration: config), for: .normal)
         repeatButton.tintColor = PlayQueue.shared().repeatMode == ISMSRepeatMode_Normal ? iconDefaultColor : iconActivatedColor
+        updateRepeatAccessibilityLabel()
     }
-    
+
     private func updateShuffleButtonIcon() {
         shuffleButton.tintColor = PlayQueue.shared().isShuffle ? iconActivatedColor : iconDefaultColor
+        updateShuffleAccessibilityLabel()
     }
     
     @objc private func updateJukeboxControls() {
@@ -798,6 +803,44 @@ import CocoaLumberjackSwift
         let quickSkipTitle = seconds < 60 ? "\(seconds)s" : "\(seconds/60)m"
         quickSkipBackButton.setTitle(quickSkipTitle, for: .normal)
         quickSkipForwardButton.setTitle(quickSkipTitle, for: .normal)
+        // Keep accessibility labels in sync with the configured skip duration
+        let duration = seconds < 60 ? "\(seconds) seconds" : "\(seconds/60) minutes"
+        quickSkipBackButton.accessibilityLabel = "Skip back \(duration)"
+        quickSkipForwardButton.accessibilityLabel = "Skip forward \(duration)"
+    }
+
+    // MARK: - Accessibility
+
+    private func configureAccessibility() {
+        previousButton.accessibilityLabel = "Previous track"
+        previousButton.accessibilityHint = "Double-tap to restart current song, or go to previous song"
+        nextButton.accessibilityLabel = "Next track"
+        bookmarksButton.accessibilityLabel = "Create bookmark"
+        equalizerButton.accessibilityLabel = "Equalizer"
+        progressSlider.accessibilityLabel = "Playback position"
+        progressSlider.accessibilityTraits = [.adjustable]
+        // Dynamic labels are kept current via updatePlayPauseAccessibility(),
+        // updateRepeatButtonIcon(), updateShuffleButtonIcon(), and updateQuickSkipButtons().
+        updatePlayPauseAccessibility()
+        updateRepeatAccessibilityLabel()
+        updateShuffleAccessibilityLabel()
+    }
+
+    private func updatePlayPauseAccessibility() {
+        let isPlaying = AudioEngine.shared().player?.isPlaying ?? false
+        playPauseButton.accessibilityLabel = isPlaying ? "Pause" : "Play"
+    }
+
+    private func updateRepeatAccessibilityLabel() {
+        switch PlayQueue.shared().repeatMode {
+        case ISMSRepeatMode_RepeatOne: repeatButton.accessibilityLabel = "Repeat one — on"
+        case ISMSRepeatMode_RepeatAll: repeatButton.accessibilityLabel = "Repeat all — on"
+        default:                       repeatButton.accessibilityLabel = "Repeat — off"
+        }
+    }
+
+    private func updateShuffleAccessibilityLabel() {
+        shuffleButton.accessibilityLabel = PlayQueue.shared().isShuffle ? "Shuffle — on" : "Shuffle — off"
     }
 }
 
