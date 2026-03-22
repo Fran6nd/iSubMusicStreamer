@@ -477,7 +477,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UniversalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:UniversalTableViewCell.reuseId];
     cell.hideNumberLabel = YES;
-    [cell updateWithModel:[self songAtIndexPath:indexPath]];
+    ISMSSong *song = [self songAtIndexPath:indexPath];
+    [cell updateWithModel:song];
+    if (!song.isVideo) {
+        [cell configureContextMenuWithModel:song];
+    }
     return cell;
 }
 

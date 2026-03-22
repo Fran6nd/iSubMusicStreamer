@@ -11,9 +11,17 @@ import SnapKit
 
 @objc final class UniversalTableViewCell: UITableViewCell {
     @objc static let reuseId = "UniversalTableViewCell"
-    
+
+    /// Set this before the cell appears to enable a long-press context menu.
+    /// Return nil to suppress the menu for a specific cell.
+    var contextMenuProvider: ((UniversalTableViewCell) -> UIMenu?)?
+
     private var tableCellModel: TableCellModel?
-    
+
+    private lazy var contextInteraction: UIContextMenuInteraction = {
+        UIContextMenuInteraction(delegate: self)
+    }()
+
     private let headerLabel = UILabel()
     private let cachedIndicator = CellCachedIndicatorView()
     private let numberLabel = UILabel()
@@ -123,8 +131,10 @@ import SnapKit
         makePrimaryLabelConstraints()
         makeSecondaryLabelConstraints()
         makeDurationLabelConstraints()
+
+        addInteraction(contextInteraction)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("unimplemented")
     }
@@ -151,6 +161,16 @@ import SnapKit
         cachedIndicator.isHidden = true;
     }
     
+    /// Convenience for Objective-C callers: configures the standard Download + Queue context menu.
+    @objc func configureContextMenu(model: TableCellModel) {
+        contextMenuProvider = { _ in SwipeAction.contextMenu(model: model) }
+    }
+
+    /// Clears any previously configured context menu.
+    @objc func clearContextMenu() {
+        contextMenuProvider = nil
+    }
+
     @objc func update(primaryText: String, secondaryText: String?, coverArtId: String?) {
         tableCellModel = nil;
         hideNumberLabel = true
@@ -236,5 +256,18 @@ import SnapKit
             make.top.equalTo(headerLabel.snp.bottom)
             make.bottom.equalToSuperview()
         }
+    }
+}
+
+// MARK: - UIContextMenuInteractionDelegate
+
+extension UniversalTableViewCell: UIContextMenuInteractionDelegate {
+    func contextMenuInteraction(
+        _ interaction: UIContextMenuInteraction,
+        configurationForMenuAtLocation location: CGPoint
+    ) -> UIContextMenuConfiguration? {
+        guard let menu = contextMenuProvider?(self) else { return nil }
+        HapticEngine.shared.secondaryAction()
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in menu }
     }
 }

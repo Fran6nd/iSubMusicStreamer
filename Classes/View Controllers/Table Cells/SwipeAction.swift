@@ -83,4 +83,41 @@ import UIKit
         action.image = UIImage(systemName: "trash.fill")
         return action
     }
+
+    // MARK: - Context Menu helpers
+
+    /// Standard Download + Queue context menu built from a TableCellModel.
+    static func contextMenu(model: TableCellModel) -> UIMenu {
+        var actions: [UIAction] = []
+
+        actions.append(UIAction(title: "Add to Queue", image: UIImage(systemName: "text.badge.plus")) { _ in
+            model.queue()
+            SlidingNotification.showOnMainWindow(message: "Added to play queue", duration: 1.0)
+            HapticEngine.shared.success()
+        })
+
+        if !model.isCached {
+            actions.append(UIAction(title: "Download", image: UIImage(systemName: "arrow.down.circle")) { _ in
+                model.download()
+                SlidingNotification.showOnMainWindow(message: "Added to download queue", duration: 1.0)
+                HapticEngine.shared.success()
+            })
+        }
+
+        return UIMenu(title: model.primaryLabelText ?? "", children: actions)
+    }
+
+    /// Extended context menu with an additional delete action.
+    static func contextMenu(model: TableCellModel, deleteHandler: @escaping () -> ()) -> UIMenu {
+        let deleteAction = UIAction(
+            title: "Delete",
+            image: UIImage(systemName: "trash"),
+            attributes: .destructive
+        ) { _ in
+            deleteHandler()
+            HapticEngine.shared.success()
+        }
+        let base = contextMenu(model: model)
+        return UIMenu(title: base.title, children: base.children + [deleteAction])
+    }
 }

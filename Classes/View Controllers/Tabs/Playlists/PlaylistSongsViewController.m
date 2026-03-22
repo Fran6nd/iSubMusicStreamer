@@ -280,7 +280,11 @@ LOG_LEVEL_ISUB_DEFAULT
     cell.hideDurationLabel = NO;
     cell.hideSecondaryLabel = NO;
     cell.number = indexPath.row + 1;
-    [cell updateWithModel:[self songAtIndexPath:indexPath]];
+    ISMSSong *song = [self songAtIndexPath:indexPath];
+    [cell updateWithModel:song];
+    if (!song.isVideo) {
+        [cell configureContextMenuWithModel:song];
+    }
     return cell;
 }
 
