@@ -1293,11 +1293,11 @@ LOG_LEVEL_ISUB_DEFAULT
         // Local playlist — no cover art available
         ISMSLocalPlaylist *playlist = [self localPlaylistForIndex:indexPath.item];
         NSInteger count = (NSInteger)playlist.count;
-        [cell configure:playlist.name coverArtIds:@[] songCount:count];
+        [cell configureWithName:playlist.name coverArtIds:@[] songCount:count];
     } else {
         // Server playlist — no cover art ID on SUSServerPlaylist
         SUSServerPlaylist *playlist = [self.serverPlaylistsDataModel.serverPlaylists objectAtIndexSafe:indexPath.item];
-        [cell configure:playlist.playlistName coverArtIds:@[] songCount:0];
+        [cell configureWithName:playlist.playlistName coverArtIds:@[] songCount:0];
     }
     return cell;
 }
