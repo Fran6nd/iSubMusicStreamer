@@ -493,10 +493,10 @@ LOG_LEVEL_ISUB_DEFAULT
 }
 
 - (void)segmentAction:(id)sender {
-    // Toggle between tableView (segments 0, 1) and collection view (segment 2)
-    BOOL isServerGrid = (self.segmentedControl.selectedSegmentIndex == 2);
-    self.tableView.hidden = isServerGrid;
-    self.serverPlaylistsCollectionView.hidden = !isServerGrid;
+    // Segment 0: queue table view; segments 1 & 2: playlist grid
+    BOOL isPlaylistGrid = (self.segmentedControl.selectedSegmentIndex == 1 || self.segmentedControl.selectedSegmentIndex == 2);
+    self.tableView.hidden = isPlaylistGrid;
+    self.serverPlaylistsCollectionView.hidden = !isPlaylistGrid;
 
 	if (self.segmentedControl.selectedSegmentIndex == 0) {
 		// Get the current playlist count
@@ -546,23 +546,23 @@ LOG_LEVEL_ISUB_DEFAULT
 	} else if (self.segmentedControl.selectedSegmentIndex == 1) {
 		// Clear the edit stuff if they switch tabs in the middle of editing
 		[self removeEditControls];
-		
+
 		// Remove the save and edit buttons if showing
 		[self removeSaveEditButtons];
-		
+
 		NSUInteger localPlaylistsCount = [databaseS.localPlaylistsDbQueue intForQuery:@"SELECT COUNT(*) FROM localPlaylists"];
-		
+
 		if (localPlaylistsCount > 0) {
 			// Modify the header view to include the save and edit buttons
 			[self addSaveEditButtons];
 		}
-		
-		// Reload the table data
-		[self.tableView reloadData];
-		
+
+		// Reload the grid data (local playlists)
+		[self.serverPlaylistsCollectionView reloadData];
+
 		// Remove the no playlists overlay screen if it's showing
 		[self removeNoPlaylistsScreen];
-		
+
 		// If the list is empty, display the no playlists overlay screen
 		if (localPlaylistsCount == 0) {
 			[self addNoPlaylistsScreen];
@@ -573,9 +573,6 @@ LOG_LEVEL_ISUB_DEFAULT
 
 		// Remove the save and edit buttons if showing
 		[self removeSaveEditButtons];
-
-		// Reload the collection view data
-		[self.serverPlaylistsCollectionView reloadData];
 
 		// Remove the no playlists overlay screen if it's showing
 		[self removeNoPlaylistsScreen];
@@ -1280,26 +1277,47 @@ LOG_LEVEL_ISUB_DEFAULT
 	self.serverPlaylistsDataModel.delegate = nil;
 }
 
-#pragma mark - UICollectionView DataSource / Delegate (Server Playlists Grid)
+#pragma mark - UICollectionView DataSource / Delegate (Playlist Grid, segments 1 & 2)
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.serverPlaylistsDataModel.serverPlaylists.count;
+    if (self.segmentedControl.selectedSegmentIndex == 1) {
+        return [databaseS.localPlaylistsDbQueue intForQuery:@"SELECT COUNT(*) FROM localPlaylists"];
+    } else {
+        return self.serverPlaylistsDataModel.serverPlaylists.count;
+    }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     PlaylistGridCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:PlaylistGridCell.reuseId forIndexPath:indexPath];
-    SUSServerPlaylist *playlist = [self.serverPlaylistsDataModel.serverPlaylists objectAtIndexSafe:indexPath.item];
-    [cell configureName:playlist.playlistName];
+    if (self.segmentedControl.selectedSegmentIndex == 1) {
+        // Local playlist — no cover art available
+        ISMSLocalPlaylist *playlist = [self localPlaylistForIndex:indexPath.item];
+        NSInteger count = (NSInteger)playlist.count;
+        [cell configure:playlist.name coverArtIds:@[] songCount:count];
+    } else {
+        // Server playlist — no cover art ID on SUSServerPlaylist
+        SUSServerPlaylist *playlist = [self.serverPlaylistsDataModel.serverPlaylists objectAtIndexSafe:indexPath.item];
+        [cell configure:playlist.playlistName coverArtIds:@[] songCount:0];
+    }
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    SUSServerPlaylist *playlist = [self.serverPlaylistsDataModel.serverPlaylists objectAtIndexSafe:indexPath.item];
-    if (!playlist) return;
-    PlaylistSongsViewController *playlistSongsViewController = [[PlaylistSongsViewController alloc] initWithNibName:@"PlaylistSongsViewController" bundle:nil];
-    playlistSongsViewController.md5 = [playlist.playlistName md5];
-    playlistSongsViewController.serverPlaylist = playlist;
-    [self pushViewControllerCustom:playlistSongsViewController];
+    if (self.segmentedControl.selectedSegmentIndex == 1) {
+        // Local playlist
+        NSString *md5 = [databaseS.localPlaylistsDbQueue stringForQuery:@"SELECT md5 FROM localPlaylists WHERE ROWID = ?", @(indexPath.item + 1)];
+        PlaylistSongsViewController *vc = [[PlaylistSongsViewController alloc] initWithNibName:@"PlaylistSongsViewController" bundle:nil];
+        vc.md5 = md5;
+        [self pushViewControllerCustom:vc];
+    } else {
+        // Server playlist
+        SUSServerPlaylist *playlist = [self.serverPlaylistsDataModel.serverPlaylists objectAtIndexSafe:indexPath.item];
+        if (!playlist) return;
+        PlaylistSongsViewController *vc = [[PlaylistSongsViewController alloc] initWithNibName:@"PlaylistSongsViewController" bundle:nil];
+        vc.md5 = [playlist.playlistName md5];
+        vc.serverPlaylist = playlist;
+        [self pushViewControllerCustom:vc];
+    }
 }
 
 @end
