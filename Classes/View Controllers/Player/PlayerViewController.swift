@@ -434,6 +434,17 @@ import CocoaLumberjackSwift
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        // When presented as a modal sheet (e.g. from mini player), show a dismiss button.
+        if navigationController?.presentingViewController != nil, navigationItem.leftBarButtonItem == nil {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(
+                image: UIImage(systemName: "chevron.down"),
+                style: .plain,
+                target: self,
+                action: #selector(dismissPlayer)
+            )
+        }
+
         equalizerButton.isHidden = UIApplication.orientation().isLandscape
         updateSongInfo()
         startUpdatingSlider()
@@ -700,6 +711,10 @@ import CocoaLumberjackSwift
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(startUpdatingDownloadProgress), object: nil)
     }
     
+    @objc private func dismissPlayer() {
+        navigationController?.dismiss(animated: true)
+    }
+
     @objc private func showCurrentPlaylist() {
         let controller = CustomUINavigationController(rootViewController: CurrentPlaylistViewController())
         present(controller, animated: true, completion: nil)

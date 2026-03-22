@@ -53,12 +53,21 @@ static const CGFloat kMiniPlayerHeight = 64.0;
     _miniPlayerView = [[MiniPlayerView alloc] initWithFrame:CGRectZero];
     __weak CustomUITabBarController *weakSelf = self;
     _miniPlayerView.openPlayerHandler = ^{
-        UIViewController *top = weakSelf.selectedViewController;
-        // Unwrap navigation controller to get its top VC
-        if ([top isKindOfClass:[UINavigationController class]]) {
-            top = [(UINavigationController *)top topViewController];
+        PlayerViewController *player = [[PlayerViewController alloc] init];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:player];
+        if (@available(iOS 15, *)) {
+            nav.modalPresentationStyle = UIModalPresentationPageSheet;
+            UISheetPresentationController *sheet = nav.sheetPresentationController;
+            sheet.detents = @[UISheetPresentationControllerDetent.largeDetent];
+            sheet.prefersGrabberVisible = YES;
+        } else {
+            nav.modalPresentationStyle = UIModalPresentationFullScreen;
         }
-        [top showPlayer];
+        UIViewController *presenter = weakSelf.selectedViewController;
+        if ([presenter isKindOfClass:[UINavigationController class]]) {
+            presenter = [(UINavigationController *)presenter topViewController];
+        }
+        [presenter presentViewController:nav animated:YES completion:nil];
     };
     [self.view addSubview:_miniPlayerView];
 }
