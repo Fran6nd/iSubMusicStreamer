@@ -137,7 +137,7 @@ final class QueueViewController: UIViewController {
                 table = playQueue.isShuffle ? "shufflePlaylist" : "currentPlaylist"
             }
 
-            let schema = ISMSSong.standardSongColumnSchema() ?? ""
+            let schema = Song.standardSongColumnSchema() ?? ""
             db.executeUpdate("DROP TABLE IF EXISTS moveTemp", withArgumentsIn: [])
             db.executeUpdate("CREATE TABLE moveTemp (\(schema))", withArgumentsIn: [])
 
