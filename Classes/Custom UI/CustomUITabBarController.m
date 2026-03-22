@@ -53,6 +53,8 @@ static const CGFloat kMiniPlayerHeight = 64.0;
     _miniPlayerView = [[MiniPlayerView alloc] initWithFrame:CGRectZero];
     __weak CustomUITabBarController *weakSelf = self;
     _miniPlayerView.openPlayerHandler = ^{
+        __strong CustomUITabBarController *strongSelf = weakSelf;
+        if (!strongSelf || strongSelf.presentedViewController) return;
         PlayerViewController *player = [[PlayerViewController alloc] init];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:player];
         if (@available(iOS 15, *)) {
@@ -63,11 +65,7 @@ static const CGFloat kMiniPlayerHeight = 64.0;
         } else {
             nav.modalPresentationStyle = UIModalPresentationFullScreen;
         }
-        UIViewController *presenter = weakSelf.selectedViewController;
-        if ([presenter isKindOfClass:[UINavigationController class]]) {
-            presenter = [(UINavigationController *)presenter topViewController];
-        }
-        [presenter presentViewController:nav animated:YES completion:nil];
+        [strongSelf presentViewController:nav animated:YES completion:nil];
     };
     [self.view addSubview:_miniPlayerView];
 
