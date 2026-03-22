@@ -2731,6 +2731,11 @@
 					"$(PROJECT_DIR)/Frameworks/libBASS",
 					"$(PROJECT_DIR)/Frameworks/Flurry",
 				);
+				"LIBRARY_SEARCH_PATHS[sdk=iphonesimulator*]" = (
+					"$(BUILD_PRODUCTS_DIR)/PackageFrameworks",
+					"$(PROJECT_DIR)/Frameworks/libBASS-sim",
+					"$(PROJECT_DIR)/Frameworks/Flurry-sim",
+				);
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -2771,6 +2776,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/libBASS",
 					"$(PROJECT_DIR)/Frameworks/Flurry",
+				);
+				"LIBRARY_SEARCH_PATHS[sdk=iphonesimulator*]" = (
+					"$(BUILD_PRODUCTS_DIR)/PackageFrameworks",
+					"$(PROJECT_DIR)/Frameworks/libBASS-sim",
+					"$(PROJECT_DIR)/Frameworks/Flurry-sim",
 				);
 				OTHER_LDFLAGS = (
 					"-all_load",
@@ -2883,6 +2893,11 @@
 					"$(PROJECT_DIR)/Frameworks/libBASS",
 					"$(PROJECT_DIR)/Frameworks/Flurry",
 				);
+				"LIBRARY_SEARCH_PATHS[sdk=iphonesimulator*]" = (
+					"$(BUILD_PRODUCTS_DIR)/PackageFrameworks",
+					"$(PROJECT_DIR)/Frameworks/libBASS-sim",
+					"$(PROJECT_DIR)/Frameworks/Flurry-sim",
+				);
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -2980,6 +2995,11 @@
 					"$(PROJECT_DIR)/Frameworks/libBASS",
 					"$(PROJECT_DIR)/Frameworks/Flurry",
 				);
+				"LIBRARY_SEARCH_PATHS[sdk=iphonesimulator*]" = (
+					"$(BUILD_PRODUCTS_DIR)/PackageFrameworks",
+					"$(PROJECT_DIR)/Frameworks/libBASS-sim",
+					"$(PROJECT_DIR)/Frameworks/Flurry-sim",
+				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-all_load",
@@ -3024,6 +3044,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/libBASS",
 					"$(PROJECT_DIR)/Frameworks/Flurry",
+				);
+				"LIBRARY_SEARCH_PATHS[sdk=iphonesimulator*]" = (
+					"$(BUILD_PRODUCTS_DIR)/PackageFrameworks",
+					"$(PROJECT_DIR)/Frameworks/libBASS-sim",
+					"$(PROJECT_DIR)/Frameworks/Flurry-sim",
 				);
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
