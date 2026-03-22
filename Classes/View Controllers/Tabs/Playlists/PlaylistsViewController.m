@@ -33,9 +33,10 @@
 
 LOG_LEVEL_ISUB_DEFAULT
 
-@interface PlaylistsViewController()
+@interface PlaylistsViewController() <UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic, strong) NSURLSession *sharedSession;
 @property (nonatomic, strong) SelfSignedCertURLSessionDelegate *sharedSessionDelegate;
+@property (nonatomic, strong) UICollectionView *serverPlaylistsCollectionView;
 @end
 
 @implementation PlaylistsViewController
@@ -147,6 +148,39 @@ LOG_LEVEL_ISUB_DEFAULT
     self.tableView.allowsMultipleSelectionDuringEditing = YES;
     self.tableView.rowHeight = Defines.rowHeight;
     [self.tableView registerClass:UniversalTableViewCell.class forCellReuseIdentifier:UniversalTableViewCell.reuseId];
+
+    // Server playlists grid (compositional layout, 2 columns)
+    NSCollectionLayoutSize *itemSize = [NSCollectionLayoutSize sizeWithWidthDimension:[NSCollectionLayoutDimension fractionalWidthDimension:1.0]
+                                                                      heightDimension:[NSCollectionLayoutDimension fractionalHeightDimension:1.0]];
+    NSCollectionLayoutItem *item = [NSCollectionLayoutItem itemWithLayoutSize:itemSize];
+    item.contentInsets = NSDirectionalEdgeInsetsMake(0, 0, 0, 0);
+
+    NSCollectionLayoutSize *groupSize = [NSCollectionLayoutSize sizeWithWidthDimension:[NSCollectionLayoutDimension fractionalWidthDimension:1.0]
+                                                                       heightDimension:[NSCollectionLayoutDimension fractionalWidthDimension:0.6]];
+    NSCollectionLayoutGroup *group = [NSCollectionLayoutGroup horizontalGroupWithLayoutSize:groupSize subitem:item count:2];
+    group.interItemSpacing = [NSCollectionLayoutSpacing fixedSpacing:12];
+
+    NSCollectionLayoutSection *section = [NSCollectionLayoutSection sectionWithGroup:group];
+    section.interGroupSpacing = 12;
+    section.contentInsets = NSDirectionalEdgeInsetsMake(12, 12, 12, 12);
+
+    UICollectionViewCompositionalLayout *layout = [[UICollectionViewCompositionalLayout alloc] initWithSection:section];
+
+    self.serverPlaylistsCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+    self.serverPlaylistsCollectionView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.serverPlaylistsCollectionView.backgroundColor = [UIColor colorNamed:@"isubBackgroundColor"];
+    self.serverPlaylistsCollectionView.dataSource = self;
+    self.serverPlaylistsCollectionView.delegate = self;
+    self.serverPlaylistsCollectionView.hidden = YES;
+    [self.serverPlaylistsCollectionView registerClass:PlaylistGridCell.class forCellWithReuseIdentifier:PlaylistGridCell.reuseId];
+    [self.view addSubview:self.serverPlaylistsCollectionView];
+
+    [NSLayoutConstraint activateConstraints:@[
+        [self.serverPlaylistsCollectionView.topAnchor constraintEqualToAnchor:self.segmentControlContainer.bottomAnchor],
+        [self.serverPlaylistsCollectionView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor],
+        [self.serverPlaylistsCollectionView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+        [self.serverPlaylistsCollectionView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
+    ]];
 	    
     [NSNotificationCenter addObserverOnMainThread:self selector:@selector(addURLRefBackButton) name:UIApplicationDidBecomeActiveNotification];
 }
@@ -459,6 +493,11 @@ LOG_LEVEL_ISUB_DEFAULT
 }
 
 - (void)segmentAction:(id)sender {
+    // Toggle between tableView (segments 0, 1) and collection view (segment 2)
+    BOOL isServerGrid = (self.segmentedControl.selectedSegmentIndex == 2);
+    self.tableView.hidden = isServerGrid;
+    self.serverPlaylistsCollectionView.hidden = !isServerGrid;
+
 	if (self.segmentedControl.selectedSegmentIndex == 0) {
 		// Get the current playlist count
 		self.currentPlaylistCount = [playlistS count];
@@ -528,19 +567,19 @@ LOG_LEVEL_ISUB_DEFAULT
 		if (localPlaylistsCount == 0) {
 			[self addNoPlaylistsScreen];
 		}
-	} else if (self.segmentedControl.selectedSegmentIndex == 2) {		
+	} else if (self.segmentedControl.selectedSegmentIndex == 2) {
 		// Clear the edit stuff if they switch tabs in the middle of editing
 		[self removeEditControls];
-		
+
 		// Remove the save and edit buttons if showing
 		[self removeSaveEditButtons];
 
-		// Reload the table data
-		[self.tableView reloadData];
-		
+		// Reload the collection view data
+		[self.serverPlaylistsCollectionView reloadData];
+
 		// Remove the no playlists overlay screen if it's showing
 		[self removeNoPlaylistsScreen];
-		
+
         [viewObjectsS showAlbumLoadingScreen:appDelegateS.window sender:self];
         [self.serverPlaylistsDataModel startLoad];
 	}
@@ -954,8 +993,8 @@ LOG_LEVEL_ISUB_DEFAULT
 }
 
 - (void)loadingFinished:(SUSLoader *)theLoader {
-    [self.tableView reloadData];
-    
+    [self.serverPlaylistsCollectionView reloadData];
+
     // If the list is empty, display the no playlists overlay screen
     if ([self.serverPlaylistsDataModel.serverPlaylists count] == 0 && self.isNoPlaylistsScreenShowing == NO) {
 		[self addNoPlaylistsScreen];
@@ -963,7 +1002,7 @@ LOG_LEVEL_ISUB_DEFAULT
         // Modify the header view to include the save and edit buttons
         [self addSaveEditButtons];
     }
-    
+
     // Hide the loading screen
     [viewObjectsS hideLoadingScreen];
 }
@@ -1235,10 +1274,32 @@ LOG_LEVEL_ISUB_DEFAULT
     return nil;
 }
 
-- (void)dealloc 
+- (void)dealloc
 {
 	[NSNotificationCenter removeObserverOnMainThread:self];
 	self.serverPlaylistsDataModel.delegate = nil;
+}
+
+#pragma mark - UICollectionView DataSource / Delegate (Server Playlists Grid)
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.serverPlaylistsDataModel.serverPlaylists.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    PlaylistGridCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:PlaylistGridCell.reuseId forIndexPath:indexPath];
+    SUSServerPlaylist *playlist = [self.serverPlaylistsDataModel.serverPlaylists objectAtIndexSafe:indexPath.item];
+    [cell configureName:playlist.playlistName];
+    return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    SUSServerPlaylist *playlist = [self.serverPlaylistsDataModel.serverPlaylists objectAtIndexSafe:indexPath.item];
+    if (!playlist) return;
+    PlaylistSongsViewController *playlistSongsViewController = [[PlaylistSongsViewController alloc] initWithNibName:@"PlaylistSongsViewController" bundle:nil];
+    playlistSongsViewController.md5 = [playlist.playlistName md5];
+    playlistSongsViewController.serverPlaylist = playlist;
+    [self pushViewControllerCustom:playlistSongsViewController];
 }
 
 @end
