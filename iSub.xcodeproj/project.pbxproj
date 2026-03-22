@@ -2847,6 +2847,7 @@
 					"\"$(SRCROOT)\"",
 					/usr/include/libxml2,
 				);
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/Classes\"",
@@ -3116,6 +3117,7 @@
 					"\"$(SRCROOT)\"",
 					/usr/include/libxml2,
 				);
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/Classes\"",
@@ -3182,6 +3184,7 @@
 					"\"$(SRCROOT)\"",
 					/usr/include/libxml2,
 				);
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/Classes\"",
