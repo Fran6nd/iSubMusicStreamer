@@ -441,9 +441,7 @@
 	playlistS.currentIndex = playlistIndex;
 	
 	[NSNotificationCenter postNotificationToMainThreadWithName:ISMSNotification_CurrentPlaylistSongsQueued];
-		
-	[self showPlayer];
-	
+
 	// Check if these are old bookmarks and don't have byteOffset saved
 	if (offsetBytes == 0 && offsetSeconds != 0) {
 		// By default, use the server reported bitrate

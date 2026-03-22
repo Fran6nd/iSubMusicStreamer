@@ -127,10 +127,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (!indexPath) return;
 	
-	ISMSSong *playedSong = [self.dataModel playSongAtIndex:indexPath.row];
-    if (!playedSong.isVideo) {
-        [self showPlayer];
-    }
+	[self.dataModel playSongAtIndex:indexPath.row];
 }
 
 - (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {

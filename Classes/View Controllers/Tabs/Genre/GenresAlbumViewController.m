@@ -356,10 +356,7 @@
         [NSNotificationCenter postNotificationToMainThreadWithName:ISMSNotification_CurrentPlaylistSongsQueued];
         
         // Start the song
-        ISMSSong *playedSong = [musicS playSongAtPosition:songRow];
-        if (!playedSong.isVideo) {
-            [self showPlayer];
-        }
+        [musicS playSongAtPosition:songRow];
     }
 }
 

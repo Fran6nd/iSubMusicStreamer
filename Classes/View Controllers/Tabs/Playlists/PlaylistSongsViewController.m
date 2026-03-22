@@ -335,10 +335,7 @@ LOG_LEVEL_ISUB_DEFAULT
 
     [viewObjectsS hideLoadingScreen];
     
-    ISMSSong *playedSong = [musicS playSongAtPosition:indexPath.row];
-    if (!playedSong.isVideo) {
-        [self showPlayer];
-    }
+    [musicS playSongAtPosition:indexPath.row];
 }
 
 

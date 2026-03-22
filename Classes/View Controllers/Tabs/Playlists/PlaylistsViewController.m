@@ -1185,10 +1185,7 @@ LOG_LEVEL_ISUB_DEFAULT
 	
     if (self.segmentedControl.selectedSegmentIndex == 0)
     {
-        ISMSSong *playedSong = [musicS playSongAtPosition:indexPath.row];
-        if (!playedSong.isVideo) {
-            [self showPlayer];
-        }
+        [musicS playSongAtPosition:indexPath.row];
     }
     else if (self.segmentedControl.selectedSegmentIndex == 1)
     {

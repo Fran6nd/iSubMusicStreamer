@@ -469,8 +469,6 @@ static NSInteger trackSort(id obj1, id obj2, void *context) {
         [musicS playSongAtPosition:a];
         
         [NSNotificationCenter postNotificationToMainThreadWithName:ISMSNotification_CurrentPlaylistSongsQueued];
-        
-        [self showPlayer];
     }
 }
 

@@ -241,10 +241,7 @@
         AlbumViewController *albumViewController = [[AlbumViewController alloc] initWithArtist:nil orAlbum:anAlbum];
         [self pushViewControllerCustom:albumViewController];
     } else {
-        ISMSSong *playedSong = [self.dataModel playSongAtTableViewRow:indexPath.row];
-        if (!playedSong.isVideo) {
-            [self showPlayer];
-        }
+        [self.dataModel playSongAtTableViewRow:indexPath.row];
     }
 }
 
