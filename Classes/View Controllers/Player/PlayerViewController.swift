@@ -718,10 +718,14 @@ import CocoaLumberjackSwift
     @objc private func showCurrentPlaylist() {
         let queueVC = QueueViewController()
         let nav = UINavigationController(rootViewController: queueVC)
-        if let sheet = nav.sheetPresentationController {
-            sheet.detents = [.medium(), .large()]
-            sheet.prefersGrabberVisible = true
-            sheet.prefersScrollingExpandsWhenScrolledToEdge = true
+        if #available(iOS 15, *) {
+            if let sheet = nav.sheetPresentationController {
+                sheet.detents = [.medium(), .large()]
+                sheet.prefersGrabberVisible = true
+                sheet.prefersScrollingExpandsWhenScrolledToEdge = true
+            }
+        } else {
+            nav.modalPresentationStyle = .fullScreen
         }
         present(nav, animated: true)
     }
