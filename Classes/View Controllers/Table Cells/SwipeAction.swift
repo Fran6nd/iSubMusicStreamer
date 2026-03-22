@@ -54,31 +54,33 @@ import UIKit
         let action = UIContextualAction(style: .normal, title: "Download") { _, _, completionHandler in
             handler()
             SlidingNotification.showOnMainWindow(message: "Added to download queue", duration: 1.0)
-            UINotificationFeedbackGenerator().notificationOccurred(.success)
+            HapticEngine.shared.success()
             completionHandler(true)
         }
         action.backgroundColor = .systemBlue
+        action.image = UIImage(systemName: "arrow.down.circle.fill")
         return action
     }
-    
+
     @objc static func queue(handler: @escaping () -> ()) -> UIContextualAction {
         let action = UIContextualAction(style: .normal, title: "Queue") { _, _, completionHandler in
             handler()
             SlidingNotification.showOnMainWindow(message: "Added to play queue", duration: 1.0)
-            UINotificationFeedbackGenerator().notificationOccurred(.success)
+            HapticEngine.shared.success()
             completionHandler(true)
         }
         action.backgroundColor = .systemGreen
+        action.image = UIImage(systemName: "text.badge.plus")
         return action
     }
-    
+
     @objc static func delete(handler: @escaping () -> ()) -> UIContextualAction {
-        let action = UIContextualAction(style: .normal, title: "Delete") { _, _, completionHandler in
+        let action = UIContextualAction(style: .destructive, title: "Delete") { _, _, completionHandler in
             handler()
-            UINotificationFeedbackGenerator().notificationOccurred(.success)
+            HapticEngine.shared.success()
             completionHandler(true)
         }
-        action.backgroundColor = .systemRed
+        action.image = UIImage(systemName: "trash.fill")
         return action
     }
 }
