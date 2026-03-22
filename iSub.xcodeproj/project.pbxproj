@@ -65,6 +65,8 @@
 		53329642255F2B960027C51A /* AlbumTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53329640255F2B960027C51A /* AlbumTableViewHeader.swift */; };
 		53329648255F2E770027C51A /* PlayAllAndShuffleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53329647255F2E770027C51A /* PlayAllAndShuffleHeader.swift */; };
 		53329649255F2E770027C51A /* PlayAllAndShuffleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53329647255F2E770027C51A /* PlayAllAndShuffleHeader.swift */; };
+		A1B2C3D4E5F6A7B8C9D0E1F2 /* PlaylistHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6A7B8C9D0E1F3 /* PlaylistHeaderView.swift */; };
+		A1B2C3D4E5F6A7B8C9D0E1F4 /* PlaylistHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6A7B8C9D0E1F3 /* PlaylistHeaderView.swift */; };
 		53329652255F30220027C51A /* ClosureSleeve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53329651255F30220027C51A /* ClosureSleeve.swift */; };
 		53329653255F30220027C51A /* ClosureSleeve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53329651255F30220027C51A /* ClosureSleeve.swift */; };
 		533C658A15ABB9A9003EAF29 /* HomeAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 533C659015ABB9A9003EAF29 /* HomeAlbumViewController.xib */; };
@@ -644,6 +646,7 @@
 		53329606255EF21D0027C51A /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		53329640255F2B960027C51A /* AlbumTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewHeader.swift; sourceTree = "<group>"; };
 		53329647255F2E770027C51A /* PlayAllAndShuffleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayAllAndShuffleHeader.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6A7B8C9D0E1F3 /* PlaylistHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistHeaderView.swift; sourceTree = "<group>"; };
 		53329651255F30220027C51A /* ClosureSleeve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureSleeve.swift; sourceTree = "<group>"; };
 		533D181A255F72FE003F962C /* CacheOfflineFoldersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CacheOfflineFoldersViewController.xib; sourceTree = "<group>"; };
 		533D181B255F72FF003F962C /* CacheOfflineFoldersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheOfflineFoldersViewController.h; sourceTree = "<group>"; };
@@ -1392,6 +1395,7 @@
 				53ABE54511665B8500197877 /* PlaylistSongsViewController.h */,
 				536AB80F1353DCF700DABD83 /* PlaylistSongsViewController.m */,
 				536AB8101353DCF700DABD83 /* PlaylistSongsViewController.xib */,
+				A1B2C3D4E5F6A7B8C9D0E1F3 /* PlaylistHeaderView.swift */,
 				896F4CEF5C20482984BC9115 /* AddToPlaylistViewController.swift */,
 			);
 			path = Playlists;
@@ -2445,6 +2449,7 @@
 				53C3AB6D257DB7D200B35B99 /* AsyncImageView.swift in Sources */,
 				0C122895D3F84ED0B7EB5D81 /* MiniPlayerView.swift in Sources */,
 				7C73DA9BF9DE425C8D9B41FF /* AddToPlaylistViewController.swift in Sources */,
+				A1B2C3D4E5F6A7B8C9D0E1F2 /* PlaylistHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2540,6 +2545,7 @@
 				53CF64F825843ADA00BD47DC /* SlidingNotification.swift in Sources */,
 				1A8A0E893B2C41F0A6FB2C66 /* MiniPlayerView.swift in Sources */,
 				5399CA68CC3B4C78B51DFB7E /* AddToPlaylistViewController.swift in Sources */,
+				A1B2C3D4E5F6A7B8C9D0E1F4 /* PlaylistHeaderView.swift in Sources */,
 				53FE34C71EA961540058B925 /* NSArray+Safe.m in Sources */,
 				53BC27D7139AF0DD00A825F1 /* CacheAlbumViewController.m in Sources */,
 				53EA2DE3257D7B4D0003F38D /* UIView+ViewController.swift in Sources */,

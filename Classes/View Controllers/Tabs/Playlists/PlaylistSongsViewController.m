@@ -30,6 +30,7 @@ LOG_LEVEL_ISUB_DEFAULT
 
 @interface PlaylistSongsViewController()
 @property (strong) NSURLSessionDataTask *dataTask;
+@property (strong) UIView *uploadBannerView;
 @end
 
 @implementation PlaylistSongsViewController
@@ -43,11 +44,10 @@ LOG_LEVEL_ISUB_DEFAULT
 
     if (self.isLocalPlaylist) {
 		self.title = [databaseS.localPlaylistsDbQueue stringForQuery:@"SELECT playlist FROM localPlaylists WHERE md5 = ?", self.md5];
-		
+
 		if (!settingsS.isOfflineMode) {
-			UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-//			headerView.backgroundColor = viewObjectsS.darkNormal;
-			
+			UIView *uploadView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+
 			UILabel *sendLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
 			sendLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
 			sendLabel.backgroundColor = [UIColor clearColor];
@@ -55,30 +55,142 @@ LOG_LEVEL_ISUB_DEFAULT
 			sendLabel.textAlignment = NSTextAlignmentCenter;
 			sendLabel.font = [UIFont boldSystemFontOfSize:24];
 			sendLabel.text = @"Save to Server";
-			[headerView addSubview:sendLabel];
-			
+			[uploadView addSubview:sendLabel];
+
 			UIButton *sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
 			sendButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
 			sendButton.frame = CGRectMake(0, 0, 320, 50);
 			[sendButton addTarget:self action:@selector(uploadPlaylistAction:) forControlEvents:UIControlEventTouchUpInside];
-			[headerView addSubview:sendButton];
-			
-			self.tableView.tableHeaderView = headerView;
+			[uploadView addSubview:sendButton];
+
+			self.uploadBannerView = uploadView;
 		}
 	} else {
         self.title = self.serverPlaylist.playlistName;
         self.playlistCount = [databaseS.localPlaylistsDbQueue intForQuery:[NSString stringWithFormat:@"SELECT COUNT(*) FROM splaylist%@", self.md5]];
+        [self updatePlaylistHeader];
 		[self.tableView reloadData];
-		
+
         // Add the pull to refresh view
         __weak PlaylistSongsViewController *weakSelf = self;
         self.refreshControl = [[RefreshControl alloc] initWithHandler:^{
             [weakSelf loadData];
         }];
 	}
-	
+
     self.tableView.rowHeight = Defines.rowHeight;
     [self.tableView registerClass:UniversalTableViewCell.class forCellReuseIdentifier:UniversalTableViewCell.reuseId];
+}
+
+- (void)updatePlaylistHeader {
+    NSString *name = self.title ?: @"";
+    NSUInteger count = self.playlistCount;
+
+    // Collect up to 4 cover art IDs from the first 4 songs
+    NSMutableArray<NSString *> *artIds = [NSMutableArray arrayWithCapacity:4];
+    NSString *tableName = [NSString stringWithFormat:@"%@%@", self.isLocalPlaylist ? @"playlist" : @"splaylist", self.md5];
+    for (NSUInteger i = 0; i < MIN(count, 4); i++) {
+        ISMSSong *song = self.isLocalPlaylist
+            ? [ISMSSong songFromDbRow:i inTable:tableName inDatabaseQueue:databaseS.localPlaylistsDbQueue]
+            : [ISMSSong songFromServerPlaylistId:self.md5 row:i];
+        if (song.coverArtId) {
+            [artIds addObject:song.coverArtId];
+        }
+    }
+
+    __weak PlaylistSongsViewController *weakSelf = self;
+
+    PlaylistHeaderView *header = [[PlaylistHeaderView alloc] init];
+    header.playlistName = name;
+    header.songCount = (NSInteger)count;
+    header.coverArtIds = artIds;
+
+    header.onPlayAll = ^{
+        [weakSelf playAllSongs];
+    };
+    header.onShuffle = ^{
+        [weakSelf shuffleSongs];
+    };
+
+    // Build a container that also includes the upload banner for local playlists
+    UIView *container = [[UIView alloc] init];
+    container.translatesAutoresizingMaskIntoConstraints = NO;
+    self.tableView.tableHeaderView = container;
+    [NSLayoutConstraint activateConstraints:@[
+        [container.centerXAnchor constraintEqualToAnchor:self.tableView.centerXAnchor],
+        [container.widthAnchor constraintEqualToAnchor:self.tableView.widthAnchor],
+        [container.topAnchor constraintEqualToAnchor:self.tableView.topAnchor]
+    ]];
+
+    [container addSubview:header];
+    header.translatesAutoresizingMaskIntoConstraints = NO;
+    [NSLayoutConstraint activateConstraints:@[
+        [header.leadingAnchor constraintEqualToAnchor:container.leadingAnchor],
+        [header.trailingAnchor constraintEqualToAnchor:container.trailingAnchor],
+        [header.topAnchor constraintEqualToAnchor:container.topAnchor],
+        [header.heightAnchor constraintEqualToConstant:PlaylistHeaderView.height]
+    ]];
+
+    UIView *bottomAnchorView = header;
+    if (self.uploadBannerView) {
+        UIView *uploadBanner = self.uploadBannerView;
+        [container addSubview:uploadBanner];
+        uploadBanner.translatesAutoresizingMaskIntoConstraints = NO;
+        [NSLayoutConstraint activateConstraints:@[
+            [uploadBanner.leadingAnchor constraintEqualToAnchor:container.leadingAnchor],
+            [uploadBanner.trailingAnchor constraintEqualToAnchor:container.trailingAnchor],
+            [uploadBanner.topAnchor constraintEqualToAnchor:header.bottomAnchor],
+            [uploadBanner.heightAnchor constraintEqualToConstant:50]
+        ]];
+        bottomAnchorView = uploadBanner;
+    }
+
+    [bottomAnchorView.bottomAnchor constraintEqualToAnchor:container.bottomAnchor].active = YES;
+
+    [self.tableView.tableHeaderView layoutIfNeeded];
+    self.tableView.tableHeaderView = self.tableView.tableHeaderView;
+}
+
+- (void)playAllSongs {
+    if (settingsS.isJukeboxEnabled) {
+        [databaseS resetJukeboxPlaylist];
+        [jukeboxS clearRemotePlaylist];
+    } else {
+        [databaseS resetCurrentPlaylistDb];
+    }
+    playlistS.isShuffle = NO;
+    [self loadPlaylistIntoCurrentPlaylist];
+    if (settingsS.isJukeboxEnabled) {
+        [jukeboxS replacePlaylistWithLocal];
+    }
+    [musicS playSongAtPosition:0];
+}
+
+- (void)shuffleSongs {
+    if (settingsS.isJukeboxEnabled) {
+        [databaseS resetJukeboxPlaylist];
+        [jukeboxS clearRemotePlaylist];
+    } else {
+        [databaseS resetCurrentPlaylistDb];
+    }
+    playlistS.isShuffle = YES;
+    [self loadPlaylistIntoCurrentPlaylist];
+    if (settingsS.isJukeboxEnabled) {
+        [jukeboxS replacePlaylistWithLocal];
+    }
+    [musicS playSongAtPosition:0];
+}
+
+- (void)loadPlaylistIntoCurrentPlaylist {
+    NSString *databaseName = settingsS.isOfflineMode ? @"offlineCurrentPlaylist.db" : [NSString stringWithFormat:@"%@currentPlaylist.db", [settingsS.urlString md5]];
+    NSString *currTableName = settingsS.isJukeboxEnabled ? @"jukeboxCurrentPlaylist" : @"currentPlaylist";
+    NSString *playTableName = [NSString stringWithFormat:@"%@%@", self.isLocalPlaylist ? @"playlist" : @"splaylist", self.md5];
+    [databaseS.localPlaylistsDbQueue inDatabase:^(FMDatabase *db) {
+        [db executeUpdate:@"ATTACH DATABASE ? AS ?", [databaseS.databaseFolderPath stringByAppendingPathComponent:databaseName], @"currentPlaylistDb"];
+        if ([db hadError]) { DDLogError(@"[PlaylistSongsViewController] Err attaching the currentPlaylistDb %d: %@", [db lastErrorCode], [db lastErrorMessage]); }
+        [db executeUpdate:[NSString stringWithFormat:@"INSERT INTO %@ SELECT * FROM %@", currTableName, playTableName]];
+        [db executeUpdate:@"DETACH DATABASE currentPlaylistDb"];
+    }];
 }
 
 - (void)loadData {
@@ -124,8 +236,9 @@ LOG_LEVEL_ISUB_DEFAULT
             }
             
             self.playlistCount = [databaseS.localPlaylistsDbQueue intForQuery:[NSString stringWithFormat:@"SELECT COUNT(*) FROM splaylist%@", self.md5]];
-            
+
             [EX2Dispatch runInMainThreadAsync:^{
+                [self updatePlaylistHeader];
                 [self.tableView reloadData];
                 [self.refreshControl endRefreshing];
                 [viewObjectsS hideLoadingScreen];
@@ -164,6 +277,7 @@ LOG_LEVEL_ISUB_DEFAULT
 	
 	if (self.isLocalPlaylist) {
 		self.playlistCount = [databaseS.localPlaylistsDbQueue intForQuery:[NSString stringWithFormat:@"SELECT COUNT(*) FROM playlist%@", self.md5]];
+        [self updatePlaylistHeader];
 		[self.tableView reloadData];
 	} else {
 		if (self.playlistCount == 0) {

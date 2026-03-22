@@ -15,6 +15,8 @@ import UIKit
 
     private let artGrid = UIView()
     private let artViews: [AsyncImageView] = (0..<4).map { _ in AsyncImageView() }
+    /// Shown when there is no cover art to display (single centred fallback icon)
+    private let fallbackImageView = UIImageView()
     private let songCountBadge = UILabel()
     private let nameLabel = UILabel()
 
@@ -38,16 +40,26 @@ import UIKit
         artGrid.translatesAutoresizingMaskIntoConstraints = false
         artGrid.clipsToBounds = true
         artGrid.layer.cornerRadius = 8
+        artGrid.backgroundColor = UIColor.systemGray5
         contentView.addSubview(artGrid)
 
         // Four art quadrants
-        for (i, view) in artViews.enumerated() {
+        for view in artViews {
             view.translatesAutoresizingMaskIntoConstraints = false
             view.contentMode = .scaleAspectFill
             view.clipsToBounds = true
             view.backgroundColor = UIColor.systemGray5
             artGrid.addSubview(view)
         }
+
+        // Fallback single icon (centred music note) used when no cover art IDs are provided
+        fallbackImageView.translatesAutoresizingMaskIntoConstraints = false
+        fallbackImageView.contentMode = .center
+        fallbackImageView.tintColor = UIColor.systemGray2
+        let config = UIImage.SymbolConfiguration(pointSize: 44, weight: .light)
+        fallbackImageView.image = UIImage(systemName: "music.note.list", withConfiguration: config)
+        fallbackImageView.isHidden = true
+        artGrid.addSubview(fallbackImageView)
 
         // Song count badge (bottom-right corner of art grid)
         songCountBadge.translatesAutoresizingMaskIntoConstraints = false
@@ -86,7 +98,7 @@ import UIKit
         ])
 
         // 2x2 quadrants inside artGrid
-        let top = artViews[0]
+        let topLeft = artViews[0]
         let topRight = artViews[1]
         let bottomLeft = artViews[2]
         let bottomRight = artViews[3]
@@ -96,10 +108,10 @@ import UIKit
 
         NSLayoutConstraint.activate([
             // Top-left
-            top.topAnchor.constraint(equalTo: artGrid.topAnchor),
-            top.leadingAnchor.constraint(equalTo: artGrid.leadingAnchor),
-            top.trailingAnchor.constraint(equalTo: mid, constant: -0.5),
-            top.bottomAnchor.constraint(equalTo: midY, constant: -0.5),
+            topLeft.topAnchor.constraint(equalTo: artGrid.topAnchor),
+            topLeft.leadingAnchor.constraint(equalTo: artGrid.leadingAnchor),
+            topLeft.trailingAnchor.constraint(equalTo: mid, constant: -0.5),
+            topLeft.bottomAnchor.constraint(equalTo: midY, constant: -0.5),
 
             // Top-right
             topRight.topAnchor.constraint(equalTo: artGrid.topAnchor),
@@ -118,6 +130,14 @@ import UIKit
             bottomRight.leadingAnchor.constraint(equalTo: mid, constant: 0.5),
             bottomRight.trailingAnchor.constraint(equalTo: artGrid.trailingAnchor),
             bottomRight.bottomAnchor.constraint(equalTo: artGrid.bottomAnchor),
+        ])
+
+        // Fallback icon fills the entire artGrid
+        NSLayoutConstraint.activate([
+            fallbackImageView.topAnchor.constraint(equalTo: artGrid.topAnchor),
+            fallbackImageView.bottomAnchor.constraint(equalTo: artGrid.bottomAnchor),
+            fallbackImageView.leadingAnchor.constraint(equalTo: artGrid.leadingAnchor),
+            fallbackImageView.trailingAnchor.constraint(equalTo: artGrid.trailingAnchor),
         ])
 
         // Badge: anchored to bottom-right of art grid
