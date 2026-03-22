@@ -259,6 +259,8 @@
 		53CB016825864D5200E2DF10 /* NSFileManager+ZKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE38671EA961C80058B925 /* NSFileManager+ZKAdditions.m */; };
 		53CF64F725843ADA00BD47DC /* SlidingNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CF64F625843ADA00BD47DC /* SlidingNotification.swift */; };
 		53CF64F825843ADA00BD47DC /* SlidingNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CF64F625843ADA00BD47DC /* SlidingNotification.swift */; };
+		0C122895D3F84ED0B7EB5D81 /* MiniPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8661B57FB51400BB3AB525A /* MiniPlayerView.swift */; };
+		1A8A0E893B2C41F0A6FB2C66 /* MiniPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8661B57FB51400BB3AB525A /* MiniPlayerView.swift */; };
 		53D44F8515AA621B00CDD3B8 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D44F8415AA621A00CDD3B8 /* Accelerate.framework */; };
 		53D973FE255BFCF500AABF7F /* UniversalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D973FD255BFCF500AABF7F /* UniversalTableViewCell.swift */; };
 		53D973FF255BFCF500AABF7F /* UniversalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D973FD255BFCF500AABF7F /* UniversalTableViewCell.swift */; };
@@ -775,6 +777,7 @@
 		53C3AB72257DDA1000B35B99 /* LicensesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicensesViewController.swift; sourceTree = "<group>"; };
 		53C7FD9C150F0E94008DA51C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		53CF64F625843ADA00BD47DC /* SlidingNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingNotification.swift; sourceTree = "<group>"; };
+		C8661B57FB51400BB3AB525A /* MiniPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerView.swift; sourceTree = "<group>"; };
 		53D44F8415AA621A00CDD3B8 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		53D973FD255BFCF500AABF7F /* UniversalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalTableViewCell.swift; sourceTree = "<group>"; };
 		53D97416255BFE9D00AABF7F /* iSub-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "iSub-Bridging-Header.h"; path = "Other/iSub-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -1489,6 +1492,7 @@
 				53246AA8256C324500E11EC4 /* InsetTextField.swift */,
 				53C3AB6C257DB7D200B35B99 /* AsyncImageView.swift */,
 				53CF64F625843ADA00BD47DC /* SlidingNotification.swift */,
+				C8661B57FB51400BB3AB525A /* MiniPlayerView.swift */,
 			);
 			path = "Custom UI";
 			sourceTree = "<group>";
@@ -2435,6 +2439,7 @@
 				53FE37581EA961720058B925 /* iSubBassGaplessPlayerDelegate.m in Sources */,
 				53CF64F725843ADA00BD47DC /* SlidingNotification.swift in Sources */,
 				53C3AB6D257DB7D200B35B99 /* AsyncImageView.swift in Sources */,
+				0C122895D3F84ED0B7EB5D81 /* MiniPlayerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2528,6 +2533,7 @@
 				53D97455255C51CA00AABF7F /* SwipeAction.swift in Sources */,
 				533295FB255EEFE50027C51A /* FMResultSet.m in Sources */,
 				53CF64F825843ADA00BD47DC /* SlidingNotification.swift in Sources */,
+				1A8A0E893B2C41F0A6FB2C66 /* MiniPlayerView.swift in Sources */,
 				53FE34C71EA961540058B925 /* NSArray+Safe.m in Sources */,
 				53BC27D7139AF0DD00A825F1 /* CacheAlbumViewController.m in Sources */,
 				53EA2DE3257D7B4D0003F38D /* UIView+ViewController.swift in Sources */,
