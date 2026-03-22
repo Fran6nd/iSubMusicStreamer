@@ -33,6 +33,7 @@ import SnapKit
 
     @objc override init(frame: CGRect) {
         super.init(frame: frame)
+        translatesAutoresizingMaskIntoConstraints = false
         addSubviews()
         configureSubviews()
         makeConstraints()

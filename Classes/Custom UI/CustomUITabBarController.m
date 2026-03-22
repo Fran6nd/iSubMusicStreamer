@@ -49,7 +49,7 @@ static const CGFloat kMiniPlayerHeight = 64.0;
     [viewObjectsS orderMainTabBarController];
     [self.class customizeMoreTabTableView:self];
 
-    // Add persistent mini player above the tab bar
+    // Add persistent mini player above the tab bar using auto layout
     _miniPlayerView = [[MiniPlayerView alloc] initWithFrame:CGRectZero];
     __weak CustomUITabBarController *weakSelf = self;
     _miniPlayerView.openPlayerHandler = ^{
@@ -70,26 +70,22 @@ static const CGFloat kMiniPlayerHeight = 64.0;
         [presenter presentViewController:nav animated:YES completion:nil];
     };
     [self.view addSubview:_miniPlayerView];
+
+    // Pin the mini player to the leading/trailing edges and directly above the tab bar
+    [NSLayoutConstraint activateConstraints:@[
+        [_miniPlayerView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+        [_miniPlayerView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
+        [_miniPlayerView.bottomAnchor constraintEqualToAnchor:self.tabBar.topAnchor],
+        [_miniPlayerView.heightAnchor constraintEqualToConstant:kMiniPlayerHeight]
+    ]];
 }
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    [self layoutMiniPlayer];
-}
-
-- (void)layoutMiniPlayer {
-    if (!_miniPlayerView || _miniPlayerView.isHidden) {
-        self.additionalSafeAreaInsets = UIEdgeInsetsZero;
-        return;
-    }
-
-    CGFloat tabBarY = self.tabBar.frame.origin.y;
-    _miniPlayerView.frame = CGRectMake(0,
-                                       tabBarY - kMiniPlayerHeight,
-                                       self.view.bounds.size.width,
-                                       kMiniPlayerHeight);
-    // Lift child view controller content so nothing is hidden behind the mini player
-    self.additionalSafeAreaInsets = UIEdgeInsetsMake(0, 0, kMiniPlayerHeight, 0);
+    // Update safe area insets so content is never hidden behind the visible mini player
+    self.additionalSafeAreaInsets = (!_miniPlayerView || _miniPlayerView.isHidden)
+        ? UIEdgeInsetsZero
+        : UIEdgeInsetsMake(0, 0, kMiniPlayerHeight, 0);
 }
 
 @end
