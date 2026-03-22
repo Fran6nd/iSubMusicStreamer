@@ -716,8 +716,14 @@ import CocoaLumberjackSwift
     }
 
     @objc private func showCurrentPlaylist() {
-        let controller = CustomUINavigationController(rootViewController: CurrentPlaylistViewController())
-        present(controller, animated: true, completion: nil)
+        let queueVC = QueueViewController()
+        let nav = UINavigationController(rootViewController: queueVC)
+        if let sheet = nav.sheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+            sheet.prefersGrabberVisible = true
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = true
+        }
+        present(nav, animated: true)
     }
     
     private func updateRepeatButtonIcon() {
