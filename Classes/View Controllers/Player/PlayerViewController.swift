@@ -128,7 +128,6 @@ import CocoaLumberjackSwift
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.overrideUserInterfaceStyle = .dark
         view.backgroundColor = UIColor(named: "isubBackgroundColor")
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image:  UIImage(systemName: "list.number"), style: .plain, target: self, action: #selector(showCurrentPlaylist))

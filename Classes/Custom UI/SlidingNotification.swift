@@ -36,9 +36,6 @@ private let labelInset: Float = 12.5
         self.message = message
         super.init(frame: .zero)
         
-        // Always use dark mode to better match navigation bar color
-        overrideUserInterfaceStyle = .dark
-        
         addSubview(blurView)
         blurView.snp.makeConstraints { make in
             make.leading.trailing.top.bottom.equalToSuperview()

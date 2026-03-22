@@ -91,8 +91,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
-    
     self.toggleButton.layer.masksToBounds = YES;
     self.toggleButton.layer.cornerRadius = 2.;
     
