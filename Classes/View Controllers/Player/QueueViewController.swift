@@ -190,7 +190,7 @@ extension QueueViewController: UITableViewDataSource {
             for: indexPath
         ) as! UniversalTableViewCell
 
-        let song = PlayQueue.shared().song(forIndex: UInt(indexPath.row))
+        let song = PlayQueue.shared().song(for: UInt(indexPath.row))
         if let song = song {
             cell.update(with: song)
         }
@@ -246,7 +246,7 @@ extension QueueViewController: UITableViewDelegate {
         _ tableView: UITableView,
         trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
     ) -> UISwipeActionsConfiguration? {
-        guard let song = PlayQueue.shared().song(forIndex: UInt(indexPath.row)),
+        guard let song = PlayQueue.shared().song(for: UInt(indexPath.row)),
               !song.isVideo else { return nil }
 
         let deleteAction = UIContextualAction(style: .destructive, title: "Remove") { [weak self] _, _, completionHandler in
