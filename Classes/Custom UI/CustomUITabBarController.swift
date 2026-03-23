@@ -16,7 +16,6 @@ final class CustomUITabBarController: UITabBarController {
     // MARK: - Properties
 
     private let miniPlayerView = MiniPlayerView()
-    private var miniPlayerBottomConstraint: NSLayoutConstraint!
 
     /// Previously installed delegate on the observed nav controller, forwarded in delegate callbacks.
     private weak var forwardNavDelegate: UINavigationControllerDelegate?
@@ -67,19 +66,8 @@ final class CustomUITabBarController: UITabBarController {
         updateNavControllerDelegate()
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        // Only keep the mini player flush above the tab bar.
-        // Inset management is owned exclusively by animateMiniPlayerVisibility
-        // and the nav-transition coordinator to avoid snapping in-flight animations.
-        miniPlayerBottomConstraint.constant = -tabBar.frame.height
-    }
-
     // MARK: - Tab Bar Appearance
 
-    /// Configures a consistent opaque black tab bar appearance using modern iOS APIs.
-    /// This replaces the legacy barTintColor / translucent approach and also prevents
-    /// the bar from going transparent when a scroll view's edge is visible behind it.
     private func configureTabBarAppearance() {
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -102,11 +90,14 @@ final class CustomUITabBarController: UITabBarController {
 
         view.addSubview(miniPlayerView)
 
-        miniPlayerBottomConstraint = miniPlayerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        // Anchor the mini player directly above the tab bar.
+        // This avoids the additionalSafeAreaInsets-on-self bug: UIKit adds
+        // additionalSafeAreaInsets.bottom to the tab bar's own frame height,
+        // making the tab bar appear ~2× taller than it should be.
         NSLayoutConstraint.activate([
             miniPlayerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             miniPlayerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            miniPlayerBottomConstraint,
+            miniPlayerView.bottomAnchor.constraint(equalTo: tabBar.topAnchor),
             miniPlayerView.heightAnchor.constraint(equalToConstant: miniPlayerHeight),
         ])
 
@@ -116,26 +107,32 @@ final class CustomUITabBarController: UITabBarController {
         let initialVisible = !miniPlayerView.isHidden
         miniPlayerView.alpha = initialVisible ? 1 : 0
         miniPlayerView.isUserInteractionEnabled = initialVisible
-        additionalSafeAreaInsets = initialVisible
+        let initialInsets = initialVisible
             ? UIEdgeInsets(top: 0, left: 0, bottom: miniPlayerHeight, right: 0)
             : .zero
+        setChildrenAdditionalInsets(initialInsets)
+    }
+
+    // MARK: - Children inset helper
+
+    /// Sets `additionalSafeAreaInsets` on every direct child nav controller so content
+    /// scrolls clear of the mini player — without inflating the tab bar's frame height.
+    private func setChildrenAdditionalInsets(_ insets: UIEdgeInsets) {
+        viewControllers?.forEach { $0.additionalSafeAreaInsets = insets }
+        moreNavigationController.additionalSafeAreaInsets = insets
     }
 
     // MARK: - Song State Visibility
 
-    /// Fades the mini player in or out when a song starts or stops.
-    /// This is the single owner of `isHidden`, `alpha`, and `additionalSafeAreaInsets`
-    /// for song-state transitions, so it doesn't conflict with layout passes.
+    /// Slides the mini player in from the left (matching nav push direction) when a song
+    /// starts, and slides it back out when playback ends.
     private func animateMiniPlayerVisibility(_ visible: Bool) {
-        // When the tab bar is hidden (deep nav push) there is nothing to animate;
-        // just track the logical state so we can restore correctly on pop.
         guard !tabBar.isHidden else {
             miniPlayerView.isHidden = !visible
             miniPlayerView.isUserInteractionEnabled = false
             return
         }
         if visible {
-            // Reveal before the animation so alpha fades in from nothing.
             miniPlayerView.isHidden = false
             miniPlayerView.alpha = 0
         }
@@ -144,9 +141,8 @@ final class CustomUITabBarController: UITabBarController {
             : .zero
         UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut) {
             self.miniPlayerView.alpha = visible ? 1 : 0
-            self.additionalSafeAreaInsets = targetInsets
+            self.setChildrenAdditionalInsets(targetInsets)
         } completion: { _ in
-            // Collapse after the fade so layout reclaims the space cleanly.
             if !visible { self.miniPlayerView.isHidden = true }
         }
         miniPlayerView.isUserInteractionEnabled = visible
@@ -154,10 +150,7 @@ final class CustomUITabBarController: UITabBarController {
 
     // MARK: - Nav Controller Delegate Chain
 
-    /// Installs `self` as the UINavigationControllerDelegate for the selected nav controller,
-    /// storing any pre-existing delegate so we can forward calls to it.
     private func updateNavControllerDelegate() {
-        // Restore the previously observed nav controller's original delegate.
         observedNavController?.delegate = forwardNavDelegate
 
         guard let nav = selectedViewController as? UINavigationController else {
@@ -223,21 +216,19 @@ extension CustomUITabBarController: UINavigationControllerDelegate {
             ? UIEdgeInsets(top: 0, left: 0, bottom: miniPlayerHeight, right: 0)
             : .zero
 
-        // Take ownership of the tab bar's visibility so UIKit cannot start its default
-        // vertical slide. We position the bar for the upcoming animation, then drive
-        // a horizontal transform that matches the mini player.
+        // Pre-empt UIKit's default vertical tab-bar slide by holding it visible
+        // and driving a horizontal transform ourselves.
         tabBar.layer.removeAllAnimations()
         if !hidingTabBar && tabBar.isHidden {
-            // Popping back to a visible-tab-bar VC: start off-screen left so it slides in.
             tabBar.transform = CGAffineTransform(translationX: -width, y: 0)
         }
-        tabBar.isHidden = false   // prevent UIKit's vertical slide for all cases
+        tabBar.isHidden = false
 
         guard animated, let coordinator = navigationController.transitionCoordinator else {
             miniPlayerView.transform = playerTarget
             tabBar.transform = .identity
             tabBar.isHidden = hidingTabBar
-            additionalSafeAreaInsets = targetInsets
+            setChildrenAdditionalInsets(targetInsets)
             miniPlayerView.isUserInteractionEnabled = !hidingTabBar && hasSong
             return
         }
@@ -245,24 +236,20 @@ extension CustomUITabBarController: UINavigationControllerDelegate {
         coordinator.animate(alongsideTransition: { [weak self] _ in
             self?.miniPlayerView.transform = playerTarget
             self?.tabBar.transform = barTarget
-            self?.additionalSafeAreaInsets = targetInsets
+            self?.setChildrenAdditionalInsets(targetInsets)
         }, completion: { [weak self] ctx in
             guard let self else { return }
             if ctx.isCancelled {
-                // Restore the pre-transition state.
-                // hidingTabBar=true  → was pushing; bar was visible → keep visible.
-                // hidingTabBar=false → was popping; bar was hidden  → re-hide.
                 self.miniPlayerView.transform = CGAffineTransform(translationX: -width, y: 0)
                 self.tabBar.isHidden = !hidingTabBar
                 self.tabBar.transform = .identity
-                self.additionalSafeAreaInsets = .zero
+                self.setChildrenAdditionalInsets(.zero)
             } else {
                 self.miniPlayerView.transform = playerTarget
                 self.miniPlayerView.isUserInteractionEnabled = !hidingTabBar && hasSong
-                // Always reset transform; isHidden carries the logical visibility state.
                 self.tabBar.isHidden = hidingTabBar
                 self.tabBar.transform = .identity
-                self.additionalSafeAreaInsets = targetInsets
+                self.setChildrenAdditionalInsets(targetInsets)
             }
         })
     }

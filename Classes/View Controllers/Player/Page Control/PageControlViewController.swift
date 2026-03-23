@@ -91,6 +91,7 @@ final class PageControlViewController: UIViewController {
     
                 addChild(controller)
                 scrollView.addSubview(controller.view)
+                controller.didMove(toParent: self)
                 controller.view.snp.makeConstraints { make in
                     make.width.height.equalTo(view.snp.width)
                     if let prevController = prevController {
