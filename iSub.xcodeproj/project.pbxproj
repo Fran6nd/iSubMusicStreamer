@@ -98,6 +98,8 @@
 		5340B8A7256968C400FD5D6D /* ISMSBookmarkDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 5340B8A5256968C400FD5D6D /* ISMSBookmarkDAO.m */; };
 		DEB9FA01657F809C59B9AFD3 /* LocalPlaylistDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05640E75D78535EBAB7DBED /* LocalPlaylistDAO.swift */; };
 		A46F6CD7FD86C4857B0DACDA /* LocalPlaylistDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05640E75D78535EBAB7DBED /* LocalPlaylistDAO.swift */; };
+		1538C442472F4C372CA4BCC2 /* ServerPlaylistService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6A1A87F01926FE0B010F15 /* ServerPlaylistService.swift */; };
+		ED969399792D53DAD60D1919 /* ServerPlaylistService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6A1A87F01926FE0B010F15 /* ServerPlaylistService.swift */; };
 		5347A1E4256D866A00BFB70A /* HLSReverseProxyServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5347A1E3256D866A00BFB70A /* HLSReverseProxyServer.swift */; };
 		5347A1E5256D866A00BFB70A /* HLSReverseProxyServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5347A1E3256D866A00BFB70A /* HLSReverseProxyServer.swift */; };
 		53493F2715FC6AC40059492E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 53493F2615FC6AC40059492E /* main.m */; };
@@ -662,6 +664,7 @@
 		5340B8A4256968C400FD5D6D /* ISMSBookmarkDAO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISMSBookmarkDAO.h; sourceTree = "<group>"; };
 		5340B8A5256968C400FD5D6D /* ISMSBookmarkDAO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISMSBookmarkDAO.m; sourceTree = "<group>"; };
 		C05640E75D78535EBAB7DBED /* LocalPlaylistDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPlaylistDAO.swift; sourceTree = "<group>"; };
+		6C6A1A87F01926FE0B010F15 /* ServerPlaylistService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerPlaylistService.swift; sourceTree = "<group>"; };
 		5347A1E3256D866A00BFB70A /* HLSReverseProxyServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HLSReverseProxyServer.swift; sourceTree = "<group>"; };
 		53493F1A15FC6AA60059492E /* iSub-Info-Beta.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "iSub-Info-Beta.plist"; path = "Other/iSub-Info-Beta.plist"; sourceTree = "<group>"; };
 		53493F1C15FC6AA60059492E /* iSub-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "iSub-Info.plist"; path = "Other/iSub-Info.plist"; sourceTree = "<group>"; };
@@ -1693,6 +1696,7 @@
 				5340B8A4256968C400FD5D6D /* ISMSBookmarkDAO.h */,
 				5340B8A5256968C400FD5D6D /* ISMSBookmarkDAO.m */,
 				C05640E75D78535EBAB7DBED /* LocalPlaylistDAO.swift */,
+				6C6A1A87F01926FE0B010F15 /* ServerPlaylistService.swift */,
 			);
 			path = DAOs;
 			sourceTree = "<group>";
@@ -2457,6 +2461,7 @@
 				0C122895D3F84ED0B7EB5D81 /* MiniPlayerView.swift in Sources */,
 				7C73DA9BF9DE425C8D9B41FF /* AddToPlaylistViewController.swift in Sources */,
 				A46F6CD7FD86C4857B0DACDA /* LocalPlaylistDAO.swift in Sources */,
+				ED969399792D53DAD60D1919 /* ServerPlaylistService.swift in Sources */,
 				A1B2C3D4E5F6A7B8C9D0E1F2 /* PlaylistHeaderView.swift in Sources */,
 				359A82ADE84F45CA8BC3A0A4 /* PlaylistGridCell.swift in Sources */,
 			);
@@ -2555,6 +2560,7 @@
 				1A8A0E893B2C41F0A6FB2C66 /* MiniPlayerView.swift in Sources */,
 				5399CA68CC3B4C78B51DFB7E /* AddToPlaylistViewController.swift in Sources */,
 				DEB9FA01657F809C59B9AFD3 /* LocalPlaylistDAO.swift in Sources */,
+				1538C442472F4C372CA4BCC2 /* ServerPlaylistService.swift in Sources */,
 				A1B2C3D4E5F6A7B8C9D0E1F4 /* PlaylistHeaderView.swift in Sources */,
 				052F1402511D4AE3BA3A4351 /* PlaylistGridCell.swift in Sources */,
 				53FE34C71EA961540058B925 /* NSArray+Safe.m in Sources */,

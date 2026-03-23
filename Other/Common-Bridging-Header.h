@@ -66,6 +66,7 @@
 #import "ISMSAlbum.h"
 #import "ISMSServer.h"
 #import "ISMSLocalPlaylist.h"
+#import "SUSServerPlaylist.h"
 
 // Utils
 #import "EX2Dispatch.h"
