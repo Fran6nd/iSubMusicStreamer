@@ -16,6 +16,7 @@ final class CustomUITabBarController: UITabBarController {
     // MARK: - Properties
 
     private let miniPlayerView = MiniPlayerView()
+    private var miniPlayerBottomConstraint: NSLayoutConstraint!
 
     /// Previously installed delegate on the observed nav controller, forwarded in delegate callbacks.
     private weak var forwardNavDelegate: UINavigationControllerDelegate?
@@ -66,6 +67,15 @@ final class CustomUITabBarController: UITabBarController {
         updateNavControllerDelegate()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // Keep the mini player flush above the tab bar.
+        // tabBar.frame.height is valid only after layout, so we update the
+        // constant here rather than using tabBar.topAnchor (which UIKit may
+        // reset to 0 when the bar is hidden).
+        miniPlayerBottomConstraint.constant = -tabBar.frame.height
+    }
+
     // MARK: - Tab Bar Appearance
 
     private func configureTabBarAppearance() {
@@ -90,14 +100,15 @@ final class CustomUITabBarController: UITabBarController {
 
         view.addSubview(miniPlayerView)
 
-        // Anchor the mini player directly above the tab bar.
-        // This avoids the additionalSafeAreaInsets-on-self bug: UIKit adds
-        // additionalSafeAreaInsets.bottom to the tab bar's own frame height,
-        // making the tab bar appear ~2× taller than it should be.
+        // Anchor the mini player to view.bottomAnchor and update the constant
+        // in viewDidLayoutSubviews once UIKit has placed the tab bar.
+        // Using tabBar.topAnchor directly fails because UIKit resets the tab bar
+        // frame to y=0 when hidden, which would place the mini player off-screen.
+        miniPlayerBottomConstraint = miniPlayerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         NSLayoutConstraint.activate([
             miniPlayerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             miniPlayerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            miniPlayerView.bottomAnchor.constraint(equalTo: tabBar.topAnchor),
+            miniPlayerBottomConstraint,
             miniPlayerView.heightAnchor.constraint(equalToConstant: miniPlayerHeight),
         ])
 
