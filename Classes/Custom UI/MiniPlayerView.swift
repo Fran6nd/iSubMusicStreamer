@@ -19,8 +19,17 @@ import SnapKit
     /// Called when the user taps the bar body to open the full player.
     @objc var openPlayerHandler: (() -> Void)?
 
-    /// When true, refresh() will not change the hidden state (player is on screen).
-    @objc var isSuppressed: Bool = false
+    /// When true, refresh() will not change visibility (player is on screen).
+    @objc var isSuppressed: Bool = false {
+        didSet {
+            if isSuppressed {
+                alpha = 0
+                isUserInteractionEnabled = false
+            } else {
+                refresh()
+            }
+        }
+    }
 
     // MARK: - Subviews
 
@@ -157,8 +166,12 @@ import SnapKit
     // MARK: - State
 
     @objc func refresh() {
+        guard !isSuppressed else { return }
         let song = PlayQueue.shared().currentDisplaySong()
-        if !isSuppressed { isHidden = (song == nil) }
+        let hasSong = song != nil
+        alpha = hasSong ? 1 : 0
+        isHidden = !hasSong
+        isUserInteractionEnabled = hasSong
         guard let song = song else { return }
 
         artView.coverArtId = song.coverArtId
