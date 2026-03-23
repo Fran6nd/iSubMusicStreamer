@@ -55,6 +55,7 @@ final class CustomUITabBarController: UITabBarController {
 
         ViewObjects.shared().orderMainTabBarController()
         Self.customizeMoreTabTableView(self)
+        configureTabBarAppearance()
 
         setupMiniPlayer()
 
@@ -77,6 +78,19 @@ final class CustomUITabBarController: UITabBarController {
         let newInsets = visible ? UIEdgeInsets(top: 0, left: 0, bottom: miniPlayerHeight, right: 0) : .zero
         if additionalSafeAreaInsets != newInsets {
             additionalSafeAreaInsets = newInsets
+        }
+    }
+
+    // MARK: - Tab Bar Appearance
+
+    /// Prevents the tab bar from going transparent when a scroll view's edge is visible
+    /// behind it (iOS 15 scrollEdgeAppearance default is transparent).
+    private func configureTabBarAppearance() {
+        if #available(iOS 15, *) {
+            let appearance = UITabBarAppearance()
+            appearance.configureWithDefaultBackground()
+            tabBar.standardAppearance = appearance
+            tabBar.scrollEdgeAppearance = appearance
         }
     }
 
