@@ -222,6 +222,7 @@ private enum PlaylistSource {
             jukebox.replacePlaylistWithLocal()
         }
 
+        ViewObjects.shared().hideLoadingScreen()
         Music.shared().playSong(atPosition: position)
     }
 
