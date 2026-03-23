@@ -99,6 +99,8 @@
 		DEB9FA01657F809C59B9AFD3 /* LocalPlaylistDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05640E75D78535EBAB7DBED /* LocalPlaylistDAO.swift */; };
 		A46F6CD7FD86C4857B0DACDA /* LocalPlaylistDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05640E75D78535EBAB7DBED /* LocalPlaylistDAO.swift */; };
 		1538C442472F4C372CA4BCC2 /* ServerPlaylistService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6A1A87F01926FE0B010F15 /* ServerPlaylistService.swift */; };
+		E5583D45FC5E6DE46B9DA301 /* PlaylistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BF2D68589E71B40777B078 /* PlaylistsViewController.swift */; };
+		C32A628888F6590A2E8BD9B9 /* PlaylistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BF2D68589E71B40777B078 /* PlaylistsViewController.swift */; };
 		ED969399792D53DAD60D1919 /* ServerPlaylistService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6A1A87F01926FE0B010F15 /* ServerPlaylistService.swift */; };
 		5347A1E4256D866A00BFB70A /* HLSReverseProxyServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5347A1E3256D866A00BFB70A /* HLSReverseProxyServer.swift */; };
 		5347A1E5256D866A00BFB70A /* HLSReverseProxyServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5347A1E3256D866A00BFB70A /* HLSReverseProxyServer.swift */; };
@@ -662,6 +664,7 @@
 		533D18D225602526003F962C /* Lumberjack.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Lumberjack.xcodeproj; path = Frameworks/CocoaLumberjack/Lumberjack.xcodeproj; sourceTree = "<group>"; };
 		533F651C160533F4000098E1 /* Defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
 		5340B8A4256968C400FD5D6D /* ISMSBookmarkDAO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISMSBookmarkDAO.h; sourceTree = "<group>"; };
+		46BF2D68589E71B40777B078 /* PlaylistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsViewController.swift; sourceTree = "<group>"; };
 		5340B8A5256968C400FD5D6D /* ISMSBookmarkDAO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISMSBookmarkDAO.m; sourceTree = "<group>"; };
 		C05640E75D78535EBAB7DBED /* LocalPlaylistDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPlaylistDAO.swift; sourceTree = "<group>"; };
 		6C6A1A87F01926FE0B010F15 /* ServerPlaylistService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerPlaylistService.swift; sourceTree = "<group>"; };
@@ -1404,6 +1407,7 @@
 				53ABE54111665B6B00197877 /* PlaylistsViewController.m */,
 				53ABE54211665B6B00197877 /* PlaylistsViewController.xib */,
 				53ABE54511665B8500197877 /* PlaylistSongsViewController.h */,
+				46BF2D68589E71B40777B078 /* PlaylistsViewController.swift */,
 				536AB80F1353DCF700DABD83 /* PlaylistSongsViewController.m */,
 				536AB8101353DCF700DABD83 /* PlaylistSongsViewController.xib */,
 				A1B2C3D4E5F6A7B8C9D0E1F3 /* PlaylistHeaderView.swift */,
