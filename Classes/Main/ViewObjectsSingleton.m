@@ -12,7 +12,6 @@
 #import "SavedSettings.h"
 #import "EX2Kit.h"
 #import "MBProgressHUD.h"
-#import "CustomUINavigationController.h"
 #import "Swift.h"
 
 #define HUD_GRACE_TIME 0.5

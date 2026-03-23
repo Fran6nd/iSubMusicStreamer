@@ -162,9 +162,8 @@ LOG_LEVEL_ISUB_DEFAULT
             [self showSettings];
 		}
 	} else {
-        [UITabBar.appearance setBarTintColor:UIColor.blackColor];
-        self.mainTabBarController.tabBar.translucent = NO;
-        self.offlineTabBarController.tabBar.translucent = NO;
+        // Tab bar and navigation bar appearance is handled by CustomUITabBarController
+        // and CustomUINavigationController using UITabBarAppearance / UINavigationBarAppearance.
 
 		if (settingsS.isOfflineMode) {
 			self.currentTabBarController = self.offlineTabBarController;
@@ -182,7 +181,7 @@ LOG_LEVEL_ISUB_DEFAULT
 		}
 	}
     
-    self.window.backgroundColor = settingsS.isJukeboxEnabled ? viewObjectsS.jukeboxColor : viewObjectsS.windowColor;
+    self.window.backgroundColor = settingsS.isJukeboxEnabled ? viewObjectsS.jukeboxColor : UIColor.blackColor;
 		
 	// Check the server status in the background
     if (!settingsS.isOfflineMode) {
@@ -203,7 +202,7 @@ LOG_LEVEL_ISUB_DEFAULT
 
 - (void)jukeboxToggled {
     // Change the background color when jukebox is on
-    self.window.backgroundColor = settingsS.isJukeboxEnabled ? viewObjectsS.jukeboxColor : viewObjectsS.windowColor;
+    self.window.backgroundColor = settingsS.isJukeboxEnabled ? viewObjectsS.jukeboxColor : UIColor.blackColor;
 }
 
 - (void)oneTimeRun {
@@ -523,7 +522,7 @@ LOG_LEVEL_ISUB_DEFAULT
 	[NSNotificationCenter postNotificationToMainThreadWithName:ISMSNotification_EnteringOfflineMode];
 	
     settingsS.isJukeboxEnabled = NO;
-    self.window.backgroundColor = viewObjectsS.windowColor;
+    self.window.backgroundColor = UIColor.blackColor;
     [Flurry logEvent:@"JukeboxDisabled"];
     
 	settingsS.isOfflineMode = YES;

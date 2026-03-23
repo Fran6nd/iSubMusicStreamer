@@ -83,15 +83,19 @@ final class CustomUITabBarController: UITabBarController {
 
     // MARK: - Tab Bar Appearance
 
-    /// Prevents the tab bar from going transparent when a scroll view's edge is visible
-    /// behind it (iOS 15 scrollEdgeAppearance default is transparent).
+    /// Configures a consistent opaque black tab bar appearance using modern iOS APIs.
+    /// This replaces the legacy barTintColor / translucent approach and also prevents
+    /// the bar from going transparent when a scroll view's edge is visible behind it.
     private func configureTabBarAppearance() {
-        if #available(iOS 15, *) {
-            let appearance = UITabBarAppearance()
-            appearance.configureWithDefaultBackground()
-            tabBar.standardAppearance = appearance
-            tabBar.scrollEdgeAppearance = appearance
-        }
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .black
+        appearance.shadowColor = nil
+
+        tabBar.standardAppearance = appearance
+        tabBar.scrollEdgeAppearance = appearance
+        tabBar.tintColor = .white
+        tabBar.unselectedItemTintColor = UIColor.white.withAlphaComponent(0.4)
     }
 
     // MARK: - Mini Player Setup
