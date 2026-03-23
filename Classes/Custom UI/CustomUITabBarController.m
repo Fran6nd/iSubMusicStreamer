@@ -109,11 +109,13 @@ static const CGFloat kMiniPlayerHeight = 64.0;
 }
 
 - (void)playerWillShow {
+    _miniPlayerView.isSuppressed = YES;
     _miniPlayerView.hidden = YES;
     self.additionalSafeAreaInsets = UIEdgeInsetsZero;
 }
 
 - (void)playerWillHide {
+    _miniPlayerView.isSuppressed = NO;
     _miniPlayerView.hidden = NO;
     self.additionalSafeAreaInsets = UIEdgeInsetsMake(0, 0, kMiniPlayerHeight, 0);
 }

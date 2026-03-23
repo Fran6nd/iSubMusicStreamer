@@ -19,6 +19,9 @@ import SnapKit
     /// Called when the user taps the bar body to open the full player.
     @objc var openPlayerHandler: (() -> Void)?
 
+    /// When true, refresh() will not change the hidden state (player is on screen).
+    @objc var isSuppressed: Bool = false
+
     // MARK: - Subviews
 
     private let blurView    = UIVisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial))
@@ -155,7 +158,7 @@ import SnapKit
 
     @objc func refresh() {
         let song = PlayQueue.shared().currentDisplaySong()
-        isHidden = (song == nil)
+        if !isSuppressed { isHidden = (song == nil) }
         guard let song = song else { return }
 
         artView.coverArtId = song.coverArtId
