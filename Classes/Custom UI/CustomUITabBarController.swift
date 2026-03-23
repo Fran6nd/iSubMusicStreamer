@@ -18,8 +18,12 @@ final class CustomUITabBarController: UITabBarController {
     private let miniPlayerView = MiniPlayerView()
     private var miniPlayerBottomConstraint: NSLayoutConstraint!
 
-    /// Swift KVO token — retained for observation lifetime, auto-invalidated on release.
-    private var tabBarObservation: NSKeyValueObservation?
+    /// Previously installed delegate on the observed nav controller, forwarded in delegate callbacks.
+    private weak var forwardNavDelegate: UINavigationControllerDelegate?
+    /// The nav controller we are currently injected into as UINavigationControllerDelegate.
+    private weak var observedNavController: UINavigationController?
+    /// KVO token that fires when the user switches tabs, so we re-point the nav delegate.
+    private var selectedVCObservation: NSKeyValueObservation?
 
     // MARK: - More Tab Customization
 
@@ -54,11 +58,12 @@ final class CustomUITabBarController: UITabBarController {
 
         setupMiniPlayer()
 
-        // Swift KVO — type-safe, no context pointer, auto-invalidated when token is released.
-        tabBarObservation = tabBar.observe(\.isHidden, options: [.new]) { [weak self] _, change in
-            guard let self, let hiding = change.newValue else { return }
-            self.handleTabBarVisibilityChange(hiding: hiding)
+        // Track tab changes so we always observe the selected navigation controller.
+        selectedVCObservation = observe(\.selectedViewController, options: [.new]) { [weak self] _, _ in
+            self?.updateNavControllerDelegate()
         }
+        // Seed on first load after tabs are wired up.
+        updateNavControllerDelegate()
     }
 
     override func viewDidLayoutSubviews() {
@@ -81,7 +86,6 @@ final class CustomUITabBarController: UITabBarController {
         miniPlayerView.openPlayerHandler = { [weak self] in
             self?.openPlayer()
         }
-
         miniPlayerView.visibilityChanged = { [weak self] visible in
             self?.animateMiniPlayerVisibility(visible)
         }
@@ -99,8 +103,7 @@ final class CustomUITabBarController: UITabBarController {
 
     // MARK: - Song State Visibility
 
-    /// Animates the mini player and its safe-area inset when a song starts or ends
-    /// while the tab bar is already visible (no navigation transition in flight).
+    /// Fades the mini player when a song starts or ends while no navigation transition is in flight.
     private func animateMiniPlayerVisibility(_ visible: Bool) {
         guard !tabBar.isHidden else { return }
         let targetAlpha: CGFloat = visible ? 1 : 0
@@ -114,43 +117,28 @@ final class CustomUITabBarController: UITabBarController {
         miniPlayerView.isUserInteractionEnabled = visible
     }
 
-    // MARK: - Tab Bar Visibility
+    // MARK: - Nav Controller Delegate Chain
 
-    private func handleTabBarVisibilityChange(hiding: Bool) {
-        let hasSong = !miniPlayerView.isHidden
-        let targetAlpha: CGFloat = (hiding || !hasSong) ? 0 : 1
+    /// Installs `self` as the UINavigationControllerDelegate for the selected nav controller,
+    /// storing any pre-existing delegate so we can forward calls to it.
+    private func updateNavControllerDelegate() {
+        // Restore the previously observed nav controller's original delegate.
+        observedNavController?.delegate = forwardNavDelegate
 
-        // The mini player is bottom chrome — animate with a crossfade, matching the tab bar's
-        // own fade behaviour rather than sliding horizontally with the navigation content.
-        let nav = selectedViewController as? UINavigationController
-        let coordinator = nav?.transitionCoordinator
-
-        if let coordinator {
-            if !hiding {
-                // Prepare starting state for pop-back: invisible, no transform.
-                miniPlayerView.alpha = 0
-            }
-            coordinator.animate(alongsideTransition: { [weak self] _ in
-                self?.miniPlayerView.alpha = targetAlpha
-            }, completion: { [weak self] ctx in
-                guard let self else { return }
-                if ctx.isCancelled {
-                    let restore = !self.tabBar.isHidden && hasSong
-                    self.miniPlayerView.alpha = restore ? 1 : 0
-                } else {
-                    self.miniPlayerView.isUserInteractionEnabled = !hiding && hasSong
-                }
-            })
-        } else {
-            miniPlayerView.alpha = targetAlpha
-            miniPlayerView.isUserInteractionEnabled = !hiding && hasSong
+        guard let nav = selectedViewController as? UINavigationController else {
+            observedNavController = nil
+            forwardNavDelegate = nil
+            return
         }
+
+        forwardNavDelegate = nav.delegate
+        nav.delegate = self
+        observedNavController = nav
     }
 
     // MARK: - Open Player
 
     @objc func openPlayer() {
-        // Avoid stacking duplicate player sheets.
         if let existing = presentedViewController as? UINavigationController,
            existing.topViewController is PlayerViewController { return }
 
@@ -172,5 +160,52 @@ final class CustomUITabBarController: UITabBarController {
         } else {
             present(nav, animated: true)
         }
+    }
+}
+
+// MARK: - UINavigationControllerDelegate
+
+extension CustomUITabBarController: UINavigationControllerDelegate {
+
+    func navigationController(_ navigationController: UINavigationController,
+                               willShow viewController: UIViewController,
+                               animated: Bool) {
+        // Forward to any previously installed delegate first.
+        forwardNavDelegate?.navigationController?(navigationController,
+                                                   willShow: viewController,
+                                                   animated: animated)
+
+        // Determine target visibility: hide the mini player when the incoming VC hides the tab bar.
+        let hasSong = !miniPlayerView.isHidden
+        let hidingTabBar = viewController.hidesBottomBarWhenPushed
+        let targetAlpha: CGFloat = (hidingTabBar || !hasSong) ? 0 : 1
+
+        // Animate alongside the navigation transition using its own coordinator and curve.
+        guard animated, let coordinator = navigationController.transitionCoordinator else {
+            miniPlayerView.alpha = targetAlpha
+            miniPlayerView.isUserInteractionEnabled = !hidingTabBar && hasSong
+            return
+        }
+
+        coordinator.animate(alongsideTransition: { [weak self] _ in
+            self?.miniPlayerView.alpha = targetAlpha
+        }, completion: { [weak self] ctx in
+            guard let self else { return }
+            if ctx.isCancelled {
+                // Interactive pop was cancelled — restore previous state.
+                let restore = !self.tabBar.isHidden && hasSong
+                self.miniPlayerView.alpha = restore ? 1 : 0
+            } else {
+                self.miniPlayerView.isUserInteractionEnabled = !hidingTabBar && hasSong
+            }
+        })
+    }
+
+    func navigationController(_ navigationController: UINavigationController,
+                               didShow viewController: UIViewController,
+                               animated: Bool) {
+        forwardNavDelegate?.navigationController?(navigationController,
+                                                   didShow: viewController,
+                                                   animated: animated)
     }
 }
