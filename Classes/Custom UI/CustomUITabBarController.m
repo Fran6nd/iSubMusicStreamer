@@ -86,7 +86,7 @@ static const CGFloat kMiniPlayerHeight = 64.0;
         object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
         selector:@selector(playerWillHide)
-        name:@"iSubPlayerWillHide"
+        name:@"iSubPlayerDidHide"
         object:nil];
 
     [self.view addSubview:_miniPlayerView];

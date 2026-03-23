@@ -465,8 +465,12 @@ import CocoaLumberjackSwift
         stopUpdatingSlider()
         stopUpdatingDownloadProgress()
         unregisterForNotifications()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         if isMovingFromParent || isBeingDismissed || navigationController?.isBeingDismissed == true {
-            NotificationCenter.default.post(name: .init("iSubPlayerWillHide"), object: nil)
+            NotificationCenter.default.post(name: .init("iSubPlayerDidHide"), object: nil)
         }
     }
     
