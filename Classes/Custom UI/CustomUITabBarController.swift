@@ -213,35 +213,56 @@ extension CustomUITabBarController: UINavigationControllerDelegate {
         let hidingTabBar = viewController.hidesBottomBarWhenPushed
         let width = navigationController.view.bounds.width
 
-        // Slide the mini player left when the tab bar hides; return it on pop.
-        let targetTransform: CGAffineTransform = (hidingTabBar || !hasSong)
+        let playerTarget: CGAffineTransform = (hidingTabBar || !hasSong)
             ? CGAffineTransform(translationX: -width, y: 0)
             : .identity
-        // Insets must match tab bar visibility so pushed VCs don't gain phantom space.
+        let barTarget: CGAffineTransform = hidingTabBar
+            ? CGAffineTransform(translationX: -width, y: 0)
+            : .identity
         let targetInsets = (!hidingTabBar && hasSong)
             ? UIEdgeInsets(top: 0, left: 0, bottom: miniPlayerHeight, right: 0)
             : .zero
 
+        // Take ownership of the tab bar's visibility so UIKit cannot start its default
+        // vertical slide. We position the bar for the upcoming animation, then drive
+        // a horizontal transform that matches the mini player.
+        tabBar.layer.removeAllAnimations()
+        if !hidingTabBar && tabBar.isHidden {
+            // Popping back to a visible-tab-bar VC: start off-screen left so it slides in.
+            tabBar.transform = CGAffineTransform(translationX: -width, y: 0)
+        }
+        tabBar.isHidden = false   // prevent UIKit's vertical slide for all cases
+
         guard animated, let coordinator = navigationController.transitionCoordinator else {
-            miniPlayerView.transform = targetTransform
+            miniPlayerView.transform = playerTarget
+            tabBar.transform = .identity
+            tabBar.isHidden = hidingTabBar
             additionalSafeAreaInsets = targetInsets
             miniPlayerView.isUserInteractionEnabled = !hidingTabBar && hasSong
             return
         }
 
         coordinator.animate(alongsideTransition: { [weak self] _ in
-            self?.miniPlayerView.transform = targetTransform
+            self?.miniPlayerView.transform = playerTarget
+            self?.tabBar.transform = barTarget
             self?.additionalSafeAreaInsets = targetInsets
         }, completion: { [weak self] ctx in
             guard let self else { return }
             if ctx.isCancelled {
-                // Interactive pop cancelled — restore to off-screen (tab bar still hidden).
+                // Restore the pre-transition state.
+                // hidingTabBar=true  → was pushing; bar was visible → keep visible.
+                // hidingTabBar=false → was popping; bar was hidden  → re-hide.
                 self.miniPlayerView.transform = CGAffineTransform(translationX: -width, y: 0)
+                self.tabBar.isHidden = !hidingTabBar
+                self.tabBar.transform = .identity
                 self.additionalSafeAreaInsets = .zero
             } else {
-                self.miniPlayerView.transform = targetTransform
-                self.additionalSafeAreaInsets = targetInsets
+                self.miniPlayerView.transform = playerTarget
                 self.miniPlayerView.isUserInteractionEnabled = !hidingTabBar && hasSong
+                // Always reset transform; isHidden carries the logical visibility state.
+                self.tabBar.isHidden = hidingTabBar
+                self.tabBar.transform = .identity
+                self.additionalSafeAreaInsets = targetInsets
             }
         })
     }
