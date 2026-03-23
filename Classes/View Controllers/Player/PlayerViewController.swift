@@ -434,8 +434,6 @@ import CocoaLumberjackSwift
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.post(name: .init("iSubPlayerWillShow"), object: nil)
-
         // When presented as a modal sheet (e.g. from mini player), show a dismiss button.
         if navigationController?.presentingViewController != nil, navigationItem.leftBarButtonItem == nil {
             navigationItem.leftBarButtonItem = UIBarButtonItem(
@@ -467,12 +465,6 @@ import CocoaLumberjackSwift
         unregisterForNotifications()
     }
 
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        if isMovingFromParent || isBeingDismissed || navigationController?.isBeingDismissed == true {
-            NotificationCenter.default.post(name: .init("iSubPlayerDidHide"), object: nil)
-        }
-    }
     
     private func registerForNotifications() {
         NotificationCenter.addObserverOnMainThread(self, selector: #selector(updateSongInfo), name: ISMSNotification_JukeboxSongInfo)

@@ -16,6 +16,7 @@ static const CGFloat kMiniPlayerHeight = 64.0;
 
 @interface CustomUITabBarController ()
 @property (nonatomic, strong) MiniPlayerView *miniPlayerView;
+@property (nonatomic, strong) NSLayoutConstraint *miniPlayerBottomConstraint;
 @end
 
 @implementation CustomUITabBarController
@@ -49,7 +50,7 @@ static const CGFloat kMiniPlayerHeight = 64.0;
     [viewObjectsS orderMainTabBarController];
     [self.class customizeMoreTabTableView:self];
 
-    // Add persistent mini player above the tab bar using auto layout
+    // Mini player — sits above the tab bar, mirrors tab bar lifetime (never hidden programmatically)
     _miniPlayerView = [[MiniPlayerView alloc] initWithFrame:CGRectZero];
     __weak CustomUITabBarController *weakSelf = self;
     _miniPlayerView.openPlayerHandler = ^{
@@ -79,41 +80,29 @@ static const CGFloat kMiniPlayerHeight = 64.0;
         }
     };
 
-    // Hide mini player while PlayerViewController is on screen (all paths)
-    [[NSNotificationCenter defaultCenter] addObserver:self
-        selector:@selector(playerWillShow)
-        name:@"iSubPlayerWillShow"
-        object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-        selector:@selector(playerWillHide)
-        name:@"iSubPlayerDidHide"
-        object:nil];
-
     [self.view addSubview:_miniPlayerView];
 
-    // Pin the mini player to the leading/trailing edges and directly above the tab bar
+    // Anchor to view.bottomAnchor — constant is kept in sync with tabBar height in viewDidLayoutSubviews.
+    // This decouples us from tabBar.topAnchor, which UIKit repositions during sheet presentations.
+    _miniPlayerBottomConstraint = [_miniPlayerView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:0];
     [NSLayoutConstraint activateConstraints:@[
         [_miniPlayerView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
         [_miniPlayerView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
-        [_miniPlayerView.bottomAnchor constraintEqualToAnchor:self.tabBar.topAnchor],
-        [_miniPlayerView.heightAnchor constraintEqualToConstant:kMiniPlayerHeight]
+        _miniPlayerBottomConstraint,
+        [_miniPlayerView.heightAnchor constraintEqualToConstant:kMiniPlayerHeight],
     ]];
 }
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    // Update safe area insets so content is never hidden behind the visible mini player
-    self.additionalSafeAreaInsets = (!_miniPlayerView || _miniPlayerView.isHidden)
+
+    // Keep mini player flush above the tab bar by tracking its current frame.
+    _miniPlayerBottomConstraint.constant = -self.tabBar.frame.size.height;
+
+    // Reserve space so child view controllers are never obscured by the mini player.
+    self.additionalSafeAreaInsets = _miniPlayerView.isHidden
         ? UIEdgeInsetsZero
         : UIEdgeInsetsMake(0, 0, kMiniPlayerHeight, 0);
-}
-
-- (void)playerWillShow {
-    _miniPlayerView.isSuppressed = YES;
-}
-
-- (void)playerWillHide {
-    _miniPlayerView.isSuppressed = NO;
 }
 
 @end
