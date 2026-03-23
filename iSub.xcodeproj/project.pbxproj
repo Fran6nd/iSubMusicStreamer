@@ -150,9 +150,6 @@
 		537B05C2256B40930008892C /* SongInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537B05C1256B40930008892C /* SongInfoViewController.swift */; };
 		537B05C3256B40930008892C /* SongInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537B05C1256B40930008892C /* SongInfoViewController.swift */; };
 		537DE2D9113F008C00875852 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 537DE2D8113F008C00875852 /* CoreFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		19C0C451093A4A25AA1CDF7F /* CustomUITabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITabBarController.swift; sourceTree = "<group>"; };
-		C438BC3DAB064DFA936073AA /* CustomUITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C0C451093A4A25AA1CDF7F /* CustomUITabBarController.swift */; };
-		B5F411F63FD748C38302A26F /* CustomUITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C0C451093A4A25AA1CDF7F /* CustomUITabBarController.swift */; };
 		537E9A0A14F323EF006CB0BC /* UIViewController+PushViewControllerCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 537E9A0914F323EF006CB0BC /* UIViewController+PushViewControllerCustom.m */; };
 		537E9A0C14F323EF006CB0BC /* UIViewController+PushViewControllerCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 537E9A0914F323EF006CB0BC /* UIViewController+PushViewControllerCustom.m */; };
 		5381F8061E96FBFB00AAA9BD /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5381F8051E96FBFB00AAA9BD /* Photos.framework */; };
@@ -249,8 +246,6 @@
 		53BC2857139AF0DD00A825F1 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 537DE2D8113F008C00875852 /* CoreFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		53BC2858139AF0DD00A825F1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 536D620A1144495400DFCE56 /* SystemConfiguration.framework */; };
 		53BC285F139AF0DD00A825F1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F7A127131B7F3B002C829D /* Security.framework */; };
-		AA00BB001234567890ABCDEF /* CustomUINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00BB011234567890ABCDEF /* CustomUINavigationController.swift */; };
-		AA00BB021234567890ABCDEF /* CustomUINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00BB011234567890ABCDEF /* CustomUINavigationController.swift */; };
 		53C3AB64257DA71000B35B99 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C3AB63257DA71000B35B99 /* Reachability.m */; };
 		53C3AB65257DA71000B35B99 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C3AB63257DA71000B35B99 /* Reachability.m */; };
 		53C3AB6D257DB7D200B35B99 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C3AB6C257DB7D200B35B99 /* AsyncImageView.swift */; };
@@ -539,6 +534,10 @@
 		A1B2C3D4E5F60003A1B2C3D4 /* QueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60001A1B2C3D4 /* QueueViewController.swift */; };
 		A1B2C3D4E5F6A7B8C9D0E1F2 /* PlaylistHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6A7B8C9D0E1F3 /* PlaylistHeaderView.swift */; };
 		A1B2C3D4E5F6A7B8C9D0E1F4 /* PlaylistHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6A7B8C9D0E1F3 /* PlaylistHeaderView.swift */; };
+		AA00BB001234567890ABCDEF /* CustomUINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00BB011234567890ABCDEF /* CustomUINavigationController.swift */; };
+		AA00BB021234567890ABCDEF /* CustomUINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00BB011234567890ABCDEF /* CustomUINavigationController.swift */; };
+		B5F411F63FD748C38302A26F /* CustomUITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C0C451093A4A25AA1CDF7F /* CustomUITabBarController.swift */; };
+		C438BC3DAB064DFA936073AA /* CustomUITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C0C451093A4A25AA1CDF7F /* CustomUITabBarController.swift */; };
 		D349DD62D742475BBFC33513 /* HapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92416E88467E4FC384ABDFCA /* HapticEngine.swift */; };
 /* End PBXBuildFile section */
 
@@ -594,6 +593,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		19C0C451093A4A25AA1CDF7F /* CustomUITabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITabBarController.swift; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* iSubAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSubAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* iSubAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSubAppDelegate.m; sourceTree = "<group>"; };
@@ -710,7 +710,6 @@
 		537B05BE256B0E4B0008892C /* PadMenuTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadMenuTableCell.swift; sourceTree = "<group>"; };
 		537B05C1256B40930008892C /* SongInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongInfoViewController.swift; sourceTree = "<group>"; };
 		537DE2D8113F008C00875852 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		19C0C451093A4A25AA1CDF7F /* CustomUITabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITabBarController.swift; sourceTree = "<group>"; };
 		537E9A0814F323EE006CB0BC /* UIViewController+PushViewControllerCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PushViewControllerCustom.h"; sourceTree = "<group>"; };
 		537E9A0914F323EF006CB0BC /* UIViewController+PushViewControllerCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PushViewControllerCustom.m"; sourceTree = "<group>"; };
 		5381F8051E96FBFB00AAA9BD /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
@@ -774,7 +773,6 @@
 		53BBDB3B1491DD6600032114 /* OpenGLCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLCommon.h; sourceTree = "<group>"; };
 		53BBDB3C1491DE5600032114 /* ConstantsAndMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstantsAndMacros.h; sourceTree = "<group>"; };
 		53BC2865139AF0DD00A825F1 /* iSub Beta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iSub Beta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA00BB011234567890ABCDEF /* CustomUINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUINavigationController.swift; sourceTree = "<group>"; };
 		53BD84A52566F41F00F7A197 /* ISMSBassVisualType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISMSBassVisualType.h; sourceTree = "<group>"; };
 		53C3AB5F257DA71000B35B99 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Frameworks/Reachability/Reachability/Reachability.h; sourceTree = "<group>"; };
 		53C3AB63257DA71000B35B99 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Frameworks/Reachability/Reachability/Reachability.m; sourceTree = "<group>"; };
@@ -1060,6 +1058,7 @@
 		92416E88467E4FC384ABDFCA /* HapticEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticEngine.swift; sourceTree = "<group>"; };
 		A1B2C3D4E5F60001A1B2C3D4 /* QueueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueViewController.swift; sourceTree = "<group>"; };
 		A1B2C3D4E5F6A7B8C9D0E1F3 /* PlaylistHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistHeaderView.swift; sourceTree = "<group>"; };
+		AA00BB011234567890ABCDEF /* CustomUINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUINavigationController.swift; sourceTree = "<group>"; };
 		C8661B57FB51400BB3AB525A /* MiniPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerView.swift; sourceTree = "<group>"; };
 		E31E5E14E8A8405FAB89AB15 /* PlaylistGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistGridCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2099,7 +2098,6 @@
 						ProvisioningStyle = Automatic;
 					};
 					53BC269F139AF0DD00A825F1 = {
-						DevelopmentTeam = 7596YH3S97;
 						LastSwiftMigration = 1210;
 						ProvisioningStyle = Automatic;
 					};
@@ -2951,6 +2949,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = NZWJ3SYL4G;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2985,7 +2984,7 @@
 					"-lz",
 				);
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.einsteinx2.isubbetarewrite;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fran6nd.isub;
 				PRODUCT_NAME = "iSub Beta";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG BETA";
 				SWIFT_OBJC_BRIDGING_HEADER = "Other/iSub_Beta-Bridging-Header.h";
@@ -3003,6 +3002,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = NZWJ3SYL4G;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -3037,7 +3037,7 @@
 					"-lz",
 				);
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.einsteinx2.isubbetarewrite;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fran6nd.isub;
 				PRODUCT_NAME = "iSub Beta";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG ADHOC BETA";
 				SWIFT_OBJC_BRIDGING_HEADER = "Other/iSub_Beta-Bridging-Header.h";
@@ -3055,6 +3055,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = NZWJ3SYL4G;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -3087,7 +3088,7 @@
 					"-lz",
 				);
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.einsteinx2.isubbetarewrite;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fran6nd.isub;
 				PRODUCT_NAME = "iSub Beta";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "RELEASE BETA";
 				SWIFT_OBJC_BRIDGING_HEADER = "Other/iSub_Beta-Bridging-Header.h";
