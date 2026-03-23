@@ -82,6 +82,10 @@ final class CustomUITabBarController: UITabBarController {
             self?.openPlayer()
         }
 
+        miniPlayerView.visibilityChanged = { [weak self] visible in
+            self?.animateMiniPlayerVisibility(visible)
+        }
+
         view.addSubview(miniPlayerView)
 
         miniPlayerBottomConstraint = miniPlayerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -91,6 +95,23 @@ final class CustomUITabBarController: UITabBarController {
             miniPlayerBottomConstraint,
             miniPlayerView.heightAnchor.constraint(equalToConstant: miniPlayerHeight),
         ])
+    }
+
+    // MARK: - Song State Visibility
+
+    /// Animates the mini player and its safe-area inset when a song starts or ends
+    /// while the tab bar is already visible (no navigation transition in flight).
+    private func animateMiniPlayerVisibility(_ visible: Bool) {
+        guard !tabBar.isHidden else { return }
+        let targetAlpha: CGFloat = visible ? 1 : 0
+        let targetInsets = visible
+            ? UIEdgeInsets(top: 0, left: 0, bottom: miniPlayerHeight, right: 0)
+            : .zero
+        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut) {
+            self.miniPlayerView.alpha = targetAlpha
+            self.additionalSafeAreaInsets = targetInsets
+        }
+        miniPlayerView.isUserInteractionEnabled = visible
     }
 
     // MARK: - Tab Bar Visibility
