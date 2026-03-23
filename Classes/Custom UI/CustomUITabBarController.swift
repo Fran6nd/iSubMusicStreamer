@@ -16,7 +16,7 @@ final class CustomUITabBarController: UITabBarController {
     // MARK: - Properties
 
     private let miniPlayerView = MiniPlayerView()
-    private var miniPlayerConstraints: [NSLayoutConstraint] = []
+    private var miniPlayerBottomConstraint: NSLayoutConstraint!
 
     /// Previously installed delegate on the observed nav controller, forwarded in delegate callbacks.
     private weak var forwardNavDelegate: UINavigationControllerDelegate?
@@ -69,6 +69,9 @@ final class CustomUITabBarController: UITabBarController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
+        // Keep mini player flush above the tab bar by tracking its current frame.
+        miniPlayerBottomConstraint.constant = -tabBar.frame.height
+
         // Reserve space only when the mini player is actually on screen.
         let visible = !tabBar.isHidden && !miniPlayerView.isHidden
         let newInsets = visible ? UIEdgeInsets(top: 0, left: 0, bottom: miniPlayerHeight, right: 0) : .zero
@@ -84,44 +87,16 @@ final class CustomUITabBarController: UITabBarController {
         miniPlayerView.visibilityChanged = { [weak self] visible in
             self?.animateMiniPlayerVisibility(visible)
         }
-    }
 
-    // MARK: - Mini Player Reparenting
+        view.addSubview(miniPlayerView)
 
-    /// Moves the mini player into `nav`'s view so it participates in navigation transitions.
-    private func attachMiniPlayer(to nav: UINavigationController) {
-        // Deactivate any previous constraints (including cross-hierarchy ones that
-        // removeFromSuperview does not clean up automatically).
-        NSLayoutConstraint.deactivate(miniPlayerConstraints)
-        miniPlayerConstraints = []
-
-        miniPlayerView.removeFromSuperview()
-        nav.view.addSubview(miniPlayerView)
-
-        // Anchor bottom to tabBar.topAnchor rather than nav.view.bottomAnchor.
-        // nav.view extends full-screen (behind the tab bar), so nav.view.bottomAnchor
-        // is at the screen bottom. A cross-hierarchy constraint to the actual tab bar
-        // positions the mini player correctly above it regardless of nav view framing.
-        let constraints = [
-            miniPlayerView.leadingAnchor.constraint(equalTo: nav.view.leadingAnchor),
-            miniPlayerView.trailingAnchor.constraint(equalTo: nav.view.trailingAnchor),
-            miniPlayerView.bottomAnchor.constraint(equalTo: tabBar.topAnchor),
+        miniPlayerBottomConstraint = miniPlayerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        NSLayoutConstraint.activate([
+            miniPlayerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            miniPlayerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            miniPlayerBottomConstraint,
             miniPlayerView.heightAnchor.constraint(equalToConstant: miniPlayerHeight),
-        ]
-        NSLayoutConstraint.activate(constraints)
-        miniPlayerConstraints = constraints
-
-        // UIKit's navigation content container is a sibling; bring the mini player to
-        // front so it renders above the navigation hierarchy.
-        nav.view.bringSubviewToFront(miniPlayerView)
-
-        // If the tab bar is already hidden (e.g. switched to a tab whose top VC hides it),
-        // start the mini player in its off-screen position.
-        let alreadyHidden = tabBar.isHidden
-        miniPlayerView.transform = alreadyHidden
-            ? CGAffineTransform(translationX: -nav.view.bounds.width, y: 0)
-            : .identity
-        miniPlayerView.isUserInteractionEnabled = !alreadyHidden && !miniPlayerView.isHidden
+        ])
     }
 
     // MARK: - Song State Visibility
@@ -149,9 +124,6 @@ final class CustomUITabBarController: UITabBarController {
         observedNavController?.delegate = forwardNavDelegate
 
         guard let nav = selectedViewController as? UINavigationController else {
-            NSLayoutConstraint.deactivate(miniPlayerConstraints)
-            miniPlayerConstraints = []
-            miniPlayerView.removeFromSuperview()
             observedNavController = nil
             forwardNavDelegate = nil
             return
@@ -160,8 +132,6 @@ final class CustomUITabBarController: UITabBarController {
         forwardNavDelegate = nav.delegate
         nav.delegate = self
         observedNavController = nav
-
-        attachMiniPlayer(to: nav)
     }
 
     // MARK: - Open Player
@@ -206,7 +176,7 @@ extension CustomUITabBarController: UINavigationControllerDelegate {
         let hidingTabBar = viewController.hidesBottomBarWhenPushed
         let width = navigationController.view.bounds.width
 
-        // Slide the mini player off to the left when the tab bar hides; return it on pop.
+        // Slide the mini player left when the tab bar hides; return it on pop.
         let targetTransform: CGAffineTransform = (hidingTabBar || !hasSong)
             ? CGAffineTransform(translationX: -width, y: 0)
             : .identity
