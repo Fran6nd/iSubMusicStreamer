@@ -19,6 +19,10 @@ import SnapKit
     /// Called when the user taps the bar body to open the full player.
     @objc var openPlayerHandler: (() -> Void)?
 
+    /// Called whenever the mini player transitions between visible (true) and hidden (false).
+    /// Fired on the main thread immediately after `isHidden` is updated.
+    var visibilityChanged: ((Bool) -> Void)?
+
     // MARK: - Subviews
 
     private let blurView    = UIVisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial))
@@ -155,7 +159,11 @@ import SnapKit
 
     @objc func refresh() {
         let song = PlayQueue.shared().currentDisplaySong()
-        isHidden = (song == nil)
+        let nowHidden = (song == nil)
+        if isHidden != nowHidden {
+            isHidden = nowHidden
+            visibilityChanged?(!nowHidden)
+        }
         guard let song = song else { return }
 
         artView.coverArtId = song.coverArtId
