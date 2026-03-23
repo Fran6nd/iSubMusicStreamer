@@ -195,7 +195,7 @@ private enum PlaylistSource {
 
     // MARK: - Playback helpers
 
-    /// Copies all songs from the playlist table into the current playlist DB and plays from `position`.
+    /// Copies all songs from the in-memory `songs` array into the current playlist DB and plays from `position`.
     private func loadPlaylistAndPlay(at position: Int) {
         let settings = Settings.shared()
         let database = Database.shared()
@@ -211,42 +211,11 @@ private enum PlaylistSource {
 
         playQueue.isShuffle = false
 
-        let isLocal: Bool
-        let tableMd5: String
-        switch source {
-        case .local(let m, _):
-            isLocal = true
-            tableMd5 = m
-        case .server(let sp):
-            isLocal = false
-            tableMd5 = sp.playlistId
-        }
-
-        let prefix = isLocal ? "playlist" : "splaylist"
-        let playTableName = "\(prefix)\(tableMd5)"
-
-        let dbName = settings.isOfflineMode
-            ? "offlineCurrentPlaylist.db"
-            : "\(LocalPlaylistDAO.md5(of: settings.urlString ?? ""))currentPlaylist.db"
-
         let currTableName = settings.isJukeboxEnabled ? "jukeboxCurrentPlaylist" : "currentPlaylist"
-
-        database.localPlaylistsDbQueue?.inDatabase { db in
-            db.executeUpdate(
-                "ATTACH DATABASE ? AS ?",
-                withArgumentsIn: [
-                    (database.databaseFolderPath as NSString).appendingPathComponent(dbName),
-                    "currentPlaylistDb"
-                ]
-            )
-            if db.hadError() {
-                DDLogError("[PlaylistSongsViewController] Error attaching currentPlaylistDb: \(db.lastErrorCode()) \(db.lastErrorMessage() ?? "")")
+        if let queue = database.currentPlaylistDbQueue {
+            for song in songs {
+                song.insertIntoTable(currTableName, inDatabaseQueue: queue)
             }
-            db.executeUpdate(
-                "INSERT INTO \(currTableName) SELECT * FROM \(playTableName)",
-                withArgumentsIn: []
-            )
-            db.executeUpdate("DETACH DATABASE currentPlaylistDb", withArgumentsIn: [])
         }
 
         if settings.isJukeboxEnabled {
@@ -274,39 +243,11 @@ private enum PlaylistSource {
 
         PlayQueue.shared().isShuffle = true
 
-        let isLocal: Bool
-        let tableMd5: String
-        switch source {
-        case .local(let m, _):
-            isLocal = true
-            tableMd5 = m
-        case .server(let sp):
-            isLocal = false
-            tableMd5 = sp.playlistId
-        }
-
-        let prefix = isLocal ? "playlist" : "splaylist"
-        let playTableName = "\(prefix)\(tableMd5)"
-
-        let dbName = settings.isOfflineMode
-            ? "offlineCurrentPlaylist.db"
-            : "\(LocalPlaylistDAO.md5(of: settings.urlString ?? ""))currentPlaylist.db"
-
         let currTableName = settings.isJukeboxEnabled ? "jukeboxCurrentPlaylist" : "currentPlaylist"
-
-        database.localPlaylistsDbQueue?.inDatabase { db in
-            db.executeUpdate(
-                "ATTACH DATABASE ? AS ?",
-                withArgumentsIn: [
-                    (database.databaseFolderPath as NSString).appendingPathComponent(dbName),
-                    "currentPlaylistDb"
-                ]
-            )
-            db.executeUpdate(
-                "INSERT INTO \(currTableName) SELECT * FROM \(playTableName)",
-                withArgumentsIn: []
-            )
-            db.executeUpdate("DETACH DATABASE currentPlaylistDb", withArgumentsIn: [])
+        if let queue = database.currentPlaylistDbQueue {
+            for song in songs {
+                song.insertIntoTable(currTableName, inDatabaseQueue: queue)
+            }
         }
 
         if settings.isJukeboxEnabled {
