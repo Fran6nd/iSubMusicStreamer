@@ -99,10 +99,16 @@ static const CGFloat kMiniPlayerHeight = 64.0;
     // Keep mini player flush above the tab bar by tracking its current frame.
     _miniPlayerBottomConstraint.constant = -self.tabBar.frame.size.height;
 
-    // Reserve space so child view controllers are never obscured by the mini player.
-    self.additionalSafeAreaInsets = _miniPlayerView.isHidden
-        ? UIEdgeInsetsZero
-        : UIEdgeInsetsMake(0, 0, kMiniPlayerHeight, 0);
+    // Mirror the tab bar: when the tab bar is hidden (e.g. hidesBottomBarWhenPushed),
+    // the mini player must disappear too. Alpha has no layout side-effects.
+    BOOL visible = !self.tabBar.isHidden && !_miniPlayerView.isHidden;
+    _miniPlayerView.alpha = visible ? 1.0 : 0.0;
+    _miniPlayerView.userInteractionEnabled = visible;
+
+    // Reserve space only when the mini player is actually on screen.
+    self.additionalSafeAreaInsets = visible
+        ? UIEdgeInsetsMake(0, 0, kMiniPlayerHeight, 0)
+        : UIEdgeInsetsZero;
 }
 
 @end
