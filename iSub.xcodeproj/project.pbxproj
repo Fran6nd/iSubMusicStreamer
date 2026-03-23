@@ -150,8 +150,9 @@
 		537B05C2256B40930008892C /* SongInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537B05C1256B40930008892C /* SongInfoViewController.swift */; };
 		537B05C3256B40930008892C /* SongInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537B05C1256B40930008892C /* SongInfoViewController.swift */; };
 		537DE2D9113F008C00875852 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 537DE2D8113F008C00875852 /* CoreFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		537E6C1E181208A200127E29 /* CustomUITabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 537E6C1D181208A200127E29 /* CustomUITabBarController.m */; };
-		537E6C20181208A200127E29 /* CustomUITabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 537E6C1D181208A200127E29 /* CustomUITabBarController.m */; };
+		19C0C451093A4A25AA1CDF7F /* CustomUITabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITabBarController.swift; sourceTree = "<group>"; };
+		C438BC3DAB064DFA936073AA /* CustomUITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C0C451093A4A25AA1CDF7F /* CustomUITabBarController.swift */; };
+		B5F411F63FD748C38302A26F /* CustomUITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C0C451093A4A25AA1CDF7F /* CustomUITabBarController.swift */; };
 		537E9A0A14F323EF006CB0BC /* UIViewController+PushViewControllerCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 537E9A0914F323EF006CB0BC /* UIViewController+PushViewControllerCustom.m */; };
 		537E9A0C14F323EF006CB0BC /* UIViewController+PushViewControllerCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 537E9A0914F323EF006CB0BC /* UIViewController+PushViewControllerCustom.m */; };
 		5381F8061E96FBFB00AAA9BD /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5381F8051E96FBFB00AAA9BD /* Photos.framework */; };
@@ -709,8 +710,7 @@
 		537B05BE256B0E4B0008892C /* PadMenuTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadMenuTableCell.swift; sourceTree = "<group>"; };
 		537B05C1256B40930008892C /* SongInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongInfoViewController.swift; sourceTree = "<group>"; };
 		537DE2D8113F008C00875852 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		537E6C1C181208A200127E29 /* CustomUITabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUITabBarController.h; sourceTree = "<group>"; };
-		537E6C1D181208A200127E29 /* CustomUITabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUITabBarController.m; sourceTree = "<group>"; };
+		19C0C451093A4A25AA1CDF7F /* CustomUITabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITabBarController.swift; sourceTree = "<group>"; };
 		537E9A0814F323EE006CB0BC /* UIViewController+PushViewControllerCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PushViewControllerCustom.h"; sourceTree = "<group>"; };
 		537E9A0914F323EF006CB0BC /* UIViewController+PushViewControllerCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PushViewControllerCustom.m"; sourceTree = "<group>"; };
 		5381F8051E96FBFB00AAA9BD /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
@@ -1499,8 +1499,7 @@
 				53B5298811AD9B79005776B5 /* LoadingScreen.h */,
 				53B5298911AD9B79005776B5 /* LoadingScreen.m */,
 				536B5D5D11C8183D00CC1D69 /* LoadingScreen.xib */,
-				537E6C1C181208A200127E29 /* CustomUITabBarController.h */,
-				537E6C1D181208A200127E29 /* CustomUITabBarController.m */,
+				19C0C451093A4A25AA1CDF7F /* CustomUITabBarController.swift */,
 				53BCC519181387B300442E86 /* CustomUINavigationController.h */,
 				53BCC51A181387B300442E86 /* CustomUINavigationController.m */,
 				53329651255F30220027C51A /* ClosureSleeve.swift */,
@@ -2333,7 +2332,7 @@
 				53FE38B31EA961C80058B925 /* ZKDefs.m in Sources */,
 				53246AA9256C324500E11EC4 /* InsetTextField.swift in Sources */,
 				53FE38A11EA961C80058B925 /* ZKArchive.m in Sources */,
-				537E6C1E181208A200127E29 /* CustomUITabBarController.m in Sources */,
+				C438BC3DAB064DFA936073AA /* CustomUITabBarController.swift in Sources */,
 				53FE388F1EA961C80058B925 /* NSData+ZKAdditions.m in Sources */,
 				53FE37AC1EA961720058B925 /* SUSLyricsLoader.m in Sources */,
 				53B5298A11AD9B79005776B5 /* LoadingScreen.m in Sources */,
@@ -2538,7 +2537,7 @@
 				53BC27C4139AF0DD00A825F1 /* BookmarksViewController.m in Sources */,
 				53FE38B51EA961C80058B925 /* ZKDefs.m in Sources */,
 				53FE38A31EA961C80058B925 /* ZKArchive.m in Sources */,
-				537E6C20181208A200127E29 /* CustomUITabBarController.m in Sources */,
+				B5F411F63FD748C38302A26F /* CustomUITabBarController.swift in Sources */,
 				53FE38911EA961C80058B925 /* NSData+ZKAdditions.m in Sources */,
 				53FE37AE1EA961720058B925 /* SUSLyricsLoader.m in Sources */,
 				53752BED2562CEF800438636 /* CoverArtViewController.swift in Sources */,
