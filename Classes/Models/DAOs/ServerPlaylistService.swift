@@ -160,7 +160,7 @@ actor ServerPlaylistService {
         let doc = SubsonicXMLDocument(data: data)
         try doc.throwIfError()
         return doc.elements(atPath: "subsonic-response.playlist.entry")
-            .compactMap { Song(fromAttributes: $0) }
+            .compactMap { Song(subsonicAttributes: $0.attributes) }
     }
 
     private func parseCreatedPlaylist(from data: Data) throws -> ServerPlaylist {
@@ -246,23 +246,41 @@ private extension ServerPlaylist {
     }
 }
 
-// MARK: - Song convenience init from XML attributes
+// MARK: - Song XML initialisation (Subsonic API)
 
 private extension Song {
-    /// Builds a `Song` from the attributes of a Subsonic `<entry>` element.
-    convenience init?(fromAttributes element: SubsonicXMLDocument.Element) {
-        guard let id = element.attributes["id"] else { return nil }
+    /// Creates a Song from the XML attributes of a Subsonic `<song>` / `<entry>` element.
+    /// Foundation's XMLParser already unescapes XML entities; `decoded` additionally applies
+    /// percent-decoding to match the ObjC `cleanString` helper.
+    convenience init?(subsonicAttributes a: [String: String]) {
+        guard let id = a["id"]?.nonEmpty else { return nil }
         self.init()
-        songId   = id
-        title    = element.attributes["title"]
-        artist   = element.attributes["artist"]
-        album    = element.attributes["album"]
-        coverArtId = element.attributes["coverArt"]
-        if let dur = element.attributes["duration"] { duration = Int(dur) as NSNumber? }
-        if let bt  = element.attributes["bitRate"]  { bitRate  = Int(bt)  as NSNumber? }
-        suffix   = element.attributes["suffix"]
-        path     = element.attributes["path"]
-        if let trk = element.attributes["track"]  { track = Int(trk) as NSNumber? }
-        if let yr  = element.attributes["year"]   { year  = Int(yr)  as NSNumber? }
+        songId           = id
+        title            = a["title"]?.decoded
+        parentId         = a["parent"]?.decoded
+        artist           = a["artist"]?.decoded
+        album            = a["album"]?.decoded
+        genre            = a["genre"]?.decoded
+        coverArtId       = a["coverArt"]?.decoded
+        path             = a["path"]?.decoded
+        suffix           = a["suffix"]?.decoded
+        transcodedSuffix = a["transcodedSuffix"]?.decoded
+        isVideo          = a["isVideo"] == "true"
+        if let s = a["duration"],   let v = Int(s)   { duration    = NSNumber(value: v) }
+        if let s = a["bitRate"],    let v = Int(s)    { bitRate     = NSNumber(value: v) }
+        if let s = a["track"],      let v = Int(s)    { track       = NSNumber(value: v) }
+        if let s = a["year"],       let v = Int(s)    { year        = NSNumber(value: v) }
+        if let s = a["size"],       let v = Int64(s)  { size        = NSNumber(value: v) }
+        if let s = a["discNumber"], let v = Int64(s)  { discNumber  = NSNumber(value: v) }
     }
+}
+
+private extension String {
+    /// Percent-decodes the string; returns `nil` for empty results.
+    var decoded: String? {
+        let s = removingPercentEncoding ?? self
+        return s.isEmpty ? nil : s
+    }
+    /// Returns `nil` if the string is empty.
+    var nonEmpty: String? { isEmpty ? nil : self }
 }
