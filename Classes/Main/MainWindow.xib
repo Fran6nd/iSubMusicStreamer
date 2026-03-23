@@ -88,7 +88,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <viewControllers>
-                        <viewController nibName="PlaylistsViewController" id="71" customClass="PlaylistsViewController">
+                        <viewController id="71" customClass="PlaylistsViewController">
                             <extendedEdge key="edgesForExtendedLayout"/>
                             <toolbarItems/>
                             <navigationItem key="navigationItem" title="Item" id="72"/>
@@ -261,7 +261,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <viewControllers>
-                        <viewController nibName="PlaylistsViewController" id="132" customClass="PlaylistsViewController">
+                        <viewController id="132" customClass="PlaylistsViewController">
                             <extendedEdge key="edgesForExtendedLayout"/>
                             <toolbarItems/>
                             <navigationItem key="navigationItem" title="Item" id="133"/>

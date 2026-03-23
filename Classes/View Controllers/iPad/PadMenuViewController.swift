@@ -167,7 +167,7 @@ import SnapKit
                 if let cachedController = cachedTabs["PlaylistsViewController"] {
                     controller = cachedController
                 } else {
-                    controller = CustomUINavigationController(rootViewController: PlaylistsViewController(nibName: "PlaylistsViewController", bundle: nil))
+                    controller = CustomUINavigationController(rootViewController: PlaylistsViewController())
                     cachedTabs["PlaylistsViewController"] = controller
                 }
             case 4:
@@ -206,7 +206,7 @@ import SnapKit
                 if let cachedController = cachedTabs["PlaylistsViewController"] {
                     controller = cachedController
                 } else {
-                    controller = CustomUINavigationController(rootViewController: PlaylistsViewController(nibName: "PlaylistsViewController", bundle: nil))
+                    controller = CustomUINavigationController(rootViewController: PlaylistsViewController())
                     cachedTabs["PlaylistsViewController"] = controller
                 }
             case 4:
