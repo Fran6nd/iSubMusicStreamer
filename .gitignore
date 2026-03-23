@@ -20,7 +20,11 @@ sqlcipher/Makefile
 
 ## Build generated
 build/
-DerivedData
+DerivedData/
+
+# Generated SQLite amalgamation (rebuilt from source)
+SQLite/sqlite3.c
+SQLite/sqlite3.h
 
 ## Various settings
 *.pbxuser

@@ -3,15 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		052F1402511D4AE3BA3A4351 /* PlaylistGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31E5E14E8A8405FAB89AB15 /* PlaylistGridCell.swift */; };
+		0C122895D3F84ED0B7EB5D81 /* MiniPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8661B57FB51400BB3AB525A /* MiniPlayerView.swift */; };
+		1A8A0E893B2C41F0A6FB2C66 /* MiniPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8661B57FB51400BB3AB525A /* MiniPlayerView.swift */; };
 		1D3623260D0F684500981E51 /* iSubAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* iSubAppDelegate.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
 		28C286E10D94DF7D0034E888 /* FoldersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* FoldersViewController.m */; };
+		2E7D98189EB64816B26333E7 /* HapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92416E88467E4FC384ABDFCA /* HapticEngine.swift */; };
+		359A82ADE84F45CA8BC3A0A4 /* PlaylistGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31E5E14E8A8405FAB89AB15 /* PlaylistGridCell.swift */; };
 		530388A9116571920043292D /* AllSongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 530388A8116571920043292D /* AllSongsViewController.m */; };
 		5306236D14D3295300D320A8 /* EqualizerPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5306236C14D3295300D320A8 /* EqualizerPathView.m */; };
 		5306236F14D3295300D320A8 /* EqualizerPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5306236C14D3295300D320A8 /* EqualizerPathView.m */; };
@@ -65,10 +70,6 @@
 		53329642255F2B960027C51A /* AlbumTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53329640255F2B960027C51A /* AlbumTableViewHeader.swift */; };
 		53329648255F2E770027C51A /* PlayAllAndShuffleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53329647255F2E770027C51A /* PlayAllAndShuffleHeader.swift */; };
 		53329649255F2E770027C51A /* PlayAllAndShuffleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53329647255F2E770027C51A /* PlayAllAndShuffleHeader.swift */; };
-		A1B2C3D4E5F6A7B8C9D0E1F2 /* PlaylistHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6A7B8C9D0E1F3 /* PlaylistHeaderView.swift */; };
-		A1B2C3D4E5F6A7B8C9D0E1F4 /* PlaylistHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6A7B8C9D0E1F3 /* PlaylistHeaderView.swift */; };
-		359A82ADE84F45CA8BC3A0A4 /* PlaylistGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31E5E14E8A8405FAB89AB15 /* PlaylistGridCell.swift */; };
-		052F1402511D4AE3BA3A4351 /* PlaylistGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31E5E14E8A8405FAB89AB15 /* PlaylistGridCell.swift */; };
 		53329652255F30220027C51A /* ClosureSleeve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53329651255F30220027C51A /* ClosureSleeve.swift */; };
 		53329653255F30220027C51A /* ClosureSleeve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53329651255F30220027C51A /* ClosureSleeve.swift */; };
 		533C658A15ABB9A9003EAF29 /* HomeAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 533C659015ABB9A9003EAF29 /* HomeAlbumViewController.xib */; };
@@ -110,12 +111,8 @@
 		534B20E125619F3B007FF1D7 /* UIStackView+AddArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534B20DF25619F3B007FF1D7 /* UIStackView+AddArrangedSubviews.swift */; };
 		534B20E62561E444007FF1D7 /* LockScreenAudioControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534B20E52561E444007FF1D7 /* LockScreenAudioControls.swift */; };
 		534B20E72561E444007FF1D7 /* LockScreenAudioControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534B20E52561E444007FF1D7 /* LockScreenAudioControls.swift */; };
-		2E7D98189EB64816B26333E7 /* HapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92416E88467E4FC384ABDFCA /* HapticEngine.swift */; };
-		D349DD62D742475BBFC33513 /* HapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92416E88467E4FC384ABDFCA /* HapticEngine.swift */; };
 		534B20E9256202CF007FF1D7 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534B20E8256202CF007FF1D7 /* PlayerViewController.swift */; };
 		534B20EA256202CF007FF1D7 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534B20E8256202CF007FF1D7 /* PlayerViewController.swift */; };
-		A1B2C3D4E5F60002A1B2C3D4 /* QueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60001A1B2C3D4 /* QueueViewController.swift */; };
-		A1B2C3D4E5F60003A1B2C3D4 /* QueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60001A1B2C3D4 /* QueueViewController.swift */; };
 		53523D8F11CD5889006AEA48 /* GenresAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53523D8D11CD5889006AEA48 /* GenresAlbumViewController.m */; };
 		53523D9011CD5889006AEA48 /* GenresAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53523D8E11CD5889006AEA48 /* GenresAlbumViewController.xib */; };
 		53523D9411CD61F7006AEA48 /* GenresArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53523D9211CD61F7006AEA48 /* GenresArtistViewController.m */; };
@@ -185,6 +182,7 @@
 		539796E41162B68800F41D8B /* AllAlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 539796E31162B68800F41D8B /* AllAlbumsViewController.m */; };
 		539797FE1162D4D200F41D8B /* AllAlbumsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 539797FD1162D4D200F41D8B /* AllAlbumsViewController.xib */; };
 		5398F26D11DA61DA00007870 /* SettingsTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5398F26B11DA61DA00007870 /* SettingsTabViewController.m */; };
+		5399CA68CC3B4C78B51DFB7E /* AddToPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896F4CEF5C20482984BC9115 /* AddToPlaylistViewController.swift */; };
 		53A2BE24147DF09800E44822 /* EqualizerPointView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A2BE23147DF09800E44822 /* EqualizerPointView.m */; };
 		53A2BE26147DF09800E44822 /* EqualizerPointView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A2BE23147DF09800E44822 /* EqualizerPointView.m */; };
 		53A2BE28147DF13600E44822 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A2BE27147DF13600E44822 /* OpenGLES.framework */; };
@@ -265,10 +263,6 @@
 		53CB016825864D5200E2DF10 /* NSFileManager+ZKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE38671EA961C80058B925 /* NSFileManager+ZKAdditions.m */; };
 		53CF64F725843ADA00BD47DC /* SlidingNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CF64F625843ADA00BD47DC /* SlidingNotification.swift */; };
 		53CF64F825843ADA00BD47DC /* SlidingNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CF64F625843ADA00BD47DC /* SlidingNotification.swift */; };
-		7C73DA9BF9DE425C8D9B41FF /* AddToPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896F4CEF5C20482984BC9115 /* AddToPlaylistViewController.swift */; };
-		5399CA68CC3B4C78B51DFB7E /* AddToPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896F4CEF5C20482984BC9115 /* AddToPlaylistViewController.swift */; };
-		0C122895D3F84ED0B7EB5D81 /* MiniPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8661B57FB51400BB3AB525A /* MiniPlayerView.swift */; };
-		1A8A0E893B2C41F0A6FB2C66 /* MiniPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8661B57FB51400BB3AB525A /* MiniPlayerView.swift */; };
 		53D44F8515AA621B00CDD3B8 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D44F8415AA621A00CDD3B8 /* Accelerate.framework */; };
 		53D973FE255BFCF500AABF7F /* UniversalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D973FD255BFCF500AABF7F /* UniversalTableViewCell.swift */; };
 		53D973FF255BFCF500AABF7F /* UniversalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D973FD255BFCF500AABF7F /* UniversalTableViewCell.swift */; };
@@ -539,6 +533,12 @@
 		53FE67A7256DD0F00015FC83 /* GCDWebServerFileRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE678C256DD0F00015FC83 /* GCDWebServerFileRequest.m */; };
 		53FE67AC256DE9600015FC83 /* Defines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FE67AB256DE9600015FC83 /* Defines.swift */; };
 		53FE67AD256DE9600015FC83 /* Defines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FE67AB256DE9600015FC83 /* Defines.swift */; };
+		7C73DA9BF9DE425C8D9B41FF /* AddToPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896F4CEF5C20482984BC9115 /* AddToPlaylistViewController.swift */; };
+		A1B2C3D4E5F60002A1B2C3D4 /* QueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60001A1B2C3D4 /* QueueViewController.swift */; };
+		A1B2C3D4E5F60003A1B2C3D4 /* QueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60001A1B2C3D4 /* QueueViewController.swift */; };
+		A1B2C3D4E5F6A7B8C9D0E1F2 /* PlaylistHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6A7B8C9D0E1F3 /* PlaylistHeaderView.swift */; };
+		A1B2C3D4E5F6A7B8C9D0E1F4 /* PlaylistHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6A7B8C9D0E1F3 /* PlaylistHeaderView.swift */; };
+		D349DD62D742475BBFC33513 /* HapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92416E88467E4FC384ABDFCA /* HapticEngine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -650,8 +650,6 @@
 		53329606255EF21D0027C51A /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		53329640255F2B960027C51A /* AlbumTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewHeader.swift; sourceTree = "<group>"; };
 		53329647255F2E770027C51A /* PlayAllAndShuffleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayAllAndShuffleHeader.swift; sourceTree = "<group>"; };
-		A1B2C3D4E5F6A7B8C9D0E1F3 /* PlaylistHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistHeaderView.swift; sourceTree = "<group>"; };
-		E31E5E14E8A8405FAB89AB15 /* PlaylistGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistGridCell.swift; sourceTree = "<group>"; };
 		53329651255F30220027C51A /* ClosureSleeve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureSleeve.swift; sourceTree = "<group>"; };
 		533D181A255F72FE003F962C /* CacheOfflineFoldersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CacheOfflineFoldersViewController.xib; sourceTree = "<group>"; };
 		533D181B255F72FF003F962C /* CacheOfflineFoldersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheOfflineFoldersViewController.h; sourceTree = "<group>"; };
@@ -669,9 +667,7 @@
 		534B20D925619936007FF1D7 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		534B20DF25619F3B007FF1D7 /* UIStackView+AddArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+AddArrangedSubviews.swift"; sourceTree = "<group>"; };
 		534B20E52561E444007FF1D7 /* LockScreenAudioControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenAudioControls.swift; sourceTree = "<group>"; };
-		92416E88467E4FC384ABDFCA /* HapticEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticEngine.swift; sourceTree = "<group>"; };
 		534B20E8256202CF007FF1D7 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
-		A1B2C3D4E5F60001A1B2C3D4 /* QueueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueViewController.swift; sourceTree = "<group>"; };
 		53523D8C11CD5889006AEA48 /* GenresAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenresAlbumViewController.h; sourceTree = "<group>"; };
 		53523D8D11CD5889006AEA48 /* GenresAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GenresAlbumViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		53523D8E11CD5889006AEA48 /* GenresAlbumViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenresAlbumViewController.xib; sourceTree = "<group>"; };
@@ -788,8 +784,6 @@
 		53C3AB72257DDA1000B35B99 /* LicensesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicensesViewController.swift; sourceTree = "<group>"; };
 		53C7FD9C150F0E94008DA51C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		53CF64F625843ADA00BD47DC /* SlidingNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingNotification.swift; sourceTree = "<group>"; };
-		C8661B57FB51400BB3AB525A /* MiniPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerView.swift; sourceTree = "<group>"; };
-		896F4CEF5C20482984BC9115 /* AddToPlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPlaylistViewController.swift; sourceTree = "<group>"; };
 		53D44F8415AA621A00CDD3B8 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		53D973FD255BFCF500AABF7F /* UniversalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalTableViewCell.swift; sourceTree = "<group>"; };
 		53D97416255BFE9D00AABF7F /* iSub-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "iSub-Bridging-Header.h"; path = "Other/iSub-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -1063,6 +1057,12 @@
 		53FE678C256DD0F00015FC83 /* GCDWebServerFileRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerFileRequest.m; sourceTree = "<group>"; };
 		53FE678D256DD0F00015FC83 /* GCDWebServerURLEncodedFormRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerURLEncodedFormRequest.h; sourceTree = "<group>"; };
 		53FE67AB256DE9600015FC83 /* Defines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defines.swift; sourceTree = "<group>"; };
+		896F4CEF5C20482984BC9115 /* AddToPlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPlaylistViewController.swift; sourceTree = "<group>"; };
+		92416E88467E4FC384ABDFCA /* HapticEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticEngine.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F60001A1B2C3D4 /* QueueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueViewController.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6A7B8C9D0E1F3 /* PlaylistHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistHeaderView.swift; sourceTree = "<group>"; };
+		C8661B57FB51400BB3AB525A /* MiniPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerView.swift; sourceTree = "<group>"; };
+		E31E5E14E8A8405FAB89AB15 /* PlaylistGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistGridCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2098,7 +2098,6 @@
 				ORGANIZATIONNAME = "Ben Baron";
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = 7596YH3S97;
 						LastSwiftMigration = 1210;
 						ProvisioningStyle = Automatic;
 					};
@@ -2743,6 +2742,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = NZWJ3SYL4G;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2773,7 +2773,7 @@
 					"-lz",
 				);
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.einsteinx2.isub;
+				PRODUCT_BUNDLE_IDENTIFIER = fran6nd.isub;
 				PRODUCT_NAME = iSub;
 				SWIFT_OBJC_BRIDGING_HEADER = "Other/iSub-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2791,6 +2791,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = NZWJ3SYL4G;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
@@ -2819,7 +2820,7 @@
 					"-lz",
 				);
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.einsteinx2.isub;
+				PRODUCT_BUNDLE_IDENTIFIER = fran6nd.isub;
 				PRODUCT_NAME = iSub;
 				SWIFT_OBJC_BRIDGING_HEADER = "Other/iSub-Bridging-Header.h";
 				SWIFT_VERSION = 5.9;
@@ -2853,7 +2854,8 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 7596YH3S97;
-					ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -2877,7 +2879,6 @@
 					"\"$(SRCROOT)\"",
 					/usr/include/libxml2,
 				);
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/Classes\"",
@@ -2905,6 +2906,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = NZWJ3SYL4G;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2935,7 +2937,7 @@
 					"-lz",
 				);
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.einsteinx2.isub;
+				PRODUCT_BUNDLE_IDENTIFIER = fran6nd.isub;
 				PRODUCT_NAME = iSub;
 				SWIFT_OBJC_BRIDGING_HEADER = "Other/iSub-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -3123,8 +3125,9 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 7596YH3S97;
-					ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -3147,7 +3150,6 @@
 					"\"$(SRCROOT)\"",
 					/usr/include/libxml2,
 				);
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/Classes\"",
@@ -3191,7 +3193,8 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				DEVELOPMENT_TEAM = 7596YH3S97;
-					ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -3214,7 +3217,6 @@
 					"\"$(SRCROOT)\"",
 					/usr/include/libxml2,
 				);
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/Classes\"",
