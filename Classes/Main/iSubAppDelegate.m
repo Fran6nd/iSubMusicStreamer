@@ -53,9 +53,9 @@ LOG_LEVEL_ISUB_DEFAULT
 #pragma mark Application lifecycle
 
 - (void)showPlayer {
-    PlayerViewController *playerViewController = [[PlayerViewController alloc] init];
-    playerViewController.hidesBottomBarWhenPushed = YES;
-    [(UINavigationController*)self.currentTabBarController.selectedViewController pushViewController:playerViewController animated:YES];
+    // Delegate to the tab bar controller so the player always opens as a modal sheet,
+    // consistent with the mini player tap path (deduplication included).
+    [(CustomUITabBarController *)self.currentTabBarController openPlayer];
 }
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
