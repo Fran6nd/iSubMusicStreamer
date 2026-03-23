@@ -82,6 +82,9 @@ static const CGFloat kMiniPlayerHeight = 64.0;
 
     [self.view addSubview:_miniPlayerView];
 
+    // Observe tab bar visibility so we can animate the mini player alongside nav transitions.
+    [self.tabBar addObserver:self forKeyPath:@"hidden" options:NSKeyValueObservingOptionNew context:nil];
+
     // Anchor to view.bottomAnchor — constant is kept in sync with tabBar height in viewDidLayoutSubviews.
     // This decouples us from tabBar.topAnchor, which UIKit repositions during sheet presentations.
     _miniPlayerBottomConstraint = [_miniPlayerView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:0];
@@ -99,16 +102,57 @@ static const CGFloat kMiniPlayerHeight = 64.0;
     // Keep mini player flush above the tab bar by tracking its current frame.
     _miniPlayerBottomConstraint.constant = -self.tabBar.frame.size.height;
 
-    // Mirror the tab bar: when the tab bar is hidden (e.g. hidesBottomBarWhenPushed),
-    // the mini player must disappear too. Alpha has no layout side-effects.
+    // Reserve space only when the mini player is on screen.
     BOOL visible = !self.tabBar.isHidden && !_miniPlayerView.isHidden;
-    _miniPlayerView.alpha = visible ? 1.0 : 0.0;
-    _miniPlayerView.userInteractionEnabled = visible;
-
-    // Reserve space only when the mini player is actually on screen.
     self.additionalSafeAreaInsets = visible
         ? UIEdgeInsetsMake(0, 0, kMiniPlayerHeight, 0)
         : UIEdgeInsetsZero;
+}
+
+// Called by UIKit when hidesBottomBarWhenPushed changes the tab bar visibility.
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if (![keyPath isEqualToString:@"hidden"]) return;
+
+    BOOL tabBarHiding = [change[NSKeyValueChangeNewKey] boolValue];
+    BOOL hasSong = !_miniPlayerView.isHidden;
+    CGFloat targetAlpha = (tabBarHiding || !hasSong) ? 0.0 : 1.0;
+    CGFloat slideX = tabBarHiding ? -self.view.bounds.size.width : 0;
+
+    // Use the selected navigation controller's transition coordinator so the
+    // animation runs with the same curve and duration as the push/pop.
+    UINavigationController *nav = [self.selectedViewController isKindOfClass:UINavigationController.class]
+        ? (UINavigationController *)self.selectedViewController : nil;
+    id<UIViewControllerTransitionCoordinator> coordinator = nav.transitionCoordinator;
+
+    if (coordinator) {
+        // Prepare starting state for a pop-back (tab bar reappearing).
+        if (!tabBarHiding) {
+            _miniPlayerView.transform = CGAffineTransformMakeTranslation(-self.view.bounds.size.width, 0);
+            _miniPlayerView.alpha = 0;
+        }
+        [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> ctx) {
+            self->_miniPlayerView.transform = CGAffineTransformMakeTranslation(slideX, 0);
+            self->_miniPlayerView.alpha = targetAlpha;
+        } completion:^(id<UIViewControllerTransitionCoordinatorContext> ctx) {
+            if (ctx.isCancelled) {
+                // Interactive pop was cancelled — restore previous state.
+                BOOL restoreVisible = !self.tabBar.isHidden && hasSong;
+                self->_miniPlayerView.transform = CGAffineTransformIdentity;
+                self->_miniPlayerView.alpha = restoreVisible ? 1.0 : 0.0;
+            } else {
+                self->_miniPlayerView.transform = CGAffineTransformIdentity;
+                self->_miniPlayerView.userInteractionEnabled = !tabBarHiding && hasSong;
+            }
+        }];
+    } else {
+        _miniPlayerView.alpha = targetAlpha;
+        _miniPlayerView.transform = CGAffineTransformIdentity;
+        _miniPlayerView.userInteractionEnabled = !tabBarHiding && hasSong;
+    }
+}
+
+- (void)dealloc {
+    [self.tabBar removeObserver:self forKeyPath:@"hidden"];
 }
 
 @end
