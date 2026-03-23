@@ -214,7 +214,7 @@ private enum PlaylistSource {
         let currTableName = settings.isJukeboxEnabled ? "jukeboxCurrentPlaylist" : "currentPlaylist"
         if let queue = database.currentPlaylistDbQueue {
             for song in songs {
-                song.insertIntoTable(currTableName, inDatabaseQueue: queue)
+                song.insert(intoTable: currTableName, in: queue)
             }
         }
 
@@ -246,7 +246,7 @@ private enum PlaylistSource {
         let currTableName = settings.isJukeboxEnabled ? "jukeboxCurrentPlaylist" : "currentPlaylist"
         if let queue = database.currentPlaylistDbQueue {
             for song in songs {
-                song.insertIntoTable(currTableName, inDatabaseQueue: queue)
+                song.insert(intoTable: currTableName, in: queue)
             }
         }
 
