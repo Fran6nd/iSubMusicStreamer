@@ -296,14 +296,12 @@ import UIKit
         let vc = PlaylistSongsViewController()
         vc.md5 = localPlaylist.md5
         vc.playlistCount = localPlaylist.count
-        vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }
 
     private func pushPlaylistSongs(serverPlaylist: ServerPlaylist) {
         let vc = PlaylistSongsViewController()
         vc.serverPlaylist = serverPlaylist
-        vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }
 }

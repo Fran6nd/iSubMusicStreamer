@@ -214,7 +214,8 @@ extension CustomUITabBarController: UINavigationControllerDelegate {
                                                    animated: animated)
 
         let hasSong = !miniPlayerView.isHidden
-        let hidingTabBar = viewController.hidesBottomBarWhenPushed
+        // Only the full-screen player hides the tab bar and mini player.
+        let hidingTabBar = viewController is PlayerViewController
         let width = navigationController.view.bounds.width
 
         let playerTarget: CGAffineTransform = (hidingTabBar || !hasSong)
@@ -251,10 +252,14 @@ extension CustomUITabBarController: UINavigationControllerDelegate {
         }, completion: { [weak self] ctx in
             guard let self else { return }
             if ctx.isCancelled {
-                self.miniPlayerView.transform = CGAffineTransform(translationX: -width, y: 0)
-                self.tabBar.isHidden = !hidingTabBar
+                // The transition was cancelled — restore state for the VC we stayed on.
+                let stayingIsPlayer = navigationController.topViewController is PlayerViewController
+                let showMini = hasSong && !stayingIsPlayer
+                self.miniPlayerView.transform = showMini ? .identity : CGAffineTransform(translationX: -width, y: 0)
+                self.miniPlayerView.isUserInteractionEnabled = showMini
+                self.tabBar.isHidden = stayingIsPlayer
                 self.tabBar.transform = .identity
-                self.setChildrenAdditionalInsets(.zero)
+                self.setChildrenAdditionalInsets(showMini ? UIEdgeInsets(top: 0, left: 0, bottom: miniPlayerHeight, right: 0) : .zero)
             } else {
                 self.miniPlayerView.transform = playerTarget
                 self.miniPlayerView.isUserInteractionEnabled = !hidingTabBar && hasSong
