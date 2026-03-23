@@ -98,35 +98,30 @@ final class CustomUITabBarController: UITabBarController {
     private func handleTabBarVisibilityChange(hiding: Bool) {
         let hasSong = !miniPlayerView.isHidden
         let targetAlpha: CGFloat = (hiding || !hasSong) ? 0 : 1
-        let slideX: CGFloat = hiding ? -view.bounds.width : 0
 
+        // The mini player is bottom chrome — animate with a crossfade, matching the tab bar's
+        // own fade behaviour rather than sliding horizontally with the navigation content.
         let nav = selectedViewController as? UINavigationController
         let coordinator = nav?.transitionCoordinator
 
         if let coordinator {
             if !hiding {
-                // Prepare starting state for a pop-back: translate off-screen left, alpha zero.
-                miniPlayerView.transform = CGAffineTransform(translationX: -view.bounds.width, y: 0)
+                // Prepare starting state for pop-back: invisible, no transform.
                 miniPlayerView.alpha = 0
             }
             coordinator.animate(alongsideTransition: { [weak self] _ in
-                guard let self else { return }
-                self.miniPlayerView.transform = CGAffineTransform(translationX: slideX, y: 0)
-                self.miniPlayerView.alpha = targetAlpha
+                self?.miniPlayerView.alpha = targetAlpha
             }, completion: { [weak self] ctx in
                 guard let self else { return }
                 if ctx.isCancelled {
                     let restore = !self.tabBar.isHidden && hasSong
-                    self.miniPlayerView.transform = .identity
                     self.miniPlayerView.alpha = restore ? 1 : 0
                 } else {
-                    self.miniPlayerView.transform = .identity
                     self.miniPlayerView.isUserInteractionEnabled = !hiding && hasSong
                 }
             })
         } else {
             miniPlayerView.alpha = targetAlpha
-            miniPlayerView.transform = .identity
             miniPlayerView.isUserInteractionEnabled = !hiding && hasSong
         }
     }
