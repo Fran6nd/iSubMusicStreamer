@@ -16,6 +16,8 @@ import CocoaLumberjackSwift
     let iconDefaultColor = UIColor(white: 0.8, alpha: 1.0)
     let iconActivatedColor = UIColor.systemBlue
     
+    @objc var onDismiss: (() -> Void)?
+
     var currentSong: Song?
     
     private var notificationObservers = [NSObjectProtocol]()
@@ -464,6 +466,9 @@ import CocoaLumberjackSwift
         stopUpdatingSlider()
         stopUpdatingDownloadProgress()
         unregisterForNotifications()
+        if navigationController?.isBeingDismissed == true {
+            onDismiss?()
+        }
     }
     
     private func registerForNotifications() {
