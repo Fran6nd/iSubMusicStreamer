@@ -258,12 +258,12 @@ import UIKit
     // MARK: - Clone operations
 
     private func copyLocalToServer(_ playlist: ISMSLocalPlaylist) {
-        SlidingNotification.showOnMainWindow(message: "Copying "\(playlist.name)" to server…", duration: 0)
+        SlidingNotification.showOnMainWindow(message: "Copying \"\(playlist.name)\" to server…", duration: 0)
         Task {
             do {
                 _ = try await ServerPlaylistService().cloneLocalToServer(playlist)
                 await MainActor.run {
-                    SlidingNotification.showOnMainWindow(message: ""\(playlist.name)" copied to server")
+                    SlidingNotification.showOnMainWindow(message: "\"\(playlist.name)\" copied to server")
                 }
             } catch {
                 await MainActor.run {
@@ -274,12 +274,12 @@ import UIKit
     }
 
     private func copyServerToLocal(_ playlist: ServerPlaylist) {
-        SlidingNotification.showOnMainWindow(message: "Copying "\(playlist.playlistName)" to local…", duration: 0)
+        SlidingNotification.showOnMainWindow(message: "Copying \"\(playlist.playlistName)\" to local…", duration: 0)
         Task {
             do {
                 _ = try await ServerPlaylistService().cloneServerToLocal(playlist)
                 await MainActor.run {
-                    SlidingNotification.showOnMainWindow(message: ""\(playlist.playlistName)" saved locally")
+                    SlidingNotification.showOnMainWindow(message: "\"\(playlist.playlistName)\" saved locally")
                     self.reloadLocalPlaylists()
                 }
             } catch {

@@ -30,8 +30,6 @@
 #import "ServerListViewController.h"
 #import "CacheViewController.h"
 #import "GenresViewController.h"
-#import "PlaylistsViewController.h"
-#import "PlaylistSongsViewController.h"
 #import "BookmarksViewController.h"
 #import "FoldersViewController.h"
 #import "PlayingViewController.h"
