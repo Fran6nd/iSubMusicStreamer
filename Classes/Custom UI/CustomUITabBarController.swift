@@ -16,7 +16,6 @@ final class CustomUITabBarController: UITabBarController {
     // MARK: - Properties
 
     private let miniPlayerView = MiniPlayerView()
-    private var miniPlayerBottomConstraint: NSLayoutConstraint!
 
     /// Previously installed delegate on the observed nav controller, forwarded in delegate callbacks.
     private weak var forwardNavDelegate: UINavigationControllerDelegate?
@@ -69,9 +68,6 @@ final class CustomUITabBarController: UITabBarController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        // Keep mini player flush above the tab bar by tracking its current frame.
-        miniPlayerBottomConstraint.constant = -tabBar.frame.height
-
         // Reserve space only when the mini player is actually on screen.
         let visible = !tabBar.isHidden && !miniPlayerView.isHidden
         let newInsets = visible ? UIEdgeInsets(top: 0, left: 0, bottom: miniPlayerHeight, right: 0) : .zero
@@ -83,22 +79,35 @@ final class CustomUITabBarController: UITabBarController {
     // MARK: - Mini Player Setup
 
     private func setupMiniPlayer() {
-        miniPlayerView.openPlayerHandler = { [weak self] in
-            self?.openPlayer()
-        }
+        miniPlayerView.openPlayerHandler = { [weak self] in self?.openPlayer() }
         miniPlayerView.visibilityChanged = { [weak self] visible in
             self?.animateMiniPlayerVisibility(visible)
         }
+    }
 
-        view.addSubview(miniPlayerView)
+    // MARK: - Mini Player Reparenting
 
-        miniPlayerBottomConstraint = miniPlayerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+    /// Moves the mini player into `nav`'s view so it participates in navigation transitions.
+    private func attachMiniPlayer(to nav: UINavigationController) {
+        miniPlayerView.removeFromSuperview()
+        nav.view.addSubview(miniPlayerView)
+
+        // The nav controller's bottom sits at the top of the tab bar
+        // (edgesForExtendedLayout = none), so no constant is required.
         NSLayoutConstraint.activate([
-            miniPlayerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            miniPlayerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            miniPlayerBottomConstraint,
+            miniPlayerView.leadingAnchor.constraint(equalTo: nav.view.leadingAnchor),
+            miniPlayerView.trailingAnchor.constraint(equalTo: nav.view.trailingAnchor),
+            miniPlayerView.bottomAnchor.constraint(equalTo: nav.view.bottomAnchor),
             miniPlayerView.heightAnchor.constraint(equalToConstant: miniPlayerHeight),
         ])
+
+        // If the tab bar is already hidden (e.g. switched to a tab whose top VC hides it),
+        // start the mini player in its off-screen position.
+        let alreadyHidden = tabBar.isHidden
+        miniPlayerView.transform = alreadyHidden
+            ? CGAffineTransform(translationX: -nav.view.bounds.width, y: 0)
+            : .identity
+        miniPlayerView.isUserInteractionEnabled = !alreadyHidden && !miniPlayerView.isHidden
     }
 
     // MARK: - Song State Visibility
@@ -126,6 +135,7 @@ final class CustomUITabBarController: UITabBarController {
         observedNavController?.delegate = forwardNavDelegate
 
         guard let nav = selectedViewController as? UINavigationController else {
+            miniPlayerView.removeFromSuperview()
             observedNavController = nil
             forwardNavDelegate = nil
             return
@@ -134,6 +144,8 @@ final class CustomUITabBarController: UITabBarController {
         forwardNavDelegate = nav.delegate
         nav.delegate = self
         observedNavController = nav
+
+        attachMiniPlayer(to: nav)
     }
 
     // MARK: - Open Player
@@ -170,32 +182,34 @@ extension CustomUITabBarController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController,
                                willShow viewController: UIViewController,
                                animated: Bool) {
-        // Forward to any previously installed delegate first.
         forwardNavDelegate?.navigationController?(navigationController,
                                                    willShow: viewController,
                                                    animated: animated)
 
-        // Determine target visibility: hide the mini player when the incoming VC hides the tab bar.
         let hasSong = !miniPlayerView.isHidden
         let hidingTabBar = viewController.hidesBottomBarWhenPushed
-        let targetAlpha: CGFloat = (hidingTabBar || !hasSong) ? 0 : 1
+        let width = navigationController.view.bounds.width
 
-        // Animate alongside the navigation transition using its own coordinator and curve.
+        // Slide the mini player off to the left when the tab bar hides; return it on pop.
+        let targetTransform: CGAffineTransform = (hidingTabBar || !hasSong)
+            ? CGAffineTransform(translationX: -width, y: 0)
+            : .identity
+
         guard animated, let coordinator = navigationController.transitionCoordinator else {
-            miniPlayerView.alpha = targetAlpha
+            miniPlayerView.transform = targetTransform
             miniPlayerView.isUserInteractionEnabled = !hidingTabBar && hasSong
             return
         }
 
         coordinator.animate(alongsideTransition: { [weak self] _ in
-            self?.miniPlayerView.alpha = targetAlpha
+            self?.miniPlayerView.transform = targetTransform
         }, completion: { [weak self] ctx in
             guard let self else { return }
             if ctx.isCancelled {
-                // Interactive pop was cancelled — restore previous state.
-                let restore = !self.tabBar.isHidden && hasSong
-                self.miniPlayerView.alpha = restore ? 1 : 0
+                // Interactive pop cancelled — restore to off-screen (tab bar still hidden).
+                self.miniPlayerView.transform = CGAffineTransform(translationX: -width, y: 0)
             } else {
+                self.miniPlayerView.transform = targetTransform
                 self.miniPlayerView.isUserInteractionEnabled = !hidingTabBar && hasSong
             }
         })
