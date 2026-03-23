@@ -16,8 +16,6 @@ import CocoaLumberjackSwift
     let iconDefaultColor = UIColor(white: 0.8, alpha: 1.0)
     let iconActivatedColor = UIColor.systemBlue
     
-    @objc var onDismiss: (() -> Void)?
-
     var currentSong: Song?
     
     private var notificationObservers = [NSObjectProtocol]()
@@ -436,6 +434,7 @@ import CocoaLumberjackSwift
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        NotificationCenter.default.post(name: .init("iSubPlayerWillShow"), object: nil)
 
         // When presented as a modal sheet (e.g. from mini player), show a dismiss button.
         if navigationController?.presentingViewController != nil, navigationItem.leftBarButtonItem == nil {
@@ -466,8 +465,8 @@ import CocoaLumberjackSwift
         stopUpdatingSlider()
         stopUpdatingDownloadProgress()
         unregisterForNotifications()
-        if navigationController?.isBeingDismissed == true {
-            onDismiss?()
+        if isMovingFromParent || isBeingDismissed || navigationController?.isBeingDismissed == true {
+            NotificationCenter.default.post(name: .init("iSubPlayerWillHide"), object: nil)
         }
     }
     

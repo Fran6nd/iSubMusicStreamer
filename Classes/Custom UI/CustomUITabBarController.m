@@ -61,11 +61,6 @@ static const CGFloat kMiniPlayerHeight = 64.0;
             if ([existing.topViewController isKindOfClass:PlayerViewController.class]) return;
         }
         PlayerViewController *player = [[PlayerViewController alloc] init];
-        player.onDismiss = ^{
-            __strong CustomUITabBarController *s = weakSelf;
-            s.miniPlayerView.hidden = NO;
-            [s viewDidLayoutSubviews];
-        };
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:player];
         if (@available(iOS 15, *)) {
             nav.modalPresentationStyle = UIModalPresentationPageSheet;
@@ -75,8 +70,6 @@ static const CGFloat kMiniPlayerHeight = 64.0;
         } else {
             nav.modalPresentationStyle = UIModalPresentationFullScreen;
         }
-        strongSelf.miniPlayerView.hidden = YES;
-        [strongSelf viewDidLayoutSubviews];
         if (strongSelf.presentedViewController) {
             [strongSelf dismissViewControllerAnimated:NO completion:^{
                 [strongSelf presentViewController:nav animated:YES completion:nil];
@@ -85,6 +78,17 @@ static const CGFloat kMiniPlayerHeight = 64.0;
             [strongSelf presentViewController:nav animated:YES completion:nil];
         }
     };
+
+    // Hide mini player while PlayerViewController is on screen (all paths)
+    [[NSNotificationCenter defaultCenter] addObserver:self
+        selector:@selector(playerWillShow)
+        name:@"iSubPlayerWillShow"
+        object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+        selector:@selector(playerWillHide)
+        name:@"iSubPlayerWillHide"
+        object:nil];
+
     [self.view addSubview:_miniPlayerView];
 
     // Pin the mini player to the leading/trailing edges and directly above the tab bar
@@ -102,6 +106,16 @@ static const CGFloat kMiniPlayerHeight = 64.0;
     self.additionalSafeAreaInsets = (!_miniPlayerView || _miniPlayerView.isHidden)
         ? UIEdgeInsetsZero
         : UIEdgeInsetsMake(0, 0, kMiniPlayerHeight, 0);
+}
+
+- (void)playerWillShow {
+    _miniPlayerView.hidden = YES;
+    self.additionalSafeAreaInsets = UIEdgeInsetsZero;
+}
+
+- (void)playerWillHide {
+    _miniPlayerView.hidden = NO;
+    self.additionalSafeAreaInsets = UIEdgeInsetsMake(0, 0, kMiniPlayerHeight, 0);
 }
 
 @end
