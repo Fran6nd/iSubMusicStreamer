@@ -72,13 +72,9 @@ LOG_LEVEL_ISUB_DEFAULT
     // Initialize the lock screen controls
     [LockScreenAudioControls setup];
     
-    // Adjust the window to the correct size before anything else loads to prevent various sizing/positioning issues
-    // NOTE: This is still needed, probably due to the old school XIB file used for the main window
-    if (!UIDevice.isPad) {
-        CGSize screenSize = UIScreen.mainScreen.preferredMode.size;
-        CGFloat screenScale = UIScreen.mainScreen.scale;
-        self.window.size = CGSizeMake(screenSize.width / screenScale, screenSize.height / screenScale);
-    }
+    // Force the window to fill the screen. The XIB declares a fixed 320×568 frame with
+    // resizesToFullScreen=NO, so we must correct it at runtime before any layout occurs.
+    self.window.frame = UIScreen.mainScreen.bounds;
 	
 #if !defined(ADHOC) && !defined(RELEASE)
     // Don't turn on console logging for adhoc or release builds
