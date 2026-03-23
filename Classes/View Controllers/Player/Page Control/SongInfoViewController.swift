@@ -56,7 +56,7 @@ final class SongInfoViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+        super.viewWillDisappear(animated)
         stopUpdatingRealtimeBitrate()
         NotificationCenter.removeObserverOnMainThread(self, name: ISMSNotification_SongPlaybackStarted)
     }
