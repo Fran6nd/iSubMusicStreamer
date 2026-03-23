@@ -69,16 +69,10 @@ final class CustomUITabBarController: UITabBarController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-
-        // Keep mini player flush above the tab bar by tracking its current frame.
+        // Only keep the mini player flush above the tab bar.
+        // Inset management is owned exclusively by animateMiniPlayerVisibility
+        // and the nav-transition coordinator to avoid snapping in-flight animations.
         miniPlayerBottomConstraint.constant = -tabBar.frame.height
-
-        // Reserve space only when the mini player is actually on screen.
-        let visible = !tabBar.isHidden && !miniPlayerView.isHidden
-        let newInsets = visible ? UIEdgeInsets(top: 0, left: 0, bottom: miniPlayerHeight, right: 0) : .zero
-        if additionalSafeAreaInsets != newInsets {
-            additionalSafeAreaInsets = newInsets
-        }
     }
 
     // MARK: - Tab Bar Appearance
@@ -115,20 +109,45 @@ final class CustomUITabBarController: UITabBarController {
             miniPlayerBottomConstraint,
             miniPlayerView.heightAnchor.constraint(equalToConstant: miniPlayerHeight),
         ])
+
+        // Sync initial state without animation. MiniPlayerView.refresh() ran
+        // during init (before the callback was wired), so isHidden already
+        // reflects whether a song is queued. Mirror that into insets/alpha here.
+        let initialVisible = !miniPlayerView.isHidden
+        miniPlayerView.alpha = initialVisible ? 1 : 0
+        miniPlayerView.isUserInteractionEnabled = initialVisible
+        additionalSafeAreaInsets = initialVisible
+            ? UIEdgeInsets(top: 0, left: 0, bottom: miniPlayerHeight, right: 0)
+            : .zero
     }
 
     // MARK: - Song State Visibility
 
-    /// Fades the mini player when a song starts or ends while no navigation transition is in flight.
+    /// Fades the mini player in or out when a song starts or stops.
+    /// This is the single owner of `isHidden`, `alpha`, and `additionalSafeAreaInsets`
+    /// for song-state transitions, so it doesn't conflict with layout passes.
     private func animateMiniPlayerVisibility(_ visible: Bool) {
-        guard !tabBar.isHidden else { return }
-        let targetAlpha: CGFloat = visible ? 1 : 0
+        // When the tab bar is hidden (deep nav push) there is nothing to animate;
+        // just track the logical state so we can restore correctly on pop.
+        guard !tabBar.isHidden else {
+            miniPlayerView.isHidden = !visible
+            miniPlayerView.isUserInteractionEnabled = false
+            return
+        }
+        if visible {
+            // Reveal before the animation so alpha fades in from nothing.
+            miniPlayerView.isHidden = false
+            miniPlayerView.alpha = 0
+        }
         let targetInsets = visible
             ? UIEdgeInsets(top: 0, left: 0, bottom: miniPlayerHeight, right: 0)
             : .zero
         UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut) {
-            self.miniPlayerView.alpha = targetAlpha
+            self.miniPlayerView.alpha = visible ? 1 : 0
             self.additionalSafeAreaInsets = targetInsets
+        } completion: { _ in
+            // Collapse after the fade so layout reclaims the space cleanly.
+            if !visible { self.miniPlayerView.isHidden = true }
         }
         miniPlayerView.isUserInteractionEnabled = visible
     }
@@ -198,22 +217,30 @@ extension CustomUITabBarController: UINavigationControllerDelegate {
         let targetTransform: CGAffineTransform = (hidingTabBar || !hasSong)
             ? CGAffineTransform(translationX: -width, y: 0)
             : .identity
+        // Insets must match tab bar visibility so pushed VCs don't gain phantom space.
+        let targetInsets = (!hidingTabBar && hasSong)
+            ? UIEdgeInsets(top: 0, left: 0, bottom: miniPlayerHeight, right: 0)
+            : .zero
 
         guard animated, let coordinator = navigationController.transitionCoordinator else {
             miniPlayerView.transform = targetTransform
+            additionalSafeAreaInsets = targetInsets
             miniPlayerView.isUserInteractionEnabled = !hidingTabBar && hasSong
             return
         }
 
         coordinator.animate(alongsideTransition: { [weak self] _ in
             self?.miniPlayerView.transform = targetTransform
+            self?.additionalSafeAreaInsets = targetInsets
         }, completion: { [weak self] ctx in
             guard let self else { return }
             if ctx.isCancelled {
                 // Interactive pop cancelled — restore to off-screen (tab bar still hidden).
                 self.miniPlayerView.transform = CGAffineTransform(translationX: -width, y: 0)
+                self.additionalSafeAreaInsets = .zero
             } else {
                 self.miniPlayerView.transform = targetTransform
+                self.additionalSafeAreaInsets = targetInsets
                 self.miniPlayerView.isUserInteractionEnabled = !hidingTabBar && hasSong
             }
         })

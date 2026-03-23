@@ -159,10 +159,18 @@ import SnapKit
 
     @objc func refresh() {
         let song = PlayQueue.shared().currentDisplaySong()
-        let nowHidden = (song == nil)
-        if isHidden != nowHidden {
-            isHidden = nowHidden
-            visibilityChanged?(!nowHidden)
+        let nowVisible = (song != nil)
+        let wasVisible = !isHidden
+        if wasVisible != nowVisible {
+            // Notify the owner (CustomUITabBarController) so it can drive the
+            // animated isHidden + insets transition. If no owner is wired yet
+            // (e.g. during init), manage isHidden directly so the initial state
+            // is correct before the first layout pass.
+            if let visibilityChanged {
+                visibilityChanged(nowVisible)
+            } else {
+                isHidden = !nowVisible
+            }
         }
         guard let song = song else { return }
 
