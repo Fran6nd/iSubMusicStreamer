@@ -175,8 +175,8 @@
 		538C8FED2560C8BA005D6CA9 /* CocoaLumberjackSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 533D18DD25602526003F962C /* CocoaLumberjackSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		538C8FEE2560C8C4005D6CA9 /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 533D18DD25602526003F962C /* CocoaLumberjackSwift.framework */; };
 		538C8FEF2560C8C4005D6CA9 /* CocoaLumberjackSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 533D18DD25602526003F962C /* CocoaLumberjackSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		538E5255255A31F2000DF682 /* UIApplication+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 538E5254255A31F2000DF682 /* UIApplication+Helper.m */; };
-		538E5256255A31F2000DF682 /* UIApplication+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 538E5254255A31F2000DF682 /* UIApplication+Helper.m */; };
+		A6E95DC815704CEDA7842D26 /* UIApplication+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116534E98378472EA15D8EFD /* UIApplication+Helper.swift */; };
+		1587475EEAE641CF9425086F /* UIApplication+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116534E98378472EA15D8EFD /* UIApplication+Helper.swift */; };
 		539148BA2559E597004AAC3F /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 539148B92559E597004AAC3F /* CoreServices.framework */; };
 		539148C52559EAAF004AAC3F /* libFlurry_11.1.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 539148C42559EAAF004AAC3F /* libFlurry_11.1.1.a */; };
 		539148C62559EAAF004AAC3F /* libFlurry_11.1.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 539148C42559EAAF004AAC3F /* libFlurry_11.1.1.a */; };
@@ -732,7 +732,7 @@
 		538C8FE625609F4F005D6CA9 /* BlurredSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredSectionHeader.swift; sourceTree = "<group>"; };
 		538C8FE92560C7AB005D6CA9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		538E5253255A31F2000DF682 /* UIApplication+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIApplication+Helper.h"; sourceTree = "<group>"; };
-		538E5254255A31F2000DF682 /* UIApplication+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+Helper.m"; sourceTree = "<group>"; };
+		116534E98378472EA15D8EFD /* UIApplication+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Helper.swift"; sourceTree = "<group>"; };
 		539148A72559CBDF004AAC3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/EqualizerViewController.xib; sourceTree = "<group>"; };
 		539148A82559CBDF004AAC3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SettingsTabViewController.xib; sourceTree = "<group>"; };
 		539148A92559CBDF004AAC3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ServerListViewController.xib; sourceTree = "<group>"; };
@@ -1874,7 +1874,7 @@
 			children = (
 				53EA2DE1257D7B4D0003F38D /* UIView+ViewController.swift */,
 				538E5253255A31F2000DF682 /* UIApplication+Helper.h */,
-				538E5254255A31F2000DF682 /* UIApplication+Helper.m */,
+				116534E98378472EA15D8EFD /* UIApplication+Helper.swift */,
 				53FE34461EA961540058B925 /* UIImage+Tint.h */,
 				53FE34471EA961540058B925 /* UIImage+Tint.m */,
 				53FE34541EA961540058B925 /* UIView+ObjCFrameHelper.h */,
@@ -2405,7 +2405,7 @@
 				53FE6792256DD0F00015FC83 /* GCDWebServerFunctions.m in Sources */,
 				53FE679E256DD0F00015FC83 /* GCDWebServerStreamedResponse.m in Sources */,
 				533295EC255EEFE50027C51A /* FMDatabaseAdditions.m in Sources */,
-				538E5255255A31F2000DF682 /* UIApplication+Helper.m in Sources */,
+				A6E95DC815704CEDA7842D26 /* UIApplication+Helper.swift in Sources */,
 				53ADBBC013352DB40098FAE6 /* FolderDropdownControl.m in Sources */,
 				53FE38B01EA961C80058B925 /* ZKDataArchive.m in Sources */,
 				53FE38921EA961C80058B925 /* NSDate+ZKAdditions.m in Sources */,
@@ -2625,7 +2625,7 @@
 				53FE37781EA961720058B925 /* PlaylistSingleton.m in Sources */,
 				53BC282C139AF0DD00A825F1 /* OBSlider.m in Sources */,
 				53FE38881EA961C80058B925 /* GMAppleDouble+ZKAdditions.m in Sources */,
-				538E5256255A31F2000DF682 /* UIApplication+Helper.m in Sources */,
+				1587475EEAE641CF9425086F /* UIApplication+Helper.swift in Sources */,
 				533295F9255EEFE50027C51A /* FMDatabasePool.m in Sources */,
 				53BC282D139AF0DD00A825F1 /* FolderDropdownControl.m in Sources */,
 				53FE38B21EA961C80058B925 /* ZKDataArchive.m in Sources */,
