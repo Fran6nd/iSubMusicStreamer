@@ -322,8 +322,8 @@
 		AD7DFF52492C49818C4F49F7 /* NSString+HasValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91EB3C2C51F4799A1EFB761 /* NSString+HasValue.swift */; };
 		A552A88368654B0F92175591 /* NSString+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4B8A80A1A940E1BFCA18B4 /* NSString+Hex.swift */; };
 		20444C3A3E084445A6DC64AB /* NSString+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4B8A80A1A940E1BFCA18B4 /* NSString+Hex.swift */; };
-		53FE35101EA961540058B925 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34131EA961540058B925 /* NSString+MD5.m */; };
-		53FE35121EA961540058B925 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34131EA961540058B925 /* NSString+MD5.m */; };
+		C204A7A2CA124BFE8C04259F /* NSString+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B46C480F20F4AEB91977055 /* NSString+MD5.swift */; };
+		E64AA7FF36FF4FB4B82B22B3 /* NSString+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B46C480F20F4AEB91977055 /* NSString+MD5.swift */; };
 		53FE35191EA961540058B925 /* NSString+Time.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34191EA961540058B925 /* NSString+Time.m */; };
 		53FE351B1EA961540058B925 /* NSString+Time.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34191EA961540058B925 /* NSString+Time.m */; };
 		30B0CDC6EE4E4929AE9FB0F6 /* NSString+URLEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648A72DE5FCA4292823A8996 /* NSString+URLEncode.swift */; };
@@ -841,7 +841,7 @@
 		53FE34101EA961540058B925 /* NSString+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hex.h"; sourceTree = "<group>"; };
 		5E4B8A80A1A940E1BFCA18B4 /* NSString+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+Hex.swift"; sourceTree = "<group>"; };
 		53FE34121EA961540058B925 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
-		53FE34131EA961540058B925 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
+		6B46C480F20F4AEB91977055 /* NSString+MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+MD5.swift"; sourceTree = "<group>"; };
 		53FE34181EA961540058B925 /* NSString+Time.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Time.h"; sourceTree = "<group>"; };
 		53FE34191EA961540058B925 /* NSString+Time.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Time.m"; sourceTree = "<group>"; };
 		53FE341C1EA961540058B925 /* NSString+URLEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncode.h"; sourceTree = "<group>"; };
@@ -1857,7 +1857,7 @@
 				53FE34101EA961540058B925 /* NSString+Hex.h */,
 				5E4B8A80A1A940E1BFCA18B4 /* NSString+Hex.swift */,
 				53FE34121EA961540058B925 /* NSString+MD5.h */,
-				53FE34131EA961540058B925 /* NSString+MD5.m */,
+				6B46C480F20F4AEB91977055 /* NSString+MD5.swift */,
 				53FE34181EA961540058B925 /* NSString+Time.h */,
 				53FE34191EA961540058B925 /* NSString+Time.m */,
 				53FE341C1EA961540058B925 /* NSString+URLEncode.h */,
@@ -2432,7 +2432,7 @@
 				53FE378B1EA961720058B925 /* SearchXMLParser.m in Sources */,
 				53A2BE24147DF09800E44822 /* EqualizerPointView.m in Sources */,
 				5306236D14D3295300D320A8 /* EqualizerPathView.m in Sources */,
-				53FE35101EA961540058B925 /* NSString+MD5.m in Sources */,
+				C204A7A2CA124BFE8C04259F /* NSString+MD5.swift in Sources */,
 				53FE36E91EA961720058B925 /* BassEffectValue.m in Sources */,
 				533295EE255EEFE50027C51A /* FMDatabaseQueueAdditions.m in Sources */,
 				5325910114EE22C700DF4BDB /* MBProgressHUD.m in Sources */,
@@ -2652,7 +2652,7 @@
 				53FE67A5256DD0F00015FC83 /* GCDWebServerDataRequest.m in Sources */,
 				53A2BE26147DF09800E44822 /* EqualizerPointView.m in Sources */,
 				5306236F14D3295300D320A8 /* EqualizerPathView.m in Sources */,
-				53FE35121EA961540058B925 /* NSString+MD5.m in Sources */,
+				E64AA7FF36FF4FB4B82B22B3 /* NSString+MD5.swift in Sources */,
 				53FE36EB1EA961720058B925 /* BassEffectValue.m in Sources */,
 				5325910314EE22C700DF4BDB /* MBProgressHUD.m in Sources */,
 				53FE37211EA961720058B925 /* ISMSIndex.m in Sources */,
