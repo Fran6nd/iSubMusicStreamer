@@ -8,72 +8,72 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString * const ISMSNotification_SongPlaybackStarted;
-extern NSString * const ISMSNotification_SongPlaybackPaused;
-extern NSString * const ISMSNotification_SongPlaybackEnded;
-extern NSString * const ISMSNotification_SongPlaybackFailed;
+#define ISMSNotification_SongPlaybackStarted        @"ISMSNotification_SongPlaybackStarted"
+#define ISMSNotification_SongPlaybackPaused         @"ISMSNotification_SongPlaybackPaused"
+#define ISMSNotification_SongPlaybackEnded          @"ISMSNotification_SongPlaybackEnded"
+#define ISMSNotification_SongPlaybackFailed         @"ISMSNotification_SongPlaybackFailed"
 
-extern NSString * const ISMSNotification_AlbumArtLargeDownloaded;
+#define ISMSNotification_AlbumArtLargeDownloaded    @"ISMSNotification_AlbumArtLargeDownloaded"
 
-extern NSString * const ISMSNotification_ServerSwitched;
-extern NSString * const ISMSNotification_ServerCheckPassed;
-extern NSString * const ISMSNotification_ServerCheckFailed;
+#define ISMSNotification_ServerSwitched             @"ISMSNotification_ServerSwitched"
+#define ISMSNotification_ServerCheckPassed          @"ISMSNotification_ServerCheckPassed"
+#define ISMSNotification_ServerCheckFailed          @"ISMSNotification_ServerCheckFailed"
 
-extern NSString * const ISMSNotification_LyricsDownloaded;
-extern NSString * const ISMSNotification_LyricsFailed;
+#define ISMSNotification_LyricsDownloaded           @"ISMSNotification_LyricsDownloaded"
+#define ISMSNotification_LyricsFailed               @"ISMSNotification_LyricsFailed"
 
-extern NSString * const ISMSNotification_RepeatModeChanged;
+#define ISMSNotification_RepeatModeChanged          @"ISMSNotification_RepeatModeChanged"
 
-extern NSString * const ISMSNotification_BassEffectPresetLoaded;
+#define ISMSNotification_BassEffectPresetLoaded     @"ISMSNotification_BassEffectPresetLoaded"
 
-extern NSString * const ISMSNotification_CurrentPlaylistOrderChanged;
-extern NSString * const ISMSNotification_CurrentPlaylistShuffleToggled;
-extern NSString * const ISMSNotification_CurrentPlaylistIndexChanged;
-extern NSString * const ISMSNotification_CurrentPlaylistSongsQueued;
+#define ISMSNotification_CurrentPlaylistOrderChanged    @"ISMSNotification_CurrentPlaylistOrderChanged"
+#define ISMSNotification_CurrentPlaylistShuffleToggled  @"ISMSNotification_CurrentPlaylistShuffleToggled"
+#define ISMSNotification_CurrentPlaylistIndexChanged    @"ISMSNotification_CurrentPlaylistIndexChanged"
+#define ISMSNotification_CurrentPlaylistSongsQueued     @"ISMSNotification_CurrentPlaylistSongsQueued"
 
-extern NSString * const ISMSNotification_AllSongsLoadingArtists;
-extern NSString * const ISMSNotification_AllSongsLoadingAlbums;
-extern NSString * const ISMSNotification_AllSongsSorting;
-extern NSString * const ISMSNotification_AllSongsArtistName;
-extern NSString * const ISMSNotification_AllSongsAlbumName;
-extern NSString * const ISMSNotification_AllSongsSongName;
-extern NSString * const ISMSNotification_AllSongsLoadingFinished;
+#define ISMSNotification_AllSongsLoadingArtists     @"ISMSNotification_AllSongsLoadingArtists"
+#define ISMSNotification_AllSongsLoadingAlbums      @"ISMSNotification_AllSongsLoadingAlbums"
+#define ISMSNotification_AllSongsSorting            @"ISMSNotification_AllSongsSorting"
+#define ISMSNotification_AllSongsArtistName         @"ISMSNotification_AllSongsArtistName"
+#define ISMSNotification_AllSongsAlbumName          @"ISMSNotification_AllSongsAlbumName"
+#define ISMSNotification_AllSongsSongName           @"ISMSNotification_AllSongsSongName"
+#define ISMSNotification_AllSongsLoadingFinished    @"ISMSNotification_AllSongsLoadingFinished"
 
-extern NSString * const ISMSNotification_SongCachingEnabled;
-extern NSString * const ISMSNotification_SongCachingDisabled;
+#define ISMSNotification_SongCachingEnabled         @"ISMSNotification_SongCachingEnabled"
+#define ISMSNotification_SongCachingDisabled        @"ISMSNotification_SongCachingDisabled"
 
-extern NSString * const ISMSNotification_ShowPlayer;
+#define ISMSNotification_ShowPlayer                 @"ISMSNotification_ShowPlayer"
 
-extern NSString * const ISMSNotification_CacheQueueStarted;
-extern NSString * const ISMSNotification_CacheQueueStopped;
-extern NSString * const ISMSNotification_CacheQueueSongDownloaded;
-extern NSString * const ISMSNotification_CacheQueueSongFailed;
-extern NSString * const ISMSNotification_StreamHandlerSongDownloaded;
-extern NSString * const ISMSNotification_StreamHandlerSongFailed;
+#define ISMSNotification_CacheQueueStarted          @"ISMSNotification_CacheQueueStarted"
+#define ISMSNotification_CacheQueueStopped          @"ISMSNotification_CacheQueueStopped"
+#define ISMSNotification_CacheQueueSongDownloaded   @"ISMSNotification_CacheQueueSongDownloaded"
+#define ISMSNotification_CacheQueueSongFailed       @"ISMSNotification_CacheQueueSongFailed"
+#define ISMSNotification_StreamHandlerSongDownloaded @"ISMSNotification_StreamHandlerSongDownloaded"
+#define ISMSNotification_StreamHandlerSongFailed    @"ISMSNotification_StreamHandlerSongFailed"
 
-extern NSString * const ISMSNotification_CacheSizeChecked;
+#define ISMSNotification_CacheSizeChecked           @"ISMSNotification_CacheSizeChecked"
 
-extern NSString * const ISMSNotification_EnteringOfflineMode;
-extern NSString * const ISMSNotification_EnteringOnlineMode;
+#define ISMSNotification_EnteringOfflineMode        @"ISMSNotification_EnteringOfflineMode"
+#define ISMSNotification_EnteringOnlineMode         @"ISMSNotification_EnteringOnlineMode"
 
-extern NSString * const ISMSNotification_BassInitialized;
-extern NSString * const ISMSNotification_BassFreed;
+#define ISMSNotification_BassInitialized            @"ISMSNotification_BassInitialized"
+#define ISMSNotification_BassFreed                  @"ISMSNotification_BassFreed"
 
-extern NSString * const ISMSNotification_JukeboxEnabled;
-extern NSString * const ISMSNotification_JukeboxDisabled;
+#define ISMSNotification_JukeboxEnabled             @"ISMSNotification_JukeboxEnabled"
+#define ISMSNotification_JukeboxDisabled            @"ISMSNotification_JukeboxDisabled"
 
-extern NSString * const ISMSNotification_JukeboxSongInfo;
+#define ISMSNotification_JukeboxSongInfo            @"ISMSNotification_JukeboxSongInfo"
 
-extern NSString * const ISMSNotification_PlayVideo;
-extern NSString * const ISMSNotification_RemoveMoviePlayer;
+#define ISMSNotification_PlayVideo                  @"ISMSNotification_PlayVideo"
+#define ISMSNotification_RemoveMoviePlayer          @"ISMSNotification_RemoveMoviePlayer"
 
-extern NSString * const ISMSNotification_ShowAlbumLoadingScreenOnMainWindow;
-extern NSString * const ISMSNotification_ShowLoadingScreenOnMainWindow;
-extern NSString * const ISMSNotification_HideLoadingScreen;
+#define ISMSNotification_ShowAlbumLoadingScreenOnMainWindow @"ISMSNotification_ShowAlbumLoadingScreenOnMainWindow"
+#define ISMSNotification_ShowLoadingScreenOnMainWindow      @"ISMSNotification_ShowLoadingScreenOnMainWindow"
+#define ISMSNotification_HideLoadingScreen          @"ISMSNotification_HideLoadingScreen"
 
-extern NSString * const ISMSNotification_ShowDeleteButton;
-extern NSString * const ISMSNotification_HideDeleteButton;
+#define ISMSNotification_ShowDeleteButton           @"ISMSNotification_ShowDeleteButton"
+#define ISMSNotification_HideDeleteButton           @"ISMSNotification_HideDeleteButton"
 
-extern NSString * const ISMSNotification_CachedSongDeleted;
+#define ISMSNotification_CachedSongDeleted          @"ISMSNotification_CachedSongDeleted"
 
-extern NSString * const ISMSNotification_QuickSkipSecondsSettingChanged;
+#define ISMSNotification_QuickSkipSecondsSettingChanged @"ISMSNotification_QuickSkipSecondsSettingChanged"

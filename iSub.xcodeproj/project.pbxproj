@@ -394,8 +394,6 @@
 		53FE371B1EA961720058B925 /* SUSCoverArtLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE364A1EA961720058B925 /* SUSCoverArtLoader.m */; };
 		53FE371F1EA961720058B925 /* ISMSIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36511EA961720058B925 /* ISMSIndex.m */; };
 		53FE37211EA961720058B925 /* ISMSIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36511EA961720058B925 /* ISMSIndex.m */; };
-		53FE37251EA961720058B925 /* ISMSNotificationNames.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36591EA961720058B925 /* ISMSNotificationNames.m */; };
-		53FE37271EA961720058B925 /* ISMSNotificationNames.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36591EA961720058B925 /* ISMSNotificationNames.m */; };
 		53FE37371EA961720058B925 /* ISMSServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36651EA961720058B925 /* ISMSServer.m */; };
 		53FE37391EA961720058B925 /* ISMSServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36651EA961720058B925 /* ISMSServer.m */; };
 		53FE373D1EA961720058B925 /* ISMSSong+DAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36691EA961720058B925 /* ISMSSong+DAO.m */; };
@@ -912,7 +910,6 @@
 		53FE36511EA961720058B925 /* ISMSIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISMSIndex.m; sourceTree = "<group>"; };
 		53FE36551EA961720058B925 /* SUSLoaderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUSLoaderManager.h; sourceTree = "<group>"; };
 		53FE36581EA961720058B925 /* ISMSNotificationNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISMSNotificationNames.h; sourceTree = "<group>"; };
-		53FE36591EA961720058B925 /* ISMSNotificationNames.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISMSNotificationNames.m; sourceTree = "<group>"; };
 		53FE36641EA961720058B925 /* ISMSServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISMSServer.h; sourceTree = "<group>"; };
 		53FE36651EA961720058B925 /* ISMSServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISMSServer.m; sourceTree = "<group>"; };
 		53FE36681EA961720058B925 /* ISMSSong+DAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ISMSSong+DAO.h"; sourceTree = "<group>"; };
@@ -1540,7 +1537,6 @@
 				53FE36431EA961720058B925 /* ISMSCacheQueueManager.h */,
 				53FE36441EA961720058B925 /* ISMSCacheQueueManager.m */,
 				53FE36581EA961720058B925 /* ISMSNotificationNames.h */,
-				53FE36591EA961720058B925 /* ISMSNotificationNames.m */,
 				53FE36A11EA961720058B925 /* SearchXMLParser.h */,
 				53FE36A21EA961720058B925 /* SearchXMLParser.m */,
 				5347A1E3256D866A00BFB70A /* HLSReverseProxyServer.swift */,
@@ -2283,7 +2279,6 @@
 				53FE38981EA961C80058B925 /* NSFileHandle+ZKAdditions.m in Sources */,
 				53614ACA116432DA0088ABC0 /* ServerListViewController.m in Sources */,
 				530388A9116571920043292D /* AllSongsViewController.m in Sources */,
-				53FE37251EA961720058B925 /* ISMSNotificationNames.m in Sources */,
 				53FE370D1EA961720058B925 /* ISMSArtist.m in Sources */,
 				53C3AB73257DDA1000B35B99 /* LicensesViewController.swift in Sources */,
 				53FE37B81EA961720058B925 /* SUSQuickAlbumsLoader.m in Sources */,
@@ -2492,7 +2487,6 @@
 				53BC27AE139AF0DD00A825F1 /* ServerListViewController.m in Sources */,
 				53BC27B0139AF0DD00A825F1 /* AllSongsViewController.m in Sources */,
 				5359C85A256EA8FE00C8F8DC /* ObjC.swift in Sources */,
-				53FE37271EA961720058B925 /* ISMSNotificationNames.m in Sources */,
 				53246AB7256C975600E11EC4 /* CacheStatusViewController.swift in Sources */,
 				53FE370F1EA961720058B925 /* ISMSArtist.m in Sources */,
 				53FE37BA1EA961720058B925 /* SUSQuickAlbumsLoader.m in Sources */,
