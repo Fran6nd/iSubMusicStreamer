@@ -308,10 +308,8 @@
 		FC18094BF8E542BE83CD0039 /* NSArray+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85294C3C78064E2983D20DD4 /* NSArray+Safe.swift */; };
 		53FE34E01EA961540058B925 /* NSNotificationCenter+MainThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE33F01EA961540058B925 /* NSNotificationCenter+MainThread.m */; };
 		53FE34E21EA961540058B925 /* NSNotificationCenter+MainThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE33F01EA961540058B925 /* NSNotificationCenter+MainThread.m */; };
-		53FE34E31EA961540058B925 /* NSNull+CleanString.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE33F21EA961540058B925 /* NSNull+CleanString.m */; };
-		53FE34E51EA961540058B925 /* NSNull+CleanString.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE33F21EA961540058B925 /* NSNull+CleanString.m */; };
-		53FE34E61EA961540058B925 /* NSNumber+CleanString.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE33F41EA961540058B925 /* NSNumber+CleanString.m */; };
-		53FE34E81EA961540058B925 /* NSNumber+CleanString.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE33F41EA961540058B925 /* NSNumber+CleanString.m */; };
+		FBC32522392F496ABC4E58D0 /* CleanString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB39C0B9CB5647A18B05C245 /* CleanString.swift */; };
+		65C3CEC47E384009AF305F93 /* CleanString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB39C0B9CB5647A18B05C245 /* CleanString.swift */; };
 		53FE34F81EA961540058B925 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34021EA961540058B925 /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		53FE34FA1EA961540058B925 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34021EA961540058B925 /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		53FE34FB1EA961540058B925 /* NSString+Clean.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34051EA961540058B925 /* NSString+Clean.m */; };
@@ -828,9 +826,8 @@
 		53FE33EF1EA961540058B925 /* NSNotificationCenter+MainThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+MainThread.h"; sourceTree = "<group>"; };
 		53FE33F01EA961540058B925 /* NSNotificationCenter+MainThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+MainThread.m"; sourceTree = "<group>"; };
 		53FE33F11EA961540058B925 /* NSNull+CleanString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNull+CleanString.h"; sourceTree = "<group>"; };
-		53FE33F21EA961540058B925 /* NSNull+CleanString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNull+CleanString.m"; sourceTree = "<group>"; };
 		53FE33F31EA961540058B925 /* NSNumber+CleanString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+CleanString.h"; sourceTree = "<group>"; };
-		53FE33F41EA961540058B925 /* NSNumber+CleanString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+CleanString.m"; sourceTree = "<group>"; };
+		BB39C0B9CB5647A18B05C245 /* CleanString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CleanString.swift"; sourceTree = "<group>"; };
 		53FE34001EA961540058B925 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		53FE34011EA961540058B925 /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
 		53FE34021EA961540058B925 /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
@@ -1866,9 +1863,8 @@
 				53FE341C1EA961540058B925 /* NSString+URLEncode.h */,
 				53FE341D1EA961540058B925 /* NSString+URLEncode.m */,
 				53FE33F11EA961540058B925 /* NSNull+CleanString.h */,
-				53FE33F21EA961540058B925 /* NSNull+CleanString.m */,
+				BB39C0B9CB5647A18B05C245 /* CleanString.swift */,
 				53FE33F31EA961540058B925 /* NSNumber+CleanString.h */,
-				53FE33F41EA961540058B925 /* NSNumber+CleanString.m */,
 			);
 			path = NSString;
 			sourceTree = "<group>";
@@ -2307,7 +2303,7 @@
 				53FE67AC256DE9600015FC83 /* Defines.swift in Sources */,
 				53FE38BC1EA961C80058B925 /* ZKLog.m in Sources */,
 				53FE358E1EA961540058B925 /* EX2RingBuffer.m in Sources */,
-				53FE34E31EA961540058B925 /* NSNull+CleanString.m in Sources */,
+				FBC32522392F496ABC4E58D0 /* CleanString.swift in Sources */,
 				53FE38951EA961C80058B925 /* NSDictionary+ZKAdditions.m in Sources */,
 				53FE37191EA961720058B925 /* SUSCoverArtLoader.m in Sources */,
 				53FE36FB1EA961720058B925 /* BassWrapper.m in Sources */,
@@ -2426,7 +2422,7 @@
 				53FE37461EA961720058B925 /* ISMSStreamHandler.m in Sources */,
 				533295F8255EEFE50027C51A /* FMDatabasePool.m in Sources */,
 				538C8FE725609F4F005D6CA9 /* BlurredSectionHeader.swift in Sources */,
-				53FE34E61EA961540058B925 /* NSNumber+CleanString.m in Sources */,
+
 				53FE38B61EA961C80058B925 /* ZKFileArchive.m in Sources */,
 				536585811478920D00FE57A5 /* EqualizerViewController.m in Sources */,
 				538C8FE125606299005D6CA9 /* RefreshControl.swift in Sources */,
@@ -2518,7 +2514,7 @@
 				53FE38BE1EA961C80058B925 /* ZKLog.m in Sources */,
 				53FE35901EA961540058B925 /* EX2RingBuffer.m in Sources */,
 				53C3AB74257DDA1000B35B99 /* LicensesViewController.swift in Sources */,
-				53FE34E51EA961540058B925 /* NSNull+CleanString.m in Sources */,
+				65C3CEC47E384009AF305F93 /* CleanString.swift in Sources */,
 				53FE38971EA961C80058B925 /* NSDictionary+ZKAdditions.m in Sources */,
 				53FE371B1EA961720058B925 /* SUSCoverArtLoader.m in Sources */,
 				53FE36FD1EA961720058B925 /* BassWrapper.m in Sources */,
@@ -2643,7 +2639,7 @@
 				53FE373F1EA961720058B925 /* ISMSSong+DAO.m in Sources */,
 				53FE37481EA961720058B925 /* ISMSStreamHandler.m in Sources */,
 				533295ED255EEFE50027C51A /* FMDatabaseAdditions.m in Sources */,
-				53FE34E81EA961540058B925 /* NSNumber+CleanString.m in Sources */,
+
 				53FE38B81EA961C80058B925 /* ZKFileArchive.m in Sources */,
 				536585831478920D00FE57A5 /* EqualizerViewController.m in Sources */,
 				5365859514789ADA00FE57A5 /* EqualizerView.m in Sources */,
