@@ -328,8 +328,8 @@
 		53FE351B1EA961540058B925 /* NSString+Time.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34191EA961540058B925 /* NSString+Time.m */; };
 		30B0CDC6EE4E4929AE9FB0F6 /* NSString+URLEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648A72DE5FCA4292823A8996 /* NSString+URLEncode.swift */; };
 		E64C346DE5124EB78C86ACD0 /* NSString+URLEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648A72DE5FCA4292823A8996 /* NSString+URLEncode.swift */; };
-		53FE35251EA961540058B925 /* NSURL+QueryParameterDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34211EA961540058B925 /* NSURL+QueryParameterDictionary.m */; };
-		53FE35271EA961540058B925 /* NSURL+QueryParameterDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34211EA961540058B925 /* NSURL+QueryParameterDictionary.m */; };
+		F1342CD621444FAB89D4CDF1 /* NSURL+QueryParameterDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2F27CFEB7B4A3082F3DD9B /* NSURL+QueryParameterDictionary.swift */; };
+		92AFA2B4F0A44779A699C886 /* NSURL+QueryParameterDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2F27CFEB7B4A3082F3DD9B /* NSURL+QueryParameterDictionary.swift */; };
 		53FE35281EA961540058B925 /* NSURL+SkipBackupAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34231EA961540058B925 /* NSURL+SkipBackupAttribute.m */; };
 		53FE352A1EA961540058B925 /* NSURL+SkipBackupAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34231EA961540058B925 /* NSURL+SkipBackupAttribute.m */; };
 		53FE35581EA961540058B925 /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34471EA961540058B925 /* UIImage+Tint.m */; };
@@ -847,7 +847,7 @@
 		53FE341C1EA961540058B925 /* NSString+URLEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncode.h"; sourceTree = "<group>"; };
 		648A72DE5FCA4292823A8996 /* NSString+URLEncode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+URLEncode.swift"; sourceTree = "<group>"; };
 		53FE34201EA961540058B925 /* NSURL+QueryParameterDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+QueryParameterDictionary.h"; sourceTree = "<group>"; };
-		53FE34211EA961540058B925 /* NSURL+QueryParameterDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+QueryParameterDictionary.m"; sourceTree = "<group>"; };
+		6E2F27CFEB7B4A3082F3DD9B /* NSURL+QueryParameterDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSURL+QueryParameterDictionary.swift"; sourceTree = "<group>"; };
 		53FE34221EA961540058B925 /* NSURL+SkipBackupAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+SkipBackupAttribute.h"; sourceTree = "<group>"; };
 		53FE34231EA961540058B925 /* NSURL+SkipBackupAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+SkipBackupAttribute.m"; sourceTree = "<group>"; };
 		53FE34461EA961540058B925 /* UIImage+Tint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tint.h"; sourceTree = "<group>"; };
@@ -1834,7 +1834,7 @@
 				53FE33EF1EA961540058B925 /* NSNotificationCenter+MainThread.h */,
 				53FE33F01EA961540058B925 /* NSNotificationCenter+MainThread.m */,
 				53FE34201EA961540058B925 /* NSURL+QueryParameterDictionary.h */,
-				53FE34211EA961540058B925 /* NSURL+QueryParameterDictionary.m */,
+				6E2F27CFEB7B4A3082F3DD9B /* NSURL+QueryParameterDictionary.swift */,
 				53FE34221EA961540058B925 /* NSURL+SkipBackupAttribute.h */,
 				53FE34231EA961540058B925 /* NSURL+SkipBackupAttribute.m */,
 			);
@@ -2315,7 +2315,7 @@
 				538C8FEA2560C7AB005D6CA9 /* HomeViewController.swift in Sources */,
 				53FE37401EA961720058B925 /* ISMSSong.m in Sources */,
 				53FE37D61EA961720058B925 /* SUSSubFolderLoader.m in Sources */,
-				53FE35251EA961540058B925 /* NSURL+QueryParameterDictionary.m in Sources */,
+				F1342CD621444FAB89D4CDF1 /* NSURL+QueryParameterDictionary.swift in Sources */,
 				53F4A07D116FF7EE00BB8411 /* CurrentPlaylistViewController.m in Sources */,
 				5340B8A6256968C400FD5D6D /* ISMSBookmarkDAO.m in Sources */,
 				53FE67A6256DD0F00015FC83 /* GCDWebServerFileRequest.m in Sources */,
@@ -2525,7 +2525,7 @@
 				53FE378A1EA961720058B925 /* SavedSettings.m in Sources */,
 				53FE37421EA961720058B925 /* ISMSSong.m in Sources */,
 				53FE37D81EA961720058B925 /* SUSSubFolderLoader.m in Sources */,
-				53FE35271EA961540058B925 /* NSURL+QueryParameterDictionary.m in Sources */,
+				92AFA2B4F0A44779A699C886 /* NSURL+QueryParameterDictionary.swift in Sources */,
 				537B05BD256B04360008892C /* PadMenuViewController.swift in Sources */,
 				53FE6793256DD0F00015FC83 /* GCDWebServerFunctions.m in Sources */,
 				53BC27BB139AF0DD00A825F1 /* CurrentPlaylistViewController.m in Sources */,
