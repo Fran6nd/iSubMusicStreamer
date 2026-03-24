@@ -204,7 +204,7 @@
 		53B52BA511ADE0A6005776B5 /* GenresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B52BA311ADE0A6005776B5 /* GenresViewController.m */; };
 		53B52BA611ADE0A6005776B5 /* GenresViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53B52BA411ADE0A6005776B5 /* GenresViewController.xib */; };
 		53B9D0B41279FAEF00CAB0E0 /* SearchSongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B9D0B21279FAEF00CAB0E0 /* SearchSongsViewController.m */; };
-		53BB7ECA121B8D8F00BEE7E8 /* CustomUITextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BB7EC9121B8D8F00BEE7E8 /* CustomUITextView.m */; };
+		D3F2520F524E41D3BFCC7A8C /* CustomUITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCC1791072F494DBF976721 /* CustomUITextView.swift */; };
 		53BC26B6139AF0DD00A825F1 /* AllAlbumsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 539797FD1162D4D200F41D8B /* AllAlbumsViewController.xib */; };
 		53BC26B9139AF0DD00A825F1 /* AllSongsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53614BD7116467420088ABC0 /* AllSongsViewController.xib */; };
 		53BC26BB139AF0DD00A825F1 /* PlayingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53ABE3621165C83900197877 /* PlayingViewController.xib */; };
@@ -238,7 +238,7 @@
 		53BC27E2139AF0DD00A825F1 /* SettingsTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5398F26B11DA61DA00007870 /* SettingsTabViewController.m */; };
 		53BC27F8139AF0DD00A825F1 /* ChatUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5379DC491219E48800F426CD /* ChatUITableViewCell.m */; };
 		53BC27F9139AF0DD00A825F1 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5379DC4B1219E48800F426CD /* ChatViewController.m */; };
-		53BC27FC139AF0DD00A825F1 /* CustomUITextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BB7EC9121B8D8F00BEE7E8 /* CustomUITextView.m */; };
+		F809BDB6BC8D49E0ABA56AA2 /* CustomUITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCC1791072F494DBF976721 /* CustomUITextView.swift */; };
 		53BC2803139AF0DD00A825F1 /* HomeAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 531F166D126FA2E600F524BD /* HomeAlbumViewController.m */; };
 		53BC280A139AF0DD00A825F1 /* SearchSongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B9D0B21279FAEF00CAB0E0 /* SearchSongsViewController.m */; };
 		53BC282C139AF0DD00A825F1 /* OBSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5324C6C513345D75004E6C79 /* OBSlider.m */; };
@@ -773,8 +773,7 @@
 		53B52BA411ADE0A6005776B5 /* GenresViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenresViewController.xib; sourceTree = "<group>"; };
 		53B9D0B11279FAEF00CAB0E0 /* SearchSongsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchSongsViewController.h; sourceTree = "<group>"; };
 		53B9D0B21279FAEF00CAB0E0 /* SearchSongsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchSongsViewController.m; sourceTree = "<group>"; };
-		53BB7EC8121B8D8F00BEE7E8 /* CustomUITextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUITextView.h; sourceTree = "<group>"; };
-		53BB7EC9121B8D8F00BEE7E8 /* CustomUITextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUITextView.m; sourceTree = "<group>"; };
+		6CCC1791072F494DBF976721 /* CustomUITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITextView.swift; sourceTree = "<group>"; };
 		53BBDB3B1491DD6600032114 /* OpenGLCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLCommon.h; sourceTree = "<group>"; };
 		53BBDB3C1491DE5600032114 /* ConstantsAndMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstantsAndMacros.h; sourceTree = "<group>"; };
 		53BC2865139AF0DD00A825F1 /* iSub Beta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iSub Beta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1488,8 +1487,7 @@
 		531D39F2255AB391000CB0DF /* Custom UI */ = {
 			isa = PBXGroup;
 			children = (
-				53BB7EC8121B8D8F00BEE7E8 /* CustomUITextView.h */,
-				53BB7EC9121B8D8F00BEE7E8 /* CustomUITextView.m */,
+				6CCC1791072F494DBF976721 /* CustomUITextView.swift */,
 				53B5298811AD9B79005776B5 /* LoadingScreen.h */,
 				53B5298911AD9B79005776B5 /* LoadingScreen.m */,
 				536B5D5D11C8183D00CC1D69 /* LoadingScreen.xib */,
@@ -2365,7 +2363,7 @@
 				A552A88368654B0F92175591 /* NSString+Hex.swift in Sources */,
 				5379DC4F1219E48800F426CD /* ChatUITableViewCell.m in Sources */,
 				5379DC501219E48800F426CD /* ChatViewController.m in Sources */,
-				53BB7ECA121B8D8F00BEE7E8 /* CustomUITextView.m in Sources */,
+				D3F2520F524E41D3BFCC7A8C /* CustomUITextView.swift in Sources */,
 				537B05B9256B03830008892C /* PadRootViewController.swift in Sources */,
 				53FE38041EA961970058B925 /* RXMLElement.m in Sources */,
 				537B05C2256B40930008892C /* SongInfoViewController.swift in Sources */,
@@ -2592,7 +2590,7 @@
 				53BC27F9139AF0DD00A825F1 /* ChatViewController.m in Sources */,
 				537B05BA256B03830008892C /* PadRootViewController.swift in Sources */,
 				533295F7255EEFE50027C51A /* FMTokenizers.m in Sources */,
-				53BC27FC139AF0DD00A825F1 /* CustomUITextView.m in Sources */,
+				F809BDB6BC8D49E0ABA56AA2 /* CustomUITextView.swift in Sources */,
 				53FE38061EA961970058B925 /* RXMLElement.m in Sources */,
 				53FE37721EA961720058B925 /* NSMutableURLRequest+SUS.m in Sources */,
 				5340B8A7256968C400FD5D6D /* ISMSBookmarkDAO.m in Sources */,
