@@ -44,7 +44,6 @@
 #import "GTMNSString+HTML.h"
 #import "NSString+FileSize.h"
 #import "NSString+Clean.h"
-#import "NSString+HasValue.h"
 #import "NSNotificationCenter+MainThread.h"
 #import "NSURL+QueryParameterDictionary.h"
 #import "NSNumber+CleanString.h"

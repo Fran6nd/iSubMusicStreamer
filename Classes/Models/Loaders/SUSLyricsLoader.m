@@ -46,7 +46,7 @@ LOG_LEVEL_ISUB_DEFAULT
             RXMLElement *lyrics = [root child:@"lyrics"];
             if (lyrics.isValid) {
                 self.loadedLyrics = [lyrics text];
-                if ([self.loadedLyrics hasValue]) {
+                if (self.loadedLyrics.length > 0) {
                     [self insertLyricsIntoDb];
                     [self informDelegateLoadingFinished];
                     

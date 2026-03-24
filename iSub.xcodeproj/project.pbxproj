@@ -320,8 +320,8 @@
 		53FE35001EA961540058B925 /* NSString+CompareWithoutIndefiniteArticles.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34071EA961540058B925 /* NSString+CompareWithoutIndefiniteArticles.m */; };
 		53FE35041EA961540058B925 /* NSString+FileSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE340B1EA961540058B925 /* NSString+FileSize.m */; };
 		53FE35061EA961540058B925 /* NSString+FileSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE340B1EA961540058B925 /* NSString+FileSize.m */; };
-		53FE350A1EA961540058B925 /* NSString+HasValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE340F1EA961540058B925 /* NSString+HasValue.m */; };
-		53FE350C1EA961540058B925 /* NSString+HasValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE340F1EA961540058B925 /* NSString+HasValue.m */; };
+		EFF20B51A64346AD80A32F89 /* NSString+HasValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91EB3C2C51F4799A1EFB761 /* NSString+HasValue.swift */; };
+		AD7DFF52492C49818C4F49F7 /* NSString+HasValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91EB3C2C51F4799A1EFB761 /* NSString+HasValue.swift */; };
 		53FE350D1EA961540058B925 /* NSString+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34111EA961540058B925 /* NSString+Hex.m */; };
 		53FE350F1EA961540058B925 /* NSString+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34111EA961540058B925 /* NSString+Hex.m */; };
 		53FE35101EA961540058B925 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34131EA961540058B925 /* NSString+MD5.m */; };
@@ -840,8 +840,7 @@
 		53FE34071EA961540058B925 /* NSString+CompareWithoutIndefiniteArticles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CompareWithoutIndefiniteArticles.m"; sourceTree = "<group>"; };
 		53FE340A1EA961540058B925 /* NSString+FileSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FileSize.h"; sourceTree = "<group>"; };
 		53FE340B1EA961540058B925 /* NSString+FileSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FileSize.m"; sourceTree = "<group>"; };
-		53FE340E1EA961540058B925 /* NSString+HasValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HasValue.h"; sourceTree = "<group>"; };
-		53FE340F1EA961540058B925 /* NSString+HasValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HasValue.m"; sourceTree = "<group>"; };
+		C91EB3C2C51F4799A1EFB761 /* NSString+HasValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+HasValue.swift"; sourceTree = "<group>"; };
 		53FE34101EA961540058B925 /* NSString+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hex.h"; sourceTree = "<group>"; };
 		53FE34111EA961540058B925 /* NSString+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hex.m"; sourceTree = "<group>"; };
 		53FE34121EA961540058B925 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
@@ -1857,8 +1856,7 @@
 				53FE34071EA961540058B925 /* NSString+CompareWithoutIndefiniteArticles.m */,
 				53FE340A1EA961540058B925 /* NSString+FileSize.h */,
 				53FE340B1EA961540058B925 /* NSString+FileSize.m */,
-				53FE340E1EA961540058B925 /* NSString+HasValue.h */,
-				53FE340F1EA961540058B925 /* NSString+HasValue.m */,
+				C91EB3C2C51F4799A1EFB761 /* NSString+HasValue.swift */,
 				53FE34101EA961540058B925 /* NSString+Hex.h */,
 				53FE34111EA961540058B925 /* NSString+Hex.m */,
 				53FE34121EA961540058B925 /* NSString+MD5.h */,
@@ -2290,7 +2288,7 @@
 				53FE351F1EA961540058B925 /* NSString+URLEncode.m in Sources */,
 				53E04938255DB8F6007D4578 /* ISMSNSURLSessionStreamHandler.m in Sources */,
 				53FE378E1EA961720058B925 /* SocialSingleton.m in Sources */,
-				53FE350A1EA961540058B925 /* NSString+HasValue.m in Sources */,
+				EFF20B51A64346AD80A32F89 /* NSString+HasValue.swift in Sources */,
 				53FE37971EA961720058B925 /* SUSAllSongsDAO.m in Sources */,
 				AA00BB001234567890ABCDEF /* CustomUINavigationController.swift in Sources */,
 				539796E41162B68800F41D8B /* AllAlbumsViewController.m in Sources */,
@@ -2497,7 +2495,7 @@
 				53FE35211EA961540058B925 /* NSString+URLEncode.m in Sources */,
 				53E04939255DB8F6007D4578 /* ISMSNSURLSessionStreamHandler.m in Sources */,
 				53FE37901EA961720058B925 /* SocialSingleton.m in Sources */,
-				53FE350C1EA961540058B925 /* NSString+HasValue.m in Sources */,
+				AD7DFF52492C49818C4F49F7 /* NSString+HasValue.swift in Sources */,
 				53FE37991EA961720058B925 /* SUSAllSongsDAO.m in Sources */,
 				AA00BB021234567890ABCDEF /* CustomUINavigationController.swift in Sources */,
 				53BC27AC139AF0DD00A825F1 /* AllAlbumsViewController.m in Sources */,
