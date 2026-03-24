@@ -37,8 +37,6 @@
 #import "AllSongsViewController.h"
 #import "CacheOfflineFoldersViewController.h"
 
-// Views
-#import "CellCachedIndicatorView.h"
 
 /*
  * Data Models
