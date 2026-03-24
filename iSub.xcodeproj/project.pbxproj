@@ -308,6 +308,8 @@
 		FC18094BF8E542BE83CD0039 /* NSArray+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85294C3C78064E2983D20DD4 /* NSArray+Safe.swift */; };
 		FBC32522392F496ABC4E58D0 /* CleanString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB39C0B9CB5647A18B05C245 /* CleanString.swift */; };
 		65C3CEC47E384009AF305F93 /* CleanString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB39C0B9CB5647A18B05C245 /* CleanString.swift */; };
+		BB22CC33DD44EE55FF660002 /* NSError+ISMSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB22CC33DD44EE55FF660001 /* NSError+ISMSError.swift */; };
+		BB22CC33DD44EE55FF660003 /* NSError+ISMSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB22CC33DD44EE55FF660001 /* NSError+ISMSError.swift */; };
 		53FE34F81EA961540058B925 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34021EA961540058B925 /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		53FE34FA1EA961540058B925 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34021EA961540058B925 /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		87806C0251174998962D01E1 /* NSString+CompareWithoutIndefiniteArticles.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23EF06DA22B44DC9F9BE89F /* NSString+CompareWithoutIndefiniteArticles.swift */; };
@@ -410,8 +412,6 @@
 		53FE37601EA961720058B925 /* JukeboxSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36801EA961720058B925 /* JukeboxSingleton.m */; };
 		53FE37671EA961720058B925 /* MusicSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36891EA961720058B925 /* MusicSingleton.m */; };
 		53FE37691EA961720058B925 /* MusicSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36891EA961720058B925 /* MusicSingleton.m */; };
-		53FE376A1EA961720058B925 /* NSError+ISMSError.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE368B1EA961720058B925 /* NSError+ISMSError.m */; };
-		53FE376C1EA961720058B925 /* NSError+ISMSError.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE368B1EA961720058B925 /* NSError+ISMSError.m */; };
 		53FE37701EA961720058B925 /* NSMutableURLRequest+SUS.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE368F1EA961720058B925 /* NSMutableURLRequest+SUS.m */; };
 		53FE37721EA961720058B925 /* NSMutableURLRequest+SUS.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE368F1EA961720058B925 /* NSMutableURLRequest+SUS.m */; };
 		53FE37761EA961720058B925 /* PlaylistSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36931EA961720058B925 /* PlaylistSingleton.m */; };
@@ -932,7 +932,7 @@
 		53FE36881EA961720058B925 /* MusicSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicSingleton.h; sourceTree = "<group>"; };
 		53FE36891EA961720058B925 /* MusicSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicSingleton.m; sourceTree = "<group>"; };
 		53FE368A1EA961720058B925 /* NSError+ISMSError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+ISMSError.h"; sourceTree = "<group>"; };
-		53FE368B1EA961720058B925 /* NSError+ISMSError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+ISMSError.m"; sourceTree = "<group>"; };
+		BB22CC33DD44EE55FF660001 /* NSError+ISMSError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+ISMSError.swift"; sourceTree = "<group>"; };
 		53FE368E1EA961720058B925 /* NSMutableURLRequest+SUS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+SUS.h"; sourceTree = "<group>"; };
 		53FE368F1EA961720058B925 /* NSMutableURLRequest+SUS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableURLRequest+SUS.m"; sourceTree = "<group>"; };
 		53FE36921EA961720058B925 /* PlaylistSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistSingleton.h; sourceTree = "<group>"; };
@@ -1823,7 +1823,7 @@
 				53FE33DD1EA961540058B925 /* NSArray+Safe.h */,
 				85294C3C78064E2983D20DD4 /* NSArray+Safe.swift */,
 				53FE368A1EA961720058B925 /* NSError+ISMSError.h */,
-				53FE368B1EA961720058B925 /* NSError+ISMSError.m */,
+				BB22CC33DD44EE55FF660001 /* NSError+ISMSError.swift */,
 				53FE368E1EA961720058B925 /* NSMutableURLRequest+SUS.h */,
 				53FE368F1EA961720058B925 /* NSMutableURLRequest+SUS.m */,
 				AA11BB22CC33DD44EE550008 /* NSNotificationCenter+MainThread.h */,
@@ -2263,7 +2263,7 @@
 				53FE37CD1EA961720058B925 /* SUSServerShuffleLoader.m in Sources */,
 				53FE37941EA961720058B925 /* SUSAllAlbumsDAO.m in Sources */,
 				53FE37CA1EA961720058B925 /* SUSServerPlaylistsLoader.m in Sources */,
-				53FE376A1EA961720058B925 /* NSError+ISMSError.m in Sources */,
+				BB22CC33DD44EE55FF660002 /* NSError+ISMSError.swift in Sources */,
 				53FE37101EA961720058B925 /* ISMSCacheQueueManager.m in Sources */,
 				53FE38A71EA961C80058B925 /* ZKCDTrailer.m in Sources */,
 				533295EA255EEFE50027C51A /* FMDatabaseQueue.m in Sources */,
@@ -2471,7 +2471,7 @@
 				53FE37CF1EA961720058B925 /* SUSServerShuffleLoader.m in Sources */,
 				53FE37961EA961720058B925 /* SUSAllAlbumsDAO.m in Sources */,
 				53FE37CC1EA961720058B925 /* SUSServerPlaylistsLoader.m in Sources */,
-				53FE376C1EA961720058B925 /* NSError+ISMSError.m in Sources */,
+				BB22CC33DD44EE55FF660003 /* NSError+ISMSError.swift in Sources */,
 				53FE37121EA961720058B925 /* ISMSCacheQueueManager.m in Sources */,
 				53246AAA256C324500E11EC4 /* InsetTextField.swift in Sources */,
 				538C8FEB2560C7AB005D6CA9 /* HomeViewController.swift in Sources */,
