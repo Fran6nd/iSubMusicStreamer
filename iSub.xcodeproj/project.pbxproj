@@ -314,8 +314,8 @@
 		53FE34FA1EA961540058B925 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34021EA961540058B925 /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		53FE34FB1EA961540058B925 /* NSString+Clean.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34051EA961540058B925 /* NSString+Clean.m */; };
 		53FE34FD1EA961540058B925 /* NSString+Clean.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34051EA961540058B925 /* NSString+Clean.m */; };
-		53FE34FE1EA961540058B925 /* NSString+CompareWithoutIndefiniteArticles.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34071EA961540058B925 /* NSString+CompareWithoutIndefiniteArticles.m */; };
-		53FE35001EA961540058B925 /* NSString+CompareWithoutIndefiniteArticles.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34071EA961540058B925 /* NSString+CompareWithoutIndefiniteArticles.m */; };
+		87806C0251174998962D01E1 /* NSString+CompareWithoutIndefiniteArticles.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23EF06DA22B44DC9F9BE89F /* NSString+CompareWithoutIndefiniteArticles.swift */; };
+		AD9E87DA5DAF42D38E564A50 /* NSString+CompareWithoutIndefiniteArticles.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23EF06DA22B44DC9F9BE89F /* NSString+CompareWithoutIndefiniteArticles.swift */; };
 		53FE35041EA961540058B925 /* NSString+FileSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE340B1EA961540058B925 /* NSString+FileSize.m */; };
 		53FE35061EA961540058B925 /* NSString+FileSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE340B1EA961540058B925 /* NSString+FileSize.m */; };
 		EFF20B51A64346AD80A32F89 /* NSString+HasValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91EB3C2C51F4799A1EFB761 /* NSString+HasValue.swift */; };
@@ -834,7 +834,7 @@
 		53FE34041EA961540058B925 /* NSString+Clean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Clean.h"; sourceTree = "<group>"; };
 		53FE34051EA961540058B925 /* NSString+Clean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Clean.m"; sourceTree = "<group>"; };
 		53FE34061EA961540058B925 /* NSString+CompareWithoutIndefiniteArticles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CompareWithoutIndefiniteArticles.h"; sourceTree = "<group>"; };
-		53FE34071EA961540058B925 /* NSString+CompareWithoutIndefiniteArticles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CompareWithoutIndefiniteArticles.m"; sourceTree = "<group>"; };
+		B23EF06DA22B44DC9F9BE89F /* NSString+CompareWithoutIndefiniteArticles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+CompareWithoutIndefiniteArticles.swift"; sourceTree = "<group>"; };
 		53FE340A1EA961540058B925 /* NSString+FileSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FileSize.h"; sourceTree = "<group>"; };
 		53FE340B1EA961540058B925 /* NSString+FileSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FileSize.m"; sourceTree = "<group>"; };
 		C91EB3C2C51F4799A1EFB761 /* NSString+HasValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+HasValue.swift"; sourceTree = "<group>"; };
@@ -1850,7 +1850,7 @@
 				53FE34041EA961540058B925 /* NSString+Clean.h */,
 				53FE34051EA961540058B925 /* NSString+Clean.m */,
 				53FE34061EA961540058B925 /* NSString+CompareWithoutIndefiniteArticles.h */,
-				53FE34071EA961540058B925 /* NSString+CompareWithoutIndefiniteArticles.m */,
+				B23EF06DA22B44DC9F9BE89F /* NSString+CompareWithoutIndefiniteArticles.swift */,
 				53FE340A1EA961540058B925 /* NSString+FileSize.h */,
 				53FE340B1EA961540058B925 /* NSString+FileSize.m */,
 				C91EB3C2C51F4799A1EFB761 /* NSString+HasValue.swift */,
@@ -2379,7 +2379,7 @@
 				5398F26D11DA61DA00007870 /* SettingsTabViewController.m in Sources */,
 				53FE36E61EA961720058B925 /* BassEffectDAO.m in Sources */,
 				533295F2255EEFE50027C51A /* FMDatabase+InMemoryOnDiskIO.m in Sources */,
-				53FE34FE1EA961540058B925 /* NSString+CompareWithoutIndefiniteArticles.m in Sources */,
+				87806C0251174998962D01E1 /* NSString+CompareWithoutIndefiniteArticles.swift in Sources */,
 				53FE37AF1EA961720058B925 /* SUSNowPlayingDAO.m in Sources */,
 				53FE37D31EA961720058B925 /* SUSSubFolderDAO.m in Sources */,
 				53FE37C11EA961720058B925 /* SUSScrobbleLoader.m in Sources */,
@@ -2596,7 +2596,7 @@
 				53FE355A1EA961540058B925 /* UIImage+Tint.m in Sources */,
 				53BC27E2139AF0DD00A825F1 /* SettingsTabViewController.m in Sources */,
 				53FE36E81EA961720058B925 /* BassEffectDAO.m in Sources */,
-				53FE35001EA961540058B925 /* NSString+CompareWithoutIndefiniteArticles.m in Sources */,
+				AD9E87DA5DAF42D38E564A50 /* NSString+CompareWithoutIndefiniteArticles.swift in Sources */,
 				53FE67A3256DD0F00015FC83 /* GCDWebServerMultiPartFormRequest.m in Sources */,
 				53FE37B11EA961720058B925 /* SUSNowPlayingDAO.m in Sources */,
 				53246AB4256C918500E11EC4 /* LyricsViewController.swift in Sources */,
