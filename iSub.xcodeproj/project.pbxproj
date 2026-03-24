@@ -306,8 +306,6 @@
 		53F8917F1EB137F300B3F131 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F675E7113B096400822059 /* AudioToolbox.framework */; };
 		93EF7C8D8CF94C5695F5A96B /* NSArray+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85294C3C78064E2983D20DD4 /* NSArray+Safe.swift */; };
 		FC18094BF8E542BE83CD0039 /* NSArray+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85294C3C78064E2983D20DD4 /* NSArray+Safe.swift */; };
-		53FE34E01EA961540058B925 /* NSNotificationCenter+MainThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE33F01EA961540058B925 /* NSNotificationCenter+MainThread.m */; };
-		53FE34E21EA961540058B925 /* NSNotificationCenter+MainThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE33F01EA961540058B925 /* NSNotificationCenter+MainThread.m */; };
 		FBC32522392F496ABC4E58D0 /* CleanString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB39C0B9CB5647A18B05C245 /* CleanString.swift */; };
 		65C3CEC47E384009AF305F93 /* CleanString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB39C0B9CB5647A18B05C245 /* CleanString.swift */; };
 		53FE34F81EA961540058B925 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34021EA961540058B925 /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -334,14 +332,16 @@
 		5AFDBCBBE3284F2395E715AD /* NSURL+SkipBackupAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765A0A9FA6D0494EBE497531 /* NSURL+SkipBackupAttribute.swift */; };
 		9DE2F718A7CD49BC965B0E55 /* UIImage+Tint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F016ACBE540E794D5F2B4 /* UIImage+Tint.swift */; };
 		BEFCB96CD9BF4720B2341684 /* UIImage+Tint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F016ACBE540E794D5F2B4 /* UIImage+Tint.swift */; };
+		AA11BB22CC33DD44EE550002 /* EX2Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA11BB22CC33DD44EE550001 /* EX2Dispatch.swift */; };
+		AA11BB22CC33DD44EE550003 /* EX2Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA11BB22CC33DD44EE550001 /* EX2Dispatch.swift */; };
+		AA11BB22CC33DD44EE550005 /* NSNotificationCenter+MainThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA11BB22CC33DD44EE550004 /* NSNotificationCenter+MainThread.swift */; };
+		AA11BB22CC33DD44EE550006 /* NSNotificationCenter+MainThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA11BB22CC33DD44EE550004 /* NSNotificationCenter+MainThread.swift */; };
 		53FE356D1EA961540058B925 /* UIView+ObjCFrameHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34551EA961540058B925 /* UIView+ObjCFrameHelper.m */; };
 		53FE356F1EA961540058B925 /* UIView+ObjCFrameHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34551EA961540058B925 /* UIView+ObjCFrameHelper.m */; };
 		53FE35881EA961540058B925 /* EX2NetworkIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE346A1EA961540058B925 /* EX2NetworkIndicator.m */; };
 		53FE358A1EA961540058B925 /* EX2NetworkIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE346A1EA961540058B925 /* EX2NetworkIndicator.m */; };
 		53FE358E1EA961540058B925 /* EX2RingBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE346E1EA961540058B925 /* EX2RingBuffer.m */; };
 		53FE35901EA961540058B925 /* EX2RingBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE346E1EA961540058B925 /* EX2RingBuffer.m */; };
-		53FE35C71EA961540058B925 /* EX2Dispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE349C1EA961540058B925 /* EX2Dispatch.m */; };
-		53FE35C91EA961540058B925 /* EX2Dispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE349C1EA961540058B925 /* EX2Dispatch.m */; };
 		53FE35EB1EA961540058B925 /* SnappySlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34B41EA961540058B925 /* SnappySlider.m */; };
 		53FE35ED1EA961540058B925 /* SnappySlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34B41EA961540058B925 /* SnappySlider.m */; };
 		53FE360B1EA961670058B925 /* libbass.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FE36031EA961670058B925 /* libbass.a */; };
@@ -823,8 +823,6 @@
 		53F7A127131B7F3B002C829D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		53FE33DD1EA961540058B925 /* NSArray+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Safe.h"; sourceTree = "<group>"; };
 		85294C3C78064E2983D20DD4 /* NSArray+Safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSArray+Safe.swift"; sourceTree = "<group>"; };
-		53FE33EF1EA961540058B925 /* NSNotificationCenter+MainThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+MainThread.h"; sourceTree = "<group>"; };
-		53FE33F01EA961540058B925 /* NSNotificationCenter+MainThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+MainThread.m"; sourceTree = "<group>"; };
 		53FE33F11EA961540058B925 /* NSNull+CleanString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNull+CleanString.h"; sourceTree = "<group>"; };
 		53FE33F31EA961540058B925 /* NSNumber+CleanString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+CleanString.h"; sourceTree = "<group>"; };
 		BB39C0B9CB5647A18B05C245 /* CleanString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CleanString.swift"; sourceTree = "<group>"; };
@@ -852,6 +850,9 @@
 		765A0A9FA6D0494EBE497531 /* NSURL+SkipBackupAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSURL+SkipBackupAttribute.swift"; sourceTree = "<group>"; };
 		53FE34461EA961540058B925 /* UIImage+Tint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tint.h"; sourceTree = "<group>"; };
 		4E8F016ACBE540E794D5F2B4 /* UIImage+Tint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Tint.swift"; sourceTree = "<group>"; };
+		AA11BB22CC33DD44EE550001 /* EX2Dispatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EX2Dispatch.swift; sourceTree = "<group>"; };
+		AA11BB22CC33DD44EE550004 /* NSNotificationCenter+MainThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotificationCenter+MainThread.swift"; sourceTree = "<group>"; };
+		AA11BB22CC33DD44EE550008 /* NSNotificationCenter+MainThread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+MainThread.h"; sourceTree = "<group>"; };
 		53FE34541EA961540058B925 /* UIView+ObjCFrameHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ObjCFrameHelper.h"; sourceTree = "<group>"; };
 		53FE34551EA961540058B925 /* UIView+ObjCFrameHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ObjCFrameHelper.m"; sourceTree = "<group>"; };
 		53FE34691EA961540058B925 /* EX2NetworkIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EX2NetworkIndicator.h; sourceTree = "<group>"; };
@@ -859,8 +860,6 @@
 		53FE346D1EA961540058B925 /* EX2RingBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EX2RingBuffer.h; sourceTree = "<group>"; };
 		53FE346E1EA961540058B925 /* EX2RingBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EX2RingBuffer.m; sourceTree = "<group>"; };
 		53FE34961EA961540058B925 /* EX2Kit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EX2Kit.h; sourceTree = "<group>"; };
-		53FE349B1EA961540058B925 /* EX2Dispatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EX2Dispatch.h; sourceTree = "<group>"; };
-		53FE349C1EA961540058B925 /* EX2Dispatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EX2Dispatch.m; sourceTree = "<group>"; };
 		53FE34B31EA961540058B925 /* SnappySlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnappySlider.h; sourceTree = "<group>"; };
 		53FE34B41EA961540058B925 /* SnappySlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnappySlider.m; sourceTree = "<group>"; };
 		53FE35FB1EA961670058B925 /* bass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bass.h; sourceTree = "<group>"; };
@@ -1549,8 +1548,7 @@
 				53FE36A11EA961720058B925 /* SearchXMLParser.h */,
 				53FE36A21EA961720058B925 /* SearchXMLParser.m */,
 				5347A1E3256D866A00BFB70A /* HLSReverseProxyServer.swift */,
-				53FE349B1EA961540058B925 /* EX2Dispatch.h */,
-				53FE349C1EA961540058B925 /* EX2Dispatch.m */,
+				AA11BB22CC33DD44EE550001 /* EX2Dispatch.swift */,
 				53FE34691EA961540058B925 /* EX2NetworkIndicator.h */,
 				53FE346A1EA961540058B925 /* EX2NetworkIndicator.m */,
 				53FE346D1EA961540058B925 /* EX2RingBuffer.h */,
@@ -1831,8 +1829,8 @@
 				53FE368B1EA961720058B925 /* NSError+ISMSError.m */,
 				53FE368E1EA961720058B925 /* NSMutableURLRequest+SUS.h */,
 				53FE368F1EA961720058B925 /* NSMutableURLRequest+SUS.m */,
-				53FE33EF1EA961540058B925 /* NSNotificationCenter+MainThread.h */,
-				53FE33F01EA961540058B925 /* NSNotificationCenter+MainThread.m */,
+				AA11BB22CC33DD44EE550008 /* NSNotificationCenter+MainThread.h */,
+				AA11BB22CC33DD44EE550004 /* NSNotificationCenter+MainThread.swift */,
 				53FE34201EA961540058B925 /* NSURL+QueryParameterDictionary.h */,
 				6E2F27CFEB7B4A3082F3DD9B /* NSURL+QueryParameterDictionary.swift */,
 				53FE34221EA961540058B925 /* NSURL+SkipBackupAttribute.h */,
@@ -2277,7 +2275,7 @@
 				53266BFA2562D4D0002C64BB /* PageControlViewController.swift in Sources */,
 				5347A1E4256D866A00BFB70A /* HLSReverseProxyServer.swift in Sources */,
 				53FE37011EA961720058B925 /* DatabaseSingleton.m in Sources */,
-				53FE34E01EA961540058B925 /* NSNotificationCenter+MainThread.m in Sources */,
+				AA11BB22CC33DD44EE550005 /* NSNotificationCenter+MainThread.swift in Sources */,
 				53246AB6256C975600E11EC4 /* CacheStatusViewController.swift in Sources */,
 				53FE37A61EA961720058B925 /* SUSDropdownFolderLoader.m in Sources */,
 				53FE36F21EA961720058B925 /* BassParamEqValue.m in Sources */,
@@ -2343,7 +2341,7 @@
 				93EF7C8D8CF94C5695F5A96B /* NSArray+Safe.swift in Sources */,
 				538229F611C98091003F1E23 /* CacheAlbumViewController.m in Sources */,
 				53FE6798256DD0F00015FC83 /* GCDWebServerErrorResponse.m in Sources */,
-				53FE35C71EA961540058B925 /* EX2Dispatch.m in Sources */,
+				AA11BB22CC33DD44EE550002 /* EX2Dispatch.swift in Sources */,
 				53FE37A31EA961720058B925 /* SUSCoverArtDAO.m in Sources */,
 				539148D02559EB1D004AAC3F /* FlurryEmpty.m in Sources */,
 				53FE36E31EA961720058B925 /* AudioEngine.m in Sources */,
@@ -2485,7 +2483,7 @@
 				53FE38A91EA961C80058B925 /* ZKCDTrailer.m in Sources */,
 				53FE37031EA961720058B925 /* DatabaseSingleton.m in Sources */,
 				53FE6799256DD0F00015FC83 /* GCDWebServerErrorResponse.m in Sources */,
-				53FE34E21EA961540058B925 /* NSNotificationCenter+MainThread.m in Sources */,
+				AA11BB22CC33DD44EE550006 /* NSNotificationCenter+MainThread.swift in Sources */,
 				53FE37A81EA961720058B925 /* SUSDropdownFolderLoader.m in Sources */,
 				53FE36F41EA961720058B925 /* BassParamEqValue.m in Sources */,
 				E64C346DE5124EB78C86ACD0 /* NSString+URLEncode.swift in Sources */,
@@ -2565,7 +2563,7 @@
 				FC18094BF8E542BE83CD0039 /* NSArray+Safe.swift in Sources */,
 				53BC27D7139AF0DD00A825F1 /* CacheAlbumViewController.m in Sources */,
 				53EA2DE3257D7B4D0003F38D /* UIView+ViewController.swift in Sources */,
-				53FE35C91EA961540058B925 /* EX2Dispatch.m in Sources */,
+				AA11BB22CC33DD44EE550003 /* EX2Dispatch.swift in Sources */,
 				53FE37A51EA961720058B925 /* SUSCoverArtDAO.m in Sources */,
 				534B20EA256202CF007FF1D7 /* PlayerViewController.swift in Sources */,
 				A1B2C3D4E5F60003A1B2C3D4 /* QueueViewController.swift in Sources */,

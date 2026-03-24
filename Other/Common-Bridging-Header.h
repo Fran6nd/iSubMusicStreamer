@@ -67,9 +67,6 @@
 #import "ISMSLocalPlaylist.h"
 #import "SUSServerPlaylist.h"
 
-// Utils
-#import "EX2Dispatch.h"
-
 /*
  * Extensions
  */
@@ -79,7 +76,6 @@
 #import "NSMutableURLRequest+SUS.h"
 #import "UIApplication+Helper.h"
 #import "UIDevice+Info.h"
-#import "NSNotificationCenter+MainThread.h"
 #import "NSString+FileSize.h"
 
 /*

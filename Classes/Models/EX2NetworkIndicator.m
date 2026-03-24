@@ -7,7 +7,7 @@
 //
 
 #import "EX2NetworkIndicator.h"
-#import "EX2Dispatch.h"
+#import "Swift.h"
 
 static NSUInteger networkUseCount = 0;
 

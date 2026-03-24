@@ -481,26 +481,26 @@ import CocoaLumberjackSwift
             NotificationCenter.addObserverOnMainThread(self, selector: #selector(updateQuickSkipButtons), name: ISMSNotification_QuickSkipSecondsSettingChanged)
         }
         
-        notificationObservers.append(NotificationCenter.addObserverOnMainThreadForName(ISMSNotification_SongPlaybackEnded) { [unowned self] _ in
+        notificationObservers.append(NotificationCenter.addObserverOnMainThread(forName: ISMSNotification_SongPlaybackEnded) { [unowned self] _ in
             let playButtonConfig = UIImage.SymbolConfiguration(pointSize: 24, weight: .ultraLight, scale: .large)
             self.playPauseButton.setImage(UIImage(systemName: "play.fill", withConfiguration: playButtonConfig), for: .normal)
             self.playPauseButton.tintColor = self.iconDefaultColor
             self.updatePlayPauseAccessibility()
         })
-        notificationObservers.append(NotificationCenter.addObserverOnMainThreadForName(ISMSNotification_SongPlaybackPaused, object: nil) { [unowned self] _ in
+        notificationObservers.append(NotificationCenter.addObserverOnMainThread(forName: ISMSNotification_SongPlaybackPaused, object: nil) { [unowned self] _ in
             let playButtonConfig = UIImage.SymbolConfiguration(pointSize: 24, weight: .ultraLight, scale: .large)
             self.playPauseButton.setImage(UIImage(systemName: "play.fill", withConfiguration: playButtonConfig), for: .normal)
             self.playPauseButton.tintColor = self.iconDefaultColor
             self.updatePlayPauseAccessibility()
         })
-        notificationObservers.append(NotificationCenter.addObserverOnMainThreadForName(ISMSNotification_SongPlaybackStarted, object: nil) { [unowned self] _ in
+        notificationObservers.append(NotificationCenter.addObserverOnMainThread(forName: ISMSNotification_SongPlaybackStarted, object: nil) { [unowned self] _ in
             let playButtonConfig = UIImage.SymbolConfiguration(pointSize: 24, weight: .ultraLight, scale: .large)
             self.playPauseButton.setImage(UIImage(systemName: "pause.fill", withConfiguration: playButtonConfig), for: .normal)
             self.playPauseButton.tintColor = self.iconDefaultColor
             self.updatePlayPauseAccessibility()
         })
         
-        notificationObservers.append(NotificationCenter.addObserverOnMainThreadForName(ISMSNotification_CurrentPlaylistShuffleToggled) { [unowned self] _ in
+        notificationObservers.append(NotificationCenter.addObserverOnMainThread(forName: ISMSNotification_CurrentPlaylistShuffleToggled) { [unowned self] _ in
             self.updateShuffleButtonIcon()
             self.updateSongInfo()
             ViewObjects.shared().hideLoadingScreen()
