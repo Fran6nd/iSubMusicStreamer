@@ -288,8 +288,8 @@
 		53E04939255DB8F6007D4578 /* ISMSNSURLSessionStreamHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E04937255DB8F6007D4578 /* ISMSNSURLSessionStreamHandler.m */; };
 		53E04947255E2BC5007D4578 /* SelfSignedCertURLSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E04946255E2BC5007D4578 /* SelfSignedCertURLSessionDelegate.swift */; };
 		53E04948255E2BC5007D4578 /* SelfSignedCertURLSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E04946255E2BC5007D4578 /* SelfSignedCertURLSessionDelegate.swift */; };
-		53EA2DD4257D6A2C0003F38D /* UIDevice+Info.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EA2DD3257D6A2C0003F38D /* UIDevice+Info.m */; };
-		53EA2DD5257D6A2C0003F38D /* UIDevice+Info.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EA2DD3257D6A2C0003F38D /* UIDevice+Info.m */; };
+		68CE48A001F940ACBB88BE06 /* UIDevice+Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E724B63436744708F7C726A /* UIDevice+Info.swift */; };
+		F03BD4CE771649E4816B5380 /* UIDevice+Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E724B63436744708F7C726A /* UIDevice+Info.swift */; };
 		53EA2DE2257D7B4D0003F38D /* UIView+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EA2DE1257D7B4D0003F38D /* UIView+ViewController.swift */; };
 		53EA2DE3257D7B4D0003F38D /* UIView+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EA2DE1257D7B4D0003F38D /* UIView+ViewController.swift */; };
 		53F2D3EE113A338500107D63 /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F2D3EC113A338500107D63 /* AlbumViewController.m */; };
@@ -809,7 +809,7 @@
 		53E04946255E2BC5007D4578 /* SelfSignedCertURLSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSignedCertURLSessionDelegate.swift; sourceTree = "<group>"; };
 		53E82A951406D47F0051D44B /* FolderDropdownDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderDropdownDelegate.h; sourceTree = "<group>"; };
 		53EA2DD2257D6A2C0003F38D /* UIDevice+Info.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Info.h"; sourceTree = "<group>"; };
-		53EA2DD3257D6A2C0003F38D /* UIDevice+Info.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Info.m"; sourceTree = "<group>"; };
+		3E724B63436744708F7C726A /* UIDevice+Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Info.swift"; sourceTree = "<group>"; };
 		53EA2DE1257D7B4D0003F38D /* UIView+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ViewController.swift"; sourceTree = "<group>"; };
 		53F1412015FD550C004D00D5 /* buildnumber.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = buildnumber.xcconfig; path = Other/buildnumber.xcconfig; sourceTree = "<group>"; };
 		53F2D3EB113A338500107D63 /* AlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumViewController.h; sourceTree = "<group>"; };
@@ -1880,7 +1880,7 @@
 				53FE34541EA961540058B925 /* UIView+ObjCFrameHelper.h */,
 				53FE34551EA961540058B925 /* UIView+ObjCFrameHelper.m */,
 				53EA2DD2257D6A2C0003F38D /* UIDevice+Info.h */,
-				53EA2DD3257D6A2C0003F38D /* UIDevice+Info.m */,
+				3E724B63436744708F7C726A /* UIDevice+Info.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -2347,7 +2347,7 @@
 				53FE37A31EA961720058B925 /* SUSCoverArtDAO.m in Sources */,
 				539148D02559EB1D004AAC3F /* FlurryEmpty.m in Sources */,
 				53FE36E31EA961720058B925 /* AudioEngine.m in Sources */,
-				53EA2DD4257D6A2C0003F38D /* UIDevice+Info.m in Sources */,
+				68CE48A001F940ACBB88BE06 /* UIDevice+Info.swift in Sources */,
 				533295F0255EEFE50027C51A /* FMDatabase.m in Sources */,
 				53FE678E256DD0F00015FC83 /* GCDWebServerResponse.m in Sources */,
 				534B20E62561E444007FF1D7 /* LockScreenAudioControls.swift in Sources */,
@@ -2645,7 +2645,7 @@
 				5365859514789ADA00FE57A5 /* EqualizerView.m in Sources */,
 				533295F3255EEFE50027C51A /* FMDatabase+InMemoryOnDiskIO.m in Sources */,
 				53FE679B256DD0F00015FC83 /* GCDWebServerFileResponse.m in Sources */,
-				53EA2DD5257D6A2C0003F38D /* UIDevice+Info.m in Sources */,
+				F03BD4CE771649E4816B5380 /* UIDevice+Info.swift in Sources */,
 				53C3AB65257DA71000B35B99 /* Reachability.m in Sources */,
 				53FE37391EA961720058B925 /* ISMSServer.m in Sources */,
 				53FE378D1EA961720058B925 /* SearchXMLParser.m in Sources */,
