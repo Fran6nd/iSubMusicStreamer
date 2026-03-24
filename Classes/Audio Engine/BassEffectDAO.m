@@ -7,7 +7,7 @@
 //
 
 #import "BassEffectDAO.h"
-#import "BassEffectValue.h"
+#import "iSub-Swift.h"
 #import "BassParamEqValue.h"
 #import "AudioEngine.h"
 #import "SavedSettings.h"

@@ -50,6 +50,7 @@
 #import "SUSStatusLoader.h"
 
 // DAOs
+#import "BassEffectDAO.h"
 #import "SUSRootFoldersDAO.h"
 #import "ISMSSong+DAO.h"
 #import "ISMSBookmarkDAO.h"

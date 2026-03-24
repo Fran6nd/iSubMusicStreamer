@@ -368,8 +368,8 @@
 		53FE36E51EA961720058B925 /* AudioEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36251EA961710058B925 /* AudioEngine.m */; };
 		53FE36E61EA961720058B925 /* BassEffectDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36271EA961710058B925 /* BassEffectDAO.m */; };
 		53FE36E81EA961720058B925 /* BassEffectDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36271EA961710058B925 /* BassEffectDAO.m */; };
-		53FE36E91EA961720058B925 /* BassEffectValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36291EA961710058B925 /* BassEffectValue.m */; };
-		53FE36EB1EA961720058B925 /* BassEffectValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36291EA961710058B925 /* BassEffectValue.m */; };
+		B75C9E9279E8482FAA3BAB76 /* BassEffectValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229BD7E549144CDA617721F /* BassEffectValue.swift */; };
+		24319F854E7145F09B2EDDB3 /* BassEffectValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229BD7E549144CDA617721F /* BassEffectValue.swift */; };
 		53FE36EC1EA961720058B925 /* BassEqualizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE362B1EA961710058B925 /* BassEqualizer.m */; };
 		53FE36EE1EA961720058B925 /* BassEqualizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE362B1EA961710058B925 /* BassEqualizer.m */; };
 		53FE36EF1EA961720058B925 /* BassGaplessPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE362D1EA961710058B925 /* BassGaplessPlayer.m */; };
@@ -875,8 +875,7 @@
 		53FE36251EA961710058B925 /* AudioEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioEngine.m; sourceTree = "<group>"; };
 		53FE36261EA961710058B925 /* BassEffectDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BassEffectDAO.h; sourceTree = "<group>"; };
 		53FE36271EA961710058B925 /* BassEffectDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BassEffectDAO.m; sourceTree = "<group>"; };
-		53FE36281EA961710058B925 /* BassEffectValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BassEffectValue.h; sourceTree = "<group>"; };
-		53FE36291EA961710058B925 /* BassEffectValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BassEffectValue.m; sourceTree = "<group>"; };
+		2229BD7E549144CDA617721F /* BassEffectValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BassEffectValue.swift; sourceTree = "<group>"; };
 		53FE362A1EA961710058B925 /* BassEqualizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BassEqualizer.h; sourceTree = "<group>"; };
 		53FE362B1EA961710058B925 /* BassEqualizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BassEqualizer.m; sourceTree = "<group>"; };
 		53FE362C1EA961710058B925 /* BassGaplessPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BassGaplessPlayer.h; sourceTree = "<group>"; };
@@ -1552,8 +1551,7 @@
 				53FE367C1EA961720058B925 /* iSubBassGaplessPlayerDelegate.m */,
 				53FE36261EA961710058B925 /* BassEffectDAO.h */,
 				53FE36271EA961710058B925 /* BassEffectDAO.m */,
-				53FE36281EA961710058B925 /* BassEffectValue.h */,
-				53FE36291EA961710058B925 /* BassEffectValue.m */,
+				2229BD7E549144CDA617721F /* BassEffectValue.swift */,
 				53FE362A1EA961710058B925 /* BassEqualizer.h */,
 				53FE362B1EA961710058B925 /* BassEqualizer.m */,
 				53FE362C1EA961710058B925 /* BassGaplessPlayer.h */,
@@ -2415,7 +2413,7 @@
 				53A2BE24147DF09800E44822 /* EqualizerPointView.m in Sources */,
 				5306236D14D3295300D320A8 /* EqualizerPathView.m in Sources */,
 				C204A7A2CA124BFE8C04259F /* NSString+MD5.swift in Sources */,
-				53FE36E91EA961720058B925 /* BassEffectValue.m in Sources */,
+				B75C9E9279E8482FAA3BAB76 /* BassEffectValue.swift in Sources */,
 				533295EE255EEFE50027C51A /* FMDatabaseQueueAdditions.m in Sources */,
 				5325910114EE22C700DF4BDB /* MBProgressHUD.m in Sources */,
 				533295F4255EEFE50027C51A /* FMDatabase+FTS3.m in Sources */,
@@ -2637,7 +2635,7 @@
 				53A2BE26147DF09800E44822 /* EqualizerPointView.m in Sources */,
 				5306236F14D3295300D320A8 /* EqualizerPathView.m in Sources */,
 				E64AA7FF36FF4FB4B82B22B3 /* NSString+MD5.swift in Sources */,
-				53FE36EB1EA961720058B925 /* BassEffectValue.m in Sources */,
+				24319F854E7145F09B2EDDB3 /* BassEffectValue.swift in Sources */,
 				5325910314EE22C700DF4BDB /* MBProgressHUD.m in Sources */,
 				53D97464255C74FB00AABF7F /* ISMSLocalPlaylist.m in Sources */,
 				53FE389D1EA961C80058B925 /* NSFileManager+ZKAdditions.m in Sources */,
