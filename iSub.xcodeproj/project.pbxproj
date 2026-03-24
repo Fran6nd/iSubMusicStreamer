@@ -420,8 +420,8 @@
 		53FE37781EA961720058B925 /* PlaylistSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36931EA961720058B925 /* PlaylistSingleton.m */; };
 		53FE37881EA961720058B925 /* SavedSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36A01EA961720058B925 /* SavedSettings.m */; };
 		53FE378A1EA961720058B925 /* SavedSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36A01EA961720058B925 /* SavedSettings.m */; };
-		53FE378B1EA961720058B925 /* SearchXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36A21EA961720058B925 /* SearchXMLParser.m */; };
-		53FE378D1EA961720058B925 /* SearchXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36A21EA961720058B925 /* SearchXMLParser.m */; };
+		2DC1E5DF355B40B2A48E2A6E /* SearchXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0B5BA74514FAFB5496DF3 /* SearchXMLParser.swift */; };
+		8FA9B200569C4DED8D275EB6 /* SearchXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE0B5BA74514FAFB5496DF3 /* SearchXMLParser.swift */; };
 		53FE378E1EA961720058B925 /* SocialSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36A41EA961720058B925 /* SocialSingleton.m */; };
 		53FE37901EA961720058B925 /* SocialSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36A41EA961720058B925 /* SocialSingleton.m */; };
 		53FE37941EA961720058B925 /* SUSAllAlbumsDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36A81EA961720058B925 /* SUSAllAlbumsDAO.m */; };
@@ -931,8 +931,7 @@
 		53FE36931EA961720058B925 /* PlaylistSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistSingleton.m; sourceTree = "<group>"; };
 		53FE369F1EA961720058B925 /* SavedSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedSettings.h; sourceTree = "<group>"; };
 		53FE36A01EA961720058B925 /* SavedSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedSettings.m; sourceTree = "<group>"; };
-		53FE36A11EA961720058B925 /* SearchXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchXMLParser.h; sourceTree = "<group>"; };
-		53FE36A21EA961720058B925 /* SearchXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchXMLParser.m; sourceTree = "<group>"; };
+		BAE0B5BA74514FAFB5496DF3 /* SearchXMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchXMLParser.swift; sourceTree = "<group>"; };
 		53FE36A31EA961720058B925 /* SocialSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialSingleton.h; sourceTree = "<group>"; };
 		53FE36A41EA961720058B925 /* SocialSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialSingleton.m; sourceTree = "<group>"; };
 		53FE36A71EA961720058B925 /* SUSAllAlbumsDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUSAllAlbumsDAO.h; sourceTree = "<group>"; };
@@ -1529,8 +1528,7 @@
 				53FE36431EA961720058B925 /* ISMSCacheQueueManager.h */,
 				53FE36441EA961720058B925 /* ISMSCacheQueueManager.m */,
 				53FE36581EA961720058B925 /* ISMSNotificationNames.h */,
-				53FE36A11EA961720058B925 /* SearchXMLParser.h */,
-				53FE36A21EA961720058B925 /* SearchXMLParser.m */,
+				BAE0B5BA74514FAFB5496DF3 /* SearchXMLParser.swift */,
 				5347A1E3256D866A00BFB70A /* HLSReverseProxyServer.swift */,
 				AA11BB22CC33DD44EE550001 /* EX2Dispatch.swift */,
 				CC33DD44EE55FF660011 /* EX2NetworkIndicator.swift */,
@@ -2407,7 +2405,7 @@
 				537B05BF256B0E4B0008892C /* PadMenuTableCell.swift in Sources */,
 				5365859314789ADA00FE57A5 /* EqualizerView.m in Sources */,
 				53FE37371EA961720058B925 /* ISMSServer.m in Sources */,
-				53FE378B1EA961720058B925 /* SearchXMLParser.m in Sources */,
+				2DC1E5DF355B40B2A48E2A6E /* SearchXMLParser.swift in Sources */,
 				53A2BE24147DF09800E44822 /* EqualizerPointView.m in Sources */,
 				5306236D14D3295300D320A8 /* EqualizerPathView.m in Sources */,
 				C204A7A2CA124BFE8C04259F /* NSString+MD5.swift in Sources */,
@@ -2628,7 +2626,7 @@
 				F03BD4CE771649E4816B5380 /* UIDevice+Info.swift in Sources */,
 				53C3AB65257DA71000B35B99 /* Reachability.m in Sources */,
 				53FE37391EA961720058B925 /* ISMSServer.m in Sources */,
-				53FE378D1EA961720058B925 /* SearchXMLParser.m in Sources */,
+				8FA9B200569C4DED8D275EB6 /* SearchXMLParser.swift in Sources */,
 				53FE67A5256DD0F00015FC83 /* GCDWebServerDataRequest.m in Sources */,
 				53A2BE26147DF09800E44822 /* EqualizerPointView.m in Sources */,
 				5306236F14D3295300D320A8 /* EqualizerPathView.m in Sources */,

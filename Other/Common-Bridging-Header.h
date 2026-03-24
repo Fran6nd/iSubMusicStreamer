@@ -57,9 +57,6 @@
 #import "SUSLyricsDAO.h"
 #import "SUSCoverArtDAO.h"
 
-// Parsers
-#import "SearchXMLParser.h"
-
 // Models
 #import "ISMSArtist.h"
 #import "ISMSAlbum.h"

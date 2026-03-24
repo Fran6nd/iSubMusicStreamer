@@ -7,8 +7,8 @@
 //
 
 #import "SUSServerShuffleLoader.h"
-#import "SearchXMLParser.h"
 #import "NSMutableURLRequest+SUS.h"
+#import "Swift.h"
 #import "SavedSettings.h"
 #import "PlaylistSingleton.h"
 #import "DatabaseSingleton.h"
