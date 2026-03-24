@@ -326,8 +326,8 @@
 		53FE35121EA961540058B925 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34131EA961540058B925 /* NSString+MD5.m */; };
 		53FE35191EA961540058B925 /* NSString+Time.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34191EA961540058B925 /* NSString+Time.m */; };
 		53FE351B1EA961540058B925 /* NSString+Time.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34191EA961540058B925 /* NSString+Time.m */; };
-		53FE351F1EA961540058B925 /* NSString+URLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE341D1EA961540058B925 /* NSString+URLEncode.m */; };
-		53FE35211EA961540058B925 /* NSString+URLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE341D1EA961540058B925 /* NSString+URLEncode.m */; };
+		30B0CDC6EE4E4929AE9FB0F6 /* NSString+URLEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648A72DE5FCA4292823A8996 /* NSString+URLEncode.swift */; };
+		E64C346DE5124EB78C86ACD0 /* NSString+URLEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648A72DE5FCA4292823A8996 /* NSString+URLEncode.swift */; };
 		53FE35251EA961540058B925 /* NSURL+QueryParameterDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34211EA961540058B925 /* NSURL+QueryParameterDictionary.m */; };
 		53FE35271EA961540058B925 /* NSURL+QueryParameterDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34211EA961540058B925 /* NSURL+QueryParameterDictionary.m */; };
 		53FE35281EA961540058B925 /* NSURL+SkipBackupAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34231EA961540058B925 /* NSURL+SkipBackupAttribute.m */; };
@@ -845,7 +845,7 @@
 		53FE34181EA961540058B925 /* NSString+Time.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Time.h"; sourceTree = "<group>"; };
 		53FE34191EA961540058B925 /* NSString+Time.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Time.m"; sourceTree = "<group>"; };
 		53FE341C1EA961540058B925 /* NSString+URLEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncode.h"; sourceTree = "<group>"; };
-		53FE341D1EA961540058B925 /* NSString+URLEncode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncode.m"; sourceTree = "<group>"; };
+		648A72DE5FCA4292823A8996 /* NSString+URLEncode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+URLEncode.swift"; sourceTree = "<group>"; };
 		53FE34201EA961540058B925 /* NSURL+QueryParameterDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+QueryParameterDictionary.h"; sourceTree = "<group>"; };
 		53FE34211EA961540058B925 /* NSURL+QueryParameterDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+QueryParameterDictionary.m"; sourceTree = "<group>"; };
 		53FE34221EA961540058B925 /* NSURL+SkipBackupAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+SkipBackupAttribute.h"; sourceTree = "<group>"; };
@@ -1861,7 +1861,7 @@
 				53FE34181EA961540058B925 /* NSString+Time.h */,
 				53FE34191EA961540058B925 /* NSString+Time.m */,
 				53FE341C1EA961540058B925 /* NSString+URLEncode.h */,
-				53FE341D1EA961540058B925 /* NSString+URLEncode.m */,
+				648A72DE5FCA4292823A8996 /* NSString+URLEncode.swift */,
 				53FE33F11EA961540058B925 /* NSNull+CleanString.h */,
 				BB39C0B9CB5647A18B05C245 /* CleanString.swift */,
 				53FE33F31EA961540058B925 /* NSNumber+CleanString.h */,
@@ -2281,7 +2281,7 @@
 				53246AB6256C975600E11EC4 /* CacheStatusViewController.swift in Sources */,
 				53FE37A61EA961720058B925 /* SUSDropdownFolderLoader.m in Sources */,
 				53FE36F21EA961720058B925 /* BassParamEqValue.m in Sources */,
-				53FE351F1EA961540058B925 /* NSString+URLEncode.m in Sources */,
+				30B0CDC6EE4E4929AE9FB0F6 /* NSString+URLEncode.swift in Sources */,
 				53E04938255DB8F6007D4578 /* ISMSNSURLSessionStreamHandler.m in Sources */,
 				53FE378E1EA961720058B925 /* SocialSingleton.m in Sources */,
 				EFF20B51A64346AD80A32F89 /* NSString+HasValue.swift in Sources */,
@@ -2488,7 +2488,7 @@
 				53FE34E21EA961540058B925 /* NSNotificationCenter+MainThread.m in Sources */,
 				53FE37A81EA961720058B925 /* SUSDropdownFolderLoader.m in Sources */,
 				53FE36F41EA961720058B925 /* BassParamEqValue.m in Sources */,
-				53FE35211EA961540058B925 /* NSString+URLEncode.m in Sources */,
+				E64C346DE5124EB78C86ACD0 /* NSString+URLEncode.swift in Sources */,
 				53E04939255DB8F6007D4578 /* ISMSNSURLSessionStreamHandler.m in Sources */,
 				53FE37901EA961720058B925 /* SocialSingleton.m in Sources */,
 				AD7DFF52492C49818C4F49F7 /* NSString+HasValue.swift in Sources */,
