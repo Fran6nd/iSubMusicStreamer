@@ -334,12 +334,12 @@
 		BEFCB96CD9BF4720B2341684 /* UIImage+Tint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F016ACBE540E794D5F2B4 /* UIImage+Tint.swift */; };
 		AA11BB22CC33DD44EE550002 /* EX2Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA11BB22CC33DD44EE550001 /* EX2Dispatch.swift */; };
 		AA11BB22CC33DD44EE550003 /* EX2Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA11BB22CC33DD44EE550001 /* EX2Dispatch.swift */; };
+		CC33DD44EE55FF660012 /* EX2NetworkIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC33DD44EE55FF660011 /* EX2NetworkIndicator.swift */; };
+		CC33DD44EE55FF660013 /* EX2NetworkIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC33DD44EE55FF660011 /* EX2NetworkIndicator.swift */; };
 		AA11BB22CC33DD44EE550005 /* NSNotificationCenter+MainThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA11BB22CC33DD44EE550004 /* NSNotificationCenter+MainThread.swift */; };
 		AA11BB22CC33DD44EE550006 /* NSNotificationCenter+MainThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA11BB22CC33DD44EE550004 /* NSNotificationCenter+MainThread.swift */; };
 		53FE356D1EA961540058B925 /* UIView+ObjCFrameHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34551EA961540058B925 /* UIView+ObjCFrameHelper.m */; };
 		53FE356F1EA961540058B925 /* UIView+ObjCFrameHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34551EA961540058B925 /* UIView+ObjCFrameHelper.m */; };
-		53FE35881EA961540058B925 /* EX2NetworkIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE346A1EA961540058B925 /* EX2NetworkIndicator.m */; };
-		53FE358A1EA961540058B925 /* EX2NetworkIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE346A1EA961540058B925 /* EX2NetworkIndicator.m */; };
 		53FE358E1EA961540058B925 /* EX2RingBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE346E1EA961540058B925 /* EX2RingBuffer.m */; };
 		53FE35901EA961540058B925 /* EX2RingBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE346E1EA961540058B925 /* EX2RingBuffer.m */; };
 		53FE35EB1EA961540058B925 /* SnappySlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34B41EA961540058B925 /* SnappySlider.m */; };
@@ -848,12 +848,11 @@
 		53FE34461EA961540058B925 /* UIImage+Tint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tint.h"; sourceTree = "<group>"; };
 		4E8F016ACBE540E794D5F2B4 /* UIImage+Tint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Tint.swift"; sourceTree = "<group>"; };
 		AA11BB22CC33DD44EE550001 /* EX2Dispatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EX2Dispatch.swift; sourceTree = "<group>"; };
+		CC33DD44EE55FF660011 /* EX2NetworkIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EX2NetworkIndicator.swift; sourceTree = "<group>"; };
 		AA11BB22CC33DD44EE550004 /* NSNotificationCenter+MainThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotificationCenter+MainThread.swift"; sourceTree = "<group>"; };
 		AA11BB22CC33DD44EE550008 /* NSNotificationCenter+MainThread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+MainThread.h"; sourceTree = "<group>"; };
 		53FE34541EA961540058B925 /* UIView+ObjCFrameHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ObjCFrameHelper.h"; sourceTree = "<group>"; };
 		53FE34551EA961540058B925 /* UIView+ObjCFrameHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ObjCFrameHelper.m"; sourceTree = "<group>"; };
-		53FE34691EA961540058B925 /* EX2NetworkIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EX2NetworkIndicator.h; sourceTree = "<group>"; };
-		53FE346A1EA961540058B925 /* EX2NetworkIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EX2NetworkIndicator.m; sourceTree = "<group>"; };
 		53FE346D1EA961540058B925 /* EX2RingBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EX2RingBuffer.h; sourceTree = "<group>"; };
 		53FE346E1EA961540058B925 /* EX2RingBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EX2RingBuffer.m; sourceTree = "<group>"; };
 		53FE34961EA961540058B925 /* EX2Kit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EX2Kit.h; sourceTree = "<group>"; };
@@ -1546,8 +1545,7 @@
 				53FE36A21EA961720058B925 /* SearchXMLParser.m */,
 				5347A1E3256D866A00BFB70A /* HLSReverseProxyServer.swift */,
 				AA11BB22CC33DD44EE550001 /* EX2Dispatch.swift */,
-				53FE34691EA961540058B925 /* EX2NetworkIndicator.h */,
-				53FE346A1EA961540058B925 /* EX2NetworkIndicator.m */,
+				CC33DD44EE55FF660011 /* EX2NetworkIndicator.swift */,
 				53FE346D1EA961540058B925 /* EX2RingBuffer.h */,
 				53FE346E1EA961540058B925 /* EX2RingBuffer.m */,
 			);
@@ -2322,7 +2320,7 @@
 				968751DBD5914D338C5D5557 /* NSString+Time.swift in Sources */,
 				53FE37491EA961720058B925 /* ISMSStreamManager.m in Sources */,
 				53FE388C1EA961C80058B925 /* GMAppleDouble.m in Sources */,
-				53FE35881EA961540058B925 /* EX2NetworkIndicator.m in Sources */,
+				CC33DD44EE55FF660012 /* EX2NetworkIndicator.swift in Sources */,
 				5388A3B4119899260049BA9E /* BookmarksViewController.m in Sources */,
 				53FE38B31EA961C80058B925 /* ZKDefs.m in Sources */,
 				53246AA9256C324500E11EC4 /* InsetTextField.swift in Sources */,
@@ -2529,7 +2527,7 @@
 				533295F1255EEFE50027C51A /* FMDatabase.m in Sources */,
 				53FE374B1EA961720058B925 /* ISMSStreamManager.m in Sources */,
 				53FE388E1EA961C80058B925 /* GMAppleDouble.m in Sources */,
-				53FE358A1EA961540058B925 /* EX2NetworkIndicator.m in Sources */,
+				CC33DD44EE55FF660013 /* EX2NetworkIndicator.swift in Sources */,
 				53BC27C4139AF0DD00A825F1 /* BookmarksViewController.m in Sources */,
 				53FE38B51EA961C80058B925 /* ZKDefs.m in Sources */,
 				53FE38A31EA961C80058B925 /* ZKArchive.m in Sources */,

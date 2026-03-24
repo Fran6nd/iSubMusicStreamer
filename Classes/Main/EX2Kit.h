@@ -21,7 +21,6 @@
 
 #import "Swift.h"
 #import "EX2RingBuffer.h"
-#import "EX2NetworkIndicator.h"
 
 
 //
