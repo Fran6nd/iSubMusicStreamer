@@ -388,14 +388,14 @@
 		53FE37031EA961720058B925 /* DatabaseSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE363A1EA961710058B925 /* DatabaseSingleton.m */; };
 		53FE370A1EA961720058B925 /* ISMSAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36401EA961720058B925 /* ISMSAlbum.m */; };
 		53FE370C1EA961720058B925 /* ISMSAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36401EA961720058B925 /* ISMSAlbum.m */; };
+		BEA4DC593E8D4C76BC4AD1AC /* ISMSChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043514352D8B47B8BFC4CF2F /* ISMSChatMessage.swift */; };
+		4E265E7A07514EB2A00FEE0D /* ISMSChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043514352D8B47B8BFC4CF2F /* ISMSChatMessage.swift */; };
 		F15906F558A9409285C83981 /* ISMSIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2755DA03027B435E9C0877DE /* ISMSIndex.swift */; };
 		57C073D53185455EA5FF7CF9 /* ISMSIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2755DA03027B435E9C0877DE /* ISMSIndex.swift */; };
 		53FE370D1EA961720058B925 /* ISMSArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36421EA961720058B925 /* ISMSArtist.m */; };
 		53FE370F1EA961720058B925 /* ISMSArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36421EA961720058B925 /* ISMSArtist.m */; };
 		53FE37101EA961720058B925 /* ISMSCacheQueueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36441EA961720058B925 /* ISMSCacheQueueManager.m */; };
 		53FE37121EA961720058B925 /* ISMSCacheQueueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36441EA961720058B925 /* ISMSCacheQueueManager.m */; };
-		53FE37161EA961720058B925 /* ISMSChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36481EA961720058B925 /* ISMSChatMessage.m */; };
-		53FE37181EA961720058B925 /* ISMSChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36481EA961720058B925 /* ISMSChatMessage.m */; };
 		53FE37191EA961720058B925 /* SUSCoverArtLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE364A1EA961720058B925 /* SUSCoverArtLoader.m */; };
 		53FE371B1EA961720058B925 /* SUSCoverArtLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE364A1EA961720058B925 /* SUSCoverArtLoader.m */; };
 		53FE37371EA961720058B925 /* ISMSServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36651EA961720058B925 /* ISMSServer.m */; };
@@ -898,12 +898,11 @@
 		53FE363F1EA961720058B925 /* ISMSAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISMSAlbum.h; sourceTree = "<group>"; };
 		53FE36401EA961720058B925 /* ISMSAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISMSAlbum.m; sourceTree = "<group>"; };
 		53FE36411EA961720058B925 /* ISMSArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISMSArtist.h; sourceTree = "<group>"; };
+		043514352D8B47B8BFC4CF2F /* ISMSChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISMSChatMessage.swift; sourceTree = "<group>"; };
 		2755DA03027B435E9C0877DE /* ISMSIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISMSIndex.swift; sourceTree = "<group>"; };
 		53FE36421EA961720058B925 /* ISMSArtist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISMSArtist.m; sourceTree = "<group>"; };
 		53FE36431EA961720058B925 /* ISMSCacheQueueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISMSCacheQueueManager.h; sourceTree = "<group>"; };
 		53FE36441EA961720058B925 /* ISMSCacheQueueManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISMSCacheQueueManager.m; sourceTree = "<group>"; };
-		53FE36471EA961720058B925 /* ISMSChatMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISMSChatMessage.h; sourceTree = "<group>"; };
-		53FE36481EA961720058B925 /* ISMSChatMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISMSChatMessage.m; sourceTree = "<group>"; };
 		53FE36491EA961720058B925 /* SUSCoverArtLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUSCoverArtLoader.h; sourceTree = "<group>"; };
 		53FE364A1EA961720058B925 /* SUSCoverArtLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUSCoverArtLoader.m; sourceTree = "<group>"; };
 		53FE364F1EA961720058B925 /* ISMSErrorDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISMSErrorDomain.h; sourceTree = "<group>"; };
@@ -1607,9 +1606,8 @@
 				53FE36CA1EA961720058B925 /* SUSServerPlaylist.m */,
 				53D97461255C74FB00AABF7F /* ISMSLocalPlaylist.h */,
 				53D97462255C74FB00AABF7F /* ISMSLocalPlaylist.m */,
-				53FE36471EA961720058B925 /* ISMSChatMessage.h */,
-				53FE36481EA961720058B925 /* ISMSChatMessage.m */,
 				53FE36411EA961720058B925 /* ISMSArtist.h */,
+				043514352D8B47B8BFC4CF2F /* ISMSChatMessage.swift */,
 				2755DA03027B435E9C0877DE /* ISMSIndex.swift */,
 				53FE36421EA961720058B925 /* ISMSArtist.m */,
 				53FE363F1EA961720058B925 /* ISMSAlbum.h */,
@@ -2277,6 +2275,7 @@
 				53614ACA116432DA0088ABC0 /* ServerListViewController.m in Sources */,
 				530388A9116571920043292D /* AllSongsViewController.m in Sources */,
 				53FE370D1EA961720058B925 /* ISMSArtist.m in Sources */,
+				BEA4DC593E8D4C76BC4AD1AC /* ISMSChatMessage.swift in Sources */,
 				F15906F558A9409285C83981 /* ISMSIndex.swift in Sources */,
 				53C3AB73257DDA1000B35B99 /* LicensesViewController.swift in Sources */,
 				53FE37B81EA961720058B925 /* SUSQuickAlbumsLoader.m in Sources */,
@@ -2284,7 +2283,6 @@
 				53ABE3631165C83900197877 /* PlayingViewController.m in Sources */,
 				53FE36EF1EA961720058B925 /* BassGaplessPlayer.m in Sources */,
 				533D181F255F72FF003F962C /* CacheOfflineFoldersViewController.m in Sources */,
-				53FE37161EA961720058B925 /* ISMSChatMessage.m in Sources */,
 				53FE67AC256DE9600015FC83 /* Defines.swift in Sources */,
 				53FE38BC1EA961C80058B925 /* ZKLog.m in Sources */,
 				53FE358E1EA961540058B925 /* EX2RingBuffer.m in Sources */,
@@ -2489,6 +2487,7 @@
 				5359C85A256EA8FE00C8F8DC /* ObjC.swift in Sources */,
 				53246AB7256C975600E11EC4 /* CacheStatusViewController.swift in Sources */,
 				53FE370F1EA961720058B925 /* ISMSArtist.m in Sources */,
+				4E265E7A07514EB2A00FEE0D /* ISMSChatMessage.swift in Sources */,
 				57C073D53185455EA5FF7CF9 /* ISMSIndex.swift in Sources */,
 				53FE37BA1EA961720058B925 /* SUSQuickAlbumsLoader.m in Sources */,
 				53FE36EE1EA961720058B925 /* BassEqualizer.m in Sources */,
@@ -2496,7 +2495,6 @@
 				53FE36F11EA961720058B925 /* BassGaplessPlayer.m in Sources */,
 				538C8FE225606299005D6CA9 /* RefreshControl.swift in Sources */,
 				53329642255F2B960027C51A /* AlbumTableViewHeader.swift in Sources */,
-				53FE37181EA961720058B925 /* ISMSChatMessage.m in Sources */,
 				53FE38BE1EA961C80058B925 /* ZKLog.m in Sources */,
 				53FE35901EA961540058B925 /* EX2RingBuffer.m in Sources */,
 				53C3AB74257DDA1000B35B99 /* LicensesViewController.swift in Sources */,

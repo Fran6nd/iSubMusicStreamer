@@ -18,7 +18,6 @@
 #import "MusicSingleton.h"
 #import "ISMSErrorDomain.h"
 #import "SUSChatDAO.h"
-#import "ISMSChatMessage.h"
 #import "EX2Kit.h"
 #import "Swift.h"
 
