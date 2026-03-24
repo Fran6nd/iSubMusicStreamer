@@ -71,6 +71,7 @@
  * Extensions
  */
 
+#import "GTMNSString+HTML.h"
 #import "UIViewController+PushViewControllerCustom.h"
 #import "NSString+time.h"
 #import "NSMutableURLRequest+SUS.h"

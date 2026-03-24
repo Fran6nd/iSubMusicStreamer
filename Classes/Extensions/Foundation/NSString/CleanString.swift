@@ -8,6 +8,13 @@
 
 import Foundation
 
+extension NSString {
+    @objc var cleanString: String {
+        let htmlDecoded = (gtm_stringByUnescapingFromHTML() as String?) ?? (self as String)
+        return htmlDecoded.removingPercentEncoding ?? htmlDecoded
+    }
+}
+
 extension NSNull {
     @objc var cleanString: String? { nil }
 }
