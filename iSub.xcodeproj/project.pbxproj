@@ -432,8 +432,8 @@
 		53FE379C1EA961720058B925 /* SUSAllSongsLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36AC1EA961720058B925 /* SUSAllSongsLoader.m */; };
 		53FE379D1EA961720058B925 /* SUSChatDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36AE1EA961720058B925 /* SUSChatDAO.m */; };
 		53FE379F1EA961720058B925 /* SUSChatDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36AE1EA961720058B925 /* SUSChatDAO.m */; };
-		53FE37A01EA961720058B925 /* SUSChatLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36B01EA961720058B925 /* SUSChatLoader.m */; };
-		53FE37A21EA961720058B925 /* SUSChatLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36B01EA961720058B925 /* SUSChatLoader.m */; };
+		851E746D487F473A9CC0A1C7 /* SUSChatLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6996ECAE102E47B59C7A2816 /* SUSChatLoader.swift */; };
+		CAEC243B414345DC96DEE0F4 /* SUSChatLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6996ECAE102E47B59C7A2816 /* SUSChatLoader.swift */; };
 		53FE37A31EA961720058B925 /* SUSCoverArtDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36B21EA961720058B925 /* SUSCoverArtDAO.m */; };
 		53FE37A51EA961720058B925 /* SUSCoverArtDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36B21EA961720058B925 /* SUSCoverArtDAO.m */; };
 		53FE37A61EA961720058B925 /* SUSDropdownFolderLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36B41EA961720058B925 /* SUSDropdownFolderLoader.m */; };
@@ -942,8 +942,7 @@
 		53FE36AC1EA961720058B925 /* SUSAllSongsLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUSAllSongsLoader.m; sourceTree = "<group>"; };
 		53FE36AD1EA961720058B925 /* SUSChatDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUSChatDAO.h; sourceTree = "<group>"; };
 		53FE36AE1EA961720058B925 /* SUSChatDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUSChatDAO.m; sourceTree = "<group>"; };
-		53FE36AF1EA961720058B925 /* SUSChatLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUSChatLoader.h; sourceTree = "<group>"; };
-		53FE36B01EA961720058B925 /* SUSChatLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUSChatLoader.m; sourceTree = "<group>"; };
+		6996ECAE102E47B59C7A2816 /* SUSChatLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUSChatLoader.swift; sourceTree = "<group>"; };
 		53FE36B11EA961720058B925 /* SUSCoverArtDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUSCoverArtDAO.h; sourceTree = "<group>"; };
 		53FE36B21EA961720058B925 /* SUSCoverArtDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUSCoverArtDAO.m; sourceTree = "<group>"; };
 		53FE36B31EA961720058B925 /* SUSDropdownFolderLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUSDropdownFolderLoader.h; sourceTree = "<group>"; };
@@ -1618,8 +1617,7 @@
 				531D3A1E255ABAAC000CB0DF /* SUSLoader.m */,
 				53746678255AD19300DB9193 /* SUSLoaderDelegate.h */,
 				53FE36551EA961720058B925 /* SUSLoaderManager.h */,
-				53FE36AF1EA961720058B925 /* SUSChatLoader.h */,
-				53FE36B01EA961720058B925 /* SUSChatLoader.m */,
+				6996ECAE102E47B59C7A2816 /* SUSChatLoader.swift */,
 				53FE36B31EA961720058B925 /* SUSDropdownFolderLoader.h */,
 				53FE36B41EA961720058B925 /* SUSDropdownFolderLoader.m */,
 				53FE36AB1EA961720058B925 /* SUSAllSongsLoader.h */,
@@ -2332,7 +2330,7 @@
 				53FE37BE1EA961720058B925 /* SUSRootFoldersLoader.m in Sources */,
 				53523D9411CD61F7006AEA48 /* GenresArtistViewController.m in Sources */,
 				53FE38AA1EA961C80058B925 /* ZKCDTrailer64.m in Sources */,
-				53FE37A01EA961720058B925 /* SUSChatLoader.m in Sources */,
+				851E746D487F473A9CC0A1C7 /* SUSChatLoader.swift in Sources */,
 				53FE67A2256DD0F00015FC83 /* GCDWebServerMultiPartFormRequest.m in Sources */,
 				5358083811CEB5F200A09386 /* CacheQueueSongUITableViewCell.m in Sources */,
 				53FE35EB1EA961540058B925 /* SnappySlider.m in Sources */,
@@ -2560,7 +2558,7 @@
 				53FE38AC1EA961C80058B925 /* ZKCDTrailer64.m in Sources */,
 				537B05C3256B40930008892C /* SongInfoViewController.swift in Sources */,
 				53FE679D256DD0F00015FC83 /* GCDWebServerDataResponse.m in Sources */,
-				53FE37A21EA961720058B925 /* SUSChatLoader.m in Sources */,
+				CAEC243B414345DC96DEE0F4 /* SUSChatLoader.swift in Sources */,
 				53BC27E0139AF0DD00A825F1 /* CacheQueueSongUITableViewCell.m in Sources */,
 				534B20E125619F3B007FF1D7 /* UIStackView+AddArrangedSubviews.swift in Sources */,
 				53FE35ED1EA961540058B925 /* SnappySlider.m in Sources */,

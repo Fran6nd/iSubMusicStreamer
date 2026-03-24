@@ -7,7 +7,7 @@
 //
 
 #import "SUSChatDAO.h"
-#import "SUSChatLoader.h"
+#import "Swift.h"
 #import "NSError+ISMSError.h"
 #import "NSMutableURLRequest+SUS.h"
 #import "EX2Kit.h"
