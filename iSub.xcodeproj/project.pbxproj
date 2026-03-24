@@ -310,6 +310,8 @@
 		65C3CEC47E384009AF305F93 /* CleanString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB39C0B9CB5647A18B05C245 /* CleanString.swift */; };
 		BB22CC33DD44EE55FF660002 /* NSError+ISMSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB22CC33DD44EE55FF660001 /* NSError+ISMSError.swift */; };
 		BB22CC33DD44EE55FF660003 /* NSError+ISMSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB22CC33DD44EE55FF660001 /* NSError+ISMSError.swift */; };
+		DD44EE55FF6677880002 /* SUSScrobbleLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD44EE55FF6677880001 /* SUSScrobbleLoader.swift */; };
+		DD44EE55FF6677880003 /* SUSScrobbleLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD44EE55FF6677880001 /* SUSScrobbleLoader.swift */; };
 		53FE34F81EA961540058B925 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34021EA961540058B925 /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		53FE34FA1EA961540058B925 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34021EA961540058B925 /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		87806C0251174998962D01E1 /* NSString+CompareWithoutIndefiniteArticles.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23EF06DA22B44DC9F9BE89F /* NSString+CompareWithoutIndefiniteArticles.swift */; };
@@ -450,8 +452,6 @@
 		53FE37BD1EA961720058B925 /* SUSRootFoldersDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36C41EA961720058B925 /* SUSRootFoldersDAO.m */; };
 		53FE37BE1EA961720058B925 /* SUSRootFoldersLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36C61EA961720058B925 /* SUSRootFoldersLoader.m */; };
 		53FE37C01EA961720058B925 /* SUSRootFoldersLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36C61EA961720058B925 /* SUSRootFoldersLoader.m */; };
-		53FE37C11EA961720058B925 /* SUSScrobbleLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36C81EA961720058B925 /* SUSScrobbleLoader.m */; };
-		53FE37C31EA961720058B925 /* SUSScrobbleLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36C81EA961720058B925 /* SUSScrobbleLoader.m */; };
 		53FE37C41EA961720058B925 /* SUSServerPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36CA1EA961720058B925 /* SUSServerPlaylist.m */; };
 		53FE37C61EA961720058B925 /* SUSServerPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36CA1EA961720058B925 /* SUSServerPlaylist.m */; };
 		53FE37C71EA961720058B925 /* SUSServerPlaylistsDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE36CC1EA961720058B925 /* SUSServerPlaylistsDAO.m */; };
@@ -929,6 +929,7 @@
 		53FE36891EA961720058B925 /* MusicSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicSingleton.m; sourceTree = "<group>"; };
 		53FE368A1EA961720058B925 /* NSError+ISMSError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+ISMSError.h"; sourceTree = "<group>"; };
 		BB22CC33DD44EE55FF660001 /* NSError+ISMSError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+ISMSError.swift"; sourceTree = "<group>"; };
+		DD44EE55FF6677880001 /* SUSScrobbleLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUSScrobbleLoader.swift; sourceTree = "<group>"; };
 		53FE368E1EA961720058B925 /* NSMutableURLRequest+SUS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+SUS.h"; sourceTree = "<group>"; };
 		53FE368F1EA961720058B925 /* NSMutableURLRequest+SUS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableURLRequest+SUS.m"; sourceTree = "<group>"; };
 		53FE36921EA961720058B925 /* PlaylistSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistSingleton.h; sourceTree = "<group>"; };
@@ -970,8 +971,6 @@
 		53FE36C41EA961720058B925 /* SUSRootFoldersDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUSRootFoldersDAO.m; sourceTree = "<group>"; };
 		53FE36C51EA961720058B925 /* SUSRootFoldersLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUSRootFoldersLoader.h; sourceTree = "<group>"; };
 		53FE36C61EA961720058B925 /* SUSRootFoldersLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUSRootFoldersLoader.m; sourceTree = "<group>"; };
-		53FE36C71EA961720058B925 /* SUSScrobbleLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUSScrobbleLoader.h; sourceTree = "<group>"; };
-		53FE36C81EA961720058B925 /* SUSScrobbleLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUSScrobbleLoader.m; sourceTree = "<group>"; };
 		53FE36C91EA961720058B925 /* SUSServerPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUSServerPlaylist.h; sourceTree = "<group>"; };
 		53FE36CA1EA961720058B925 /* SUSServerPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUSServerPlaylist.m; sourceTree = "<group>"; };
 		53FE36CB1EA961720058B925 /* SUSServerPlaylistsDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUSServerPlaylistsDAO.h; sourceTree = "<group>"; };
@@ -1657,8 +1656,7 @@
 				53FE36C21EA961720058B925 /* SUSQuickAlbumsLoader.m */,
 				53FE36C51EA961720058B925 /* SUSRootFoldersLoader.h */,
 				53FE36C61EA961720058B925 /* SUSRootFoldersLoader.m */,
-				53FE36C71EA961720058B925 /* SUSScrobbleLoader.h */,
-				53FE36C81EA961720058B925 /* SUSScrobbleLoader.m */,
+				DD44EE55FF6677880001 /* SUSScrobbleLoader.swift */,
 			);
 			path = Loaders;
 			sourceTree = "<group>";
@@ -2369,7 +2367,7 @@
 				87806C0251174998962D01E1 /* NSString+CompareWithoutIndefiniteArticles.swift in Sources */,
 				53FE37AF1EA961720058B925 /* SUSNowPlayingDAO.m in Sources */,
 				53FE37D31EA961720058B925 /* SUSSubFolderDAO.m in Sources */,
-				53FE37C11EA961720058B925 /* SUSScrobbleLoader.m in Sources */,
+				DD44EE55FF6677880002 /* SUSScrobbleLoader.swift in Sources */,
 				53FE38A41EA961C80058B925 /* ZKCDHeader.m in Sources */,
 				A552A88368654B0F92175591 /* NSString+Hex.swift in Sources */,
 				5379DC4F1219E48800F426CD /* ChatUITableViewCell.m in Sources */,
@@ -2586,7 +2584,7 @@
 				53FE37B11EA961720058B925 /* SUSNowPlayingDAO.m in Sources */,
 				53246AB4256C918500E11EC4 /* LyricsViewController.swift in Sources */,
 				53FE37D51EA961720058B925 /* SUSSubFolderDAO.m in Sources */,
-				53FE37C31EA961720058B925 /* SUSScrobbleLoader.m in Sources */,
+				DD44EE55FF6677880003 /* SUSScrobbleLoader.swift in Sources */,
 				53FE38A61EA961C80058B925 /* ZKCDHeader.m in Sources */,
 				53FE6791256DD0F00015FC83 /* GCDWebServerRequest.m in Sources */,
 				20444C3A3E084445A6DC64AB /* NSString+Hex.swift in Sources */,

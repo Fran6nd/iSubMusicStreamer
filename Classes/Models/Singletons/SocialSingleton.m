@@ -11,7 +11,7 @@
 #import "PlaylistSingleton.h"
 #import "ISMSStreamManager.h"
 #import "NSMutableURLRequest+SUS.h"
-#import "SUSScrobbleLoader.h"
+#import "Swift.h"
 #import "AudioEngine.h"
 #import "SavedSettings.h"
 #import "PlaylistSingleton.h"
