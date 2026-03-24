@@ -78,7 +78,7 @@ import SnapKit
         let tracksString = tracks == 1 ? "1 track" : "\(tracks) tracks"
         let durationString = NSString.formatTime(duration)
         var finalString = tracksString
-        if let durationString = durationString {
+        if !durationString.isEmpty {
             finalString += " • \(durationString) minutes"
         }
         tracksLabel.text = finalString

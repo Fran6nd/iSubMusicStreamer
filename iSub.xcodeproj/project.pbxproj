@@ -324,8 +324,8 @@
 		20444C3A3E084445A6DC64AB /* NSString+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4B8A80A1A940E1BFCA18B4 /* NSString+Hex.swift */; };
 		C204A7A2CA124BFE8C04259F /* NSString+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B46C480F20F4AEB91977055 /* NSString+MD5.swift */; };
 		E64AA7FF36FF4FB4B82B22B3 /* NSString+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B46C480F20F4AEB91977055 /* NSString+MD5.swift */; };
-		53FE35191EA961540058B925 /* NSString+Time.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34191EA961540058B925 /* NSString+Time.m */; };
-		53FE351B1EA961540058B925 /* NSString+Time.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34191EA961540058B925 /* NSString+Time.m */; };
+		968751DBD5914D338C5D5557 /* NSString+Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1331213BC749F8873E0148 /* NSString+Time.swift */; };
+		FF8875085C5D41E2AE3001AA /* NSString+Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1331213BC749F8873E0148 /* NSString+Time.swift */; };
 		30B0CDC6EE4E4929AE9FB0F6 /* NSString+URLEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648A72DE5FCA4292823A8996 /* NSString+URLEncode.swift */; };
 		E64C346DE5124EB78C86ACD0 /* NSString+URLEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648A72DE5FCA4292823A8996 /* NSString+URLEncode.swift */; };
 		F1342CD621444FAB89D4CDF1 /* NSURL+QueryParameterDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2F27CFEB7B4A3082F3DD9B /* NSURL+QueryParameterDictionary.swift */; };
@@ -843,7 +843,7 @@
 		53FE34121EA961540058B925 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
 		6B46C480F20F4AEB91977055 /* NSString+MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+MD5.swift"; sourceTree = "<group>"; };
 		53FE34181EA961540058B925 /* NSString+Time.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Time.h"; sourceTree = "<group>"; };
-		53FE34191EA961540058B925 /* NSString+Time.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Time.m"; sourceTree = "<group>"; };
+		5C1331213BC749F8873E0148 /* NSString+Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+Time.swift"; sourceTree = "<group>"; };
 		53FE341C1EA961540058B925 /* NSString+URLEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncode.h"; sourceTree = "<group>"; };
 		648A72DE5FCA4292823A8996 /* NSString+URLEncode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+URLEncode.swift"; sourceTree = "<group>"; };
 		53FE34201EA961540058B925 /* NSURL+QueryParameterDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+QueryParameterDictionary.h"; sourceTree = "<group>"; };
@@ -1859,7 +1859,7 @@
 				53FE34121EA961540058B925 /* NSString+MD5.h */,
 				6B46C480F20F4AEB91977055 /* NSString+MD5.swift */,
 				53FE34181EA961540058B925 /* NSString+Time.h */,
-				53FE34191EA961540058B925 /* NSString+Time.m */,
+				5C1331213BC749F8873E0148 /* NSString+Time.swift */,
 				53FE341C1EA961540058B925 /* NSString+URLEncode.h */,
 				648A72DE5FCA4292823A8996 /* NSString+URLEncode.swift */,
 				53FE33F11EA961540058B925 /* NSNull+CleanString.h */,
@@ -2325,7 +2325,7 @@
 				53FE38B91EA961C80058B925 /* ZKLFHeader.m in Sources */,
 				53FE37D01EA961720058B925 /* SUSStatusLoader.m in Sources */,
 				53FE37BB1EA961720058B925 /* SUSRootFoldersDAO.m in Sources */,
-				53FE35191EA961540058B925 /* NSString+Time.m in Sources */,
+				968751DBD5914D338C5D5557 /* NSString+Time.swift in Sources */,
 				53FE37491EA961720058B925 /* ISMSStreamManager.m in Sources */,
 				53FE388C1EA961C80058B925 /* GMAppleDouble.m in Sources */,
 				53FE35881EA961540058B925 /* EX2NetworkIndicator.m in Sources */,
@@ -2532,7 +2532,7 @@
 				53FE38BB1EA961C80058B925 /* ZKLFHeader.m in Sources */,
 				53FE37D21EA961720058B925 /* SUSStatusLoader.m in Sources */,
 				53FE37BD1EA961720058B925 /* SUSRootFoldersDAO.m in Sources */,
-				53FE351B1EA961540058B925 /* NSString+Time.m in Sources */,
+				FF8875085C5D41E2AE3001AA /* NSString+Time.swift in Sources */,
 				533295F1255EEFE50027C51A /* FMDatabase.m in Sources */,
 				53FE374B1EA961720058B925 /* ISMSStreamManager.m in Sources */,
 				53FE388E1EA961C80058B925 /* GMAppleDouble.m in Sources */,
