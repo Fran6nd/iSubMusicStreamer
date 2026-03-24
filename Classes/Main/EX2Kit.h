@@ -29,7 +29,6 @@
 
 // UIKit
 #import "UIApplication+Helper.h"
-#import "UIView+ObjCFrameHelper.h"
 #import "UIDevice+Info.h"
 #import "UIImage+Tint.h"
 
