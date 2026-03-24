@@ -320,8 +320,8 @@
 		53FE35061EA961540058B925 /* NSString+FileSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE340B1EA961540058B925 /* NSString+FileSize.m */; };
 		EFF20B51A64346AD80A32F89 /* NSString+HasValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91EB3C2C51F4799A1EFB761 /* NSString+HasValue.swift */; };
 		AD7DFF52492C49818C4F49F7 /* NSString+HasValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91EB3C2C51F4799A1EFB761 /* NSString+HasValue.swift */; };
-		53FE350D1EA961540058B925 /* NSString+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34111EA961540058B925 /* NSString+Hex.m */; };
-		53FE350F1EA961540058B925 /* NSString+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34111EA961540058B925 /* NSString+Hex.m */; };
+		A552A88368654B0F92175591 /* NSString+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4B8A80A1A940E1BFCA18B4 /* NSString+Hex.swift */; };
+		20444C3A3E084445A6DC64AB /* NSString+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4B8A80A1A940E1BFCA18B4 /* NSString+Hex.swift */; };
 		53FE35101EA961540058B925 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34131EA961540058B925 /* NSString+MD5.m */; };
 		53FE35121EA961540058B925 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34131EA961540058B925 /* NSString+MD5.m */; };
 		53FE35191EA961540058B925 /* NSString+Time.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FE34191EA961540058B925 /* NSString+Time.m */; };
@@ -839,7 +839,7 @@
 		53FE340B1EA961540058B925 /* NSString+FileSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FileSize.m"; sourceTree = "<group>"; };
 		C91EB3C2C51F4799A1EFB761 /* NSString+HasValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+HasValue.swift"; sourceTree = "<group>"; };
 		53FE34101EA961540058B925 /* NSString+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hex.h"; sourceTree = "<group>"; };
-		53FE34111EA961540058B925 /* NSString+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hex.m"; sourceTree = "<group>"; };
+		5E4B8A80A1A940E1BFCA18B4 /* NSString+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+Hex.swift"; sourceTree = "<group>"; };
 		53FE34121EA961540058B925 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
 		53FE34131EA961540058B925 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
 		53FE34181EA961540058B925 /* NSString+Time.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Time.h"; sourceTree = "<group>"; };
@@ -1855,7 +1855,7 @@
 				53FE340B1EA961540058B925 /* NSString+FileSize.m */,
 				C91EB3C2C51F4799A1EFB761 /* NSString+HasValue.swift */,
 				53FE34101EA961540058B925 /* NSString+Hex.h */,
-				53FE34111EA961540058B925 /* NSString+Hex.m */,
+				5E4B8A80A1A940E1BFCA18B4 /* NSString+Hex.swift */,
 				53FE34121EA961540058B925 /* NSString+MD5.h */,
 				53FE34131EA961540058B925 /* NSString+MD5.m */,
 				53FE34181EA961540058B925 /* NSString+Time.h */,
@@ -2384,7 +2384,7 @@
 				53FE37D31EA961720058B925 /* SUSSubFolderDAO.m in Sources */,
 				53FE37C11EA961720058B925 /* SUSScrobbleLoader.m in Sources */,
 				53FE38A41EA961C80058B925 /* ZKCDHeader.m in Sources */,
-				53FE350D1EA961540058B925 /* NSString+Hex.m in Sources */,
+				A552A88368654B0F92175591 /* NSString+Hex.swift in Sources */,
 				5379DC4F1219E48800F426CD /* ChatUITableViewCell.m in Sources */,
 				5379DC501219E48800F426CD /* ChatViewController.m in Sources */,
 				53BB7ECA121B8D8F00BEE7E8 /* CustomUITextView.m in Sources */,
@@ -2604,7 +2604,7 @@
 				53FE37C31EA961720058B925 /* SUSScrobbleLoader.m in Sources */,
 				53FE38A61EA961C80058B925 /* ZKCDHeader.m in Sources */,
 				53FE6791256DD0F00015FC83 /* GCDWebServerRequest.m in Sources */,
-				53FE350F1EA961540058B925 /* NSString+Hex.m in Sources */,
+				20444C3A3E084445A6DC64AB /* NSString+Hex.swift in Sources */,
 				53BC27F8139AF0DD00A825F1 /* ChatUITableViewCell.m in Sources */,
 				53BC27F9139AF0DD00A825F1 /* ChatViewController.m in Sources */,
 				537B05BA256B03830008892C /* PadRootViewController.swift in Sources */,
