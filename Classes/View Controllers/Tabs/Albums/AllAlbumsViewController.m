@@ -25,8 +25,6 @@
 #import "SUSAllSongsDAO.h"
 #import "ISMSArtist.h"
 #import "ISMSAlbum.h"
-#import "ISMSIndex.h"
-#import "ISMSIndex.h"
 #import "EX2Kit.h"
 #import "Swift.h"
 

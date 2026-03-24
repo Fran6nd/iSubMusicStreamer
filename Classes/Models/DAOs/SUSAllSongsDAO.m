@@ -11,7 +11,6 @@
 #import "FMDatabaseQueueAdditions.h"
 #import "DatabaseSingleton.h"
 #import "ISMSSong+DAO.h"
-#import "ISMSIndex.h"
 #import "Defines.h"
 #import "EX2Kit.h"
 
