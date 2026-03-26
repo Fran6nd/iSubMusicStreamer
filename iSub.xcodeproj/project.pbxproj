@@ -190,7 +190,8 @@
 		539148D02559EB1D004AAC3F /* FlurryEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 539148CE2559EB1D004AAC3F /* FlurryEmpty.m */; };
 		539148D12559EB1D004AAC3F /* FlurryEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 539148CE2559EB1D004AAC3F /* FlurryEmpty.m */; };
 		539148E02559FEFD004AAC3F /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 539148DF2559FEFD004AAC3F /* Launch Screen.storyboard */; };
-		539796E41162B68800F41D8B /* AllAlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 539796E31162B68800F41D8B /* AllAlbumsViewController.m */; };
+		879A3C44373E4BD59460804D /* AllAlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFE3B186E1245CEBB1A46EC /* AllAlbumsViewController.swift */; };
+		ED88AA1DE5B642388D9B83F2 /* AllAlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFE3B186E1245CEBB1A46EC /* AllAlbumsViewController.swift */; };
 		539797FE1162D4D200F41D8B /* AllAlbumsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 539797FD1162D4D200F41D8B /* AllAlbumsViewController.xib */; };
 		5398F26D11DA61DA00007870 /* SettingsTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5398F26B11DA61DA00007870 /* SettingsTabViewController.m */; };
 		5399CA68CC3B4C78B51DFB7E /* AddToPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896F4CEF5C20482984BC9115 /* AddToPlaylistViewController.swift */; };
@@ -226,7 +227,6 @@
 		53BC279D139AF0DD00A825F1 /* FoldersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* FoldersViewController.m */; };
 		F7382898FDC44D1084A365BC /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F876892D02AC4972A45637E4 /* AlbumViewController.swift */; };
 		8B353B49C68A408390653D7C /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F876892D02AC4972A45637E4 /* AlbumViewController.swift */; };
-		53BC27AC139AF0DD00A825F1 /* AllAlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 539796E31162B68800F41D8B /* AllAlbumsViewController.m */; };
 		53BC27AE139AF0DD00A825F1 /* ServerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53614AC8116432DA0088ABC0 /* ServerListViewController.m */; };
 		53BC27B0139AF0DD00A825F1 /* AllSongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 530388A8116571920043292D /* AllSongsViewController.m */; };
 		D6F4C6B314C2415E9263E87B /* PlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3C5FF018E24DF8BE229AAB /* PlayingViewController.swift */; };
@@ -732,8 +732,7 @@
 		539148CE2559EB1D004AAC3F /* FlurryEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlurryEmpty.m; sourceTree = "<group>"; };
 		539148CF2559EB1D004AAC3F /* FlurryCCPA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryCCPA.h; sourceTree = "<group>"; };
 		539148DF2559FEFD004AAC3F /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		539796E21162B68800F41D8B /* AllAlbumsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllAlbumsViewController.h; sourceTree = "<group>"; };
-		539796E31162B68800F41D8B /* AllAlbumsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AllAlbumsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		FDFE3B186E1245CEBB1A46EC /* AllAlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllAlbumsViewController.swift; sourceTree = "<group>"; };
 		539797FD1162D4D200F41D8B /* AllAlbumsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllAlbumsViewController.xib; sourceTree = "<group>"; };
 		5398F26A11DA61DA00007870 /* SettingsTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTabViewController.h; sourceTree = "<group>"; };
 		5398F26B11DA61DA00007870 /* SettingsTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTabViewController.m; sourceTree = "<group>"; };
@@ -1334,8 +1333,8 @@
 		531D39E9255AB2E0000CB0DF /* Albums */ = {
 			isa = PBXGroup;
 			children = (
-				539796E21162B68800F41D8B /* AllAlbumsViewController.h */,
-				539796E31162B68800F41D8B /* AllAlbumsViewController.m */,
+				FDFE3B186E1245CEBB1A46EC /* AllAlbumsViewController.swift */,
+				
 				539797FD1162D4D200F41D8B /* AllAlbumsViewController.xib */,
 			);
 			path = Albums;
@@ -2225,7 +2224,7 @@
 				EFF20B51A64346AD80A32F89 /* NSString+HasValue.swift in Sources */,
 				53FE37971EA961720058B925 /* SUSAllSongsDAO.m in Sources */,
 				AA00BB001234567890ABCDEF /* CustomUINavigationController.swift in Sources */,
-				539796E41162B68800F41D8B /* AllAlbumsViewController.m in Sources */,
+				879A3C44373E4BD59460804D /* AllAlbumsViewController.swift in Sources */,
 				53FE38981EA961C80058B925 /* NSFileHandle+ZKAdditions.m in Sources */,
 				53614ACA116432DA0088ABC0 /* ServerListViewController.m in Sources */,
 				530388A9116571920043292D /* AllSongsViewController.m in Sources */,
@@ -2425,7 +2424,7 @@
 				AD7DFF52492C49818C4F49F7 /* NSString+HasValue.swift in Sources */,
 				53FE37991EA961720058B925 /* SUSAllSongsDAO.m in Sources */,
 				AA00BB021234567890ABCDEF /* CustomUINavigationController.swift in Sources */,
-				53BC27AC139AF0DD00A825F1 /* AllAlbumsViewController.m in Sources */,
+				ED88AA1DE5B642388D9B83F2 /* AllAlbumsViewController.swift in Sources */,
 				53FE679F256DD0F00015FC83 /* GCDWebServerStreamedResponse.m in Sources */,
 				533295F5255EEFE50027C51A /* FMDatabase+FTS3.m in Sources */,
 				53FE389A1EA961C80058B925 /* NSFileHandle+ZKAdditions.m in Sources */,

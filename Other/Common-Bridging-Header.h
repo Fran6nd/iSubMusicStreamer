@@ -28,7 +28,9 @@
 #import "CacheViewController.h"
 #import "BookmarksViewController.h"
 #import "FoldersViewController.h"
-#import "AllAlbumsViewController.h"
+#import "SUSAllAlbumsDAO.h"
+#import "SUSAllSongsDAO.h"
+#import "SUSAllSongsLoader.h"
 #import "AllSongsViewController.h"
 #import "CacheOfflineFoldersViewController.h"
 
