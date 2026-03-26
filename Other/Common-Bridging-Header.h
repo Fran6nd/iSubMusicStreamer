@@ -22,7 +22,7 @@
 
 // View Controllers
 #import "FolderDropdownDelegate.h"
-#import "GenresArtistViewController.h"
+#import "GenresAlbumViewController.h"
 #import "CurrentPlaylistViewController.h"
 #import "EqualizerViewController.h"
 #import "ServerListViewController.h"
