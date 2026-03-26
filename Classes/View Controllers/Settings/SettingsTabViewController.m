@@ -7,7 +7,6 @@
 //
 
 #import "SettingsTabViewController.h"
-#import "FoldersViewController.h"
 #import "iSubAppDelegate.h"
 #import "ViewObjectsSingleton.h"
 #import "FMDatabaseQueueAdditions.h"

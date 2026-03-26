@@ -27,11 +27,10 @@
 #import "ServerListViewController.h"
 #import "CacheViewController.h"
 #import "BookmarksViewController.h"
-#import "FoldersViewController.h"
 #import "SUSAllAlbumsDAO.h"
 #import "SUSAllSongsDAO.h"
 #import "SUSAllSongsLoader.h"
-#import "CacheOfflineFoldersViewController.h"
+#import "CacheAlbumViewController.h"
 
 
 /*
@@ -90,6 +89,7 @@
 #import "ISMSStreamManager.h"
 #import "DatabaseSingleton.h"
 #import "CacheSingleton.h"
+#import "ISMSCacheQueueManager.h"
 
 /*
  * Frameworks

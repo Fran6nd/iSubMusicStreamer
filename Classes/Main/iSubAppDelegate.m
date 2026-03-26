@@ -8,7 +8,6 @@
 
 #import "iSubAppDelegate.h"
 #import "ServerListViewController.h"
-#import "FoldersViewController.h"
 #import "SUSStatusLoader.h"
 #import "NSMutableURLRequest+SUS.h"
 #import "ViewObjectsSingleton.h"
