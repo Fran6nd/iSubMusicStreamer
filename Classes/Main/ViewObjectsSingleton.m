@@ -11,23 +11,22 @@
 #import "Defines.h"
 #import "SavedSettings.h"
 #import "EX2Kit.h"
-#import "MBProgressHUD.h"
 #import "Swift.h"
 
 #define HUD_GRACE_TIME 0.5
 
-@interface ViewObjectsSingleton() <MBProgressHUDDelegate>
-@property (nullable, strong) MBProgressHUD *HUD;
+// MARK: - Native loading HUD
+
+@interface ViewObjectsSingleton()
+@property (nullable, strong) UIView *hudOverlay;
+@property (nullable, strong) NSTimer *hudGraceTimer;
+@property (nullable, strong) UILabel *hudLabel;
 @property BOOL isLoadingScreenShowing;
 @end
 
 @implementation ViewObjectsSingleton
 
-- (void)hudWasHidden:(MBProgressHUD *)hud  {
-    // Remove HUD from screen when the HUD was hidden
-    [self.HUD removeFromSuperview];
-	self.HUD = nil;
-}
+// MARK: - Loading screen
 
 - (void)showLoadingScreenOnMainWindowNotification:(NSNotification *)notification {
     [self showLoadingScreenOnMainWindowWithMessage:notification.userInfo[@"message"]];
@@ -39,18 +38,19 @@
 
 - (void)showLoadingScreen:(UIView *)view withMessage:(NSString *)message {
 	if (self.isLoadingScreenShowing) {
-        self.HUD.label.text = message ? message : self.HUD.label.text;
+        self.hudLabel.text = message ? message : self.hudLabel.text;
 		return;
     }
-	
+
 	self.isLoadingScreenShowing = YES;
-	
-	self.HUD = [[MBProgressHUD alloc] initWithView:view];
-    self.HUD.graceTime = HUD_GRACE_TIME;
-	[appDelegateS.window addSubview:self.HUD];
-	self.HUD.delegate = self;
-    self.HUD.label.text = message ? message : @"Loading";
-    [self.HUD showAnimated:YES];
+
+    NSString *labelText = message ? message : @"Loading";
+    __weak ViewObjectsSingleton *weakSelf = self;
+    self.hudGraceTimer = [NSTimer scheduledTimerWithTimeInterval:HUD_GRACE_TIME repeats:NO block:^(NSTimer *timer) {
+        if (weakSelf.isLoadingScreenShowing) {
+            [weakSelf presentHUDOnView:view message:labelText cancelTarget:nil];
+        }
+    }];
 }
 
 - (void)showAlbumLoadingScreenOnMainWindowNotification:(NSNotification *)notification {
@@ -63,41 +63,105 @@
 
 - (void)showAlbumLoadingScreen:(UIView *)view sender:(id)sender {
 	if (self.isLoadingScreenShowing) return;
-	
+
 	self.isLoadingScreenShowing = YES;
-	
-	self.HUD = [[MBProgressHUD alloc] initWithView:appDelegateS.window];
-	self.HUD.userInteractionEnabled = YES;
-    self.HUD.graceTime = HUD_GRACE_TIME;
-	
-	// TODO: verify on iPad
-	UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    cancelButton.translatesAutoresizingMaskIntoConstraints = NO;
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wundeclared-selector"
-    if ([sender respondsToSelector:@selector(cancelLoad)]) {
-        [cancelButton addTarget:sender action:@selector(cancelLoad) forControlEvents:UIControlEventTouchUpInside];
-    }
-#pragma clang diagnostic pop
-    [self.HUD.bezelView addSubview:cancelButton];
-    [NSLayoutConstraint activateConstraints:@[
-        [cancelButton.leadingAnchor constraintEqualToAnchor:self.HUD.bezelView.leadingAnchor],
-        [cancelButton.trailingAnchor constraintEqualToAnchor:self.HUD.bezelView.trailingAnchor],
-        [cancelButton.topAnchor constraintEqualToAnchor:self.HUD.bezelView.topAnchor],
-        [cancelButton.bottomAnchor constraintEqualToAnchor:self.HUD.bezelView.bottomAnchor]
-    ]];
-	
-	[appDelegateS.window addSubview:self.HUD];
-	self.HUD.delegate = self;
-    self.HUD.label.text = @"Loading";
-    self.HUD.detailsLabel.text = @"tap to cancel";
-    [self.HUD showAnimated:YES];
+
+    __weak ViewObjectsSingleton *weakSelf = self;
+    id cancelTarget = [sender respondsToSelector:@selector(cancelLoad)] ? sender : nil;
+    self.hudGraceTimer = [NSTimer scheduledTimerWithTimeInterval:HUD_GRACE_TIME repeats:NO block:^(NSTimer *timer) {
+        if (weakSelf.isLoadingScreenShowing) {
+            [weakSelf presentHUDOnView:appDelegateS.window message:@"Loading" cancelTarget:cancelTarget];
+        }
+    }];
 }
-	
+
+/// Builds and displays the HUD overlay. Must be called on the main thread.
+- (void)presentHUDOnView:(UIView *)view message:(NSString *)message cancelTarget:(nullable id)cancelTarget {
+    // Full-screen dimming overlay (does not intercept touches so the cancel button works)
+    UIView *overlay = [[UIView alloc] initWithFrame:view.bounds];
+    overlay.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    overlay.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
+    overlay.alpha = 0;
+    [view addSubview:overlay];
+    self.hudOverlay = overlay;
+
+    // Blurred bezel
+    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleSystemMaterial];
+    UIVisualEffectView *bezel = [[UIVisualEffectView alloc] initWithEffect:blur];
+    bezel.layer.cornerRadius = 14;
+    bezel.clipsToBounds = YES;
+    bezel.translatesAutoresizingMaskIntoConstraints = NO;
+    [overlay addSubview:bezel];
+    [NSLayoutConstraint activateConstraints:@[
+        [bezel.centerXAnchor constraintEqualToAnchor:overlay.centerXAnchor],
+        [bezel.centerYAnchor constraintEqualToAnchor:overlay.centerYAnchor],
+        [bezel.widthAnchor constraintGreaterThanOrEqualToConstant:130],
+        [bezel.heightAnchor constraintGreaterThanOrEqualToConstant:100],
+    ]];
+
+    UIView *content = bezel.contentView;
+
+    // Spinner
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleLarge];
+    spinner.translatesAutoresizingMaskIntoConstraints = NO;
+    [spinner startAnimating];
+    [content addSubview:spinner];
+
+    // Label
+    UILabel *label = [[UILabel alloc] init];
+    label.text = message;
+    label.textColor = UIColor.labelColor;
+    label.font = [UIFont systemFontOfSize:16 weight:UIFontWeightMedium];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.numberOfLines = 0;
+    label.translatesAutoresizingMaskIntoConstraints = NO;
+    [content addSubview:label];
+    self.hudLabel = label;
+
+    [NSLayoutConstraint activateConstraints:@[
+        [spinner.centerXAnchor constraintEqualToAnchor:content.centerXAnchor],
+        [spinner.topAnchor constraintEqualToAnchor:content.topAnchor constant:20],
+        [label.topAnchor constraintEqualToAnchor:spinner.bottomAnchor constant:10],
+        [label.leadingAnchor constraintEqualToAnchor:content.leadingAnchor constant:16],
+        [label.trailingAnchor constraintEqualToAnchor:content.trailingAnchor constant:-16],
+        [label.bottomAnchor constraintEqualToAnchor:content.bottomAnchor constant:-20],
+    ]];
+
+    // Optional cancel button covering the bezel
+    if (cancelTarget) {
+        UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        cancelButton.translatesAutoresizingMaskIntoConstraints = NO;
+        [cancelButton addTarget:cancelTarget action:@selector(cancelLoad) forControlEvents:UIControlEventTouchUpInside];
+        [overlay addSubview:cancelButton];
+        [NSLayoutConstraint activateConstraints:@[
+            [cancelButton.leadingAnchor constraintEqualToAnchor:bezel.leadingAnchor],
+            [cancelButton.trailingAnchor constraintEqualToAnchor:bezel.trailingAnchor],
+            [cancelButton.topAnchor constraintEqualToAnchor:bezel.topAnchor],
+            [cancelButton.bottomAnchor constraintEqualToAnchor:bezel.bottomAnchor],
+        ]];
+    }
+
+    // Fade in
+    [UIView animateWithDuration:0.25 animations:^{
+        overlay.alpha = 1;
+    }];
+}
+
 - (void)hideLoadingScreen {
 	if (!self.isLoadingScreenShowing) return;
 	self.isLoadingScreenShowing = NO;
-    [self.HUD hideAnimated:YES];
+
+    [self.hudGraceTimer invalidate];
+    self.hudGraceTimer = nil;
+    self.hudLabel = nil;
+
+    UIView *overlay = self.hudOverlay;
+    self.hudOverlay = nil;
+    [UIView animateWithDuration:0.2 animations:^{
+        overlay.alpha = 0;
+    } completion:^(BOOL finished) {
+        [overlay removeFromSuperview];
+    }];
 }
 
 - (UIColor *)currentDarkColor {
@@ -115,12 +179,12 @@
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
     // Prevent view controllers from going under the navigation bar
     viewController.edgesForExtendedLayout = UIRectEdgeNone;
-    
+
     // Remember selected tab
     if (!settingsS.isOfflineMode) {
         [[NSUserDefaults standardUserDefaults] setInteger:appDelegateS.mainTabBarController.selectedIndex forKey:@"mainTabBarControllerSelectedIndex"];
     }
-    
+
     // Fix iOS bug customizing the more tab controller
     if (appDelegateS.currentTabBarController == appDelegateS.mainTabBarController && ![viewController.navigationController isKindOfClass:CustomUINavigationController.class]) {
         [CustomUITabBarController customizeMoreTabTableView:appDelegateS.mainTabBarController];
@@ -178,9 +242,9 @@
 - (void)orderMainTabBarController {
 //	appDelegateS.currentTabBarController = appDelegateS.mainTabBarController;
 	appDelegateS.mainTabBarController.delegate = self;
-	
+
 	NSArray *savedTabsOrderArray = [[NSUserDefaults standardUserDefaults] arrayForKey:@"mainTabBarTabsOrder"];
-	
+
 	// If this is an old device, remove Albums and Songs tabs
 	if (!settingsS.isSongsTabEnabled) {
 		NSMutableArray *tabs = [[NSMutableArray alloc] init];
@@ -190,7 +254,7 @@
 			}
 		}
 		appDelegateS.mainTabBarController.viewControllers = tabs;
-		
+
 		tabs = [[NSMutableArray alloc] init];
 		for (NSNumber *tag in savedTabsOrderArray) {
 			if (tag.intValue != 1 && tag.intValue != 2 && tag.intValue != 6) {
@@ -199,31 +263,31 @@
 		}
 		savedTabsOrderArray = tabs;
 	}
-	
+
 	NSUInteger count = appDelegateS.mainTabBarController.viewControllers.count;
 	if (savedTabsOrderArray.count == count) {
 		BOOL needsReordering = NO;
-		
+
 		NSMutableDictionary *tabsOrderDictionary = [[NSMutableDictionary alloc] initWithCapacity:count];
 		for (int i = 0; i < count; i ++) {
 			NSNumber *tag = @([[[appDelegateS.mainTabBarController.viewControllers objectAtIndexSafe:i] tabBarItem] tag]);
 			[tabsOrderDictionary setObject:@(i) forKey:[tag stringValue]];
-			
+
 			if (!needsReordering && ![(NSNumber *)[savedTabsOrderArray objectAtIndexSafe:i] isEqualToNumber:tag]) {
 				needsReordering = YES;
 			}
 		}
-		
+
 		if (needsReordering) {
 			NSMutableArray *tabsViewControllers = [[NSMutableArray alloc] initWithCapacity:count];
 			for (int i = 0; i < count; i ++) {
 				[tabsViewControllers addObject:[appDelegateS.mainTabBarController.viewControllers objectAtIndexSafe:[(NSNumber *)[tabsOrderDictionary objectForKey:[(NSNumber *)[savedTabsOrderArray objectAtIndexSafe:i] stringValue]] intValue]]];
 			}
-			
+
 			appDelegateS.mainTabBarController.viewControllers = [NSArray arrayWithArray:tabsViewControllers];
 		}
 	}
-    
+
     appDelegateS.mainTabBarController.moreNavigationController.delegate = self;
 
     if ([NSUserDefaults.standardUserDefaults integerForKey:@"mainTabBarControllerSelectedIndex"]) {
@@ -242,10 +306,10 @@
 	_darkYellow = [UIColor colorWithRed:255/255.0 green:215/255.0 blue:0/255.0 alpha:1];
 	_darkGreen = [UIColor colorWithRed:103/255.0 green:227/255.0 blue:0/255.0 alpha:1];
 	_darkBlue = [UIColor colorWithRed:28/255.0 green:163/255.0 blue:255/255.0 alpha:1];
-	
+
 	_windowColor = [UIColor colorWithWhite:.3 alpha:1];
 	_jukeboxColor = [UIColor colorWithRed:140.0/255.0 green:0.0 blue:0.0 alpha:1.0];
-		
+
     [NSNotificationCenter addObserverOnMainThread:self selector:@selector(showAlbumLoadingScreenOnMainWindowNotification:) name:ISMSNotification_ShowAlbumLoadingScreenOnMainWindow object:nil];
     [NSNotificationCenter addObserverOnMainThread:self selector:@selector(showLoadingScreenOnMainWindowNotification:) name:ISMSNotification_ShowLoadingScreenOnMainWindow object:nil];
     [NSNotificationCenter addObserverOnMainThread:self selector:@selector(hideLoadingScreen) name:ISMSNotification_HideLoadingScreen object:nil];
