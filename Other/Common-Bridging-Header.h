@@ -23,7 +23,6 @@
 // View Controllers
 #import "AlbumViewController.h"
 #import "GenresArtistViewController.h"
-#import "SearchSongsViewController.h"
 #import "CurrentPlaylistViewController.h"
 #import "EqualizerViewController.h"
 #import "ServerListViewController.h"

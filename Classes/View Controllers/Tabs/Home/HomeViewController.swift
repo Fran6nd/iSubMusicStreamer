@@ -463,7 +463,7 @@ extension HomeViewController: UISearchBarDelegate {
                                 } else if self.searchSegment.selectedSegmentIndex == 2 {
                                     controller.listOfSongs = NSMutableArray(array: parser.listOfSongs)
                                 }
-                                controller.searchType = ISMSSearchSongsSearchType(rawValue: ISMSSearchSongsSearchType.RawValue(self.searchSegment.selectedSegmentIndex))
+                                controller.searchType = ISMSSearchSongsSearchType(rawValue: ISMSSearchSongsSearchType.RawValue(self.searchSegment.selectedSegmentIndex)) ?? .songs
                                 controller.query = query
                             } else {
                                 controller.listOfSongs = NSMutableArray(array: parser.listOfSongs)
