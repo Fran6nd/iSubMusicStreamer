@@ -22,12 +22,12 @@
 
 // View Controllers
 #import "AlbumViewController.h"
+#import "GenresArtistViewController.h"
 #import "SearchSongsViewController.h"
 #import "CurrentPlaylistViewController.h"
 #import "EqualizerViewController.h"
 #import "ServerListViewController.h"
 #import "CacheViewController.h"
-#import "GenresViewController.h"
 #import "BookmarksViewController.h"
 #import "FoldersViewController.h"
 #import "AllAlbumsViewController.h"
