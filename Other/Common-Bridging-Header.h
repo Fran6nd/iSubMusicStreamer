@@ -22,7 +22,6 @@
 
 // View Controllers
 #import "AlbumViewController.h"
-#import "ChatViewController.h"
 #import "SearchSongsViewController.h"
 #import "CurrentPlaylistViewController.h"
 #import "EqualizerViewController.h"
@@ -50,6 +49,7 @@
 
 // DAOs
 #import "SUSNowPlayingDAO.h"
+#import "SUSChatDAO.h"
 #import "BassEffectDAO.h"
 #import "SUSRootFoldersDAO.h"
 #import "ISMSSong+DAO.h"
