@@ -8,7 +8,6 @@
 
 #import "SearchAllViewController.h"
 #import "SearchSongsViewController.h"
-#import "UIViewController+PushViewControllerCustom.h"
 #import "Defines.h"
 #import "SavedSettings.h"
 #import "EX2Kit.h"
