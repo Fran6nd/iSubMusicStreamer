@@ -130,7 +130,8 @@
 		62D3527149AC4C2BBF147727 /* QueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729582B35DD44681AD3937B7 /* QueueViewController.swift */; };
 		534B20E9256202CF007FF1D7 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534B20E8256202CF007FF1D7 /* PlayerViewController.swift */; };
 		534B20EA256202CF007FF1D7 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534B20E8256202CF007FF1D7 /* PlayerViewController.swift */; };
-		53523D8F11CD5889006AEA48 /* GenresAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53523D8D11CD5889006AEA48 /* GenresAlbumViewController.m */; };
+		58D57081CEC241CBBC76CB7C /* GenresAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A19EBF1E547778B4B5115 /* GenresAlbumViewController.swift */; };
+		698DC7F306994AC4B9876A4B /* GenresAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A19EBF1E547778B4B5115 /* GenresAlbumViewController.swift */; };
 		53523D9011CD5889006AEA48 /* GenresAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53523D8E11CD5889006AEA48 /* GenresAlbumViewController.xib */; };
 		E59781E77610434599116887 /* GenresArtistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EB41CF76DA4A36B82DD9B9 /* GenresArtistViewController.swift */; };
 		4DAF01B2570F48CC9A0DC1A6 /* GenresArtistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EB41CF76DA4A36B82DD9B9 /* GenresArtistViewController.swift */; };
@@ -235,7 +236,6 @@
 		FC2AE27C82DB43BFADCD5469 /* GenresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10431892115485D9DF3F2D8 /* GenresViewController.swift */; };
 		53BC27D5139AF0DD00A825F1 /* CacheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 530B417011B607A200743C09 /* CacheViewController.m */; };
 		53BC27D7139AF0DD00A825F1 /* CacheAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 538229F411C98091003F1E23 /* CacheAlbumViewController.m */; };
-		53BC27DD139AF0DD00A825F1 /* GenresAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53523D8D11CD5889006AEA48 /* GenresAlbumViewController.m */; };
 		53BC27E2139AF0DD00A825F1 /* SettingsTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5398F26B11DA61DA00007870 /* SettingsTabViewController.m */; };
 		530CED58196C47D3B307D9E5 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8563A93BFA47CC87060DC8 /* ChatViewController.swift */; };
 		F809BDB6BC8D49E0ABA56AA2 /* CustomUITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCC1791072F494DBF976721 /* CustomUITextView.swift */; };
@@ -670,8 +670,7 @@
 		534B20E52561E444007FF1D7 /* LockScreenAudioControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenAudioControls.swift; sourceTree = "<group>"; };
 		729582B35DD44681AD3937B7 /* QueueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueViewController.swift; sourceTree = "<group>"; };
 		534B20E8256202CF007FF1D7 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
-		53523D8C11CD5889006AEA48 /* GenresAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenresAlbumViewController.h; sourceTree = "<group>"; };
-		53523D8D11CD5889006AEA48 /* GenresAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GenresAlbumViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		D95A19EBF1E547778B4B5115 /* GenresAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresAlbumViewController.swift; sourceTree = "<group>"; };
 		53523D8E11CD5889006AEA48 /* GenresAlbumViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenresAlbumViewController.xib; sourceTree = "<group>"; };
 		91EB41CF76DA4A36B82DD9B9 /* GenresArtistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresArtistViewController.swift; sourceTree = "<group>"; };
 		53523D9311CD61F7006AEA48 /* GenresArtistViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenresArtistViewController.xib; sourceTree = "<group>"; };
@@ -1397,8 +1396,8 @@
 				91EB41CF76DA4A36B82DD9B9 /* GenresArtistViewController.swift */,
 				
 				53523D9311CD61F7006AEA48 /* GenresArtistViewController.xib */,
-				53523D8C11CD5889006AEA48 /* GenresAlbumViewController.h */,
-				53523D8D11CD5889006AEA48 /* GenresAlbumViewController.m */,
+				D95A19EBF1E547778B4B5115 /* GenresAlbumViewController.swift */,
+				
 				53523D8E11CD5889006AEA48 /* GenresAlbumViewController.xib */,
 			);
 			path = Genre;
@@ -2290,7 +2289,7 @@
 				53FE678E256DD0F00015FC83 /* GCDWebServerResponse.m in Sources */,
 				534B20E62561E444007FF1D7 /* LockScreenAudioControls.swift in Sources */,
 				2E7D98189EB64816B26333E7 /* HapticEngine.swift in Sources */,
-				53523D8F11CD5889006AEA48 /* GenresAlbumViewController.m in Sources */,
+				58D57081CEC241CBBC76CB7C /* GenresAlbumViewController.swift in Sources */,
 				7E9C56A857744045BDE2685D /* NSURL+SkipBackupAttribute.swift in Sources */,
 				53FE37BE1EA961720058B925 /* SUSRootFoldersLoader.m in Sources */,
 				E59781E77610434599116887 /* GenresArtistViewController.swift in Sources */,
@@ -2512,7 +2511,7 @@
 				5347A1E5256D866A00BFB70A /* HLSReverseProxyServer.swift in Sources */,
 				539148D12559EB1D004AAC3F /* FlurryEmpty.m in Sources */,
 				53FE36E51EA961720058B925 /* AudioEngine.m in Sources */,
-				53BC27DD139AF0DD00A825F1 /* GenresAlbumViewController.m in Sources */,
+				698DC7F306994AC4B9876A4B /* GenresAlbumViewController.swift in Sources */,
 				5AFDBCBBE3284F2395E715AD /* NSURL+SkipBackupAttribute.swift in Sources */,
 				53FE37C01EA961720058B925 /* SUSRootFoldersLoader.m in Sources */,
 				4DAF01B2570F48CC9A0DC1A6 /* GenresArtistViewController.swift in Sources */,
