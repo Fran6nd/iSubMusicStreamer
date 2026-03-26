@@ -21,9 +21,9 @@
  */
 
 // View Controllers
+#import "AlbumViewController.h"
 #import "ChatViewController.h"
 #import "SearchSongsViewController.h"
-#import "HomeAlbumViewController.h"
 #import "CurrentPlaylistViewController.h"
 #import "EqualizerViewController.h"
 #import "ServerListViewController.h"
