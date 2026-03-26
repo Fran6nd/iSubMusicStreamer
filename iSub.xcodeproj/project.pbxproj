@@ -170,7 +170,7 @@
 		537B05C3256B40930008892C /* SongInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537B05C1256B40930008892C /* SongInfoViewController.swift */; };
 		537DE2D9113F008C00875852 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 537DE2D8113F008C00875852 /* CoreFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5381F8061E96FBFB00AAA9BD /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5381F8051E96FBFB00AAA9BD /* Photos.framework */; };
-		538229F611C98091003F1E23 /* CacheAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 538229F411C98091003F1E23 /* CacheAlbumViewController.m */; };
+		CF17446828B5484EB6A5920A /* CacheAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E733A5EA778640E6A24BBF21 /* CacheAlbumViewController.swift */; };
 		538229F711C98091003F1E23 /* CacheAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 538229F511C98091003F1E23 /* CacheAlbumViewController.xib */; };
 		48D3EF329C45404CB22F4173 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E9A4622013434FAD3E3DE1 /* BookmarksViewController.swift */; };
 		7A939BBF5D624C20BC20B201 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E9A4622013434FAD3E3DE1 /* BookmarksViewController.swift */; };
@@ -235,7 +235,7 @@
 		53BC27BB139AF0DD00A825F1 /* CurrentPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F4A07B116FF7EE00BB8411 /* CurrentPlaylistViewController.m */; };
 		FC2AE27C82DB43BFADCD5469 /* GenresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10431892115485D9DF3F2D8 /* GenresViewController.swift */; };
 		53BC27D5139AF0DD00A825F1 /* CacheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 530B417011B607A200743C09 /* CacheViewController.m */; };
-		53BC27D7139AF0DD00A825F1 /* CacheAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 538229F411C98091003F1E23 /* CacheAlbumViewController.m */; };
+		E839A01A093A4B00B8F574F0 /* CacheAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E733A5EA778640E6A24BBF21 /* CacheAlbumViewController.swift */; };
 		53BC27E2139AF0DD00A825F1 /* SettingsTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5398F26B11DA61DA00007870 /* SettingsTabViewController.m */; };
 		530CED58196C47D3B307D9E5 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8563A93BFA47CC87060DC8 /* ChatViewController.swift */; };
 		F809BDB6BC8D49E0ABA56AA2 /* CustomUITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCC1791072F494DBF976721 /* CustomUITextView.swift */; };
@@ -701,8 +701,7 @@
 		537B05C1256B40930008892C /* SongInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongInfoViewController.swift; sourceTree = "<group>"; };
 		537DE2D8113F008C00875852 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		5381F8051E96FBFB00AAA9BD /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
-		538229F311C98091003F1E23 /* CacheAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheAlbumViewController.h; sourceTree = "<group>"; };
-		538229F411C98091003F1E23 /* CacheAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CacheAlbumViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		E733A5EA778640E6A24BBF21 /* CacheAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheAlbumViewController.swift; sourceTree = "<group>"; };
 		538229F511C98091003F1E23 /* CacheAlbumViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CacheAlbumViewController.xib; sourceTree = "<group>"; };
 		54E9A4622013434FAD3E3DE1 /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		5388A3B3119899260049BA9E /* BookmarksViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookmarksViewController.xib; sourceTree = "<group>"; };
@@ -1405,8 +1404,7 @@
 				6C91B52C6F98471B8F1DCC7D /* CacheOfflineFoldersViewController.swift */,
 				
 				533D181A255F72FE003F962C /* CacheOfflineFoldersViewController.xib */,
-				538229F311C98091003F1E23 /* CacheAlbumViewController.h */,
-				538229F411C98091003F1E23 /* CacheAlbumViewController.m */,
+				E733A5EA778640E6A24BBF21 /* CacheAlbumViewController.swift */,
 				538229F511C98091003F1E23 /* CacheAlbumViewController.xib */,
 			);
 			path = Cache;
@@ -2271,7 +2269,7 @@
 				530B417211B607A200743C09 /* CacheViewController.m in Sources */,
 				53D97454255C51CA00AABF7F /* SwipeAction.swift in Sources */,
 				93EF7C8D8CF94C5695F5A96B /* NSArray+Safe.swift in Sources */,
-				538229F611C98091003F1E23 /* CacheAlbumViewController.m in Sources */,
+				CF17446828B5484EB6A5920A /* CacheAlbumViewController.swift in Sources */,
 				53FE6798256DD0F00015FC83 /* GCDWebServerErrorResponse.m in Sources */,
 				AA11BB22CC33DD44EE550002 /* EX2Dispatch.swift in Sources */,
 				53FE37A31EA961720058B925 /* SUSCoverArtDAO.m in Sources */,
@@ -2490,7 +2488,7 @@
 				A1B2C3D4E5F6A7B8C9D0E1F4 /* PlaylistHeaderView.swift in Sources */,
 				052F1402511D4AE3BA3A4351 /* PlaylistGridCell.swift in Sources */,
 				FC18094BF8E542BE83CD0039 /* NSArray+Safe.swift in Sources */,
-				53BC27D7139AF0DD00A825F1 /* CacheAlbumViewController.m in Sources */,
+				E839A01A093A4B00B8F574F0 /* CacheAlbumViewController.swift in Sources */,
 				53EA2DE3257D7B4D0003F38D /* UIView+ViewController.swift in Sources */,
 				548821B33219409991729BA1 /* UIView+FrameHelper.swift in Sources */,
 
