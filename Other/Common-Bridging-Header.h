@@ -97,7 +97,6 @@
 
 #import "RXMLElement.h"
 #import "Flurry.h"
-#import "OBSlider.h"
 #import "FMDatabaseQueueAdditions.h"
 #import "FMDatabaseAdditions.h"
 #import "GCDWebServer.h"
