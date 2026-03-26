@@ -172,7 +172,8 @@
 		5381F8061E96FBFB00AAA9BD /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5381F8051E96FBFB00AAA9BD /* Photos.framework */; };
 		538229F611C98091003F1E23 /* CacheAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 538229F411C98091003F1E23 /* CacheAlbumViewController.m */; };
 		538229F711C98091003F1E23 /* CacheAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 538229F511C98091003F1E23 /* CacheAlbumViewController.xib */; };
-		5388A3B4119899260049BA9E /* BookmarksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5388A3B2119899260049BA9E /* BookmarksViewController.m */; };
+		48D3EF329C45404CB22F4173 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E9A4622013434FAD3E3DE1 /* BookmarksViewController.swift */; };
+		7A939BBF5D624C20BC20B201 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E9A4622013434FAD3E3DE1 /* BookmarksViewController.swift */; };
 		5388A3B5119899260049BA9E /* BookmarksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5388A3B3119899260049BA9E /* BookmarksViewController.xib */; };
 		538C8FE125606299005D6CA9 /* RefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538C8FE025606299005D6CA9 /* RefreshControl.swift */; };
 		538C8FE225606299005D6CA9 /* RefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538C8FE025606299005D6CA9 /* RefreshControl.swift */; };
@@ -232,7 +233,6 @@
 		D6F4C6B314C2415E9263E87B /* PlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3C5FF018E24DF8BE229AAB /* PlayingViewController.swift */; };
 		53BC27B6139AF0DD00A825F1 /* PlaylistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53ABE54111665B6B00197877 /* PlaylistsViewController.m */; };
 		53BC27BB139AF0DD00A825F1 /* CurrentPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F4A07B116FF7EE00BB8411 /* CurrentPlaylistViewController.m */; };
-		53BC27C4139AF0DD00A825F1 /* BookmarksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5388A3B2119899260049BA9E /* BookmarksViewController.m */; };
 		FC2AE27C82DB43BFADCD5469 /* GenresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10431892115485D9DF3F2D8 /* GenresViewController.swift */; };
 		53BC27D5139AF0DD00A825F1 /* CacheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 530B417011B607A200743C09 /* CacheViewController.m */; };
 		53BC27D7139AF0DD00A825F1 /* CacheAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 538229F411C98091003F1E23 /* CacheAlbumViewController.m */; };
@@ -704,8 +704,7 @@
 		538229F311C98091003F1E23 /* CacheAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheAlbumViewController.h; sourceTree = "<group>"; };
 		538229F411C98091003F1E23 /* CacheAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CacheAlbumViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		538229F511C98091003F1E23 /* CacheAlbumViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CacheAlbumViewController.xib; sourceTree = "<group>"; };
-		5388A3B1119899260049BA9E /* BookmarksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BookmarksViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		5388A3B2119899260049BA9E /* BookmarksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BookmarksViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		54E9A4622013434FAD3E3DE1 /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		5388A3B3119899260049BA9E /* BookmarksViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookmarksViewController.xib; sourceTree = "<group>"; };
 		538C8FE025606299005D6CA9 /* RefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshControl.swift; sourceTree = "<group>"; };
 		538C8FE625609F4F005D6CA9 /* BlurredSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredSectionHeader.swift; sourceTree = "<group>"; };
@@ -1376,8 +1375,7 @@
 		531D39ED255AB323000CB0DF /* Bookmarks */ = {
 			isa = PBXGroup;
 			children = (
-				5388A3B1119899260049BA9E /* BookmarksViewController.h */,
-				5388A3B2119899260049BA9E /* BookmarksViewController.m */,
+				54E9A4622013434FAD3E3DE1 /* BookmarksViewController.swift */,
 				5388A3B3119899260049BA9E /* BookmarksViewController.xib */,
 			);
 			path = Bookmarks;
@@ -2262,7 +2260,7 @@
 				53FE37491EA961720058B925 /* ISMSStreamManager.m in Sources */,
 				53FE388C1EA961C80058B925 /* GMAppleDouble.m in Sources */,
 				CC33DD44EE55FF660012 /* EX2NetworkIndicator.swift in Sources */,
-				5388A3B4119899260049BA9E /* BookmarksViewController.m in Sources */,
+				48D3EF329C45404CB22F4173 /* BookmarksViewController.swift in Sources */,
 				53FE38B31EA961C80058B925 /* ZKDefs.m in Sources */,
 				53246AA9256C324500E11EC4 /* InsetTextField.swift in Sources */,
 				53FE38A11EA961C80058B925 /* ZKArchive.m in Sources */,
@@ -2467,7 +2465,7 @@
 				53FE374B1EA961720058B925 /* ISMSStreamManager.m in Sources */,
 				53FE388E1EA961C80058B925 /* GMAppleDouble.m in Sources */,
 				CC33DD44EE55FF660013 /* EX2NetworkIndicator.swift in Sources */,
-				53BC27C4139AF0DD00A825F1 /* BookmarksViewController.m in Sources */,
+				7A939BBF5D624C20BC20B201 /* BookmarksViewController.swift in Sources */,
 				53FE38B51EA961C80058B925 /* ZKDefs.m in Sources */,
 				53FE38A31EA961C80058B925 /* ZKArchive.m in Sources */,
 				B5F411F63FD748C38302A26F /* CustomUITabBarController.swift in Sources */,

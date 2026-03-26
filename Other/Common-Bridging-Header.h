@@ -26,7 +26,6 @@
 #import "EqualizerViewController.h"
 #import "ServerListViewController.h"
 #import "CacheViewController.h"
-#import "BookmarksViewController.h"
 #import "SUSAllAlbumsDAO.h"
 #import "SUSAllSongsDAO.h"
 #import "SUSAllSongsLoader.h"
