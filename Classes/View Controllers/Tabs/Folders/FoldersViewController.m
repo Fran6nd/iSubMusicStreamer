@@ -8,7 +8,6 @@
 
 #import "FoldersViewController.h"
 #import "ServerListViewController.h"
-#import "AlbumViewController.h"
 #import "SUSAllSongsLoader.h"
 #import "iSubAppDelegate.h"
 #import "ViewObjectsSingleton.h"

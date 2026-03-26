@@ -21,7 +21,6 @@
  */
 
 // View Controllers
-#import "AlbumViewController.h"
 #import "FolderDropdownDelegate.h"
 #import "GenresArtistViewController.h"
 #import "CurrentPlaylistViewController.h"
@@ -53,6 +52,7 @@
 #import "BassEffectDAO.h"
 #import "SUSDropdownFolderLoader.h"
 #import "SUSRootFoldersDAO.h"
+#import "SUSSubFolderDAO.h"
 #import "ISMSSong+DAO.h"
 #import "ISMSBookmarkDAO.h"
 #import "SUSLyricsDAO.h"

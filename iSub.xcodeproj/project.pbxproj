@@ -222,7 +222,8 @@
 		53BC2796139AF0DD00A825F1 /* PlaylistSongsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 536AB8101353DCF700DABD83 /* PlaylistSongsViewController.xib */; };
 		53BC279C139AF0DD00A825F1 /* iSubAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* iSubAppDelegate.m */; };
 		53BC279D139AF0DD00A825F1 /* FoldersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* FoldersViewController.m */; };
-		53BC27A1139AF0DD00A825F1 /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F2D3EC113A338500107D63 /* AlbumViewController.m */; };
+		F7382898FDC44D1084A365BC /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F876892D02AC4972A45637E4 /* AlbumViewController.swift */; };
+		8B353B49C68A408390653D7C /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F876892D02AC4972A45637E4 /* AlbumViewController.swift */; };
 		53BC27AC139AF0DD00A825F1 /* AllAlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 539796E31162B68800F41D8B /* AllAlbumsViewController.m */; };
 		53BC27AE139AF0DD00A825F1 /* ServerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53614AC8116432DA0088ABC0 /* ServerListViewController.m */; };
 		53BC27B0139AF0DD00A825F1 /* AllSongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 530388A8116571920043292D /* AllSongsViewController.m */; };
@@ -294,7 +295,6 @@
 		548821B33219409991729BA1 /* UIView+FrameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097DC176EF464BBCB1F160D0 /* UIView+FrameHelper.swift */; };
 		53EA2DE2257D7B4D0003F38D /* UIView+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EA2DE1257D7B4D0003F38D /* UIView+ViewController.swift */; };
 		53EA2DE3257D7B4D0003F38D /* UIView+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EA2DE1257D7B4D0003F38D /* UIView+ViewController.swift */; };
-		53F2D3EE113A338500107D63 /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F2D3EC113A338500107D63 /* AlbumViewController.m */; };
 		53F4A07D116FF7EE00BB8411 /* CurrentPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F4A07B116FF7EE00BB8411 /* CurrentPlaylistViewController.m */; };
 		53F675D8113B092C00822059 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F675D7113B092C00822059 /* MediaPlayer.framework */; };
 		53F675DC113B093900822059 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F675DB113B093900822059 /* CFNetwork.framework */; };
@@ -789,8 +789,7 @@
 		097DC176EF464BBCB1F160D0 /* UIView+FrameHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+FrameHelper.swift"; sourceTree = "<group>"; };
 		53EA2DE1257D7B4D0003F38D /* UIView+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ViewController.swift"; sourceTree = "<group>"; };
 		53F1412015FD550C004D00D5 /* buildnumber.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = buildnumber.xcconfig; path = Other/buildnumber.xcconfig; sourceTree = "<group>"; };
-		53F2D3EB113A338500107D63 /* AlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumViewController.h; sourceTree = "<group>"; };
-		53F2D3EC113A338500107D63 /* AlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AlbumViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		F876892D02AC4972A45637E4 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 		53F4A07A116FF7EE00BB8411 /* CurrentPlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentPlaylistViewController.h; sourceTree = "<group>"; };
 		53F4A07B116FF7EE00BB8411 /* CurrentPlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentPlaylistViewController.m; sourceTree = "<group>"; };
 		53F675D7113B092C00822059 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -1307,8 +1306,8 @@
 				28F335F01007B36200424DE2 /* FoldersViewController.xib */,
 				53E82A951406D47F0051D44B /* FolderDropdownDelegate.h */,
 				FC9702918A3F464189A966BE /* FolderDropdownControl.swift */,
-				53F2D3EB113A338500107D63 /* AlbumViewController.h */,
-				53F2D3EC113A338500107D63 /* AlbumViewController.m */,
+				F876892D02AC4972A45637E4 /* AlbumViewController.swift */,
+				
 				533C65E915ABBA09003EAF29 /* AlbumViewController.xib */,
 				53329640255F2B960027C51A /* AlbumTableViewHeader.swift */,
 			);
@@ -2202,7 +2201,7 @@
 				4D96818DF0B546D8A1393AB2 /* UIViewController+PushViewControllerCustom.swift in Sources */,
 				B37559905DA048DAA3B390B8 /* LoadingScreen.swift in Sources */,
 				5359C859256EA8FE00C8F8DC /* ObjC.swift in Sources */,
-				53F2D3EE113A338500107D63 /* AlbumViewController.m in Sources */,
+				F7382898FDC44D1084A365BC /* AlbumViewController.swift in Sources */,
 				53FE375E1EA961720058B925 /* JukeboxSingleton.m in Sources */,
 				53FE36F81EA961720058B925 /* BassVisualizer.m in Sources */,
 				53FE37CD1EA961720058B925 /* SUSServerShuffleLoader.m in Sources */,
@@ -2405,7 +2404,7 @@
 			files = (
 				53BC279C139AF0DD00A825F1 /* iSubAppDelegate.m in Sources */,
 				53BC279D139AF0DD00A825F1 /* FoldersViewController.m in Sources */,
-				53BC27A1139AF0DD00A825F1 /* AlbumViewController.m in Sources */,
+				8B353B49C68A408390653D7C /* AlbumViewController.swift in Sources */,
 				53FE37601EA961720058B925 /* JukeboxSingleton.m in Sources */,
 				53329649255F2E770027C51A /* PlayAllAndShuffleHeader.swift in Sources */,
 				53FE36FA1EA961720058B925 /* BassVisualizer.m in Sources */,
