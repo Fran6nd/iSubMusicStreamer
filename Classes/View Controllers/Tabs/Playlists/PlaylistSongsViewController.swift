@@ -227,35 +227,48 @@ private enum PlaylistSource {
     }
 
     private func playAll() {
-        loadPlaylistAndPlay(at: 0)
+        ViewObjects.shared().showLoadingScreenOnMainWindow(withMessage: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) { [weak self] in
+            self?.loadPlaylistAndPlay(at: 0)
+        }
     }
 
     private func shuffleAll() {
-        let settings = Settings.shared()
-        let database = Database.shared()
-        let jukebox = Jukebox.shared()
+        ViewObjects.shared().showLoadingScreenOnMainWindow(withMessage: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) { [weak self] in
+            guard let self else { return }
+            let settings = Settings.shared()
+            let database = Database.shared()
+            let jukebox = Jukebox.shared()
 
-        if settings.isJukeboxEnabled {
-            database.resetJukeboxPlaylist()
-            jukebox.clearRemotePlaylist()
-        } else {
-            database.resetCurrentPlaylistDb()
-        }
-
-        PlayQueue.shared().isShuffle = true
-
-        let currTableName = settings.isJukeboxEnabled ? "jukeboxCurrentPlaylist" : "currentPlaylist"
-        if let queue = database.currentPlaylistDbQueue {
-            for song in songs {
-                song.insert(intoTable: currTableName, in: queue)
+            if settings.isJukeboxEnabled {
+                database.resetJukeboxPlaylist()
+                jukebox.clearRemotePlaylist()
+            } else {
+                database.resetCurrentPlaylistDb()
             }
-        }
 
-        if settings.isJukeboxEnabled {
-            jukebox.replacePlaylistWithLocal()
-        }
+            // Insert songs with shuffle OFF so they only land in currentPlaylist.
+            // shufflePlaylist is populated by database.shufflePlaylist() below.
+            PlayQueue.shared().isShuffle = false
 
-        Music.shared().playSong(atPosition: 0)
+            let currTableName = settings.isJukeboxEnabled ? "jukeboxCurrentPlaylist" : "currentPlaylist"
+            if let queue = database.currentPlaylistDbQueue {
+                for song in self.songs {
+                    song.insert(intoTable: currTableName, in: queue)
+                }
+            }
+
+            if settings.isJukeboxEnabled {
+                jukebox.replacePlaylistWithLocal()
+            }
+
+            // Populate shufflePlaylist randomly from currentPlaylist and set isShuffle = true
+            database.shufflePlaylist()
+
+            ViewObjects.shared().hideLoadingScreen()
+            Music.shared().playSong(atPosition: 0)
+        }
     }
 
     private func addAllToQueue() {
