@@ -31,7 +31,6 @@
 #import "GenresViewController.h"
 #import "BookmarksViewController.h"
 #import "FoldersViewController.h"
-#import "PlayingViewController.h"
 #import "AllAlbumsViewController.h"
 #import "AllSongsViewController.h"
 #import "CacheOfflineFoldersViewController.h"
@@ -50,6 +49,7 @@
 #import "SUSStatusLoader.h"
 
 // DAOs
+#import "SUSNowPlayingDAO.h"
 #import "BassEffectDAO.h"
 #import "SUSRootFoldersDAO.h"
 #import "ISMSSong+DAO.h"
