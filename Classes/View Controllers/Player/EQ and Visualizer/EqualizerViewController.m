@@ -10,7 +10,6 @@
 #import "EqualizerView.h"
 #import "EqualizerPointView.h"
 #import "EqualizerPathView.h"
-#import "SnappySlider.h"
 #import "Flurry.h"
 #import "AudioEngine.h"
 #import "SavedSettings.h"
@@ -384,24 +383,36 @@
 }
 
 - (void)promptToSaveCustomPreset {
-	NSUInteger count = [self.effectDAO.userPresets count];
+    NSUInteger count = [self.effectDAO.userPresets count];
     if ([self.effectDAO.userPresets objectForKey:[@(BassEffectTempCustomPresetId) stringValue]]) {
-		count--;
+        count--;
     }
-	
-	if (count > 0) {
-		self.saveDialog = [[DDSocialDialog alloc] initWithFrame:CGRectMake(0., 0., 300., 300.) theme:DDSocialDialogThemeISub];
-		self.saveDialog.dialogDelegate = self;
-		self.saveDialog.titleLabel.text = @"Choose Preset To Save";
-		UITableView *saveTable = [[UITableView alloc] initWithFrame:self.saveDialog.contentView.frame style:UITableViewStylePlain];
-		saveTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-		saveTable.dataSource = self;
-		saveTable.delegate = self;
-		[self.saveDialog.contentView addSubview:saveTable];
-		[self.saveDialog show];
-	} else {
-		[self promptForSavePresetName];
-	}
+
+    if (count > 0) {
+        UIAlertController *sheet = [UIAlertController alertControllerWithTitle:@"Choose Preset To Save"
+                                                                       message:nil
+                                                                preferredStyle:UIAlertControllerStyleActionSheet];
+        [sheet addAction:[UIAlertAction actionWithTitle:@"New Preset"
+                                                  style:UIAlertActionStyleDefault
+                                                handler:^(UIAlertAction *action) {
+            [self promptForSavePresetName];
+        }]];
+        for (NSDictionary *preset in self.effectDAO.userPresetsArrayMinusCustom) {
+            NSString *name = preset[@"name"];
+            NSInteger presetId = [preset[@"presetId"] integerValue];
+            [sheet addAction:[UIAlertAction actionWithTitle:name
+                                                      style:UIAlertActionStyleDefault
+                                                    handler:^(UIAlertAction *action) {
+                [self.effectDAO saveCustomPreset:[self serializedEqPoints] name:name presetId:presetId];
+                [self.effectDAO deleteTempCustomPreset];
+                [self updatePresetPicker];
+            }]];
+        }
+        [sheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+        [self presentViewController:sheet animated:YES completion:nil];
+    } else {
+        [self promptForSavePresetName];
+    }
 }
 
 - (void)promptForSavePresetName {
@@ -666,59 +677,5 @@
     return self.effectDAO.presets.count;
 }
 
-#pragma mark TableView delegate for save dialog
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return 2;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	switch (section) {
-		case 0: return 1;
-		case 1: return [self.effectDAO.userPresetsArrayMinusCustom count];
-		default: return 0;
-	}
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	static NSString *cellIdentifier = @"NoResuse";
-	UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-	NSDictionary *preset = nil;
-	switch (indexPath.section) {
-		case 0:
-			cell.textLabel.text = @"New Preset";
-			break;
-		case 1:
-			preset = [self.effectDAO.userPresetsArrayMinusCustom objectAtIndexSafe:indexPath.row];
-			cell.tag = [[preset objectForKey:@"presetId"] intValue];
-			cell.textLabel.text = [preset objectForKey:@"name"];
-			break;
-		default:
-			break;
-	}
-	return cell;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	switch (section) {
-		case 0: return @"";
-		case 1: return @"Saved Presets";
-		default: return @"";
-	}
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
-	if (indexPath.section == 0) {
-		// Save a new preset
-		[self promptForSavePresetName];
-	} else {
-		// Save over an existing preset
-		UITableViewCell *currentTableCell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
-		[self.effectDAO saveCustomPreset:[self serializedEqPoints] name:currentTableCell.textLabel.text presetId:currentTableCell.tag];
-		[self.effectDAO deleteTempCustomPreset];
-		[self updatePresetPicker];
-	}
-	[self.saveDialog dismiss:YES];
-}
 
 @end

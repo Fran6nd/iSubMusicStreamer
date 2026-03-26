@@ -6,10 +6,10 @@
 //  Copyright (c) 2011 Ben Baron. All rights reserved.
 //
 
-#import "DDSocialDialog.h"
+#import <UIKit/UIKit.h>
 
 @class EqualizerView, EqualizerPointView, EqualizerPathView, BassParamEqValue, BassEffectDAO, SnappySlider;
-@interface EqualizerViewController : UIViewController <DDSocialDialogDelegate, UITableViewDelegate, UITableViewDataSource, UIPickerViewDataSource, UIPickerViewDelegate>
+@interface EqualizerViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (strong) UIButton *closeButton;
 @property (strong) UIView *overlay;
@@ -34,7 +34,6 @@
 @property (strong) UIButton *savePresetButton;
 @property BOOL isSavePresetButtonShowing;
 @property BOOL isDeletePresetButtonShowing;
-@property (strong) DDSocialDialog *saveDialog;
 @property BOOL wasVisualizerOffBeforeRotation;
 @property (strong) UISwipeGestureRecognizer *swipeDetectorLeft;
 @property (strong) UISwipeGestureRecognizer *swipeDetectorRight;
