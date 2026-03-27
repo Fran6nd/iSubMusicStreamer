@@ -30,7 +30,7 @@
 		5306236F14D3295300D320A8 /* EqualizerPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5306236C14D3295300D320A8 /* EqualizerPathView.m */; };
 		530738F41FAF6A72005C2650 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 530738F31FAF6A72005C2650 /* Media.xcassets */; };
 		530738F51FAF6A72005C2650 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 530738F31FAF6A72005C2650 /* Media.xcassets */; };
-		530B417211B607A200743C09 /* CacheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 530B417011B607A200743C09 /* CacheViewController.m */; };
+		310A7A1AF43F466FA51CC3CE /* CacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D9E53709DF4F479BBF8340 /* CacheViewController.swift */; };
 		530B417311B607A200743C09 /* CacheViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 530B417111B607A200743C09 /* CacheViewController.xib */; };
 		531D3A01255AB5F6000CB0DF /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531D39FF255AB5F6000CB0DF /* MainWindow.xib */; };
 		531D3A02255AB5F6000CB0DF /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531D39FF255AB5F6000CB0DF /* MainWindow.xib */; };
@@ -234,7 +234,7 @@
 		53BC27B6139AF0DD00A825F1 /* PlaylistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53ABE54111665B6B00197877 /* PlaylistsViewController.m */; };
 		53BC27BB139AF0DD00A825F1 /* CurrentPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F4A07B116FF7EE00BB8411 /* CurrentPlaylistViewController.m */; };
 		FC2AE27C82DB43BFADCD5469 /* GenresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10431892115485D9DF3F2D8 /* GenresViewController.swift */; };
-		53BC27D5139AF0DD00A825F1 /* CacheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 530B417011B607A200743C09 /* CacheViewController.m */; };
+		68B79FFBA5BE41FB8FEE6988 /* CacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D9E53709DF4F479BBF8340 /* CacheViewController.swift */; };
 		E839A01A093A4B00B8F574F0 /* CacheAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E733A5EA778640E6A24BBF21 /* CacheAlbumViewController.swift */; };
 		53BC27E2139AF0DD00A825F1 /* SettingsTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5398F26B11DA61DA00007870 /* SettingsTabViewController.m */; };
 		530CED58196C47D3B307D9E5 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8563A93BFA47CC87060DC8 /* ChatViewController.swift */; };
@@ -608,8 +608,7 @@
 		5306236B14D3295300D320A8 /* EqualizerPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EqualizerPathView.h; sourceTree = "<group>"; };
 		5306236C14D3295300D320A8 /* EqualizerPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EqualizerPathView.m; sourceTree = "<group>"; };
 		530738F31FAF6A72005C2650 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
-		530B416F11B607A200743C09 /* CacheViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CacheViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		530B417011B607A200743C09 /* CacheViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CacheViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		49D9E53709DF4F479BBF8340 /* CacheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheViewController.swift; sourceTree = "<group>"; };
 		530B417111B607A200743C09 /* CacheViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CacheViewController.xib; sourceTree = "<group>"; };
 		531D39FF255AB5F6000CB0DF /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		531D3A00255AB5F6000CB0DF /* MainWindow-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainWindow-iPad.xib"; sourceTree = "<group>"; };
@@ -1398,8 +1397,7 @@
 		531D39EF255AB344000CB0DF /* Cache */ = {
 			isa = PBXGroup;
 			children = (
-				530B416F11B607A200743C09 /* CacheViewController.h */,
-				530B417011B607A200743C09 /* CacheViewController.m */,
+				49D9E53709DF4F479BBF8340 /* CacheViewController.swift */,
 				530B417111B607A200743C09 /* CacheViewController.xib */,
 				6C91B52C6F98471B8F1DCC7D /* CacheOfflineFoldersViewController.swift */,
 				
@@ -2266,7 +2264,7 @@
 				53FE388F1EA961C80058B925 /* NSData+ZKAdditions.m in Sources */,
 				53FE37AC1EA961720058B925 /* SUSLyricsLoader.m in Sources */,
 				205744CA21964312926C35E0 /* GenresViewController.swift in Sources */,
-				530B417211B607A200743C09 /* CacheViewController.m in Sources */,
+				310A7A1AF43F466FA51CC3CE /* CacheViewController.swift in Sources */,
 				53D97454255C51CA00AABF7F /* SwipeAction.swift in Sources */,
 				93EF7C8D8CF94C5695F5A96B /* NSArray+Safe.swift in Sources */,
 				CF17446828B5484EB6A5920A /* CacheAlbumViewController.swift in Sources */,
