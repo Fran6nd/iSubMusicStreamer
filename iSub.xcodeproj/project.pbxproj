@@ -2457,7 +2457,6 @@
 				53752BED2562CEF800438636 /* CoverArtViewController.swift in Sources */,
 				53FE678F256DD0F00015FC83 /* GCDWebServerResponse.m in Sources */,
 				FC2AE27C82DB43BFADCD5469 /* GenresViewController.swift in Sources */,
-				53BC27D5139AF0DD00A825F1 /* CacheViewController.m in Sources */,
 				538C8FE825609F4F005D6CA9 /* BlurredSectionHeader.swift in Sources */,
 				534B20E72561E444007FF1D7 /* LockScreenAudioControls.swift in Sources */,
 				D349DD62D742475BBFC33513 /* HapticEngine.swift in Sources */,
