@@ -59,9 +59,9 @@ import UIKit
             dataModel.startLoad()
         }
 
+        tableView.backgroundColor = UIColor(named: "isubBackgroundColor")
+        tableView.separatorStyle = .none
         tableView.rowHeight = Defines.rowHeight
-        tableView.separatorStyle = .singleLine
-        tableView.separatorColor = .clear
         tableView.register(UniversalTableViewCell.self, forCellReuseIdentifier: UniversalTableViewCell.reuseId)
     }
 

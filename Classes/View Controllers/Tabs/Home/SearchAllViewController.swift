@@ -24,6 +24,8 @@ import UIKit
         if !listOfAlbums.isEmpty  { cellNames.append("Albums") }
         if !listOfSongs.isEmpty   { cellNames.append("Songs") }
 
+        tableView.backgroundColor = UIColor(named: "isubBackgroundColor")
+        tableView.separatorStyle = .none
         tableView.rowHeight = Defines.rowHeight
         tableView.register(UniversalTableViewCell.self, forCellReuseIdentifier: UniversalTableViewCell.reuseId)
     }

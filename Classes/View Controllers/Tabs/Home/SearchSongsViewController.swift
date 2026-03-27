@@ -40,6 +40,8 @@ let ISMSSearchSongsSearchType_Songs   = ISMSSearchSongsSearchType.songs
             ? UIBarButtonItem(image: UIImage(systemName: Defines.musicNoteImageSystemName), style: .plain, target: self, action: #selector(nowPlayingAction(_:)))
             : nil
 
+        tableView.backgroundColor = UIColor(named: "isubBackgroundColor")
+        tableView.separatorStyle = .none
         tableView.rowHeight = Defines.rowHeight
         tableView.register(UniversalTableViewCell.self, forCellReuseIdentifier: UniversalTableViewCell.reuseId)
     }

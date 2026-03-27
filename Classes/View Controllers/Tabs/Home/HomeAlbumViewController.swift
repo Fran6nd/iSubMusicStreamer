@@ -31,6 +31,8 @@ import UIKit
             navigationItem.rightBarButtonItem = nil
         }
 
+        tableView.backgroundColor = UIColor(named: "isubBackgroundColor")
+        tableView.separatorStyle = .none
         tableView.rowHeight = Defines.rowHeight
         tableView.register(UniversalTableViewCell.self, forCellReuseIdentifier: UniversalTableViewCell.reuseId)
     }

@@ -26,6 +26,8 @@ import UIKit
             self?.dataModel.startLoad()
         }
 
+        tableView.backgroundColor = UIColor(named: "isubBackgroundColor")
+        tableView.separatorStyle = .none
         tableView.rowHeight = Defines.tallRowHeight
         tableView.register(UniversalTableViewCell.self, forCellReuseIdentifier: UniversalTableViewCell.reuseId)
 
