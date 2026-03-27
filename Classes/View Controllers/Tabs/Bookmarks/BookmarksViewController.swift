@@ -51,6 +51,8 @@ import UIKit
             navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(settingsAction(_:)))
         }
 
+        tableView.backgroundColor = UIColor(named: "isubBackgroundColor")
+        tableView.separatorStyle = .none
         tableView.allowsMultipleSelectionDuringEditing = true
         tableView.rowHeight = Defines.tallRowHeight
         tableView.register(UniversalTableViewCell.self, forCellReuseIdentifier: UniversalTableViewCell.reuseId)
