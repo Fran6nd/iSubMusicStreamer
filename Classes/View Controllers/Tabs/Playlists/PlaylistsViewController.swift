@@ -32,7 +32,18 @@ import UIKit
 
     // MARK: - State
 
-    private var currentTab: Tab = .local
+    private static let lastTabKey = "PlaylistsViewController.lastTab"
+
+    private var currentTab: Tab {
+        didSet {
+            UserDefaults.standard.set(currentTab.rawValue, forKey: Self.lastTabKey)
+        }
+    }
+
+    private static func restoredTab() -> Tab {
+        let raw = UserDefaults.standard.integer(forKey: lastTabKey)
+        return Tab(rawValue: raw) ?? .server
+    }
 
     // Local playlists
     private var localPlaylists: [ISMSLocalPlaylist] = []
@@ -45,6 +56,16 @@ import UIKit
     private var serverFetchTask: Task<Void, Never>?
 
     // MARK: - Init / deinit
+
+    init() {
+        currentTab = Self.restoredTab()
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        currentTab = Self.restoredTab()
+        super.init(coder: coder)
+    }
 
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -65,15 +86,20 @@ import UIKit
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if currentTab == .local {
+        switch currentTab {
+        case .local:
             reloadLocalPlaylists()
+        case .server:
+            if serverPlaylists.isEmpty && !isLoadingServer {
+                fetchServerPlaylists()
+            }
         }
     }
 
     // MARK: - Setup
 
     private func setupSegmentedControl() {
-        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.selectedSegmentIndex = currentTab.rawValue
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.addTarget(self, action: #selector(segmentChanged(_:)), for: .valueChanged)
         view.addSubview(segmentedControl)
