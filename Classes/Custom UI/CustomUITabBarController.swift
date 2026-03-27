@@ -118,19 +118,15 @@ final class CustomUITabBarController: UITabBarController {
         let initialVisible = !miniPlayerView.isHidden
         miniPlayerView.alpha = initialVisible ? 1 : 0
         miniPlayerView.isUserInteractionEnabled = initialVisible
-        let initialInsets = initialVisible
-            ? UIEdgeInsets(top: 0, left: 0, bottom: miniPlayerHeight, right: 0)
-            : .zero
-        setChildrenAdditionalInsets(initialInsets)
+        applyMiniPlayerInset(visible: initialVisible)
     }
 
-    // MARK: - Children inset helper
+    // MARK: - Mini Player Inset
 
-    /// Sets `additionalSafeAreaInsets` on every direct child nav controller so content
-    /// scrolls clear of the mini player — without inflating the tab bar's frame height.
-    private func setChildrenAdditionalInsets(_ insets: UIEdgeInsets) {
-        viewControllers?.forEach { $0.additionalSafeAreaInsets = insets }
-        moreNavigationController.additionalSafeAreaInsets = insets
+    private func applyMiniPlayerInset(visible: Bool) {
+        additionalSafeAreaInsets = visible
+            ? UIEdgeInsets(top: 0, left: 0, bottom: miniPlayerHeight, right: 0)
+            : .zero
     }
 
     // MARK: - Song State Visibility
@@ -147,12 +143,9 @@ final class CustomUITabBarController: UITabBarController {
             miniPlayerView.isHidden = false
             miniPlayerView.alpha = 0
         }
-        let targetInsets = visible
-            ? UIEdgeInsets(top: 0, left: 0, bottom: miniPlayerHeight, right: 0)
-            : .zero
         UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut) {
             self.miniPlayerView.alpha = visible ? 1 : 0
-            self.setChildrenAdditionalInsets(targetInsets)
+            self.applyMiniPlayerInset(visible: visible)
         } completion: { _ in
             if !visible { self.miniPlayerView.isHidden = true }
         }
@@ -224,9 +217,6 @@ extension CustomUITabBarController: UINavigationControllerDelegate {
         let barTarget: CGAffineTransform = hidingTabBar
             ? CGAffineTransform(translationX: -width, y: 0)
             : .identity
-        let targetInsets = (!hidingTabBar && hasSong)
-            ? UIEdgeInsets(top: 0, left: 0, bottom: miniPlayerHeight, right: 0)
-            : .zero
 
         // Pre-empt UIKit's default vertical tab-bar slide by holding it visible
         // and driving a horizontal transform ourselves.
@@ -240,7 +230,7 @@ extension CustomUITabBarController: UINavigationControllerDelegate {
             miniPlayerView.transform = playerTarget
             tabBar.transform = .identity
             tabBar.isHidden = hidingTabBar
-            setChildrenAdditionalInsets(targetInsets)
+            applyMiniPlayerInset(visible: !hidingTabBar && hasSong)
             miniPlayerView.isUserInteractionEnabled = !hidingTabBar && hasSong
             return
         }
@@ -248,7 +238,7 @@ extension CustomUITabBarController: UINavigationControllerDelegate {
         coordinator.animate(alongsideTransition: { [weak self] _ in
             self?.miniPlayerView.transform = playerTarget
             self?.tabBar.transform = barTarget
-            self?.setChildrenAdditionalInsets(targetInsets)
+            self?.applyMiniPlayerInset(visible: !hidingTabBar && hasSong)
         }, completion: { [weak self] ctx in
             guard let self else { return }
             if ctx.isCancelled {
@@ -259,13 +249,13 @@ extension CustomUITabBarController: UINavigationControllerDelegate {
                 self.miniPlayerView.isUserInteractionEnabled = showMini
                 self.tabBar.isHidden = stayingIsPlayer
                 self.tabBar.transform = .identity
-                self.setChildrenAdditionalInsets(showMini ? UIEdgeInsets(top: 0, left: 0, bottom: miniPlayerHeight, right: 0) : .zero)
+                self.applyMiniPlayerInset(visible: showMini)
             } else {
                 self.miniPlayerView.transform = playerTarget
                 self.miniPlayerView.isUserInteractionEnabled = !hidingTabBar && hasSong
                 self.tabBar.isHidden = hidingTabBar
                 self.tabBar.transform = .identity
-                self.setChildrenAdditionalInsets(targetInsets)
+                self.applyMiniPlayerInset(visible: !hidingTabBar && hasSong)
             }
         })
     }

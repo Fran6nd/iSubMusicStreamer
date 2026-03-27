@@ -58,8 +58,8 @@ import SnapKit
             verticalStack.snp.remakeConstraints { make in
                 make.leading.equalToSuperview().offset(UIDevice.isPad() ? 50 : 20)
                 make.trailing.equalToSuperview().offset(UIDevice.isPad() ? -50 : -20)
-                make.centerY.equalToSuperview().offset(15)
-                make.height.equalToSuperview().multipliedBy(UIDevice.isPad() ? 0.50 : 0.75)
+                make.centerY.equalTo(view.safeAreaLayoutGuide)
+                make.height.equalTo(view.safeAreaLayoutGuide).multipliedBy(UIDevice.isPad() ? 0.50 : 0.75)
             }
             songInfoButton.snp.remakeConstraints { make in
                 make.height.equalTo(80)
@@ -80,8 +80,8 @@ import SnapKit
             verticalStack.snp.remakeConstraints { make in
                 make.leading.equalToSuperview().offset(20)
                 make.trailing.equalToSuperview().offset(-20)
-                make.centerY.equalToSuperview().offset(15)
-                make.height.equalToSuperview().multipliedBy(0.60)
+                make.centerY.equalTo(view.safeAreaLayoutGuide)
+                make.height.equalTo(view.safeAreaLayoutGuide).multipliedBy(0.60)
             }
             songInfoButton.snp.remakeConstraints { make in
                 make.height.equalTo(80)
