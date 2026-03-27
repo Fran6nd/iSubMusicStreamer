@@ -766,7 +766,6 @@
 		53E04936255DB8F6007D4578 /* ISMSNSURLSessionStreamHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISMSNSURLSessionStreamHandler.h; sourceTree = "<group>"; };
 		53E04937255DB8F6007D4578 /* ISMSNSURLSessionStreamHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISMSNSURLSessionStreamHandler.m; sourceTree = "<group>"; };
 		53E04946255E2BC5007D4578 /* SelfSignedCertURLSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSignedCertURLSessionDelegate.swift; sourceTree = "<group>"; };
-		53E82A951406D47F0051D44B /* FolderDropdownDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderDropdownDelegate.h; sourceTree = "<group>"; };
 		53EA2DD2257D6A2C0003F38D /* UIDevice+Info.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Info.h"; sourceTree = "<group>"; };
 		3E724B63436744708F7C726A /* UIDevice+Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Info.swift"; sourceTree = "<group>"; };
 		097DC176EF464BBCB1F160D0 /* UIView+FrameHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+FrameHelper.swift"; sourceTree = "<group>"; };
@@ -1286,7 +1285,6 @@
 			children = (
 				4A3FBC0AC74F4820998BB0E9 /* FoldersViewController.swift */,
 				28F335F01007B36200424DE2 /* FoldersViewController.xib */,
-				53E82A951406D47F0051D44B /* FolderDropdownDelegate.h */,
 				FC9702918A3F464189A966BE /* FolderDropdownControl.swift */,
 				F876892D02AC4972A45637E4 /* AlbumViewController.swift */,
 				

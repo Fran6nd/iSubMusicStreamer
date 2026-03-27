@@ -9,6 +9,14 @@
 import UIKit
 import QuartzCore
 
+// MARK: - FolderDropdownDelegate
+
+@objc protocol FolderDropdownDelegate: AnyObject {
+    @objc optional func folderDropdownMoveViewsY(_ y: Float)
+    @objc optional func folderDropdownViewsFinishedMoving()
+    @objc optional func folderDropdownSelectFolder(_ folderId: NSNumber)
+}
+
 private let kHeight: CGFloat = 40
 
 @objc(FolderDropdownControl) final class FolderDropdownControl: UIView {
