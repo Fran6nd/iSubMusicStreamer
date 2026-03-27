@@ -47,6 +47,8 @@ import UIKit
             self?.loadData(Settings.shared().rootFoldersSelectedFolderId)
         }
 
+        tableView.backgroundColor = UIColor(named: "isubBackgroundColor")
+        tableView.separatorStyle = .none
         tableView.register(BlurredSectionHeader.self, forHeaderFooterViewReuseIdentifier: BlurredSectionHeader.reuseId)
         tableView.register(UniversalTableViewCell.self, forCellReuseIdentifier: UniversalTableViewCell.reuseId)
         tableView.rowHeight = Defines.rowHeight
@@ -460,7 +462,7 @@ extension FoldersViewController: FolderDropdownDelegate {
         }, completion: nil)
     }
 
-    func folderDropdownSelectFolder(_ folderId: NSNumber!) {
+    func folderDropdownSelectFolder(_ folderId: NSNumber) {
         dropdown?.selectFolderWithId(folderId)
 
         Settings.shared().rootFoldersSelectedFolderId = folderId

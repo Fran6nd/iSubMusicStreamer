@@ -102,6 +102,8 @@ import UIKit
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
 
+        tableView.backgroundColor = UIColor(named: "isubBackgroundColor")
+        tableView.separatorStyle = .none
         tableView.allowsMultipleSelectionDuringEditing = true
         tableView.register(BlurredSectionHeader.self, forHeaderFooterViewReuseIdentifier: BlurredSectionHeader.reuseId)
         tableView.register(UniversalTableViewCell.self, forCellReuseIdentifier: UniversalTableViewCell.reuseId)

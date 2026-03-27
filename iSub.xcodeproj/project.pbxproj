@@ -2388,6 +2388,7 @@
 				53FE37121EA961720058B925 /* ISMSCacheQueueManager.m in Sources */,
 				53246AAA256C324500E11EC4 /* InsetTextField.swift in Sources */,
 				538C8FEB2560C7AB005D6CA9 /* HomeViewController.swift in Sources */,
+				68B79FFBA5BE41FB8FEE6988 /* CacheViewController.swift in Sources */,
 				53FE38A91EA961C80058B925 /* ZKCDTrailer.m in Sources */,
 				53FE37031EA961720058B925 /* DatabaseSingleton.m in Sources */,
 				53FE6799256DD0F00015FC83 /* GCDWebServerErrorResponse.m in Sources */,
