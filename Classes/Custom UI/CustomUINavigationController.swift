@@ -60,7 +60,5 @@ extension CustomUINavigationController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController,
                                willShow viewController: UIViewController,
                                animated: Bool) {
-        // Prevent view controllers from extending under the navigation bar.
-        viewController.edgesForExtendedLayout = []
     }
 }

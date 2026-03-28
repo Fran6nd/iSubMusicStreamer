@@ -177,9 +177,6 @@
 #pragma mark Tab Saving
 
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    // Prevent view controllers from going under the navigation bar
-    viewController.edgesForExtendedLayout = UIRectEdgeNone;
-
     // Remember selected tab
     if (!settingsS.isOfflineMode) {
         [[NSUserDefaults standardUserDefaults] setInteger:appDelegateS.mainTabBarController.selectedIndex forKey:@"mainTabBarControllerSelectedIndex"];
