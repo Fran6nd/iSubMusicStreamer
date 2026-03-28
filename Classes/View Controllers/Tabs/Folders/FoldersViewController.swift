@@ -10,7 +10,7 @@ import UIKit
 
 @objc(FoldersViewController) final class FoldersViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    private let tableView = UITableView(frame: .zero, style: .plain)
 
     var isSearching = false
     var isCountShowing = false
@@ -36,6 +36,15 @@ import UIKit
 
         title = "Folders"
         view.backgroundColor = UIColor(named: "isubBackgroundColor")
+
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(tableView)
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
 
         isSearching = false
         isCountShowing = false
