@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CocoaLumberjackSwift
 
 final class CurrentPlaylistViewController: UIViewController {
 
@@ -340,9 +341,9 @@ final class CurrentPlaylistViewController: UIViewController {
     private func uploadPlaylist(name: String) {
         var parameters: [String: Any] = ["name": name]
         var songIds = [String]()
-        let playlist = PlayQueue.shared()!
-        let settings = Settings.shared()!
-        let database = Database.shared()!
+        let playlist = PlayQueue.shared()
+        let settings = Settings.shared()
+        let database = Database.shared()
         let currTable = settings.isJukeboxEnabled ? "jukeboxCurrentPlaylist" : "currentPlaylist"
         let shufTable = settings.isJukeboxEnabled ? "jukeboxShufflePlaylist" : "shufflePlaylist"
         let table = playlist.isShuffle ? shufTable : currTable
@@ -350,7 +351,7 @@ final class CurrentPlaylistViewController: UIViewController {
         database.currentPlaylistDbQueue?.inDatabase { db in
             for i in 0..<self.currentPlaylistCount {
                 autoreleasepool {
-                    if let song = Song.songFromDbRow(UInt(i), inTable: table, inDatabase: db) {
+                    if let song = Song(fromDbRow: UInt(i), inTable: table, in: db) {
                         songIds.append(song.songId ?? "")
                     }
                 }
@@ -358,8 +359,8 @@ final class CurrentPlaylistViewController: UIViewController {
         }
         parameters["songId"] = songIds
 
-        let request = NSMutableURLRequest.request(withSUSAction: "createPlaylist", parameters: parameters)
-        let task = SUSLoader.sharedSession().dataTask(with: request as URLRequest) { [weak self] data, _, error in
+        let request = NSMutableURLRequest(susAction: "createPlaylist", parameters: parameters)! as URLRequest
+        let task = SUSLoader.sharedSession().dataTask(with: request) { [weak self] data, _, error in
             DispatchQueue.main.async {
                 guard let self else { return }
                 if let error = error {
@@ -404,30 +405,37 @@ final class CurrentPlaylistViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Save", style: .default) { [weak self] _ in
             guard let self else { return }
             let name = alert.textFields?.first?.text ?? ""
-            let settings = Settings.shared()!
-            let database = Database.shared()!
+            let settings = Settings.shared()
+            let database = Database.shared()
             if self.savePlaylistLocal || settings.isOfflineMode {
-                let test = database.localPlaylistsDbQueue?.string(forQuery: "SELECT md5 FROM localPlaylists WHERE md5 = ?", name.md5)
+                var test: String? = nil
+                database.localPlaylistsDbQueue?.inDatabase { db in
+                    if let rs = db.executeQuery("SELECT md5 FROM localPlaylists WHERE md5 = ?",
+                                               withArgumentsIn: [NSString.md5(name) as Any]) {
+                        if rs.next() { test = rs.string(forColumnIndex: 0) }
+                        rs.close()
+                    }
+                }
                 if test != nil {
                     self.showOverwritePlaylistAlert(name: name)
                 } else {
-                    let dbName = settings.isOfflineMode ? "offlineCurrentPlaylist.db" : "\(settings.urlString.md5)currentPlaylist.db"
-                    let playlist = PlayQueue.shared()!
+                    let dbName = settings.isOfflineMode ? "offlineCurrentPlaylist.db" : "\(NSString.md5(settings.urlString ?? ""))currentPlaylist.db"
+                    let playlist = PlayQueue.shared()
                     let currTable = settings.isJukeboxEnabled ? "jukeboxCurrentPlaylist" : "currentPlaylist"
                     let shufTable = settings.isJukeboxEnabled ? "jukeboxShufflePlaylist" : "shufflePlaylist"
                     let table = playlist.isShuffle ? shufTable : currTable
                     database.localPlaylistsDbQueue?.inDatabase { db in
-                        db.executeUpdate("INSERT INTO localPlaylists (playlist, md5) VALUES (?, ?)", withArgumentsIn: [name, name.md5])
-                        db.executeUpdate("CREATE TABLE playlist\(name.md5) (\(Song.standardSongColumnSchema() ?? ""))", withArgumentsIn: [])
+                        db.executeUpdate("INSERT INTO localPlaylists (playlist, md5) VALUES (?, ?)", withArgumentsIn: [name, NSString.md5(name)])
+                        db.executeUpdate("CREATE TABLE playlist\(NSString.md5(name)) (\(Song.standardSongColumnSchema() ?? ""))", withArgumentsIn: [])
                         let dbPath = (database.databaseFolderPath as NSString).appendingPathComponent(dbName)
                         db.executeUpdate("ATTACH DATABASE ? AS ?", withArgumentsIn: [dbPath, "currentPlaylistDb"])
                         if db.hadError() { DDLogError("[CurrentPlaylistViewController] Err attaching currentPlaylistDb \(db.lastErrorCode()): \(db.lastErrorMessage() ?? "")") }
-                        db.executeUpdate("INSERT INTO playlist\(name.md5) SELECT * FROM \(table)", withArgumentsIn: [])
+                        db.executeUpdate("INSERT INTO playlist\(NSString.md5(name)) SELECT * FROM \(table)", withArgumentsIn: [])
                         db.executeUpdate("DETACH DATABASE currentPlaylistDb", withArgumentsIn: [])
                     }
                 }
             } else {
-                let tableName = "splaylist\(name.md5)"
+                let tableName = "splaylist\(NSString.md5(name))"
                 if database.localPlaylistsDbQueue?.tableExists(tableName) == true {
                     self.showOverwritePlaylistAlert(name: name)
                 } else {
@@ -445,26 +453,26 @@ final class CurrentPlaylistViewController: UIViewController {
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Overwrite", style: .destructive) { [weak self] _ in
             guard let self else { return }
-            let settings = Settings.shared()!
-            let database = Database.shared()!
+            let settings = Settings.shared()
+            let database = Database.shared()
             if self.savePlaylistLocal || settings.isOfflineMode {
-                let dbName = settings.isOfflineMode ? "offlineCurrentPlaylist.db" : "\(settings.urlString.md5)currentPlaylist.db"
-                let playlist = PlayQueue.shared()!
+                let dbName = settings.isOfflineMode ? "offlineCurrentPlaylist.db" : "\(NSString.md5(settings.urlString ?? ""))currentPlaylist.db"
+                let playlist = PlayQueue.shared()
                 let currTable = settings.isJukeboxEnabled ? "jukeboxCurrentPlaylist" : "currentPlaylist"
                 let shufTable = settings.isJukeboxEnabled ? "jukeboxShufflePlaylist" : "shufflePlaylist"
                 let table = playlist.isShuffle ? shufTable : currTable
                 database.localPlaylistsDbQueue?.inDatabase { db in
-                    db.executeUpdate("DROP TABLE playlist\(name.md5)", withArgumentsIn: [])
-                    db.executeUpdate("CREATE TABLE playlist\(name.md5) (\(Song.standardSongColumnSchema() ?? ""))", withArgumentsIn: [])
+                    db.executeUpdate("DROP TABLE playlist\(NSString.md5(name))", withArgumentsIn: [])
+                    db.executeUpdate("CREATE TABLE playlist\(NSString.md5(name)) (\(Song.standardSongColumnSchema() ?? ""))", withArgumentsIn: [])
                     let dbPath = (database.databaseFolderPath as NSString).appendingPathComponent(dbName)
                     db.executeUpdate("ATTACH DATABASE ? AS ?", withArgumentsIn: [dbPath, "currentPlaylistDb"])
                     if db.hadError() { DDLogError("[CurrentPlaylistViewController] Err attaching currentPlaylistDb \(db.lastErrorCode()): \(db.lastErrorMessage() ?? "")") }
-                    db.executeUpdate("INSERT INTO playlist\(name.md5) SELECT * FROM \(table)", withArgumentsIn: [])
+                    db.executeUpdate("INSERT INTO playlist\(NSString.md5(name)) SELECT * FROM \(table)", withArgumentsIn: [])
                     db.executeUpdate("DETACH DATABASE currentPlaylistDb", withArgumentsIn: [])
                 }
             } else {
                 database.localPlaylistsDbQueue?.inDatabase { db in
-                    db.executeUpdate("DROP TABLE splaylist\(name.md5)", withArgumentsIn: [])
+                    db.executeUpdate("DROP TABLE splaylist\(NSString.md5(name))", withArgumentsIn: [])
                 }
                 self.uploadPlaylist(name: name)
             }
@@ -491,16 +499,16 @@ extension CurrentPlaylistViewController: UITableViewDataSource, UITableViewDeleg
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: UniversalTableViewCell.reuseId) as! UniversalTableViewCell
-        let playlist = PlayQueue.shared()!
-        let settings = Settings.shared()!
-        let database = Database.shared()!
+        let playlist = PlayQueue.shared()
+        let settings = Settings.shared()
+        let database = Database.shared()
         let song: Song?
         if settings.isJukeboxEnabled {
             let table = playlist.isShuffle ? "jukeboxShufflePlaylist" : "jukeboxCurrentPlaylist"
-            song = Song.songFromDbRow(UInt(indexPath.row), inTable: table, inDatabaseQueue: database.currentPlaylistDbQueue)
+            song = Song.songFromDbRow(UInt(indexPath.row), inTable: table, inDatabaseQueue: database.currentPlaylistDbQueue!)
         } else {
             let table = playlist.isShuffle ? "shufflePlaylist" : "currentPlaylist"
-            song = Song.songFromDbRow(UInt(indexPath.row), inTable: table, inDatabaseQueue: database.currentPlaylistDbQueue)
+            song = Song.songFromDbRow(UInt(indexPath.row), inTable: table, inDatabaseQueue: database.currentPlaylistDbQueue!)
         }
         cell.number = indexPath.row + 1
         cell.update(model: song)
@@ -514,9 +522,9 @@ extension CurrentPlaylistViewController: UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
         let fromRow = fromIndexPath.row + 1
         let toRow = toIndexPath.row + 1
-        let settings = Settings.shared()!
-        let database = Database.shared()!
-        let playlist = PlayQueue.shared()!
+        let settings = Settings.shared()
+        let database = Database.shared()
+        let playlist = PlayQueue.shared()
         let currTable = settings.isJukeboxEnabled ? "jukeboxCurrentPlaylist" : "currentPlaylist"
         let shufTable = settings.isJukeboxEnabled ? "jukeboxShufflePlaylist" : "shufflePlaylist"
         let table = playlist.isShuffle ? shufTable : currTable
@@ -574,8 +582,7 @@ extension CurrentPlaylistViewController: UITableViewDataSource, UITableViewDeleg
     }
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let song = PlayQueue.shared().songForIndex(UInt(indexPath.row))
-        guard song?.isVideo == false else { return nil }
+        guard let song = PlayQueue.shared().song(for: UInt(indexPath.row)), !song.isVideo else { return nil }
         return SwipeAction.downloadQueueAndDeleteConfig(model: song) { [weak self] in
             guard let self else { return }
             PlayQueue.shared().deleteSongs([indexPath.row] as [Any])
