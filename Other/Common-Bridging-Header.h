@@ -21,7 +21,6 @@
  */
 
 // View Controllers
-#import "CurrentPlaylistViewController.h"
 #import "EqualizerViewController.h"
 #import "ServerListViewController.h"
 #import "SUSAllAlbumsDAO.h"

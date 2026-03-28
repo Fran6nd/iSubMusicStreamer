@@ -197,7 +197,7 @@ import UIKit
             let pair = listOfAlbums.objectAtIndexSafe(UInt(indexPath.row)) as? NSArray
             let albumName = pair?.objectAtIndexSafe(1) as? String ?? ""
 
-            let nextVC = GenresAlbumViewController(nibName: "GenresAlbumViewController", bundle: nil)
+            let nextVC = GenresAlbumViewController()
             nextVC.title = albumName
             nextVC.listOfAlbums = NSMutableArray()
             nextVC.listOfSongs = NSMutableArray()

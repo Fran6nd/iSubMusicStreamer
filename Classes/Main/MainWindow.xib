@@ -72,7 +72,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <viewControllers>
-                        <viewController nibName="FoldersViewController" id="29" customClass="FoldersViewController">
+                        <viewController id="29" customClass="FoldersViewController">
                             <extendedEdge key="edgesForExtendedLayout"/>
                             <toolbarItems/>
                             <navigationItem key="navigationItem" title="Item" id="30"/>
@@ -104,7 +104,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <viewControllers>
-                        <viewController nibName="CacheViewController" id="102" customClass="CacheViewController">
+                        <viewController id="102" customClass="CacheViewController">
                             <extendedEdge key="edgesForExtendedLayout"/>
                             <toolbarItems/>
                             <navigationItem key="navigationItem" title="Item" id="103"/>
@@ -120,7 +120,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <viewControllers>
-                        <viewController nibName="AllAlbumsViewController" id="37" customClass="AllAlbumsViewController">
+                        <viewController id="37" customClass="AllAlbumsViewController">
                             <extendedEdge key="edgesForExtendedLayout"/>
                             <toolbarItems/>
                             <navigationItem key="navigationItem" title="Item" id="38"/>
@@ -136,7 +136,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <viewControllers>
-                        <viewController nibName="AllSongsViewController" id="55" customClass="AllSongsViewController">
+                        <viewController id="55" customClass="AllSongsViewController">
                             <extendedEdge key="edgesForExtendedLayout"/>
                             <toolbarItems/>
                             <navigationItem key="navigationItem" title="Item" id="56"/>
@@ -151,7 +151,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <viewControllers>
-                        <viewController nibName="BookmarksViewController" id="87" customClass="BookmarksViewController">
+                        <viewController id="87" customClass="BookmarksViewController">
                             <extendedEdge key="edgesForExtendedLayout"/>
                             <navigationItem key="navigationItem" title="Root View Controller" id="89"/>
                         </viewController>
@@ -166,7 +166,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <viewControllers>
-                        <viewController nibName="PlayingViewController" id="66" customClass="PlayingViewController">
+                        <viewController id="66" customClass="PlayingViewController">
                             <extendedEdge key="edgesForExtendedLayout"/>
                             <toolbarItems/>
                             <navigationItem key="navigationItem" title="Item" id="67"/>
@@ -182,7 +182,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <viewControllers>
-                        <viewController nibName="GenresViewController" id="95" customClass="GenresViewController">
+                        <viewController id="95" customClass="GenresViewController">
                             <extendedEdge key="edgesForExtendedLayout"/>
                             <toolbarItems/>
                             <navigationItem key="navigationItem" title="Item" id="96"/>
@@ -198,7 +198,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <viewControllers>
-                        <viewController nibName="ChatViewController" id="158" customClass="ChatViewController">
+                        <viewController id="158" customClass="ChatViewController">
                             <extendedEdge key="edgesForExtendedLayout"/>
                             <toolbarItems/>
                             <navigationItem key="navigationItem" title="Item" id="159"/>
@@ -229,7 +229,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <viewControllers>
-                        <viewController nibName="CacheOfflineFoldersViewController" id="122" customClass="CacheOfflineFoldersViewController">
+                        <viewController id="122" customClass="CacheOfflineFoldersViewController">
                             <extendedEdge key="edgesForExtendedLayout"/>
                             <toolbarItems/>
                             <navigationItem key="navigationItem" title="Item" id="123"/>
@@ -245,7 +245,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <viewControllers>
-                        <viewController nibName="GenresViewController" id="127" customClass="GenresViewController">
+                        <viewController id="127" customClass="GenresViewController">
                             <extendedEdge key="edgesForExtendedLayout"/>
                             <toolbarItems/>
                             <navigationItem key="navigationItem" title="Item" id="128"/>
@@ -277,7 +277,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <viewControllers>
-                        <viewController nibName="BookmarksViewController" id="137" customClass="BookmarksViewController">
+                        <viewController id="137" customClass="BookmarksViewController">
                             <extendedEdge key="edgesForExtendedLayout"/>
                             <toolbarItems/>
                             <navigationItem key="navigationItem" title="Item" id="138"/>

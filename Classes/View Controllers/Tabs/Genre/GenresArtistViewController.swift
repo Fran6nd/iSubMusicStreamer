@@ -176,7 +176,7 @@ import UIKit
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let artistName = listOfArtists.objectAtIndexSafe(UInt(indexPath.row)) as? String ?? ""
 
-        let genresAlbumVC = GenresAlbumViewController(nibName: "GenresAlbumViewController", bundle: nil)
+        let genresAlbumVC = GenresAlbumViewController()
         genresAlbumVC.title = artistName
         genresAlbumVC.listOfAlbums = NSMutableArray()
         genresAlbumVC.listOfSongs = NSMutableArray()

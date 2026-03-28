@@ -321,7 +321,7 @@ extension CacheAlbumViewController {
             let entry = listOfAlbums.objectAtIndexSafe(UInt(indexPath.row)) as? NSArray
             let albumName = entry?.objectAtIndexSafe(1) as? String
 
-            let cacheAlbumVC = CacheAlbumViewController(nibName: "CacheAlbumViewController", bundle: nil)
+            let cacheAlbumVC = CacheAlbumViewController()
             cacheAlbumVC.artistName = albumName
             cacheAlbumVC.listOfAlbums = NSMutableArray()
             cacheAlbumVC.listOfSongs = NSMutableArray()

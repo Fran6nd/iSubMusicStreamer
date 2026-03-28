@@ -197,7 +197,7 @@ import SnapKit
         spacerButton.isUserInteractionEnabled = false
         
         chatButton.setAction { [unowned self] in
-            let controller = ChatViewController(nibName: "ChatViewController", bundle: nil)
+            let controller = ChatViewController()
             navigationController?.pushViewController(controller, animated: true)
         }
         

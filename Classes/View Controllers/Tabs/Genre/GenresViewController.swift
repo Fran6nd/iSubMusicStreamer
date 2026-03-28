@@ -146,7 +146,7 @@ import UIKit
     // MARK: - UITableViewDelegate
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let artistVC = GenresArtistViewController(nibName: "GenresArtistViewController", bundle: nil)
+        let artistVC = GenresArtistViewController()
 
         let genreName = self.genreName(at: indexPath.row) ?? ""
         artistVC.title = genreName

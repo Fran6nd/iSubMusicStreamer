@@ -895,7 +895,7 @@ extension CacheViewController: UITableViewDataSource, UITableViewDelegate {
         let section = listOfArtistsSections.objectAtIndexSafe(UInt(indexPath.section)) as? NSArray
         let name = section?.objectAtIndexSafe(UInt(indexPath.row)) as? String
 
-        let cacheAlbumVC = CacheAlbumViewController(nibName: "CacheAlbumViewController", bundle: nil)
+        let cacheAlbumVC = CacheAlbumViewController()
         cacheAlbumVC.artistName = name
         cacheAlbumVC.listOfAlbums = NSMutableArray()
         cacheAlbumVC.listOfSongs = NSMutableArray()
