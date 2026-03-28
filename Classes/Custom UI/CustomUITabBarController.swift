@@ -124,9 +124,18 @@ final class CustomUITabBarController: UITabBarController {
     // MARK: - Mini Player Inset
 
     private func applyMiniPlayerInset(visible: Bool) {
-        additionalSafeAreaInsets = visible
+        // Setting additionalSafeAreaInsets on self (UITabBarController) does NOT propagate to
+        // grandchildren when those children use edgesForExtendedLayout = [] — their frames stop
+        // at tabBar.top so they never reach the inset region UIKit would otherwise adjust.
+        // The reliable fix is to stamp the inset directly on every currently-visible VC.
+        let inset = visible
             ? UIEdgeInsets(top: 0, left: 0, bottom: miniPlayerHeight, right: 0)
-            : .zero
+            : UIEdgeInsets.zero
+        let navControllers = (viewControllers ?? []).compactMap { $0 as? UINavigationController }
+            + [moreNavigationController]
+        for nav in navControllers {
+            nav.topViewController?.additionalSafeAreaInsets = inset
+        }
     }
 
     // MARK: - Song State Visibility
@@ -209,6 +218,12 @@ extension CustomUITabBarController: UINavigationControllerDelegate {
         let hasSong = !miniPlayerView.isHidden
         // Only the full-screen player hides the tab bar and mini player.
         let hidingTabBar = viewController is PlayerViewController
+
+        // Stamp the mini player inset directly on the incoming VC.
+        // (applyMiniPlayerInset handles existing VCs; this covers newly-pushed ones.)
+        viewController.additionalSafeAreaInsets = (hasSong && !hidingTabBar)
+            ? UIEdgeInsets(top: 0, left: 0, bottom: miniPlayerHeight, right: 0)
+            : .zero
         let width = navigationController.view.bounds.width
 
         let playerTarget: CGAffineTransform = (hidingTabBar || !hasSong)
