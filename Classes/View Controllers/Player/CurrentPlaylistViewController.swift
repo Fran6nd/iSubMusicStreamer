@@ -382,7 +382,7 @@ final class CurrentPlaylistViewController: UIViewController {
                 ViewObjects.shared().hideLoadingScreen()
             }
         }
-        task?.resume()
+        task.resume()
 
         tableView.isScrollEnabled = false
         ViewObjects.shared().showAlbumLoadingScreen(view, sender: self)
@@ -502,13 +502,12 @@ extension CurrentPlaylistViewController: UITableViewDataSource, UITableViewDeleg
         let playlist = PlayQueue.shared()
         let settings = Settings.shared()
         let database = Database.shared()
-        let song: Song?
-        if settings.isJukeboxEnabled {
-            let table = playlist.isShuffle ? "jukeboxShufflePlaylist" : "jukeboxCurrentPlaylist"
-            song = Song.songFromDbRow(UInt(indexPath.row), inTable: table, inDatabaseQueue: database.currentPlaylistDbQueue!)
-        } else {
-            let table = playlist.isShuffle ? "shufflePlaylist" : "currentPlaylist"
-            song = Song.songFromDbRow(UInt(indexPath.row), inTable: table, inDatabaseQueue: database.currentPlaylistDbQueue!)
+        let currTable = settings.isJukeboxEnabled
+            ? (playlist.isShuffle ? "jukeboxShufflePlaylist" : "jukeboxCurrentPlaylist")
+            : (playlist.isShuffle ? "shufflePlaylist" : "currentPlaylist")
+        var song: Song?
+        database.currentPlaylistDbQueue?.inDatabase { db in
+            song = Song(fromDbRow: UInt(indexPath.row), inTable: currTable, in: db)
         }
         cell.number = indexPath.row + 1
         cell.update(model: song)
