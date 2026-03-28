@@ -10,7 +10,7 @@ import UIKit
 
 @objc(BookmarksViewController) final class BookmarksViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    private let tableView = UITableView(frame: .zero, style: .plain)
 
     var tableViewTopConstraint: NSLayoutConstraint!
     var isNoBookmarksScreenShowing = false
@@ -35,6 +35,7 @@ import UIKit
 
         isNoBookmarksScreenShowing = false
 
+        view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableViewTopConstraint = tableView.topAnchor.constraint(equalTo: view.topAnchor)
         NSLayoutConstraint.activate([

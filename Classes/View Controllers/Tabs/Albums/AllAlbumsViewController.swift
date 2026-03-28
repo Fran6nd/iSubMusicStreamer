@@ -10,8 +10,8 @@ import UIKit
 
 @objc(AllAlbumsViewController) final class AllAlbumsViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
+    private let tableView = UITableView(frame: .zero, style: .plain)
+    @objc var searchBar: UISearchBar?
 
     @objc var reloadButton: UIButton?
     @objc var countLabel: UILabel?
@@ -39,6 +39,15 @@ import UIKit
         NotificationCenter.addObserverOnMainThread(self, selector: #selector(createDataModel), name: ISMSNotification_ServerSwitched)
         NotificationCenter.addObserverOnMainThread(self, selector: #selector(loadingFinishedNotification), name: ISMSNotification_AllSongsLoadingFinished)
         NotificationCenter.addObserverOnMainThread(self, selector: #selector(addURLRefBackButton), name: UIApplication.didBecomeActiveNotification.rawValue)
+
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(tableView)
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
 
         tableView.refreshControl = RefreshControl { [weak self] in self?.reloadAction(nil) }
         tableView.backgroundColor = UIColor(named: "isubBackgroundColor")

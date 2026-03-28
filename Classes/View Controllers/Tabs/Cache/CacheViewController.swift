@@ -10,7 +10,7 @@ import UIKit
 
 @objc(CacheViewController) final class CacheViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    private let tableView = UITableView(frame: .zero, style: .plain)
 
     var tableViewTopConstraint: NSLayoutConstraint!
     var segmentControlContainer: UIView!
@@ -93,6 +93,7 @@ import UIKit
             segmentedControl.trailingAnchor.constraint(equalTo: segmentControlContainer.trailingAnchor)
         ])
 
+        view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableViewTopConstraint = tableView.topAnchor.constraint(equalTo: segmentControlContainer.bottomAnchor)
         NSLayoutConstraint.activate([
